@@ -1,4 +1,4 @@
-package jiyun.com.ipandatv;
+package jiyun.com.ipandatv.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -9,6 +9,7 @@ import android.widget.RadioButton;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.TotalList.TotalPage.HomeFragment;
 import jiyun.com.ipandatv.TotalList.TotalPage.HomePresenter;
 import jiyun.com.ipandatv.base.BaseActivity;
