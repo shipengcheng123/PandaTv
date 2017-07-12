@@ -11,7 +11,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.base.BaseFragment;
-import jiyun.com.ipandatv.model.entity.PandaBean;
 
 /**
  * Created by lx on 2017/7/11.

@@ -3,7 +3,6 @@ package jiyun.com.ipandatv.TotalList.TotalPage;
 
 import jiyun.com.ipandatv.base.BasePresenter;
 import jiyun.com.ipandatv.base.BaseView;
-import jiyun.com.ipandatv.model.entity.PandaBean;
 
 /**
  * Created by lx on 2017/7/11.
