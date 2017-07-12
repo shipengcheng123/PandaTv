@@ -73,6 +73,8 @@ public abstract class BaseFragment extends Fragment {
     protected void onHidden() {
     }
 
+    public abstract void  setParams(Bundle bundle);
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
