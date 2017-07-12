@@ -71,7 +71,7 @@ public class OkHttpUtils implements IHttp {
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, final IOException e) {
-                App.context.runOnUiThread(new Runnable() {
+                App.activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         //执行在主线程
@@ -85,7 +85,7 @@ public class OkHttpUtils implements IHttp {
             public void onResponse(Call call, Response response) throws IOException {
                 final String jsonData = response.body().string();
                 //执行在子线程中
-                App.context.runOnUiThread(new Runnable() {
+                App.activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         //执行在主线程
@@ -112,7 +112,7 @@ public class OkHttpUtils implements IHttp {
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, final IOException e) {
-                App.context.runOnUiThread(new Runnable() {
+                App.activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         //执行在主线程
@@ -126,7 +126,7 @@ public class OkHttpUtils implements IHttp {
             public void onResponse(Call call, Response response) throws IOException {
                 final String jsonData = response.body().string();
                 //执行在子线程中
-                App.context.runOnUiThread(new Runnable() {
+                App.activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         //执行在主线程

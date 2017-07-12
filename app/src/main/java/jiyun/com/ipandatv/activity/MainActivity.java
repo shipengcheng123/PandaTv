@@ -1,18 +1,21 @@
 package jiyun.com.ipandatv.activity;
 
+
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
+import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
-import jiyun.com.ipandatv.TotalList.TotalPage.HomeFragment;
-import jiyun.com.ipandatv.TotalList.TotalPage.HomePresenter;
 import jiyun.com.ipandatv.base.BaseActivity;
+import jiyun.com.ipandatv.config.ConfigFragment;
+import jiyun.com.ipandatv.fragment.pandadirect.PandadirectFragment;
 
 public class MainActivity extends BaseActivity {
     @BindView(R.id.FrameLayout)
@@ -27,9 +30,11 @@ public class MainActivity extends BaseActivity {
     RadioButton btnExploreFind;
     @BindView(R.id.btn_explore_my)
     RadioButton btnExploreMy;
+    @BindView(R.id.FrameLayout_contentGroup)
+    RadioGroup FrameLayoutContentGroup;
     @BindView(R.id.activity_main)
     LinearLayout activityMain;
-    private HomeFragment homeFragment;
+    private FragmentManager fragmentmanager;
 
     @Override
     protected int getLayoutId() {
@@ -38,12 +43,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        homeFragment = new HomeFragment();
-        new HomePresenter(homeFragment);
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.FrameLayout, homeFragment, "HomeFragment");
-        transaction.commit();
+        fragmentmanager = getSupportFragmentManager();
+        App.mRadiogroup = (RadioGroup) findViewById(R.id.FrameLayout_contentGroup);
     }
 
     @Override
@@ -59,6 +60,8 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 
     @OnClick({R.id.btn_explore_comprehensive, R.id.btn_explore_move, R.id.btn_explore_plus, R.id.btn_explore_find, R.id.btn_explore_my})
@@ -67,6 +70,8 @@ public class MainActivity extends BaseActivity {
             case R.id.btn_explore_comprehensive:
                 break;
             case R.id.btn_explore_move:
+                initView();
+                ConfigFragment.getInstance().init().start(PandadirectFragment.class).build();
                 break;
             case R.id.btn_explore_plus:
                 break;
