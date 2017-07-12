@@ -49,13 +49,13 @@ public class ConfigFragment {
 //        transaction = manager.beginTransaction();
         //根据tag查找fragment 如果能找到就代表fragment已经实例化了，否则动态实例化；
 
-//        fragment = (BaseFragment) manager.findFragmentByTag(simpleName);
+//       fragment = (BaseFragment) manager.findFragmentByTag(simpleName);
         fragment= (BaseFragment) manager.findFragmentByTag(simpleName);
         if (fragment == null) {
             try {
                 //java的动态代理，动态创建Fragment对象
                 fragment = fragmentClass.newInstance();
-                transaction.add(R.id.FrameLayout_contentGroup, fragment, simpleName);
+                transaction.add(R.id.FrameLayout, fragment, simpleName);
             } catch (InstantiationException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
