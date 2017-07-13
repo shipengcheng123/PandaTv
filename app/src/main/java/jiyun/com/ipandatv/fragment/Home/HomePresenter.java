@@ -1,9 +1,9 @@
-package jiyun.com.ipandatv.TotalList.TotalPage;
+package jiyun.com.ipandatv.fragment.Home;
 
 import jiyun.com.ipandatv.internet.callback.INetWorkCallback;
 import jiyun.com.ipandatv.model.biz.TotallabelModel;
 import jiyun.com.ipandatv.model.biz.TotallabelModelimpl;
-import jiyun.com.ipandatv.model.entity.PandaBean;
+import jiyun.com.ipandatv.model.entity.HomePageBean;
 
 /**
  * Created by lx on 2017/7/11.
@@ -12,7 +12,6 @@ import jiyun.com.ipandatv.model.entity.PandaBean;
  */
 
 public class HomePresenter implements HomeContract.Presenter {
-
     private TotallabelModel totallabelModel;
     private HomeContract.View homeView;
 
@@ -24,15 +23,16 @@ public class HomePresenter implements HomeContract.Presenter {
 
     @Override
     public void start() {
-        totallabelModel.getTotallabel(new INetWorkCallback<PandaBean>() {
+        totallabelModel.getHomePageLunBo(new INetWorkCallback<HomePageBean>() {
             @Override
-            public void OnSucess(PandaBean pandaBean) {
-                homeView.setText(pandaBean);
+            public void OnSucess(HomePageBean homePageBean) {
+                homeView.setText(homePageBean);
+                homeView.setImage(homePageBean);
             }
 
             @Override
             public void OnError(int ErrorCode, String ErrorMsg) {
-                homeView.showmsg(ErrorMsg);
+
             }
         });
     }

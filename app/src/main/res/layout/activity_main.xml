@@ -7,13 +7,12 @@
     android:orientation="vertical"
     tools:context="jiyun.com.ipandatv.activity.MainActivity">
 
-
-
     <FrameLayout
         android:id="@+id/FrameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"></FrameLayout>
+
 
     <RadioGroup
         android:id="@+id/FrameLayout_contentGroup"
@@ -51,7 +50,7 @@
             android:button="@null"
             android:drawableTop="@drawable/rollvideo_selector"
             android:gravity="center"
-            android:text="滚滚视频" />
+            android:text="熊猫文化" />
 
         <RadioButton
             android:id="@+id/btn_explore_find"
@@ -61,7 +60,7 @@
             android:button="@null"
             android:drawableTop="@drawable/pandareport_selector"
             android:gravity="center"
-            android:text="熊猫播报" />
+            android:text="熊猫观察" />
 
         <RadioButton
             android:id="@+id/btn_explore_my"

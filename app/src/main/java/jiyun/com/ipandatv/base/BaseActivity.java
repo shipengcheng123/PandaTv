@@ -16,7 +16,8 @@ import jiyun.com.ipandatv.App;
  */
 
 public abstract class BaseActivity extends AppCompatActivity {
-private FragmentManager fragmentManager;
+    private FragmentManager fragmentManager;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +31,7 @@ private FragmentManager fragmentManager;
             ActivityCompat.requestPermissions(BaseActivity.this, new String[]{android.Manifest.permission.CAMERA, android.Manifest.permission.VIBRATE}, 1);
         }
     }
+
     @Override
     protected void onResume() {
         super.onResume();

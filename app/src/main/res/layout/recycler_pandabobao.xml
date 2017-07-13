@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="2dp"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/recycler_pandabobao_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColor="#0000ff"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/mPanadaeyes_title_ah"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/recycler_pandabobao_title"
+        android:background="#535353" />
+
+    <LinearLayout
+        android:id="@+id/mPanadaeyes_linear"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_below="@id/mPanadaeyes_title_ah"
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/mPanadaeyes_title_image"
+            android:layout_width="180dp"
+            android:layout_height="180dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="89dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/mPanadaeyes_title_title1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_shaper"
+                    android:gravity="center"
+                    android:textColor="#ff0000" />
+
+                <TextView
+                    android:id="@+id/mPanadaeyes_title_message1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#535353" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="89dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/mPanadaeyes_title_title2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_shaper"
+                    android:gravity="center"
+                    android:textColor="#ff0000" />
+
+                <TextView
+                    android:id="@+id/mPanadaeyes_title_message2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

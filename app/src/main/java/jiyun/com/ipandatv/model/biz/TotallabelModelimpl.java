@@ -1,5 +1,6 @@
 package jiyun.com.ipandatv.model.biz;
 
+import jiyun.com.ipandatv.model.entity.HomePageBean;
 import jiyun.com.ipandatv.model.entity.PandaBean;
 import jiyun.com.ipandatv.internet.callback.INetWorkCallback;
 import jiyun.com.ipandatv.internet.urls.Urls;
@@ -14,5 +15,10 @@ public class TotallabelModelimpl implements TotallabelModel {
     @Override
     public void getTotallabel(INetWorkCallback<PandaBean> callback) {
         iHttp.get(Urls.TOTALLABELURL, null, callback);
+    }
+
+    @Override
+    public void getHomePageLunBo(INetWorkCallback<HomePageBean> callback) {
+        iHttp.get(Urls.PANDATOTAL, null, callback);
     }
 }

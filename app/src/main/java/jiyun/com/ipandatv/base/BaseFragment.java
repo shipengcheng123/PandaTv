@@ -30,7 +30,7 @@ public abstract class BaseFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         isFirst = true;
         init(view);
-        loadData();
+//        loadData();
     }
 
     //当页面可见时

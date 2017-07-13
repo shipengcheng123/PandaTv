@@ -1,8 +1,9 @@
-package jiyun.com.ipandatv.TotalList.TotalPage;
+package jiyun.com.ipandatv.fragment.Home;
 
 
 import jiyun.com.ipandatv.base.BasePresenter;
 import jiyun.com.ipandatv.base.BaseView;
+import jiyun.com.ipandatv.model.entity.HomePageBean;
 
 /**
  * Created by lx on 2017/7/11.
@@ -13,9 +14,11 @@ import jiyun.com.ipandatv.base.BaseView;
 public interface HomeContract {
 
     interface View extends BaseView<Presenter> {
-        void setText(PandaBean pandaBean);
+        void setImage(HomePageBean homePageBean);
 
-        void showmsg(String errormsg);
+        void setText(HomePageBean homePageBean);
+
+        void setMsg(String msg);
     }
 
     interface Presenter extends BasePresenter {
