@@ -16,6 +16,7 @@ public class LiveFragment extends BaseFragment {
         return R.layout.fragment_zhibo;
     }
 
+
     @Override
     protected void init(View view) {
 
