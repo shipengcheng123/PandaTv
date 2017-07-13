@@ -91,6 +91,8 @@ public class MainActivity extends BaseActivity {
             case R.id.btn_explore_find:
                 BaseFragment build = ConfigFragment.getInstance().init().start(BobaoFragment.class).build();
 
+
+
                 break;
             case R.id.btn_explore_my:
                 break;
