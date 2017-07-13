@@ -28,6 +28,7 @@ import jiyun.com.ipandatv.model.entity.HomePageBean;
  * Created by lx on 2017/7/11.
  * 实现契约中的view方法
  * 拿到从presenter层网络请求出来的东西并放上去
+ *
  */
 
 public class HomeFragment extends BaseFragment implements HomeContract.View, ViewPager.OnPageChangeListener {
