@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"></FrameLayout>
 
-    
+
     <RadioGroup
         android:id="@+id/FrameLayout_contentGroup"
         android:layout_width="match_parent"
@@ -40,7 +40,7 @@
             android:button="@null"
             android:drawableTop="@drawable/pandalive_selector"
             android:gravity="center"
-            android:text="熊猫观察" />
+            android:text="熊猫直播" />
 
         <RadioButton
             android:id="@+id/btn_explore_plus"
@@ -60,7 +60,7 @@
             android:button="@null"
             android:drawableTop="@drawable/pandareport_selector"
             android:gravity="center"
-            android:text="熊猫直播" />
+            android:text="熊猫观察" />
 
         <RadioButton
             android:id="@+id/btn_explore_my"
