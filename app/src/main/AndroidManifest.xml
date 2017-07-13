@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".activity.FirstPagerActivity"/>
         <activity android:name=".activity.MainActivity"/>
+        <activity android:name=".activity.WebActivity"></activity>
     </application>
 
 </manifest>

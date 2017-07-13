@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#1151bf"
+        android:id="@+id/toolbar">
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="熊猫观察"
+            android:textColor="#fff"
+            android:textSize="20dp"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <ImageView
+            android:id="@+id/Personal_Cente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:src="@drawable/person_sign"
+            />
+
+    </android.support.v7.widget.Toolbar>
+
+
+
+    <com.androidkun.PullToRefreshRecyclerView
+        android:id="@+id/bobao_RecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.androidkun.PullToRefreshRecyclerView>
+
+
+</LinearLayout>

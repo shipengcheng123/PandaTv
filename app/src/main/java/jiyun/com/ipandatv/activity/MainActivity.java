@@ -14,7 +14,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
+import jiyun.com.ipandatv.TotalList.broadcast.BobaoFragment;
 import jiyun.com.ipandatv.base.BaseActivity;
+import jiyun.com.ipandatv.base.BaseFragment;
 import jiyun.com.ipandatv.config.ConfigFragment;
 import jiyun.com.ipandatv.fragment.Home.HomeFragment;
 import jiyun.com.ipandatv.fragment.Home.HomePresenter;
@@ -87,6 +89,8 @@ public class MainActivity extends BaseActivity {
             case R.id.btn_explore_plus:
                 break;
             case R.id.btn_explore_find:
+                BaseFragment build = ConfigFragment.getInstance().init().start(BobaoFragment.class).build();
+
                 break;
             case R.id.btn_explore_my:
                 break;
