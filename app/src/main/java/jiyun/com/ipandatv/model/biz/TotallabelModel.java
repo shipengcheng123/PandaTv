@@ -1,5 +1,6 @@
 package jiyun.com.ipandatv.model.biz;
 
+import jiyun.com.ipandatv.model.entity.HomePageBean;
 import jiyun.com.ipandatv.model.entity.PandaBean;
 import jiyun.com.ipandatv.internet.callback.INetWorkCallback;
 
@@ -10,4 +11,7 @@ import jiyun.com.ipandatv.internet.callback.INetWorkCallback;
 
 public interface TotallabelModel extends BaseModel {
     void getTotallabel(INetWorkCallback<PandaBean> callback);
+
+    //首页轮播图接口
+    void getHomePageLunBo(INetWorkCallback<HomePageBean> callback);
 }

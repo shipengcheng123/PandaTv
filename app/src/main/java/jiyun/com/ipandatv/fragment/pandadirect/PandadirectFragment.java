@@ -23,8 +23,6 @@ import jiyun.com.ipandatv.fragment.pandadirect.adapter.PandaDirectAdapter;
  */
 
 public class PandadirectFragment extends BaseFragment {
-
-
     @BindView(R.id.direct_tablayout)
     TabLayout directTablayout;
     @BindView(R.id.direct_viewpager)
