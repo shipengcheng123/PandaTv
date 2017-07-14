@@ -1,20 +1,37 @@
 package jiyun.com.ipandatv.fragment.Home.tile_right;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import jiyun.com.ipandatv.App;
+import butterknife.OnClick;
 import jiyun.com.ipandatv.R;
-import jiyun.com.ipandatv.base.BaseFragment;
+import jiyun.com.ipandatv.base.BaseActivity;
 
 /**
  * Created by lx on 2017/7/14.
  */
 
-public class Title_Right extends BaseFragment {
+public class Title_Right extends BaseActivity {
+    @BindView(R.id.panda_person_userimg)
+    ImageView pandaPersonUserimg;
+    @BindView(R.id.panda_person_username)
+    RelativeLayout pandaPersonUsername;
+    @BindView(R.id.panda_person_guankan)
+    ImageView pandaPersonGuankan;
+    @BindView(R.id.panda_person_guankanlishi)
+    RelativeLayout pandaPersonGuankanlishi;
+    @BindView(R.id.panda_person_shoucang)
+    ImageView pandaPersonShoucang;
+    @BindView(R.id.panda_person_wodeshoucang)
+    RelativeLayout pandaPersonWodeshoucang;
+    @BindView(R.id.panda_person_set)
+    ImageView pandaPersonSet;
+    @BindView(R.id.panda_person_setting)
+    RelativeLayout pandaPersonSetting;
 
     @Override
     protected int getLayoutId() {
@@ -22,42 +39,42 @@ public class Title_Right extends BaseFragment {
     }
 
     @Override
-    protected void init(View view) {
-        App.mRadiogroup.setVisibility(View.GONE);
-    }
-
-    @Override
-    protected void loadData() {
+    protected void initView() {
 
     }
 
     @Override
-    public void setParams(Bundle bundle) {
+    public void initData() {
 
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder = ButterKnife.bind(this, rootView);
-        return rootView;
+    public void loadData() {
+
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 
-    @Override
-    protected void onShow() {
-        super.onShow();
-    }
+    @OnClick({R.id.panda_person_username, R.id.panda_person_guankanlishi, R.id.panda_person_wodeshoucang, R.id.panda_person_setting})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.panda_person_username:
 
-    @Override
-    protected void onHidden() {
-        super.onHidden();
-        App.mRadiogroup.setVisibility(View.GONE);
+                break;
+            case R.id.panda_person_guankanlishi:
+
+                break;
+            case R.id.panda_person_wodeshoucang:
+
+                break;
+            case R.id.panda_person_setting:
+
+                break;
+        }
     }
 }

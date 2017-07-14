@@ -1,5 +1,6 @@
 package jiyun.com.ipandatv.fragment.Home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
@@ -19,7 +20,6 @@ import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.adapter.homepage.HomeXrecyclerAdapter;
 import jiyun.com.ipandatv.base.BaseFragment;
-import jiyun.com.ipandatv.config.ConfigFragment;
 import jiyun.com.ipandatv.fragment.Home.tile_right.Title_Right;
 import jiyun.com.ipandatv.model.entity.HomePageBean;
 
@@ -128,7 +128,8 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
 
                 break;
             case R.id.title_right:
-                ConfigFragment.getInstance().init().start(Title_Right.class).build();
+                Intent in = new Intent(getContext(), Title_Right.class);
+                startActivity(in);
                 break;
         }
     }
