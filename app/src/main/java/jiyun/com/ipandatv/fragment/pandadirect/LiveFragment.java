@@ -98,6 +98,7 @@ public class LiveFragment extends BaseFragment {
                     liveLinBrief.setVisibility(View.GONE);
                     ischeck=false;
                     return;
+
                 }
 
 
