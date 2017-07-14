@@ -1,15 +1,14 @@
 package jiyun.com.ipandatv.activity;
 
-
 import android.os.Bundle;
 import android.os.Process;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -64,12 +63,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void loadData() {
-        homeFragment = new HomeFragment();
-        new HomePresenter(homeFragment);
-        fragmentmanager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentmanager.beginTransaction();
-        transaction.add(R.id.FrameLayout, homeFragment, "HomeFragment");
-        transaction.commit();
+        ConfigFragment.getInstance().init().start(HomeFragment.class).build();
     }
 
     @Override
@@ -95,6 +89,7 @@ public class MainActivity extends BaseActivity {
                 ConfigFragment.getInstance().init().start(PandaCultureFragment.class).build();
                 break;
             case R.id.btn_explore_find:
+
 
                 ConfigFragment.getInstance().init().start(BobaoFragment.class).build();
 

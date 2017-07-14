@@ -100,7 +100,6 @@ public class ConfigFragment {
         App.lastFragment = fragment;
         transaction.commit();//提交事物
         return fragment;
-
     }
 
 }

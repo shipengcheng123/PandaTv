@@ -12,10 +12,9 @@ import jiyun.com.ipandatv.model.entity.HomePageBean;
  */
 
 public interface HomeContract {
-
     interface View extends BaseView<Presenter> {
         void setImage(HomePageBean homePageBean);
-//s
+
         void setText(HomePageBean homePageBean);
 
         void setMsg(String msg);
