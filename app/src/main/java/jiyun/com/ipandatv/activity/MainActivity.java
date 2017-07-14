@@ -1,13 +1,11 @@
 package jiyun.com.ipandatv.activity;
 
-
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
