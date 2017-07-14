@@ -13,7 +13,6 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,7 +43,7 @@ public class LiveFragment extends BaseFragment {
     ScrollView liveLinBrief;
     private FragmentManager manager;
 
-    boolean ischeck=true;
+    boolean ischeck=false;
 
     @Override
     protected int getLayoutId() {
@@ -87,17 +86,23 @@ public class LiveFragment extends BaseFragment {
         super.onDestroyView();
         unbinder.unbind();
     }
-
     @OnClick(R.id.live_isshow)
     public void onViewClicked() {
 
-        if(ischeck==true) {
-            Toast.makeText(App.activity, "ddd", Toast.LENGTH_SHORT).show();
-            liveLinBrief.setVisibility(View.VISIBLE);
+                if(ischeck==false) {
+                    liveLinBrief.setVisibility(View.VISIBLE);
+                    ischeck=true;
+                    return;
+                }
+                else {
+                    liveLinBrief.setVisibility(View.GONE);
+                    ischeck=false;
+                    return;
+                }
 
-        }else if(ischeck==false) {
-            liveBrief.setVisibility(View.GONE);
-        }
+
+
+
 
     }
 }
