@@ -60,7 +60,6 @@ public class Title_Right extends BaseActivity {
         ButterKnife.bind(this);
     }
 
-
     @OnClick({R.id.panda_person_username, R.id.panda_person_guankanlishi, R.id.panda_person_wodeshoucang, R.id.panda_person_setting})
     public void onViewClicked(View view) {
         switch (view.getId()) {
