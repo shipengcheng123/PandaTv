@@ -3,7 +3,6 @@ package jiyun.com.ipandatv.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -19,7 +18,6 @@ import jiyun.com.ipandatv.base.BaseActivity;
 import jiyun.com.ipandatv.base.BaseFragment;
 import jiyun.com.ipandatv.config.ConfigFragment;
 import jiyun.com.ipandatv.fragment.Home.HomeFragment;
-import jiyun.com.ipandatv.fragment.Home.HomePresenter;
 import jiyun.com.ipandatv.fragment.pandadirect.PandadirectFragment;
 
 public class MainActivity extends BaseActivity {
@@ -60,12 +58,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void loadData() {
-        homeFragment = new HomeFragment();
-        new HomePresenter(homeFragment);
-        fragmentmanager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentmanager.beginTransaction();
-        transaction.add(R.id.FrameLayout, homeFragment, "HomeFragment");
-        transaction.commit();
+        ConfigFragment.getInstance().init().start(HomeFragment.class).build();
     }
 
     @Override
@@ -90,7 +83,6 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.btn_explore_find:
                 BaseFragment build = ConfigFragment.getInstance().init().start(BobaoFragment.class).build();
-
 
 
                 break;

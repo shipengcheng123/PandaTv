@@ -10,12 +10,12 @@ import jiyun.com.ipandatv.model.entity.PandaBroadBean;
  * Created by Lenovo on 2017/7/12.
  */
 
-public class BobaoPresenter implements BobaoContract.Presenter{
+public class BobaoPresenter implements BobaoContract.Presenter {
 
-       private BobaoModel bobaoModel;
-       private BobaoContract.View BobaoView;
-
-    public BobaoPresenter(BobaoContract.View BobaoView){
+    private BobaoModel bobaoModel;
+    private BobaoContract.View BobaoView;
+    
+    public BobaoPresenter(BobaoContract.View BobaoView) {
         this.BobaoView = BobaoView;
         this.BobaoView.setBasePresenter(this);
         bobaoModel = new BobaoModelImpl();
@@ -46,9 +46,5 @@ public class BobaoPresenter implements BobaoContract.Presenter{
 
             }
         });
-
     }
-
-
-
 }
