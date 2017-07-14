@@ -53,7 +53,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
         return R.layout.main_headpage;
     }
 
-
     @Override
     protected void init(View view) {
         App.mRadiogroup.setVisibility(View.VISIBLE);
