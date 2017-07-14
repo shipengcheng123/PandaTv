@@ -71,7 +71,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
     public void setParams(Bundle bundle) {
     }
 
-
     @Override
     public void setImage(HomePageBean homePageBean) {
     }
