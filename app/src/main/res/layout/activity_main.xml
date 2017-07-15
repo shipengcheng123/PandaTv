@@ -17,57 +17,62 @@
     <RadioGroup
         android:id="@+id/FrameLayout_contentGroup"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:orientation="horizontal"
         android:weightSum="5">
 
         <RadioButton
             android:id="@+id/btn_explore_comprehensive"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:button="@null"
             android:checked="true"
             android:drawableTop="@drawable/homepage_selector"
             android:gravity="center"
+            android:background="@drawable/activity_main_color_selector"
             android:text="首页" />
 
         <RadioButton
             android:id="@+id/btn_explore_move"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:button="@null"
             android:drawableTop="@drawable/pandalive_selector"
             android:gravity="center"
+            android:background="@drawable/activity_main_color_selector"
             android:text="熊猫直播" />
 
         <RadioButton
             android:id="@+id/btn_explore_plus"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:button="@null"
+            android:background="@drawable/activity_main_color_selector"
             android:drawableTop="@drawable/rollvideo_selector"
             android:gravity="center"
             android:text="熊猫文化" />
 
         <RadioButton
             android:id="@+id/btn_explore_find"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:button="@null"
+            android:background="@drawable/activity_main_color_selector"
             android:drawableTop="@drawable/pandareport_selector"
             android:gravity="center"
             android:text="熊猫观察" />
 
         <RadioButton
             android:id="@+id/btn_explore_my"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:button="@null"
+            android:background="@drawable/activity_main_color_selector"
             android:drawableTop="@drawable/livechina_selector"
             android:gravity="center"
             android:text="直播中国" />
