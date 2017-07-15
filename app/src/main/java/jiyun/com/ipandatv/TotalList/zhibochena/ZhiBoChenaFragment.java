@@ -1,5 +1,6 @@
 package jiyun.com.ipandatv.TotalList.zhibochena;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -23,11 +24,17 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
+import jiyun.com.ipandatv.activity.LiveChinaAdd;
 import jiyun.com.ipandatv.adapter.DragAdapter;
 import jiyun.com.ipandatv.adapter.zhibochena.ZHPagerAdapter;
 import jiyun.com.ipandatv.base.BaseFragment;
-import jiyun.com.ipandatv.fragment.pandadirect.LiveFragment;
 import jiyun.com.ipandatv.fragment.pandadirect.adapter.PandaDirectAdapter;
+import jiyun.com.ipandatv.fragment.zhibochena.BadaLingFragment;
+import jiyun.com.ipandatv.fragment.zhibochena.EmeishanFragment;
+import jiyun.com.ipandatv.fragment.zhibochena.FenghuangFragment;
+import jiyun.com.ipandatv.fragment.zhibochena.HuangShanFragment;
+import jiyun.com.ipandatv.fragment.zhibochena.TaiShanFragment;
+import jiyun.com.ipandatv.fragment.zhibochena.ZhangjiajieFragment;
 import jiyun.com.ipandatv.view.DragGridView;
 
 /**
@@ -81,22 +88,20 @@ public class ZhiBoChenaFragment extends BaseFragment {
     protected void loadData() {
         mListName = new ArrayList<>();
         mList = new ArrayList<>();
-        mList.add(new LiveFragment());
-        mList.add(new LiveFragment());
-        mList.add(new LiveFragment());
-        mList.add(new LiveFragment());
-        mList.add(new LiveFragment());
-        mList.add(new LiveFragment());
-        mList.add(new LiveFragment());
-        mList.add(new LiveFragment());
+        mList.add(new BadaLingFragment());
+        mList.add(new TaiShanFragment());
+        mList.add(new HuangShanFragment());
+        mList.add(new FenghuangFragment());
+        mList.add(new EmeishanFragment());
+        mList.add(new ZhangjiajieFragment());
+
         mListName.add("八达岭");
+        mListName.add("黟县");
+        mListName.add("黄山");
         mListName.add("凤凰古城");
         mListName.add("峨眉山");
-        mListName.add("金丝猴");
-        mListName.add("水长城");
-        mListName.add("嘉峪关");
         mListName.add("泰山");
-        mListName.add("黄山");
+
 
         adapter = new PandaDirectAdapter(getChildFragmentManager(), mListName, mList);
         liveChenaViewPager.setAdapter(adapter);
@@ -125,7 +130,10 @@ public class ZhiBoChenaFragment extends BaseFragment {
 
     @OnClick(R.id.live_chena_IBtn)
     public void onViewClicked() {
-//        upPopupWindow();
+        Intent intent = new Intent(getContext(), LiveChinaAdd.class);
+        startActivity(intent);
+
+
     }
 
 
@@ -200,6 +208,7 @@ public class ZhiBoChenaFragment extends BaseFragment {
         channels.add(3, "金丝猴");
 
     }
+
 
 
 }

@@ -29,6 +29,18 @@ public class Urls {
     public static final String PANDALIVEBQ = PANDAURL + "PAGE14501772263221982/index.json";
     //直播中国Tab
     public static final String PANDA_LIVE_CHINA_TAB=PANDAURL+"PAGE14501775094142282/index.json";
+    /**
+     * 直播中国
+     * */
+    public static final String PANDA_LIVE_CHINA_Changcheng = PANDAURL+"liebiao/badaling/index.json";
+    public static final String PANDA_LIVE_CHINA_Taishan = PANDAURL+"liebiao/taishan/index.json";
+    public static final String PANDA_LIVE_CHINA_Huangshan = PANDAURL+"liebiao/huangshan/index.json";
+    public static final String PANDA_LIVE_CHINA_Fenghuanggucheng = PANDAURL+"liebiao/fenghuanggucheng/index.json";
+    public static final String PANDA_LIVE_CHINA_Emeishan = PANDAURL+"liebiao/emeishan/index.json";
+    public static final String PANDA_LIVE_CHINA_Zhangjiajie = PANDAURL+"liebiao/PAGEjQscAxoVKOjRIpboc1oA160718/index.json";
+
+
+
     //熊猫首页
     public static final String HOME_URL = PANDAURL+"PAGE14501749764071042/index.json";
     //CCTV

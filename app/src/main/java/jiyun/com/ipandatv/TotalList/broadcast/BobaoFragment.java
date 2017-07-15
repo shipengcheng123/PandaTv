@@ -29,6 +29,7 @@ import jiyun.com.ipandatv.adapter.BobaoAdapter;
 import jiyun.com.ipandatv.base.BaseFragment;
 import jiyun.com.ipandatv.model.entity.BobaoHeaderBean;
 import jiyun.com.ipandatv.model.entity.PandaBroadBean;
+import jiyun.com.ipandatv.utils.MyLog;
 
 /**
  * Created by Lenovo on 2017/7/12.
@@ -71,8 +72,10 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View{
             @Override
             public void onClick(View v) {
 
+
                 Intent intent = new Intent(getContext(),WebActivity.class);
                 intent.putExtra("url",url);
+                MyLog.e("URL",url);
                 startActivity(intent);
             }
         });
@@ -176,7 +179,7 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View{
     public void setResultHeadler(BobaoHeaderBean bobaoHeaderBean) {
         Glide.with(App.activity).load(bobaoHeaderBean.getData().getBigImg().get(0).getImage()).into(mImage);
         title.setText(bobaoHeaderBean.getData().getBigImg().get(0).getTitle());
-        url = bobaoHeaderBean.getData().getBigImg().get(0).getTitle();
+        url = bobaoHeaderBean.getData().getBigImg().get(0).getUrl();
     }
 
     @Override

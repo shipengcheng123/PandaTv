@@ -26,7 +26,7 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginRight="20dp"
-            android:src="@drawable/personal_shoucang_img" />
+            android:src="@drawable/shoucang_selector" />
 
         <ImageView
             android:id="@+id/Fenxiang"

@@ -9,7 +9,6 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -21,7 +20,6 @@ import jiyun.com.ipandatv.base.BaseActivity;
 import jiyun.com.ipandatv.base.BaseFragment;
 import jiyun.com.ipandatv.config.ConfigFragment;
 import jiyun.com.ipandatv.fragment.Home.HomeFragment;
-import jiyun.com.ipandatv.fragment.Home.HomePresenter;
 import jiyun.com.ipandatv.fragment.pandabroadcast.PandaCultureFragment;
 import jiyun.com.ipandatv.fragment.pandadirect.PandadirectFragment;
 
@@ -89,8 +87,6 @@ public class MainActivity extends BaseActivity {
                 ConfigFragment.getInstance().init().start(PandaCultureFragment.class).build();
                 break;
             case R.id.btn_explore_find:
-
-
                 ConfigFragment.getInstance().init().start(BobaoFragment.class).build();
 
                 break;

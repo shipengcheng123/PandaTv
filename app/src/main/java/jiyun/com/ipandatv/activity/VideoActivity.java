@@ -38,6 +38,8 @@ public class VideoActivity extends BaseActivity {
         //标准基础上改进的视频播放(添加了分享按钮)
         customVideoplayerStandardWithShareButton = (JCVideoPlayerStandardShowShareButtonAfterFullscreen) findViewById(R.id.custom_videoplayer_standard_with_share_button);
         customVideoplayerStandardWithShareButton.setUrlAndObject(url, null,title);
+//        ImageLoader.getInstance().displayImage("http://img4.jiecaojingxuan.com/2016/5/1/3430ec64-e6a7-4d8e-b044-9d408e075b7c.jpg",
+//                customVideoplayerStandardWithShareButton.ivThumb);
     }
 
     @Override
