@@ -29,5 +29,6 @@ public class PandaLiveDuoshijiaoAdapter extends BaseAdapter<PandaLiveDuoshijiaoB
         ImageView imageView= (ImageView) holder.itemView.findViewById(R.id.duoshijiao_iv);
         Glide.with(App.activity).load(listBean.getImage()).into(imageView);
         holder.setText(R.id.duoshijiao_tv,listBean.getTitle());
+
     }
 }
