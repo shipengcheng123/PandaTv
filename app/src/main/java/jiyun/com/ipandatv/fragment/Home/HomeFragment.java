@@ -189,6 +189,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
         v = null;
         CheckBox checkBox;
         v1 = null;
+
         for (HomePageBean.DataBean.BigImgBean bigImgBean : bigImgBeen) {
             v1 = LayoutInflater.from(getContext()).inflate(R.layout.checkbox_item, null);
             checkBox = (CheckBox) v1.findViewById(R.id.viewpager_checkbox_btn);
