@@ -4,6 +4,11 @@
               android:layout_width="match_parent"
               android:layout_height="120dp"
                 android:id="@+id/panda_observe_relativeLayout">
+
+  <RelativeLayout
+      android:id="@+id/culture_relat"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content">
     <ImageView
         android:id="@+id/panda_culture_item_image"
         android:layout_width="180dp"
@@ -73,4 +78,5 @@
         android:layout_height="1dp"
         android:layout_alignParentBottom="true"
         android:background="#d3d3d3" />
+  </RelativeLayout>
 </RelativeLayout>

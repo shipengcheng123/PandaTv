@@ -20,6 +20,7 @@ import butterknife.OnClick;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.base.BaseFragment;
+import jiyun.com.ipandatv.view.JCVideoPlayerStandardShowShareButtonAfterFullscreen;
 
 /**
  * Created by INS7566 on 2017/7/12.
@@ -41,9 +42,11 @@ public class LiveFragment extends BaseFragment {
     FrameLayout directFramelayout;
     @BindView(R.id.live_lin_brief)
     ScrollView liveLinBrief;
+    @BindView(R.id.custom_videoplayer_standard_with_share_button)
+    JCVideoPlayerStandardShowShareButtonAfterFullscreen customVideoplayerStandardWithShareButton;
     private FragmentManager manager;
 
-    boolean ischeck=false;
+    boolean ischeck = false;
 
     @Override
     protected int getLayoutId() {
@@ -58,6 +61,7 @@ public class LiveFragment extends BaseFragment {
     @Override
     protected void loadData() {
 
+//        customVideoplayerStandardWithShareButton.setUrlAndObject(url, null,title);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
             manager = App.activity.getSupportFragmentManager();
@@ -86,24 +90,19 @@ public class LiveFragment extends BaseFragment {
         super.onDestroyView();
         unbinder.unbind();
     }
+
     @OnClick(R.id.live_isshow)
     public void onViewClicked() {
 
-                if(ischeck==false) {
-                    liveLinBrief.setVisibility(View.VISIBLE);
-                    ischeck=true;
-                    return;
-                }
-                else {
-                    liveLinBrief.setVisibility(View.GONE);
-                    ischeck=false;
-                    return;
+        if (ischeck == false) {
+            liveLinBrief.setVisibility(View.VISIBLE);
+            ischeck = true;
+            return;
+        } else {
+            liveLinBrief.setVisibility(View.GONE);
+            ischeck = false;
+            return;
 
-                }
-
-
-
-
-
+        }
     }
 }

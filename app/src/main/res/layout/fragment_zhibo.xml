@@ -9,6 +9,11 @@
         android:id="@+id/direct_shipin_linear"
         android:layout_width="match_parent"
         android:layout_height="180dp">
+        <jiyun.com.ipandatv.view.JCVideoPlayerStandardShowShareButtonAfterFullscreen
+            android:id="@+id/custom_videoplayer_standard_with_share_button"
+            android:layout_width="match_parent"
+            android:layout_height="180dp" />
+
     </LinearLayout>
 
 
@@ -42,16 +47,18 @@
             android:hint="@null" />
     </LinearLayout>
     <ScrollView
-        android:visibility="gone"
+        android:id="@+id/live_lin_brief"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/live_lin_brief">
+
+        android:visibility="gone">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical">
             <TextView
                 android:id="@+id/live_brief"
                 android:layout_width="wrap_content"
@@ -65,16 +72,15 @@
                 android:background="#948e8e"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"/>
-
-        </LinearLayout>
+         </LinearLayout>
     </ScrollView>
-
-
-
     <FrameLayout
         android:id="@+id/direct_framelayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
     </FrameLayout>
+
+
+
 </LinearLayout>

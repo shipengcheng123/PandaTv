@@ -5,14 +5,15 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- * Created by INS7566 on 2017/7/13.
+ * Created by INS7566 on 2017/7/14.
  */
 
-public class PandaLiveJcyiBean {
+public class PandaNaxieshiBean {
+
 
     /**
-     * videoset : {"0":{"vsid":"VSET100167216881","name":"熊猫频道-精彩一刻","img":"http://p5.img.cctvpic.com/fmspic/vms/image/2013/06/21/VSET_1371809214479325.jpg","enname":"其他","url":"http://tv.cntv.cn/videoset/VSET100167216881","cd":"","zy":"","bj":"","dy":"","js":"","nf":"","yz":"","fl":"","sbsj":"2013-05-01","sbpd":"其他","desc":"精彩一刻栏目关注人气较高的熊猫个体，精选每日直播中最吸引人的画面，呈现熊猫生活中最精彩的状态。","playdesc":"","zcr":"","fcl":""},"count":"4420"}
-     * video : [{"vsid":"VSET100167216881","order":"4424","vid":"c39ef06c39314cb6a9d6c25f6527c095","t":"《精彩一刻》 20170714 照个证件照，麻烦配合一下","url":"http://tv.cntv.cn/video/VSET100167216881/c39ef06c39314cb6a9d6c25f6527c095","ptime":"2017-07-14 13:18:32","img":"http://p4.img.cctvpic.com/fmspic/2017/07/14/c39ef06c39314cb6a9d6c25f6527c095-20.jpg?p=2&h=120","len":"00:00:20","em":"CM01"},{"vsid":"VSET100167216881","order":"4423","vid":"281b47f7e82a47eba9b2bd4518463d77","t":"《精彩一刻》 20170714 乔伊：这个迪迪我不想要了！","url":"http://tv.cntv.cn/video/VSET100167216881/281b47f7e82a47eba9b2bd4518463d77","ptime":"2017-07-14 13:17:06","img":"http://p3.img.cctvpic.com/fmspic/2017/07/14/281b47f7e82a47eba9b2bd4518463d77-33.jpg?p=2&h=120","len":"00:00:45","em":"CM01"},{"vsid":"VSET100167216881","order":"4422","vid":"2a23a57914234058af994386ab372dc5","t":"《精彩一刻》 20170714 如果开心你就拍拍脚~","url":"http://tv.cntv.cn/video/VSET100167216881/2a23a57914234058af994386ab372dc5","ptime":"2017-07-14 13:16:10","img":"http://p2.img.cctvpic.com/fmspic/2017/07/14/2a23a57914234058af994386ab372dc5-33.jpg?p=2&h=120","len":"00:00:45","em":"CM01"},{"vsid":"VSET100167216881","order":"4421","vid":"bf91f6a26e644ff5b6076efc1a38dcf8","t":"《精彩一刻》 20170714 泰山果果吃竹自带遮阳伞","url":"http://tv.cntv.cn/video/VSET100167216881/bf91f6a26e644ff5b6076efc1a38dcf8","ptime":"2017-07-14 13:15:05","img":"http://p2.img.cctvpic.com/fmspic/2017/07/14/bf91f6a26e644ff5b6076efc1a38dcf8-9.jpg?p=2&h=120","len":"00:00:19","em":"CM01"},{"vsid":"VSET100167216881","order":"4419","vid":"da8b6436ea8749b2992055ebc7f22b73","t":"《精彩一刻》 20170714 总在小事上面证明自己很厉害","url":"http://tv.cntv.cn/video/VSET100167216881/da8b6436ea8749b2992055ebc7f22b73","ptime":"2017-07-14 10:00:23","img":"http://p4.img.cctvpic.com/fmspic/2017/07/14/da8b6436ea8749b2992055ebc7f22b73-50.jpg?p=2&h=120","len":"00:01:23","em":"CM01"},{"vsid":"VSET100167216881","order":"4420","vid":"8e981cf3549342719baee0a0d2ac52b3","t":"《精彩一刻》 20170714 不寻常的路可是走不通滴","url":"http://tv.cntv.cn/video/VSET100167216881/8e981cf3549342719baee0a0d2ac52b3","ptime":"2017-07-14 09:59:26","img":"http://p2.img.cctvpic.com/fmspic/2017/07/14/8e981cf3549342719baee0a0d2ac52b3-33.jpg?p=2&h=120","len":"00:00:45","em":"CM01"},{"vsid":"VSET100167216881","order":"4417","vid":"bbe666e4e7ce48cea2a70822d75aab8d","t":"《精彩一刻》 20170714 就想在浴池里泡上7x24小时","url":"http://tv.cntv.cn/video/VSET100167216881/bbe666e4e7ce48cea2a70822d75aab8d","ptime":"2017-07-14 09:58:16","img":"http://p1.img.cctvpic.com/fmspic/2017/07/14/bbe666e4e7ce48cea2a70822d75aab8d-24.jpg?p=2&h=120","len":"00:00:42","em":"CM01"}]
+     * videoset : {"0":{"vsid":"VSET100237714751","name":"熊猫那些事儿","img":"http://p5.img.cctvpic.com/fmspic/vms/image/2015/07/03/VSET_1435905506188395.jpg","enname":"CNTV","url":"http://tv.cntv.cn/videoset/VSET100237714751","cd":"","zy":"","bj":"","dy":"","js":"","nf":"","yz":"","fl":"熊猫直播","sbsj":"","sbpd":"CNTV","desc":"熊猫频道栏目。","playdesc":"","zcr":"","fcl":""},"count":"118"}
+     * video : [{"vsid":"VSET100237714751","order":"115","vid":"51adae6767aa43ff8dee0a93dcbdd117","t":"《熊猫那些事儿》 20170705 第三季第19期：萌团KTV之儿歌串烧","url":"http://tv.cntv.cn/video/VSET100237714751/51adae6767aa43ff8dee0a93dcbdd117","ptime":"2017-07-05 13:15:46","img":"http://p3.img.cctvpic.com/fmspic/2017/07/05/51adae6767aa43ff8dee0a93dcbdd117-129.jpg?p=2&h=120","len":"00:04:11","em":"CM01"},{"vsid":"VSET100237714751","order":"114","vid":"3eaf3c8d622d402e97b2324fd08f2e95","t":"《熊猫那些事儿》 20170628 第三季第18期：为什么大熊猫能以卖萌为生？","url":"http://tv.cntv.cn/video/VSET100237714751/3eaf3c8d622d402e97b2324fd08f2e95","ptime":"2017-06-28 13:22:56","img":"http://p4.img.cctvpic.com/fmspic/2017/06/28/3eaf3c8d622d402e97b2324fd08f2e95-129.jpg?p=2&h=120","len":"00:04:29","em":"CM01"},{"vsid":"VSET100237714751","order":"113","vid":"3b7a7ae78af24787bc6f584bfc038f91","t":"《熊猫那些事儿》 20170621 第三季第17期：来自野外大熊猫的声音","url":"http://tv.cntv.cn/video/VSET100237714751/3b7a7ae78af24787bc6f584bfc038f91","ptime":"2017-06-21 14:49:17","img":"http://p4.img.cctvpic.com/fmspic/2017/06/21/3b7a7ae78af24787bc6f584bfc038f91-189.jpg?p=2&h=120","len":"00:06:04","em":"CM01"},{"vsid":"VSET100237714751","order":"112","vid":"bc9982397bbc4650990aaad69f60a50e","t":"《熊猫那些事儿》 20170614 第三季第16期：他们的熊设智商比你的高","url":"http://tv.cntv.cn/video/VSET100237714751/bc9982397bbc4650990aaad69f60a50e","ptime":"2017-06-14 17:21:40","img":"http://p2.img.cctvpic.com/fmspic/2017/06/14/bc9982397bbc4650990aaad69f60a50e-189.jpg","len":"00:06:03","em":"CM01"},{"vsid":"VSET100237714751","order":"111","vid":"4b2abfa475434925b83cd778cb155549","t":"《熊猫那些事儿》 20170607 第三季第15期：要想高考考的好，还得玩具玩的早","url":"http://tv.cntv.cn/video/VSET100237714751/4b2abfa475434925b83cd778cb155549","ptime":"2017-06-07 17:10:03","img":"http://p2.img.cctvpic.com/fmspic/2017/06/07/4b2abfa475434925b83cd778cb155549-129.jpg","len":"00:04:22","em":"CM01"},{"vsid":"VSET100237714751","order":"110","vid":"9da49a0531354f2eb0eda412ce5f420a","t":"《熊猫那些事儿》 20170531 第三季第14期：看着我眼睛说话，以示尊重","url":"http://tv.cntv.cn/video/VSET100237714751/9da49a0531354f2eb0eda412ce5f420a","ptime":"2017-05-31 16:29:14","img":"http://p4.img.cctvpic.com/fmspic/2017/05/31/9da49a0531354f2eb0eda412ce5f420a-129.jpg","len":"00:03:56","em":"CM01"},{"vsid":"VSET100237714751","order":"109","vid":"f23ec969689f405299a4d1e8bca716ef","t":"《熊猫那些事儿》 20170524 第三季第13期：听说，不到一岁的孩子早恋了","url":"http://tv.cntv.cn/video/VSET100237714751/f23ec969689f405299a4d1e8bca716ef","ptime":"2017-05-24 18:26:40","img":"http://p2.img.cctvpic.com/fmspic/2017/05/24/f23ec969689f405299a4d1e8bca716ef-114.jpg","len":"00:03:27","em":"CM01"}]
      */
 
     private VideosetBean videoset;
@@ -36,8 +37,8 @@ public class PandaLiveJcyiBean {
 
     public static class VideosetBean {
         /**
-         * 0 : {"vsid":"VSET100167216881","name":"熊猫频道-精彩一刻","img":"http://p5.img.cctvpic.com/fmspic/vms/image/2013/06/21/VSET_1371809214479325.jpg","enname":"其他","url":"http://tv.cntv.cn/videoset/VSET100167216881","cd":"","zy":"","bj":"","dy":"","js":"","nf":"","yz":"","fl":"","sbsj":"2013-05-01","sbpd":"其他","desc":"精彩一刻栏目关注人气较高的熊猫个体，精选每日直播中最吸引人的画面，呈现熊猫生活中最精彩的状态。","playdesc":"","zcr":"","fcl":""}
-         * count : 4420
+         * 0 : {"vsid":"VSET100237714751","name":"熊猫那些事儿","img":"http://p5.img.cctvpic.com/fmspic/vms/image/2015/07/03/VSET_1435905506188395.jpg","enname":"CNTV","url":"http://tv.cntv.cn/videoset/VSET100237714751","cd":"","zy":"","bj":"","dy":"","js":"","nf":"","yz":"","fl":"熊猫直播","sbsj":"","sbpd":"CNTV","desc":"熊猫频道栏目。","playdesc":"","zcr":"","fcl":""}
+         * count : 118
          */
 
         @SerializedName("0")
@@ -62,11 +63,11 @@ public class PandaLiveJcyiBean {
 
         public static class _$0Bean {
             /**
-             * vsid : VSET100167216881
-             * name : 熊猫频道-精彩一刻
-             * img : http://p5.img.cctvpic.com/fmspic/vms/image/2013/06/21/VSET_1371809214479325.jpg
-             * enname : 其他
-             * url : http://tv.cntv.cn/videoset/VSET100167216881
+             * vsid : VSET100237714751
+             * name : 熊猫那些事儿
+             * img : http://p5.img.cctvpic.com/fmspic/vms/image/2015/07/03/VSET_1435905506188395.jpg
+             * enname : CNTV
+             * url : http://tv.cntv.cn/videoset/VSET100237714751
              * cd :
              * zy :
              * bj :
@@ -74,10 +75,10 @@ public class PandaLiveJcyiBean {
              * js :
              * nf :
              * yz :
-             * fl :
-             * sbsj : 2013-05-01
-             * sbpd : 其他
-             * desc : 精彩一刻栏目关注人气较高的熊猫个体，精选每日直播中最吸引人的画面，呈现熊猫生活中最精彩的状态。
+             * fl : 熊猫直播
+             * sbsj :
+             * sbpd : CNTV
+             * desc : 熊猫频道栏目。
              * playdesc :
              * zcr :
              * fcl :
@@ -259,14 +260,14 @@ public class PandaLiveJcyiBean {
 
     public static class VideoBean {
         /**
-         * vsid : VSET100167216881
-         * order : 4424
-         * vid : c39ef06c39314cb6a9d6c25f6527c095
-         * t : 《精彩一刻》 20170714 照个证件照，麻烦配合一下
-         * url : http://tv.cntv.cn/video/VSET100167216881/c39ef06c39314cb6a9d6c25f6527c095
-         * ptime : 2017-07-14 13:18:32
-         * img : http://p4.img.cctvpic.com/fmspic/2017/07/14/c39ef06c39314cb6a9d6c25f6527c095-20.jpg?p=2&h=120
-         * len : 00:00:20
+         * vsid : VSET100237714751
+         * order : 115
+         * vid : 51adae6767aa43ff8dee0a93dcbdd117
+         * t : 《熊猫那些事儿》 20170705 第三季第19期：萌团KTV之儿歌串烧
+         * url : http://tv.cntv.cn/video/VSET100237714751/51adae6767aa43ff8dee0a93dcbdd117
+         * ptime : 2017-07-05 13:15:46
+         * img : http://p3.img.cctvpic.com/fmspic/2017/07/05/51adae6767aa43ff8dee0a93dcbdd117-129.jpg?p=2&h=120
+         * len : 00:04:11
          * em : CM01
          */
 

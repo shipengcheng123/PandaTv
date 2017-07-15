@@ -1,4 +1,4 @@
-package jiyun.com.ipandatv.activity;
+package jiyun.com.ipandatv.fragment.pandabroadcast;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,10 +11,10 @@ import jiyun.com.ipandatv.utils.MyLog;
 import jiyun.com.ipandatv.view.JCVideoPlayerStandardShowShareButtonAfterFullscreen;
 
 /**
- * Created by Lenovo on 2017/7/13.
+ * Created by INS7566 on 2017/7/14.
  */
-public class VideoActivity extends BaseActivity {
 
+public class CultureActivity extends BaseActivity {
 
     @BindView(R.id.custom_videoplayer_standard_with_share_button)
     JCVideoPlayerStandardShowShareButtonAfterFullscreen customVideoplayerStandardWithShareButton;
@@ -30,8 +30,7 @@ public class VideoActivity extends BaseActivity {
 
 
         Intent intent = getIntent();
-//        String url = intent.getStringExtra("url");
-        String url="http://vdn.apps.cntv.cn/api/getVideoInfoForCBox.do"+"1dbdf1c05d904bf494077b399dc08bf1";
+        String url = intent.getStringExtra("url");
         String title = intent.getStringExtra("title");
         MyLog.e("url",url+title);
 

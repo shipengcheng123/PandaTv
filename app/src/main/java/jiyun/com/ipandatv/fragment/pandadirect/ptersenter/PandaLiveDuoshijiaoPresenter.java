@@ -1,8 +1,5 @@
 package jiyun.com.ipandatv.fragment.pandadirect.ptersenter;
 
-import java.util.List;
-
-import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaLiveBean;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaLiveDuoshijiaoBean;
 import jiyun.com.ipandatv.fragment.pandadirect.contract.LiveContract;
 import jiyun.com.ipandatv.fragment.pandadirect.model.IPandaLivemodel;
@@ -17,9 +14,6 @@ import jiyun.com.ipandatv.internet.urls.Urls;
 
 public class PandaLiveDuoshijiaoPresenter implements LiveContract.Presenter {
 
-//
-    private List<PandaLiveBean.BookmarkBean.MultipleBean> multipleBeen;
-    private List<PandaLiveBean.BookmarkBean.WatchTalkBean> watchTalkBeen;
     private LiveContract.View liveFragment;
     private IPandaLivemodel pandaLivemodel;
 

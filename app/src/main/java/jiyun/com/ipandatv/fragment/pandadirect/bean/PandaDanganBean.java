@@ -5,14 +5,15 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- * Created by INS7566 on 2017/7/13.
+ * Created by INS7566 on 2017/7/14.
  */
 
-public class PandaLiveJcyiBean {
+public class PandaDanganBean {
+
 
     /**
-     * videoset : {"0":{"vsid":"VSET100167216881","name":"熊猫频道-精彩一刻","img":"http://p5.img.cctvpic.com/fmspic/vms/image/2013/06/21/VSET_1371809214479325.jpg","enname":"其他","url":"http://tv.cntv.cn/videoset/VSET100167216881","cd":"","zy":"","bj":"","dy":"","js":"","nf":"","yz":"","fl":"","sbsj":"2013-05-01","sbpd":"其他","desc":"精彩一刻栏目关注人气较高的熊猫个体，精选每日直播中最吸引人的画面，呈现熊猫生活中最精彩的状态。","playdesc":"","zcr":"","fcl":""},"count":"4420"}
-     * video : [{"vsid":"VSET100167216881","order":"4424","vid":"c39ef06c39314cb6a9d6c25f6527c095","t":"《精彩一刻》 20170714 照个证件照，麻烦配合一下","url":"http://tv.cntv.cn/video/VSET100167216881/c39ef06c39314cb6a9d6c25f6527c095","ptime":"2017-07-14 13:18:32","img":"http://p4.img.cctvpic.com/fmspic/2017/07/14/c39ef06c39314cb6a9d6c25f6527c095-20.jpg?p=2&h=120","len":"00:00:20","em":"CM01"},{"vsid":"VSET100167216881","order":"4423","vid":"281b47f7e82a47eba9b2bd4518463d77","t":"《精彩一刻》 20170714 乔伊：这个迪迪我不想要了！","url":"http://tv.cntv.cn/video/VSET100167216881/281b47f7e82a47eba9b2bd4518463d77","ptime":"2017-07-14 13:17:06","img":"http://p3.img.cctvpic.com/fmspic/2017/07/14/281b47f7e82a47eba9b2bd4518463d77-33.jpg?p=2&h=120","len":"00:00:45","em":"CM01"},{"vsid":"VSET100167216881","order":"4422","vid":"2a23a57914234058af994386ab372dc5","t":"《精彩一刻》 20170714 如果开心你就拍拍脚~","url":"http://tv.cntv.cn/video/VSET100167216881/2a23a57914234058af994386ab372dc5","ptime":"2017-07-14 13:16:10","img":"http://p2.img.cctvpic.com/fmspic/2017/07/14/2a23a57914234058af994386ab372dc5-33.jpg?p=2&h=120","len":"00:00:45","em":"CM01"},{"vsid":"VSET100167216881","order":"4421","vid":"bf91f6a26e644ff5b6076efc1a38dcf8","t":"《精彩一刻》 20170714 泰山果果吃竹自带遮阳伞","url":"http://tv.cntv.cn/video/VSET100167216881/bf91f6a26e644ff5b6076efc1a38dcf8","ptime":"2017-07-14 13:15:05","img":"http://p2.img.cctvpic.com/fmspic/2017/07/14/bf91f6a26e644ff5b6076efc1a38dcf8-9.jpg?p=2&h=120","len":"00:00:19","em":"CM01"},{"vsid":"VSET100167216881","order":"4419","vid":"da8b6436ea8749b2992055ebc7f22b73","t":"《精彩一刻》 20170714 总在小事上面证明自己很厉害","url":"http://tv.cntv.cn/video/VSET100167216881/da8b6436ea8749b2992055ebc7f22b73","ptime":"2017-07-14 10:00:23","img":"http://p4.img.cctvpic.com/fmspic/2017/07/14/da8b6436ea8749b2992055ebc7f22b73-50.jpg?p=2&h=120","len":"00:01:23","em":"CM01"},{"vsid":"VSET100167216881","order":"4420","vid":"8e981cf3549342719baee0a0d2ac52b3","t":"《精彩一刻》 20170714 不寻常的路可是走不通滴","url":"http://tv.cntv.cn/video/VSET100167216881/8e981cf3549342719baee0a0d2ac52b3","ptime":"2017-07-14 09:59:26","img":"http://p2.img.cctvpic.com/fmspic/2017/07/14/8e981cf3549342719baee0a0d2ac52b3-33.jpg?p=2&h=120","len":"00:00:45","em":"CM01"},{"vsid":"VSET100167216881","order":"4417","vid":"bbe666e4e7ce48cea2a70822d75aab8d","t":"《精彩一刻》 20170714 就想在浴池里泡上7x24小时","url":"http://tv.cntv.cn/video/VSET100167216881/bbe666e4e7ce48cea2a70822d75aab8d","ptime":"2017-07-14 09:58:16","img":"http://p1.img.cctvpic.com/fmspic/2017/07/14/bbe666e4e7ce48cea2a70822d75aab8d-24.jpg?p=2&h=120","len":"00:00:42","em":"CM01"}]
+     * videoset : {"0":{"vsid":"VSET100340574858","name":"熊猫档案","img":"http://p1.img.cctvpic.com/photoAlbum/vms/standard/img/2017/5/10/VSETVFWrHiS4RXSTWVVVFmDV170510.jpg","enname":"其他","url":"http://tv.cntv.cn/videoset/VSET100340574858","cd":"","zy":"","bj":"","dy":"","js":"","nf":"","yz":"","fl":"熊猫直播","sbsj":"","sbpd":"其他","desc":"请你现在开始做到牢记五大认猫大法，每周跟着熊猫档案潜心学习，留心观察，融会贯通。说不定哪一天，你就能在茫茫熊海中focus你的心上熊。","playdesc":"","zcr":"","fcl":""},"count":"10"}
+     * video : [{"vsid":"VSET100340574858","order":"10","vid":"19e07c13e3b8463399a5c10b132f090b","t":"《熊猫档案》 20170713 他因爆料太多网红黑料，竟荣登当红节目主角","url":"http://tv.cntv.cn/video/VSET100340574858/19e07c13e3b8463399a5c10b132f090b","ptime":"2017-07-13 18:15:28","img":"http://p2.img.cctvpic.com/fmspic/2017/07/13/19e07c13e3b8463399a5c10b132f090b-69.jpg?p=2&h=120","len":"00:03:25","em":"CM01"},{"vsid":"VSET100340574858","order":"9","vid":"24a1ae38737c44a2a211babb3c6dee3d","t":"《熊猫档案》 20170706 成长外挂第四期：文文演技爆发 实力演绎\u201c双面男神\u201d","url":"http://tv.cntv.cn/video/VSET100340574858/24a1ae38737c44a2a211babb3c6dee3d","ptime":"2017-07-06 15:19:04","img":"http://p3.img.cctvpic.com/fmspic/2017/07/06/24a1ae38737c44a2a211babb3c6dee3d-189.jpg?p=2&h=120","len":"00:05:36","em":"CM01"},{"vsid":"VSET100340574858","order":"8","vid":"c675df403f964fd3a01c66993281ca91","t":"《熊猫档案》 20170629 认猫插件第四期：是他，把众鲜肉秒帅成渣","url":"http://tv.cntv.cn/video/VSET100340574858/c675df403f964fd3a01c66993281ca91","ptime":"2017-06-29 15:05:16","img":"http://p4.img.cctvpic.com/fmspic/2017/06/29/c675df403f964fd3a01c66993281ca91-129.jpg?p=2&h=120","len":"00:05:11","em":"CM01"},{"vsid":"VSET100340574858","order":"7","vid":"2698634a7a9445a9977b73f92d371e33","t":"《熊猫档案》 20170615 成长外挂第三期：有一种爱叫做\u201c奉黄传奇\u201d","url":"http://tv.cntv.cn/video/VSET100340574858/2698634a7a9445a9977b73f92d371e33","ptime":"2017-06-15 16:19:03","img":"http://p4.img.cctvpic.com/fmspic/2017/06/15/2698634a7a9445a9977b73f92d371e33-129.jpg","len":"00:05:22","em":"CM01"},{"vsid":"VSET100340574858","order":"6","vid":"6160fa931c26446c99a4309bf8b66fb7","t":"《熊猫档案》 20170608 认猫插件第三期：教你以正确的姿势品鉴梅菜扣肉","url":"http://tv.cntv.cn/video/VSET100340574858/6160fa931c26446c99a4309bf8b66fb7","ptime":"2017-06-08 12:42:09","img":"http://p4.img.cctvpic.com/fmspic/2017/06/08/6160fa931c26446c99a4309bf8b66fb7-129.jpg","len":"00:05:22","em":"CM01"},{"vsid":"VSET100340574858","order":"5","vid":"3c48ab5014b245babaab0a285f6346b4","t":"《熊猫档案》 20170601 成长外挂第二期：一个被大侠梦耽误的文学青年","url":"http://tv.cntv.cn/video/VSET100340574858/3c48ab5014b245babaab0a285f6346b4","ptime":"2017-06-01 17:22:45","img":"http://p2.img.cctvpic.com/fmspic/2017/06/01/3c48ab5014b245babaab0a285f6346b4-95.jpg","len":"00:02:50","em":"CM01"},{"vsid":"VSET100340574858","order":"4","vid":"9d8cf7b2fc67428187bbd9cb46df747c","t":"《熊猫档案》 20170525 认猫插件第二期：天生忧郁气质的诗人","url":"http://tv.cntv.cn/video/VSET100340574858/9d8cf7b2fc67428187bbd9cb46df747c","ptime":"2017-05-25 17:02:13","img":"http://p1.img.cctvpic.com/fmspic/2017/05/25/9d8cf7b2fc67428187bbd9cb46df747c-129.jpg","len":"00:04:06","em":"CM01"}]
      */
 
     private VideosetBean videoset;
@@ -36,8 +37,8 @@ public class PandaLiveJcyiBean {
 
     public static class VideosetBean {
         /**
-         * 0 : {"vsid":"VSET100167216881","name":"熊猫频道-精彩一刻","img":"http://p5.img.cctvpic.com/fmspic/vms/image/2013/06/21/VSET_1371809214479325.jpg","enname":"其他","url":"http://tv.cntv.cn/videoset/VSET100167216881","cd":"","zy":"","bj":"","dy":"","js":"","nf":"","yz":"","fl":"","sbsj":"2013-05-01","sbpd":"其他","desc":"精彩一刻栏目关注人气较高的熊猫个体，精选每日直播中最吸引人的画面，呈现熊猫生活中最精彩的状态。","playdesc":"","zcr":"","fcl":""}
-         * count : 4420
+         * 0 : {"vsid":"VSET100340574858","name":"熊猫档案","img":"http://p1.img.cctvpic.com/photoAlbum/vms/standard/img/2017/5/10/VSETVFWrHiS4RXSTWVVVFmDV170510.jpg","enname":"其他","url":"http://tv.cntv.cn/videoset/VSET100340574858","cd":"","zy":"","bj":"","dy":"","js":"","nf":"","yz":"","fl":"熊猫直播","sbsj":"","sbpd":"其他","desc":"请你现在开始做到牢记五大认猫大法，每周跟着熊猫档案潜心学习，留心观察，融会贯通。说不定哪一天，你就能在茫茫熊海中focus你的心上熊。","playdesc":"","zcr":"","fcl":""}
+         * count : 10
          */
 
         @SerializedName("0")
@@ -62,11 +63,11 @@ public class PandaLiveJcyiBean {
 
         public static class _$0Bean {
             /**
-             * vsid : VSET100167216881
-             * name : 熊猫频道-精彩一刻
-             * img : http://p5.img.cctvpic.com/fmspic/vms/image/2013/06/21/VSET_1371809214479325.jpg
+             * vsid : VSET100340574858
+             * name : 熊猫档案
+             * img : http://p1.img.cctvpic.com/photoAlbum/vms/standard/img/2017/5/10/VSETVFWrHiS4RXSTWVVVFmDV170510.jpg
              * enname : 其他
-             * url : http://tv.cntv.cn/videoset/VSET100167216881
+             * url : http://tv.cntv.cn/videoset/VSET100340574858
              * cd :
              * zy :
              * bj :
@@ -74,10 +75,10 @@ public class PandaLiveJcyiBean {
              * js :
              * nf :
              * yz :
-             * fl :
-             * sbsj : 2013-05-01
+             * fl : 熊猫直播
+             * sbsj :
              * sbpd : 其他
-             * desc : 精彩一刻栏目关注人气较高的熊猫个体，精选每日直播中最吸引人的画面，呈现熊猫生活中最精彩的状态。
+             * desc : 请你现在开始做到牢记五大认猫大法，每周跟着熊猫档案潜心学习，留心观察，融会贯通。说不定哪一天，你就能在茫茫熊海中focus你的心上熊。
              * playdesc :
              * zcr :
              * fcl :
@@ -259,14 +260,14 @@ public class PandaLiveJcyiBean {
 
     public static class VideoBean {
         /**
-         * vsid : VSET100167216881
-         * order : 4424
-         * vid : c39ef06c39314cb6a9d6c25f6527c095
-         * t : 《精彩一刻》 20170714 照个证件照，麻烦配合一下
-         * url : http://tv.cntv.cn/video/VSET100167216881/c39ef06c39314cb6a9d6c25f6527c095
-         * ptime : 2017-07-14 13:18:32
-         * img : http://p4.img.cctvpic.com/fmspic/2017/07/14/c39ef06c39314cb6a9d6c25f6527c095-20.jpg?p=2&h=120
-         * len : 00:00:20
+         * vsid : VSET100340574858
+         * order : 10
+         * vid : 19e07c13e3b8463399a5c10b132f090b
+         * t : 《熊猫档案》 20170713 他因爆料太多网红黑料，竟荣登当红节目主角
+         * url : http://tv.cntv.cn/video/VSET100340574858/19e07c13e3b8463399a5c10b132f090b
+         * ptime : 2017-07-13 18:15:28
+         * img : http://p2.img.cctvpic.com/fmspic/2017/07/13/19e07c13e3b8463399a5c10b132f090b-69.jpg?p=2&h=120
+         * len : 00:03:25
          * em : CM01
          */
 

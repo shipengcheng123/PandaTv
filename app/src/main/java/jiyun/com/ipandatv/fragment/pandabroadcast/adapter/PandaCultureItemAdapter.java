@@ -1,6 +1,8 @@
 package jiyun.com.ipandatv.fragment.pandabroadcast.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -10,8 +12,11 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
+import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
+import jiyun.com.ipandatv.activity.VideoActivity;
 import jiyun.com.ipandatv.fragment.pandabroadcast.panda_culture.PandaCultureEntity;
+import jiyun.com.ipandatv.utils.MyLog;
 
 /**
  * Created by INS7566 on 2017/7/14.
@@ -43,5 +48,16 @@ public class PandaCultureItemAdapter extends BaseAdapter<PandaCultureEntity.List
                 .setText(R.id.panda_culture_item_time, listBean.getBrief());
         ImageView imageView = holder.getView(R.id.panda_culture_item_image);
         Glide.with(context).load(listBean.getImage()).into(imageView);
+
+        holder.setOnclickListener(R.id.culture_relat, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,VideoActivity.class);
+                intent.putExtra("url",listBean.getUrl());
+                intent.putExtra("title",listBean.getTitle());
+                MyLog.e("Url",listBean.getUrl()+listBean.getTitle());
+                App.activity.startActivity(intent);
+            }
+        });
     }
 }

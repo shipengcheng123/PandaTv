@@ -5,14 +5,15 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- * Created by INS7566 on 2017/7/13.
+ * Created by INS7566 on 2017/7/14.
  */
 
-public class PandaLiveJcyiBean {
+public class PandaTeBiejimuBean {
+
 
     /**
-     * videoset : {"0":{"vsid":"VSET100167216881","name":"熊猫频道-精彩一刻","img":"http://p5.img.cctvpic.com/fmspic/vms/image/2013/06/21/VSET_1371809214479325.jpg","enname":"其他","url":"http://tv.cntv.cn/videoset/VSET100167216881","cd":"","zy":"","bj":"","dy":"","js":"","nf":"","yz":"","fl":"","sbsj":"2013-05-01","sbpd":"其他","desc":"精彩一刻栏目关注人气较高的熊猫个体，精选每日直播中最吸引人的画面，呈现熊猫生活中最精彩的状态。","playdesc":"","zcr":"","fcl":""},"count":"4420"}
-     * video : [{"vsid":"VSET100167216881","order":"4424","vid":"c39ef06c39314cb6a9d6c25f6527c095","t":"《精彩一刻》 20170714 照个证件照，麻烦配合一下","url":"http://tv.cntv.cn/video/VSET100167216881/c39ef06c39314cb6a9d6c25f6527c095","ptime":"2017-07-14 13:18:32","img":"http://p4.img.cctvpic.com/fmspic/2017/07/14/c39ef06c39314cb6a9d6c25f6527c095-20.jpg?p=2&h=120","len":"00:00:20","em":"CM01"},{"vsid":"VSET100167216881","order":"4423","vid":"281b47f7e82a47eba9b2bd4518463d77","t":"《精彩一刻》 20170714 乔伊：这个迪迪我不想要了！","url":"http://tv.cntv.cn/video/VSET100167216881/281b47f7e82a47eba9b2bd4518463d77","ptime":"2017-07-14 13:17:06","img":"http://p3.img.cctvpic.com/fmspic/2017/07/14/281b47f7e82a47eba9b2bd4518463d77-33.jpg?p=2&h=120","len":"00:00:45","em":"CM01"},{"vsid":"VSET100167216881","order":"4422","vid":"2a23a57914234058af994386ab372dc5","t":"《精彩一刻》 20170714 如果开心你就拍拍脚~","url":"http://tv.cntv.cn/video/VSET100167216881/2a23a57914234058af994386ab372dc5","ptime":"2017-07-14 13:16:10","img":"http://p2.img.cctvpic.com/fmspic/2017/07/14/2a23a57914234058af994386ab372dc5-33.jpg?p=2&h=120","len":"00:00:45","em":"CM01"},{"vsid":"VSET100167216881","order":"4421","vid":"bf91f6a26e644ff5b6076efc1a38dcf8","t":"《精彩一刻》 20170714 泰山果果吃竹自带遮阳伞","url":"http://tv.cntv.cn/video/VSET100167216881/bf91f6a26e644ff5b6076efc1a38dcf8","ptime":"2017-07-14 13:15:05","img":"http://p2.img.cctvpic.com/fmspic/2017/07/14/bf91f6a26e644ff5b6076efc1a38dcf8-9.jpg?p=2&h=120","len":"00:00:19","em":"CM01"},{"vsid":"VSET100167216881","order":"4419","vid":"da8b6436ea8749b2992055ebc7f22b73","t":"《精彩一刻》 20170714 总在小事上面证明自己很厉害","url":"http://tv.cntv.cn/video/VSET100167216881/da8b6436ea8749b2992055ebc7f22b73","ptime":"2017-07-14 10:00:23","img":"http://p4.img.cctvpic.com/fmspic/2017/07/14/da8b6436ea8749b2992055ebc7f22b73-50.jpg?p=2&h=120","len":"00:01:23","em":"CM01"},{"vsid":"VSET100167216881","order":"4420","vid":"8e981cf3549342719baee0a0d2ac52b3","t":"《精彩一刻》 20170714 不寻常的路可是走不通滴","url":"http://tv.cntv.cn/video/VSET100167216881/8e981cf3549342719baee0a0d2ac52b3","ptime":"2017-07-14 09:59:26","img":"http://p2.img.cctvpic.com/fmspic/2017/07/14/8e981cf3549342719baee0a0d2ac52b3-33.jpg?p=2&h=120","len":"00:00:45","em":"CM01"},{"vsid":"VSET100167216881","order":"4417","vid":"bbe666e4e7ce48cea2a70822d75aab8d","t":"《精彩一刻》 20170714 就想在浴池里泡上7x24小时","url":"http://tv.cntv.cn/video/VSET100167216881/bbe666e4e7ce48cea2a70822d75aab8d","ptime":"2017-07-14 09:58:16","img":"http://p1.img.cctvpic.com/fmspic/2017/07/14/bbe666e4e7ce48cea2a70822d75aab8d-24.jpg?p=2&h=120","len":"00:00:42","em":"CM01"}]
+     * videoset : {"0":{"vsid":"VSET100167308855","name":"熊猫频道-特别节目","img":"http://p1.img.cctvpic.com/fmspic/vms/image/2013/06/21/VSET_1371809044488847.jpg","enname":"其他","url":"http://tv.cntv.cn/videoset/VSET100167308855","cd":"","zy":"","bj":"","dy":"","js":"","nf":"","yz":"","fl":"熊猫直播","sbsj":"2013-05-01","sbpd":"其他","desc":"熊猫频道采访野生动物保护专家、熊猫守护使、到访基地的名人，以人类的角度展现熊猫世界。","playdesc":"","zcr":"","fcl":""},"count":"246"}
+     * video : [{"vsid":"VSET100167308855","order":"240","vid":"241dff898424469e98196f8b38fad15a","t":"《萌！遍地\u201c国宝\u201d亮相都江堰巡游》 20170708","url":"http://tv.cntv.cn/video/VSET100167308855/241dff898424469e98196f8b38fad15a","ptime":"2017-07-08 11:22:50","img":"http://p3.img.cctvpic.com/fmspic/2017/07/08/241dff898424469e98196f8b38fad15a-1392.jpg?p=2&h=120","len":"00:46:45","em":"CM01"},{"vsid":"VSET100167308855","order":"239","vid":"7f8bd4ba2a6b4281b364b24b72c4bbc2","t":"《特别节目》 20170706 最萌外交官\u2014\u2014\u201c梦梦\u201d\u201c娇庆\u201d开启新生活","url":"http://tv.cntv.cn/video/VSET100167308855/7f8bd4ba2a6b4281b364b24b72c4bbc2","ptime":"2017-07-06 11:58:05","img":"http://p4.img.cctvpic.com/fmspic/2017/07/06/7f8bd4ba2a6b4281b364b24b72c4bbc2-50.jpg?p=2&h=120","len":"00:01:39","em":"CM01"},{"vsid":"VSET100167308855","order":"238","vid":"259ede2d6f37479c8cb5e66f5cdd24f2","t":"《大熊猫舌尖上的窝窝头》 20170621","url":"http://tv.cntv.cn/video/VSET100167308855/259ede2d6f37479c8cb5e66f5cdd24f2","ptime":"2017-06-21 11:34:15","img":"http://p1.img.cctvpic.com/fmspic/2017/06/21/259ede2d6f37479c8cb5e66f5cdd24f2-2467.jpg?p=2&h=120","len":"00:41:07","em":"CM01"},{"vsid":"VSET100167308855","order":"237","vid":"4a83f88c5c1f4a04a734125955ab8c8c","t":"《熊猫特别节目》 20170606 关注旅日大熊猫回国","url":"http://tv.cntv.cn/video/VSET100167308855/4a83f88c5c1f4a04a734125955ab8c8c","ptime":"2017-06-06 11:19:01","img":"http://p4.img.cctvpic.com/fmspic/2017/06/06/4a83f88c5c1f4a04a734125955ab8c8c-130.jpg","len":"00:05:24","em":"CM01"},{"vsid":"VSET100167308855","order":"236","vid":"3d0d1a5e92a246158a20ab38c3c46290","t":"《在现场》 20170531 海归大熊猫\u201c宝宝\u201d的早晨","url":"http://tv.cntv.cn/video/VSET100167308855/3d0d1a5e92a246158a20ab38c3c46290","ptime":"2017-05-31 11:52:50","img":"http://p3.img.cctvpic.com/fmspic/2017/05/31/3d0d1a5e92a246158a20ab38c3c46290-2497.jpg","len":"00:41:37","em":"CM01"},{"vsid":"VSET100167308855","order":"235","vid":"96f68d3251de48fd9aed2366e88cbe00","t":"《特别节目》 20170530 端午特辑：熊猫三胞胎吃粽子比赛","url":"http://tv.cntv.cn/video/VSET100167308855/96f68d3251de48fd9aed2366e88cbe00","ptime":"2017-05-30 15:09:38","img":"http://p4.img.cctvpic.com/fmspic/2017/05/30/96f68d3251de48fd9aed2366e88cbe00-81.jpg","len":"00:02:21","em":"CM01"},{"vsid":"VSET100167308855","order":"234","vid":"3751a0c5b1fe432a9a10ad77c203d163","t":"《特别节目》 20170523 2017年全球首对圈养大熊猫双胞胎顺利诞生","url":"http://tv.cntv.cn/video/VSET100167308855/3751a0c5b1fe432a9a10ad77c203d163","ptime":"2017-05-23 16:06:49","img":"http://p5.img.cctvpic.com/fmspic/2017/05/23/3751a0c5b1fe432a9a10ad77c203d163-81.jpg","len":"00:02:21","em":"CM01"}]
      */
 
     private VideosetBean videoset;
@@ -36,8 +37,8 @@ public class PandaLiveJcyiBean {
 
     public static class VideosetBean {
         /**
-         * 0 : {"vsid":"VSET100167216881","name":"熊猫频道-精彩一刻","img":"http://p5.img.cctvpic.com/fmspic/vms/image/2013/06/21/VSET_1371809214479325.jpg","enname":"其他","url":"http://tv.cntv.cn/videoset/VSET100167216881","cd":"","zy":"","bj":"","dy":"","js":"","nf":"","yz":"","fl":"","sbsj":"2013-05-01","sbpd":"其他","desc":"精彩一刻栏目关注人气较高的熊猫个体，精选每日直播中最吸引人的画面，呈现熊猫生活中最精彩的状态。","playdesc":"","zcr":"","fcl":""}
-         * count : 4420
+         * 0 : {"vsid":"VSET100167308855","name":"熊猫频道-特别节目","img":"http://p1.img.cctvpic.com/fmspic/vms/image/2013/06/21/VSET_1371809044488847.jpg","enname":"其他","url":"http://tv.cntv.cn/videoset/VSET100167308855","cd":"","zy":"","bj":"","dy":"","js":"","nf":"","yz":"","fl":"熊猫直播","sbsj":"2013-05-01","sbpd":"其他","desc":"熊猫频道采访野生动物保护专家、熊猫守护使、到访基地的名人，以人类的角度展现熊猫世界。","playdesc":"","zcr":"","fcl":""}
+         * count : 246
          */
 
         @SerializedName("0")
@@ -62,11 +63,11 @@ public class PandaLiveJcyiBean {
 
         public static class _$0Bean {
             /**
-             * vsid : VSET100167216881
-             * name : 熊猫频道-精彩一刻
-             * img : http://p5.img.cctvpic.com/fmspic/vms/image/2013/06/21/VSET_1371809214479325.jpg
+             * vsid : VSET100167308855
+             * name : 熊猫频道-特别节目
+             * img : http://p1.img.cctvpic.com/fmspic/vms/image/2013/06/21/VSET_1371809044488847.jpg
              * enname : 其他
-             * url : http://tv.cntv.cn/videoset/VSET100167216881
+             * url : http://tv.cntv.cn/videoset/VSET100167308855
              * cd :
              * zy :
              * bj :
@@ -74,10 +75,10 @@ public class PandaLiveJcyiBean {
              * js :
              * nf :
              * yz :
-             * fl :
+             * fl : 熊猫直播
              * sbsj : 2013-05-01
              * sbpd : 其他
-             * desc : 精彩一刻栏目关注人气较高的熊猫个体，精选每日直播中最吸引人的画面，呈现熊猫生活中最精彩的状态。
+             * desc : 熊猫频道采访野生动物保护专家、熊猫守护使、到访基地的名人，以人类的角度展现熊猫世界。
              * playdesc :
              * zcr :
              * fcl :
@@ -259,14 +260,14 @@ public class PandaLiveJcyiBean {
 
     public static class VideoBean {
         /**
-         * vsid : VSET100167216881
-         * order : 4424
-         * vid : c39ef06c39314cb6a9d6c25f6527c095
-         * t : 《精彩一刻》 20170714 照个证件照，麻烦配合一下
-         * url : http://tv.cntv.cn/video/VSET100167216881/c39ef06c39314cb6a9d6c25f6527c095
-         * ptime : 2017-07-14 13:18:32
-         * img : http://p4.img.cctvpic.com/fmspic/2017/07/14/c39ef06c39314cb6a9d6c25f6527c095-20.jpg?p=2&h=120
-         * len : 00:00:20
+         * vsid : VSET100167308855
+         * order : 240
+         * vid : 241dff898424469e98196f8b38fad15a
+         * t : 《萌！遍地“国宝”亮相都江堰巡游》 20170708
+         * url : http://tv.cntv.cn/video/VSET100167308855/241dff898424469e98196f8b38fad15a
+         * ptime : 2017-07-08 11:22:50
+         * img : http://p3.img.cctvpic.com/fmspic/2017/07/08/241dff898424469e98196f8b38fad15a-1392.jpg?p=2&h=120
+         * len : 00:46:45
          * em : CM01
          */
 

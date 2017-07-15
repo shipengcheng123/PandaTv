@@ -5,14 +5,14 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- * Created by INS7566 on 2017/7/13.
+ * Created by INS7566 on 2017/7/14.
  */
 
-public class PandaLiveJcyiBean {
+public class PandaTOPBean {
 
     /**
-     * videoset : {"0":{"vsid":"VSET100167216881","name":"熊猫频道-精彩一刻","img":"http://p5.img.cctvpic.com/fmspic/vms/image/2013/06/21/VSET_1371809214479325.jpg","enname":"其他","url":"http://tv.cntv.cn/videoset/VSET100167216881","cd":"","zy":"","bj":"","dy":"","js":"","nf":"","yz":"","fl":"","sbsj":"2013-05-01","sbpd":"其他","desc":"精彩一刻栏目关注人气较高的熊猫个体，精选每日直播中最吸引人的画面，呈现熊猫生活中最精彩的状态。","playdesc":"","zcr":"","fcl":""},"count":"4420"}
-     * video : [{"vsid":"VSET100167216881","order":"4424","vid":"c39ef06c39314cb6a9d6c25f6527c095","t":"《精彩一刻》 20170714 照个证件照，麻烦配合一下","url":"http://tv.cntv.cn/video/VSET100167216881/c39ef06c39314cb6a9d6c25f6527c095","ptime":"2017-07-14 13:18:32","img":"http://p4.img.cctvpic.com/fmspic/2017/07/14/c39ef06c39314cb6a9d6c25f6527c095-20.jpg?p=2&h=120","len":"00:00:20","em":"CM01"},{"vsid":"VSET100167216881","order":"4423","vid":"281b47f7e82a47eba9b2bd4518463d77","t":"《精彩一刻》 20170714 乔伊：这个迪迪我不想要了！","url":"http://tv.cntv.cn/video/VSET100167216881/281b47f7e82a47eba9b2bd4518463d77","ptime":"2017-07-14 13:17:06","img":"http://p3.img.cctvpic.com/fmspic/2017/07/14/281b47f7e82a47eba9b2bd4518463d77-33.jpg?p=2&h=120","len":"00:00:45","em":"CM01"},{"vsid":"VSET100167216881","order":"4422","vid":"2a23a57914234058af994386ab372dc5","t":"《精彩一刻》 20170714 如果开心你就拍拍脚~","url":"http://tv.cntv.cn/video/VSET100167216881/2a23a57914234058af994386ab372dc5","ptime":"2017-07-14 13:16:10","img":"http://p2.img.cctvpic.com/fmspic/2017/07/14/2a23a57914234058af994386ab372dc5-33.jpg?p=2&h=120","len":"00:00:45","em":"CM01"},{"vsid":"VSET100167216881","order":"4421","vid":"bf91f6a26e644ff5b6076efc1a38dcf8","t":"《精彩一刻》 20170714 泰山果果吃竹自带遮阳伞","url":"http://tv.cntv.cn/video/VSET100167216881/bf91f6a26e644ff5b6076efc1a38dcf8","ptime":"2017-07-14 13:15:05","img":"http://p2.img.cctvpic.com/fmspic/2017/07/14/bf91f6a26e644ff5b6076efc1a38dcf8-9.jpg?p=2&h=120","len":"00:00:19","em":"CM01"},{"vsid":"VSET100167216881","order":"4419","vid":"da8b6436ea8749b2992055ebc7f22b73","t":"《精彩一刻》 20170714 总在小事上面证明自己很厉害","url":"http://tv.cntv.cn/video/VSET100167216881/da8b6436ea8749b2992055ebc7f22b73","ptime":"2017-07-14 10:00:23","img":"http://p4.img.cctvpic.com/fmspic/2017/07/14/da8b6436ea8749b2992055ebc7f22b73-50.jpg?p=2&h=120","len":"00:01:23","em":"CM01"},{"vsid":"VSET100167216881","order":"4420","vid":"8e981cf3549342719baee0a0d2ac52b3","t":"《精彩一刻》 20170714 不寻常的路可是走不通滴","url":"http://tv.cntv.cn/video/VSET100167216881/8e981cf3549342719baee0a0d2ac52b3","ptime":"2017-07-14 09:59:26","img":"http://p2.img.cctvpic.com/fmspic/2017/07/14/8e981cf3549342719baee0a0d2ac52b3-33.jpg?p=2&h=120","len":"00:00:45","em":"CM01"},{"vsid":"VSET100167216881","order":"4417","vid":"bbe666e4e7ce48cea2a70822d75aab8d","t":"《精彩一刻》 20170714 就想在浴池里泡上7x24小时","url":"http://tv.cntv.cn/video/VSET100167216881/bbe666e4e7ce48cea2a70822d75aab8d","ptime":"2017-07-14 09:58:16","img":"http://p1.img.cctvpic.com/fmspic/2017/07/14/bbe666e4e7ce48cea2a70822d75aab8d-24.jpg?p=2&h=120","len":"00:00:42","em":"CM01"}]
+     * videoset : {"0":{"vsid":"VSET100284428835","name":"熊猫TOP榜","img":"http://p1.img.cctvpic.com/photoAlbum/vms/standard/img/2016/8/5/VSETvxHANBMkCKTqyPatfdBz160805.jpg","enname":"其他","url":"http://tv.cntv.cn/videoset/VSET100284428835","cd":"","zy":"","bj":"","dy":"","js":"","nf":"","yz":"","fl":"","sbsj":"","sbpd":"其他","desc":"这是一档每周五更新的盘点类节目，每周盘点近期最萌、最酷、最搞笑的直播精彩画面","playdesc":"","zcr":"","fcl":""},"count":"55"}
+     * video : [{"vsid":"VSET100284428835","order":"55","vid":"9a29f4991e7a48469729026e18ed9de1","t":"《熊猫TOP榜》 20170710 第二季第5期：煤炭兄妹的日常之你抢我抢","url":"http://tv.cntv.cn/video/VSET100284428835/9a29f4991e7a48469729026e18ed9de1","ptime":"2017-07-10 13:53:27","img":"http://p5.img.cctvpic.com/fmspic/2017/07/10/9a29f4991e7a48469729026e18ed9de1-129.jpg?p=2&h=120","len":"00:04:55","em":"CM01"},{"vsid":"VSET100284428835","order":"54","vid":"45f281a7e16540fd8823d67c75149d92","t":"《熊猫TOP榜》 20170703 第二季第四期：滚滚造型大赛","url":"http://tv.cntv.cn/video/VSET100284428835/45f281a7e16540fd8823d67c75149d92","ptime":"2017-07-03 14:43:25","img":"http://p5.img.cctvpic.com/fmspic/2017/07/03/45f281a7e16540fd8823d67c75149d92-129.jpg?p=2&h=120","len":"00:03:59","em":"CM01"},{"vsid":"VSET100284428835","order":"53","vid":"3998ae8b8a764b8e88e7dc7d75f331e4","t":"《熊猫TOP榜》 20170626 第二季第3期.这是一个神奇的院子","url":"http://tv.cntv.cn/video/VSET100284428835/3998ae8b8a764b8e88e7dc7d75f331e4","ptime":"2017-06-26 16:23:08","img":"http://p3.img.cctvpic.com/fmspic/2017/06/26/3998ae8b8a764b8e88e7dc7d75f331e4-129.jpg?p=2&h=120","len":"00:04:42","em":"CM01"},{"vsid":"VSET100284428835","order":"52","vid":"99fd0bb05e1d49d999048c20dc7b49b9","t":"《熊猫TOP榜》 20170619 第二季.第2期.夏天和泡澡更配哦(成片)","url":"http://tv.cntv.cn/video/VSET100284428835/99fd0bb05e1d49d999048c20dc7b49b9","ptime":"2017-06-19 14:47:12","img":"http://p4.img.cctvpic.com/fmspic/2017/06/19/99fd0bb05e1d49d999048c20dc7b49b9-129.jpg","len":"00:03:32","em":"CM01"},{"vsid":"VSET100284428835","order":"51","vid":"06ab416eb6a04d03848bb2a4bd4e6d52","t":"《熊猫TOP榜》 20170612 第二季第一期：窝头窝头请赐予我力量吧","url":"http://tv.cntv.cn/video/VSET100284428835/06ab416eb6a04d03848bb2a4bd4e6d52","ptime":"2017-06-12 15:47:04","img":"http://p1.img.cctvpic.com/fmspic/2017/06/12/06ab416eb6a04d03848bb2a4bd4e6d52-129.jpg","len":"00:04:41","em":"CM01"},{"vsid":"VSET100284428835","order":"50","vid":"2e246a096bb544d8a923c41b063c7a71","t":"《熊猫TOP榜》 20170605 第五十期 吃粽子、过儿童节 这样的熊生 巴适","url":"http://tv.cntv.cn/video/VSET100284428835/2e246a096bb544d8a923c41b063c7a71","ptime":"2017-06-05 15:39:11","img":"http://p2.img.cctvpic.com/fmspic/2017/06/05/2e246a096bb544d8a923c41b063c7a71-129.jpg","len":"00:04:40","em":"CM01"},{"vsid":"VSET100284428835","order":"49","vid":"66b6a588989a4ee7affe9f61202925f0","t":"《熊猫TOP榜》 20170529 第四十九期：卖萌和才华于一身的功夫熊猫","url":"http://tv.cntv.cn/video/VSET100284428835/66b6a588989a4ee7affe9f61202925f0","ptime":"2017-05-29 13:47:33","img":"http://p4.img.cctvpic.com/fmspic/2017/05/29/66b6a588989a4ee7affe9f61202925f0-129.jpg","len":"00:03:49","em":"CM01"}]
      */
 
     private VideosetBean videoset;
@@ -36,8 +36,8 @@ public class PandaLiveJcyiBean {
 
     public static class VideosetBean {
         /**
-         * 0 : {"vsid":"VSET100167216881","name":"熊猫频道-精彩一刻","img":"http://p5.img.cctvpic.com/fmspic/vms/image/2013/06/21/VSET_1371809214479325.jpg","enname":"其他","url":"http://tv.cntv.cn/videoset/VSET100167216881","cd":"","zy":"","bj":"","dy":"","js":"","nf":"","yz":"","fl":"","sbsj":"2013-05-01","sbpd":"其他","desc":"精彩一刻栏目关注人气较高的熊猫个体，精选每日直播中最吸引人的画面，呈现熊猫生活中最精彩的状态。","playdesc":"","zcr":"","fcl":""}
-         * count : 4420
+         * 0 : {"vsid":"VSET100284428835","name":"熊猫TOP榜","img":"http://p1.img.cctvpic.com/photoAlbum/vms/standard/img/2016/8/5/VSETvxHANBMkCKTqyPatfdBz160805.jpg","enname":"其他","url":"http://tv.cntv.cn/videoset/VSET100284428835","cd":"","zy":"","bj":"","dy":"","js":"","nf":"","yz":"","fl":"","sbsj":"","sbpd":"其他","desc":"这是一档每周五更新的盘点类节目，每周盘点近期最萌、最酷、最搞笑的直播精彩画面","playdesc":"","zcr":"","fcl":""}
+         * count : 55
          */
 
         @SerializedName("0")
@@ -62,11 +62,11 @@ public class PandaLiveJcyiBean {
 
         public static class _$0Bean {
             /**
-             * vsid : VSET100167216881
-             * name : 熊猫频道-精彩一刻
-             * img : http://p5.img.cctvpic.com/fmspic/vms/image/2013/06/21/VSET_1371809214479325.jpg
+             * vsid : VSET100284428835
+             * name : 熊猫TOP榜
+             * img : http://p1.img.cctvpic.com/photoAlbum/vms/standard/img/2016/8/5/VSETvxHANBMkCKTqyPatfdBz160805.jpg
              * enname : 其他
-             * url : http://tv.cntv.cn/videoset/VSET100167216881
+             * url : http://tv.cntv.cn/videoset/VSET100284428835
              * cd :
              * zy :
              * bj :
@@ -75,9 +75,9 @@ public class PandaLiveJcyiBean {
              * nf :
              * yz :
              * fl :
-             * sbsj : 2013-05-01
+             * sbsj :
              * sbpd : 其他
-             * desc : 精彩一刻栏目关注人气较高的熊猫个体，精选每日直播中最吸引人的画面，呈现熊猫生活中最精彩的状态。
+             * desc : 这是一档每周五更新的盘点类节目，每周盘点近期最萌、最酷、最搞笑的直播精彩画面
              * playdesc :
              * zcr :
              * fcl :
@@ -259,14 +259,14 @@ public class PandaLiveJcyiBean {
 
     public static class VideoBean {
         /**
-         * vsid : VSET100167216881
-         * order : 4424
-         * vid : c39ef06c39314cb6a9d6c25f6527c095
-         * t : 《精彩一刻》 20170714 照个证件照，麻烦配合一下
-         * url : http://tv.cntv.cn/video/VSET100167216881/c39ef06c39314cb6a9d6c25f6527c095
-         * ptime : 2017-07-14 13:18:32
-         * img : http://p4.img.cctvpic.com/fmspic/2017/07/14/c39ef06c39314cb6a9d6c25f6527c095-20.jpg?p=2&h=120
-         * len : 00:00:20
+         * vsid : VSET100284428835
+         * order : 55
+         * vid : 9a29f4991e7a48469729026e18ed9de1
+         * t : 《熊猫TOP榜》 20170710 第二季第5期：煤炭兄妹的日常之你抢我抢
+         * url : http://tv.cntv.cn/video/VSET100284428835/9a29f4991e7a48469729026e18ed9de1
+         * ptime : 2017-07-10 13:53:27
+         * img : http://p5.img.cctvpic.com/fmspic/2017/07/10/9a29f4991e7a48469729026e18ed9de1-129.jpg?p=2&h=120
+         * len : 00:04:55
          * em : CM01
          */
 

@@ -5,14 +5,15 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- * Created by INS7566 on 2017/7/13.
+ * Created by INS7566 on 2017/7/14.
  */
 
-public class PandaLiveJcyiBean {
+public class PandaChaomenggunxiuBean {
+
 
     /**
-     * videoset : {"0":{"vsid":"VSET100167216881","name":"熊猫频道-精彩一刻","img":"http://p5.img.cctvpic.com/fmspic/vms/image/2013/06/21/VSET_1371809214479325.jpg","enname":"其他","url":"http://tv.cntv.cn/videoset/VSET100167216881","cd":"","zy":"","bj":"","dy":"","js":"","nf":"","yz":"","fl":"","sbsj":"2013-05-01","sbpd":"其他","desc":"精彩一刻栏目关注人气较高的熊猫个体，精选每日直播中最吸引人的画面，呈现熊猫生活中最精彩的状态。","playdesc":"","zcr":"","fcl":""},"count":"4420"}
-     * video : [{"vsid":"VSET100167216881","order":"4424","vid":"c39ef06c39314cb6a9d6c25f6527c095","t":"《精彩一刻》 20170714 照个证件照，麻烦配合一下","url":"http://tv.cntv.cn/video/VSET100167216881/c39ef06c39314cb6a9d6c25f6527c095","ptime":"2017-07-14 13:18:32","img":"http://p4.img.cctvpic.com/fmspic/2017/07/14/c39ef06c39314cb6a9d6c25f6527c095-20.jpg?p=2&h=120","len":"00:00:20","em":"CM01"},{"vsid":"VSET100167216881","order":"4423","vid":"281b47f7e82a47eba9b2bd4518463d77","t":"《精彩一刻》 20170714 乔伊：这个迪迪我不想要了！","url":"http://tv.cntv.cn/video/VSET100167216881/281b47f7e82a47eba9b2bd4518463d77","ptime":"2017-07-14 13:17:06","img":"http://p3.img.cctvpic.com/fmspic/2017/07/14/281b47f7e82a47eba9b2bd4518463d77-33.jpg?p=2&h=120","len":"00:00:45","em":"CM01"},{"vsid":"VSET100167216881","order":"4422","vid":"2a23a57914234058af994386ab372dc5","t":"《精彩一刻》 20170714 如果开心你就拍拍脚~","url":"http://tv.cntv.cn/video/VSET100167216881/2a23a57914234058af994386ab372dc5","ptime":"2017-07-14 13:16:10","img":"http://p2.img.cctvpic.com/fmspic/2017/07/14/2a23a57914234058af994386ab372dc5-33.jpg?p=2&h=120","len":"00:00:45","em":"CM01"},{"vsid":"VSET100167216881","order":"4421","vid":"bf91f6a26e644ff5b6076efc1a38dcf8","t":"《精彩一刻》 20170714 泰山果果吃竹自带遮阳伞","url":"http://tv.cntv.cn/video/VSET100167216881/bf91f6a26e644ff5b6076efc1a38dcf8","ptime":"2017-07-14 13:15:05","img":"http://p2.img.cctvpic.com/fmspic/2017/07/14/bf91f6a26e644ff5b6076efc1a38dcf8-9.jpg?p=2&h=120","len":"00:00:19","em":"CM01"},{"vsid":"VSET100167216881","order":"4419","vid":"da8b6436ea8749b2992055ebc7f22b73","t":"《精彩一刻》 20170714 总在小事上面证明自己很厉害","url":"http://tv.cntv.cn/video/VSET100167216881/da8b6436ea8749b2992055ebc7f22b73","ptime":"2017-07-14 10:00:23","img":"http://p4.img.cctvpic.com/fmspic/2017/07/14/da8b6436ea8749b2992055ebc7f22b73-50.jpg?p=2&h=120","len":"00:01:23","em":"CM01"},{"vsid":"VSET100167216881","order":"4420","vid":"8e981cf3549342719baee0a0d2ac52b3","t":"《精彩一刻》 20170714 不寻常的路可是走不通滴","url":"http://tv.cntv.cn/video/VSET100167216881/8e981cf3549342719baee0a0d2ac52b3","ptime":"2017-07-14 09:59:26","img":"http://p2.img.cctvpic.com/fmspic/2017/07/14/8e981cf3549342719baee0a0d2ac52b3-33.jpg?p=2&h=120","len":"00:00:45","em":"CM01"},{"vsid":"VSET100167216881","order":"4417","vid":"bbe666e4e7ce48cea2a70822d75aab8d","t":"《精彩一刻》 20170714 就想在浴池里泡上7x24小时","url":"http://tv.cntv.cn/video/VSET100167216881/bbe666e4e7ce48cea2a70822d75aab8d","ptime":"2017-07-14 09:58:16","img":"http://p1.img.cctvpic.com/fmspic/2017/07/14/bbe666e4e7ce48cea2a70822d75aab8d-24.jpg?p=2&h=120","len":"00:00:42","em":"CM01"}]
+     * videoset : {"0":{"vsid":"VSET100272959126","name":"77滚滚秀","img":"http://p1.img.cctvpic.com/photoAlbum/vms/standard/img/2016/7/4/VSETBr7Ufabb0BvOFDWAzU1Z160704.jpg","enname":"","url":"http://tv.cntv.cn/videoset/VSET100272959126","cd":"","zy":"","bj":"","dy":"","js":"","nf":"","yz":"","fl":"","sbsj":"","sbpd":"","desc":"《77滚滚秀》是一档集合所有滚滚精彩瞬间的娱乐、搞笑类节目，在这里你可以看到滚滚们搞笑、尴尬、萌萌哒，以及前所未见的所有神\u201c技能\u201d，每周五准时更新，还有更多互动和奖品等着你，快来加入我们吧。","playdesc":"","zcr":"","fcl":""},"count":"70"}
+     * video : [{"vsid":"VSET100272959126","order":"67","vid":"00362cdfea104d7298feacfbe8b40549","t":"《77滚滚秀》 20170409 第六十七期：当时我就震惊了","url":"http://tv.cntv.cn/video/VSET100272959126/00362cdfea104d7298feacfbe8b40549","ptime":"2017-04-09 17:30:45","img":"http://p2.img.cctvpic.com/fmspic/2017/04/09/00362cdfea104d7298feacfbe8b40549-87.jpg","len":"00:02:34","em":"CM01"},{"vsid":"VSET100272959126","order":"66","vid":"cea3a33cd54a45988d0512d65b9b2aae","t":"《77滚滚秀》 20170331 第六十六期：寻奶大作战","url":"http://tv.cntv.cn/video/VSET100272959126/cea3a33cd54a45988d0512d65b9b2aae","ptime":"2017-03-31 18:33:24","img":"http://p2.img.cctvpic.com/fmspic/2017/03/31/cea3a33cd54a45988d0512d65b9b2aae-91.jpg","len":"00:02:41","em":"CM01"},{"vsid":"VSET100272959126","order":"65","vid":"2385afcf3a2b4546a8a205ff81f01d47","t":"《77滚滚秀》 20170325 第六十五期：爱挤油的团子","url":"http://tv.cntv.cn/video/VSET100272959126/2385afcf3a2b4546a8a205ff81f01d47","ptime":"2017-03-25 15:39:07","img":"http://p4.img.cctvpic.com/fmspic/2017/03/25/2385afcf3a2b4546a8a205ff81f01d47-87.jpg","len":"00:02:34","em":"CM01"},{"vsid":"VSET100272959126","order":"64","vid":"3c6b9ac4badc4b06a0ec5746fcd15ec8","t":"《77滚滚秀》 20170318 第六十四期：至尊唱片MV","url":"http://tv.cntv.cn/video/VSET100272959126/3c6b9ac4badc4b06a0ec5746fcd15ec8","ptime":"2017-03-18 19:42:01","img":"http://p4.img.cctvpic.com/fmspic/2017/03/18/3c6b9ac4badc4b06a0ec5746fcd15ec8-129.jpg","len":"00:04:05","em":"CM01"},{"vsid":"VSET100272959126","order":"63","vid":"7588082c0abe44e99d006bae0ac926c7","t":"《77滚滚秀》 20170313 第六十三期：聪明滚滚一大堆！","url":"http://tv.cntv.cn/video/VSET100272959126/7588082c0abe44e99d006bae0ac926c7","ptime":"2017-03-13 13:13:37","img":"http://p1.img.cctvpic.com/fmspic/2017/03/13/7588082c0abe44e99d006bae0ac926c7-99.jpg","len":"00:02:57","em":"CM01"},{"vsid":"VSET100272959126","order":"62","vid":"072081c57c7a412caf97380bd591ad91","t":"《77滚滚秀》 20170224 第六十二期：这团子交给你来守护吧！","url":"http://tv.cntv.cn/video/VSET100272959126/072081c57c7a412caf97380bd591ad91","ptime":"2017-02-24 19:43:57","img":"http://p1.img.cctvpic.com/fmspic/2017/02/24/072081c57c7a412caf97380bd591ad91-92.jpg","len":"00:02:44","em":"CM01"},{"vsid":"VSET100272959126","order":"61","vid":"3bd6524358714403bf52c3331fc68214","t":"《77滚滚秀》 20170217 第六十一期：和滚滚一起趴的周末!","url":"http://tv.cntv.cn/video/VSET100272959126/3bd6524358714403bf52c3331fc68214","ptime":"2017-02-17 17:50:13","img":"http://p2.img.cctvpic.com/fmspic/2017/02/17/3bd6524358714403bf52c3331fc68214-87.jpg","len":"00:02:34","em":"CM01"}]
      */
 
     private VideosetBean videoset;
@@ -36,8 +37,8 @@ public class PandaLiveJcyiBean {
 
     public static class VideosetBean {
         /**
-         * 0 : {"vsid":"VSET100167216881","name":"熊猫频道-精彩一刻","img":"http://p5.img.cctvpic.com/fmspic/vms/image/2013/06/21/VSET_1371809214479325.jpg","enname":"其他","url":"http://tv.cntv.cn/videoset/VSET100167216881","cd":"","zy":"","bj":"","dy":"","js":"","nf":"","yz":"","fl":"","sbsj":"2013-05-01","sbpd":"其他","desc":"精彩一刻栏目关注人气较高的熊猫个体，精选每日直播中最吸引人的画面，呈现熊猫生活中最精彩的状态。","playdesc":"","zcr":"","fcl":""}
-         * count : 4420
+         * 0 : {"vsid":"VSET100272959126","name":"77滚滚秀","img":"http://p1.img.cctvpic.com/photoAlbum/vms/standard/img/2016/7/4/VSETBr7Ufabb0BvOFDWAzU1Z160704.jpg","enname":"","url":"http://tv.cntv.cn/videoset/VSET100272959126","cd":"","zy":"","bj":"","dy":"","js":"","nf":"","yz":"","fl":"","sbsj":"","sbpd":"","desc":"《77滚滚秀》是一档集合所有滚滚精彩瞬间的娱乐、搞笑类节目，在这里你可以看到滚滚们搞笑、尴尬、萌萌哒，以及前所未见的所有神\u201c技能\u201d，每周五准时更新，还有更多互动和奖品等着你，快来加入我们吧。","playdesc":"","zcr":"","fcl":""}
+         * count : 70
          */
 
         @SerializedName("0")
@@ -62,11 +63,11 @@ public class PandaLiveJcyiBean {
 
         public static class _$0Bean {
             /**
-             * vsid : VSET100167216881
-             * name : 熊猫频道-精彩一刻
-             * img : http://p5.img.cctvpic.com/fmspic/vms/image/2013/06/21/VSET_1371809214479325.jpg
-             * enname : 其他
-             * url : http://tv.cntv.cn/videoset/VSET100167216881
+             * vsid : VSET100272959126
+             * name : 77滚滚秀
+             * img : http://p1.img.cctvpic.com/photoAlbum/vms/standard/img/2016/7/4/VSETBr7Ufabb0BvOFDWAzU1Z160704.jpg
+             * enname :
+             * url : http://tv.cntv.cn/videoset/VSET100272959126
              * cd :
              * zy :
              * bj :
@@ -75,9 +76,9 @@ public class PandaLiveJcyiBean {
              * nf :
              * yz :
              * fl :
-             * sbsj : 2013-05-01
-             * sbpd : 其他
-             * desc : 精彩一刻栏目关注人气较高的熊猫个体，精选每日直播中最吸引人的画面，呈现熊猫生活中最精彩的状态。
+             * sbsj :
+             * sbpd :
+             * desc : 《77滚滚秀》是一档集合所有滚滚精彩瞬间的娱乐、搞笑类节目，在这里你可以看到滚滚们搞笑、尴尬、萌萌哒，以及前所未见的所有神“技能”，每周五准时更新，还有更多互动和奖品等着你，快来加入我们吧。
              * playdesc :
              * zcr :
              * fcl :
@@ -259,14 +260,14 @@ public class PandaLiveJcyiBean {
 
     public static class VideoBean {
         /**
-         * vsid : VSET100167216881
-         * order : 4424
-         * vid : c39ef06c39314cb6a9d6c25f6527c095
-         * t : 《精彩一刻》 20170714 照个证件照，麻烦配合一下
-         * url : http://tv.cntv.cn/video/VSET100167216881/c39ef06c39314cb6a9d6c25f6527c095
-         * ptime : 2017-07-14 13:18:32
-         * img : http://p4.img.cctvpic.com/fmspic/2017/07/14/c39ef06c39314cb6a9d6c25f6527c095-20.jpg?p=2&h=120
-         * len : 00:00:20
+         * vsid : VSET100272959126
+         * order : 67
+         * vid : 00362cdfea104d7298feacfbe8b40549
+         * t : 《77滚滚秀》 20170409 第六十七期：当时我就震惊了
+         * url : http://tv.cntv.cn/video/VSET100272959126/00362cdfea104d7298feacfbe8b40549
+         * ptime : 2017-04-09 17:30:45
+         * img : http://p2.img.cctvpic.com/fmspic/2017/04/09/00362cdfea104d7298feacfbe8b40549-87.jpg
+         * len : 00:02:34
          * em : CM01
          */
 
