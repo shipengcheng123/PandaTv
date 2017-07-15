@@ -66,8 +66,8 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View{
 
 
         view1 = LayoutInflater.from(getContext()).inflate(R.layout.image_header_fragment, null);
-        mImage = (ImageView) view1.findViewById(R.id.Headler_image);
-        title = (TextView) view1.findViewById(R.id.Headler_title);
+        mImage = (ImageView) view1.findViewById(R.id.Header_image);
+        title = (TextView) view1.findViewById(R.id.Header_title);
         mImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

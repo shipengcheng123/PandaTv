@@ -2,28 +2,34 @@ package jiyun.com.ipandatv.fragment.Home;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.jcodecraeer.xrecyclerview.XRecyclerView;
+import com.androidkun.PullToRefreshRecyclerView;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
-import jiyun.com.ipandatv.adapter.homepage.HomeXrecyclerAdapter;
+import jiyun.com.ipandatv.adapter.homepage.HomeViewPagerAdapter;
+import jiyun.com.ipandatv.adapter.homepage.Home_Adapter;
 import jiyun.com.ipandatv.base.BaseFragment;
 import jiyun.com.ipandatv.fragment.Home.tile_right.Title_Right;
 import jiyun.com.ipandatv.model.entity.HomePageBean;
-
-import static jiyun.com.ipandatv.R.id.title_right;
 
 /**
  * Created by lx on 2017/7/11.
@@ -31,22 +37,26 @@ import static jiyun.com.ipandatv.R.id.title_right;
  * 拿到从presenter层网络请求出来的东西并放上去
  */
 
-public class HomeFragment extends BaseFragment implements HomeContract.View, View.OnClickListener {
-    @BindView(R.id.title_left)
-    TextView titleLeft;
+public class HomeFragment extends BaseFragment implements HomeContract.View, View.OnClickListener, ViewPager.OnPageChangeListener {
     @BindView(R.id.title_center)
     TextView titleCenter;
     @BindView(R.id.title_inter)
     TextView titleInter;
     @BindView(R.id.tv_search)
     TextView tvSearch;
-    @BindView(title_right)
+    @BindView(R.id.title_right)
     TextView titleRight;
-    Unbinder unbinder;
+    @BindView(R.id.PulltoRefresh)
+    PullToRefreshRecyclerView PulltoRefresh;
     private HomeContract.Presenter presenter;
-    XRecyclerView home_xrecyclerview;
-    HomeXrecyclerAdapter homeXrecyclerAdapter;
-    private ArrayList<HomePageBean> list = new ArrayList<>();
+    private Home_Adapter home_adapter;
+    private List<Object> mList;
+    private List<View> Pagerview = new ArrayList<>();
+    private ViewPager mViewPager;
+    private List<CheckBox> checkBoxes = new ArrayList<>();
+    private LinearLayout linearLayout;
+    private int currmentNum = 100000;
+    private View v, v1;
 
     @Override
     protected int getLayoutId() {
@@ -55,9 +65,20 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
 
     @Override
     protected void init(View view) {
+
+        v = LayoutInflater.from(getContext()).inflate(R.layout.home_viewpager_main, null);
+        linearLayout = (LinearLayout) v.findViewById(R.id.home_viewpager_linearLayout);
+        mViewPager = (ViewPager) v.findViewById(R.id.home_viewpager);
         App.mRadiogroup.setVisibility(View.VISIBLE);
-        home_xrecyclerview = (XRecyclerView) view.findViewById(R.id.home_xrecyclerview);
         titleRight.setOnClickListener(this);
+        mViewPager.setOnPageChangeListener(this);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        PulltoRefresh.setLayoutManager(linearLayoutManager);
+        PulltoRefresh.addHeaderView(v);
+        mViewPager.setFocusable(true);
+        mViewPager.setFocusableInTouchMode(true);
+        mViewPager.requestFocus();
     }
 
     @Override
@@ -73,27 +94,23 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
 
     @Override
     public void setImage(HomePageBean homePageBean) {
+        List<HomePageBean.DataBean.BigImgBean> bigImgBeanList = homePageBean.getData().getBigImg();
+        showLunBo(bigImgBeanList);
     }
 
     @Override
     public void setText(HomePageBean homePageBean) {
-        list.add(homePageBean);
-        home_xrecyclerview.setLayoutManager(new LinearLayoutManager(App.context));
-        home_xrecyclerview.setLoadingMoreProgressStyle(R.drawable.loading_10);
-        homeXrecyclerAdapter = new HomeXrecyclerAdapter(list, getContext());
-        home_xrecyclerview.setAdapter(homeXrecyclerAdapter);
-        home_xrecyclerview.setLoadingMoreEnabled(true);
-        home_xrecyclerview.setLoadingListener(new XRecyclerView.LoadingListener() {
-            @Override
-            public void onRefresh() {
-                home_xrecyclerview.refreshComplete();
-            }
+        mList = new ArrayList<>();
+        HomePageBean.DataBean data = homePageBean.getData();
+        mList.add(data.getPandaeye());
+        mList.add(data.getArea());
+        mList.add(data.getChinalive());
+        mList.add(data.getWalllive());
+        mList.add(data.getPandalive());
+        home_adapter = new Home_Adapter(getContext(), mList);
+        PulltoRefresh.setAdapter(home_adapter);
+        home_adapter.notifyDataSetChanged();
 
-            @Override
-            public void onLoadMore() {
-                home_xrecyclerview.loadMoreComplete();
-            }
-        });
     }
 
     @Override
@@ -144,4 +161,74 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
     protected void onHidden() {
         super.onHidden();
     }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        currmentNum = position;
+        for (int i = 0; i < checkBoxes.size(); i++) {
+            if (i == currmentNum % checkBoxes.size()) {
+                checkBoxes.get(i).setChecked(true);
+            } else {
+                checkBoxes.get(i).setChecked(false);
+            }
+        }
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
+
+    //轮播图
+    private void showLunBo(List<HomePageBean.DataBean.BigImgBean> bigImgBeen) {
+        v = null;
+        CheckBox checkBox;
+        v1 = null;
+        for (HomePageBean.DataBean.BigImgBean bigImgBean : bigImgBeen) {
+            v1 = LayoutInflater.from(getContext()).inflate(R.layout.checkbox_item, null);
+            checkBox = (CheckBox) v1.findViewById(R.id.viewpager_checkbox_btn);
+            linearLayout.addView(v1);
+            checkBoxes.add(checkBox);
+            v = LayoutInflater.from(getContext()).inflate(R.layout.image_header_fragment, null);
+            ImageView imageView = (ImageView) v.findViewById(R.id.Header_image);
+            TextView title = (TextView) v.findViewById(R.id.Header_title);
+            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            String image = bigImgBean.getImage();
+            String titlestr = bigImgBean.getTitle();
+            Glide.with(getContext()).load(image).into(imageView);
+            title.setText(titlestr);
+            Pagerview.add(v);
+        }
+        HomeViewPagerAdapter adapter = new HomeViewPagerAdapter(Pagerview);
+        mViewPager.setAdapter(adapter);
+        checkBoxes.get(currmentNum % checkBoxes.size()).setChecked(true);
+        mViewPager.setCurrentItem(currmentNum);
+        handler.sendEmptyMessageDelayed(222, 2000);
+    }
+
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case 222:
+                    currmentNum++;
+                    mViewPager.setCurrentItem(currmentNum);
+                    for (int i = 0; i < checkBoxes.size(); i++) {
+                        if (i == currmentNum % checkBoxes.size()) {
+                            checkBoxes.get(i).setChecked(true);
+                        } else {
+                            checkBoxes.get(i).setChecked(false);
+                        }
+                    }
+                    handler.sendEmptyMessageDelayed(222, 2000);
+                    break;
+            }
+        }
+    };
 }
