@@ -28,6 +28,7 @@ public class BadaLingFragment extends BaseFragment implements ZhiBoChenaContract
     ListView mListView;
     Unbinder unbinder;
     private ZhiBochenaAdapter mAdapter;
+
     private List<ChangchengBean.LiveBean> mList = new ArrayList<>();
     ZhiBoChenaContract.Presenter presenter;
     private ZhiBoChenaPresenter zhiBoChenaPresenter;
