@@ -19,7 +19,7 @@ import butterknife.Unbinder;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.base.BaseFragment;
-import jiyun.com.ipandatv.fragment.pandadirect.adapter.PandaJCYKAdapter;
+import jiyun.com.ipandatv.fragment.pandadirect.adapter.PabdaDXBRAdapter;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaChaomenggunxiuBean;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaDanganBean;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaDangxiongburangBean;
@@ -29,21 +29,23 @@ import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaTOPBean;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaTeBiejimuBean;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaYuanchuangxinwenBean;
 import jiyun.com.ipandatv.fragment.pandadirect.contract.LiveTwoContract;
-import jiyun.com.ipandatv.fragment.pandadirect.ptersenter.PandaJCYKPresenter;
+import jiyun.com.ipandatv.fragment.pandadirect.ptersenter.PandaDXBRPresenter;
 
 /**
- * Created by INS7566 on 2017/7/14.
+ * Created by INS7566 on 2017/7/15.
  */
 
-public class PandaJCYKFragment extends BaseFragment implements LiveTwoContract.View {
+public class PandaDXBRFragment extends BaseFragment implements LiveTwoContract.View {
     @BindView(R.id.jcyk_pullrecycler)
     PullToRefreshRecyclerView jcykPullrecycler;
     Unbinder unbinder;
-    private PandaJCYKAdapter adapter;
-    private List<PandaLiveJcyiBean.VideoBean> mList=new ArrayList<>();
+    private PabdaDXBRAdapter adapter;
+    private List<PandaDangxiongburangBean.VideoBean> mList=new ArrayList<>();
+
     private LiveTwoContract.Presenter presenter;
     private int Index=1;
-    private PandaJCYKPresenter presente;
+    private PandaDXBRPresenter presente;
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_jcyk;
@@ -91,15 +93,15 @@ public class PandaJCYKFragment extends BaseFragment implements LiveTwoContract.V
             }
         });
 
-        adapter = new PandaJCYKAdapter(getContext(),mList);
+        adapter = new PabdaDXBRAdapter(getContext(),mList);
         jcykPullrecycler.setAdapter(adapter);
     }
 
     @Override
     protected void loadData() {
-        presente=new PandaJCYKPresenter(this);
-        presenter.start();
+        presente=new PandaDXBRPresenter(this);
 
+        presenter.start();
     }
 
     @Override
@@ -109,13 +111,13 @@ public class PandaJCYKFragment extends BaseFragment implements LiveTwoContract.V
 
     @Override
     public void showjcyiFragment(PandaLiveJcyiBean pandaLiveJcyiBean) {
-        mList.addAll(pandaLiveJcyiBean.getVideo());
-        adapter.notifyDataSetChanged();
+
     }
 
     @Override
     public void showDXBRFragment(PandaDangxiongburangBean pandaDangxiongburangBean) {
-
+        mList.addAll(pandaDangxiongburangBean.getVideo());
+        adapter.notifyDataSetChanged();
     }
 
     @Override

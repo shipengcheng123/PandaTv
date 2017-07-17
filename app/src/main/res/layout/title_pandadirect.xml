@@ -15,11 +15,13 @@
             android:textColor="#ffffff"
             android:textSize="20sp"
             android:gravity="center"/>
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/person_sign"
             android:layout_weight="0.13"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="8dp"
+            android:id="@+id/direct_login_iv"/>
     </LinearLayout>
 </LinearLayout>

@@ -78,8 +78,8 @@ public class PandaLiveImpl implements IPandaLivemodel {
     }
 
     @Override
-    public <T> void vadioPlay(String url, Map<String, String> params, INetWorkCallback<T> callback) {
-
+    public <T> void vedioPlay(String url, Map<String, String> params, INetWorkCallback<T> callback) {
         HttpFactory.create().get(Urls.PANDALIVE,params,callback);
     }
+
 }

@@ -20,13 +20,17 @@ import butterknife.OnClick;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.base.BaseFragment;
+import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaLiveBean;
+import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaLiveDuoshijiaoBean;
+import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaLiveTalkListBean;
+import jiyun.com.ipandatv.fragment.pandadirect.contract.LiveContract;
 import jiyun.com.ipandatv.view.JCVideoPlayerStandardShowShareButtonAfterFullscreen;
 
 /**
  * Created by INS7566 on 2017/7/12.
  */
 
-public class LiveFragment extends BaseFragment {
+public class LiveFragment extends BaseFragment implements LiveContract.View{
 
     @BindView(R.id.direct_shipin_linear)
     LinearLayout directShipinLinear;
@@ -104,5 +108,25 @@ public class LiveFragment extends BaseFragment {
             return;
 
         }
+    }
+
+    @Override
+    public void showlivevedioFragment(PandaLiveBean pandaLiveBean) {
+
+    }
+
+    @Override
+    public void showLiveFragment(PandaLiveDuoshijiaoBean pandaLiveDuoshijiaoBean) {
+
+    }
+
+    @Override
+    public void showeyeFragment(PandaLiveTalkListBean pandaLiveTalkListBean) {
+
+    }
+
+    @Override
+    public void setBasePresenter(LiveContract.Presenter presenter) {
+
     }
 }

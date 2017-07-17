@@ -39,6 +39,7 @@ public class PandaJCYKAdapter extends BaseAdapter<PandaLiveJcyiBean.VideoBean>{
                 Intent intent = new Intent(context,VideoActivity.class);
                 intent.putExtra("url",bean.getUrl());
                 intent.putExtra("title",bean.getT());
+                intent.putExtra("pid",bean.getVid());
                 MyLog.e("Url",bean.getUrl()+bean.getT());
                 App.activity.startActivity(intent);
             }

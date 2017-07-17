@@ -22,6 +22,7 @@ import jiyun.com.ipandatv.base.BaseFragment;
 import jiyun.com.ipandatv.fragment.pandadirect.adapter.PandaChaomengAdapter;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaChaomenggunxiuBean;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaDanganBean;
+import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaDangxiongburangBean;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaLiveJcyiBean;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaNaxieshiBean;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaTOPBean;
@@ -107,6 +108,11 @@ public class PandaChaomenggunxiuFragment extends BaseFragment implements LiveTwo
 
     @Override
     public void showjcyiFragment(PandaLiveJcyiBean pandaLiveJcyiBean) {
+
+    }
+
+    @Override
+    public void showDXBRFragment(PandaDangxiongburangBean pandaDangxiongburangBean) {
 
     }
 

@@ -20,6 +20,8 @@ public class Urls {
     public static final String PANDA_OBSERVE_ITEM = "http://api.cntv.cn/apicommon/index?path=iphoneInterface/general/getArticleAndVideoListInfo.json&primary_id=PAGE1449807494852603,PAGE1451473625420136,PAGE1449807502866458,PAGE1451473627439140,PAGE1451473547108278,PAGE1451473628934144&serviceId=panda";
 
 
+    //精彩一刻视频
+    public static final String VEDIOJCYK="http://vdn.apps.cntv.cn/api/getVideoInfoForCBox.do";
 
     //熊猫直播
     public static final String PANDALIVE = PANDAURL + "PAGE14501769230331752/index.json";
@@ -74,7 +76,7 @@ public class Urls {
     public static final String CMGGX="http://api.cntv.cn/video/videolistById?vsid=VSET100272959126&n=7&serviceId=panda&o=desc&of=time&p=1";
 //    http://api.cntv.cn/video/videolistById?vsid=VSET100272959126&n=7&serviceId=panda&o=desc&of=time&p=1
     //当熊不让
-    public static final String DXBR="http://api.cntv.cn/video/videolistById?vsid=VSET100340574858&n=7&serviceId=panda&o=desc&of=time&p=1";
+    public static final String DXBR="http://api.cntv.cn/video/videolistById?vsid=VSET100332640004&n=7&serviceId=panda&o=desc&of=time&p=1";
 //    http://api.cntv.cn/video/videolistById?vsid=VSET100340574858&n=7&serviceId=panda&o=desc&of=time&p=1
 
    // 熊猫TOP榜

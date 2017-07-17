@@ -31,11 +31,20 @@ public class PandaJCYKPresenter implements LiveTwoContract.Presenter{
             @Override
             public void OnSucess(PandaLiveJcyiBean pandaLiveJcyiBean) {
                 liveFragment.showjcyiFragment(pandaLiveJcyiBean);
+//                ACache mCache = ACache.get(App.activity);
+//                String personArray = gson.toJson(list);
+//                mCache.put("arr", personArray);
+//                liveFragment.showjcyiFragment(pandaLiveJcyiBean);
             }
 
             @Override
             public void OnError(int ErrorCode, String ErrorMsg) {
-
+//
+//                ACache mCache = ACache.get(App.activity);
+//                JSONArray type = mCache.getAsJSONArray("arr");
+//                Type mType = (Type) new TypeToken<List<PandaLiveJcyiBean.VideoBean>>(){}.getType();
+//
+//                List<PandaLiveJcyiBean.VideoBean> persons = gson.fromJson(type.toString(), mType);
             }
         });
     }

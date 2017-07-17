@@ -20,6 +20,7 @@ import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.base.BaseFragment;
 import jiyun.com.ipandatv.fragment.pandadirect.adapter.PandaTalkAdapter;
+import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaLiveBean;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaLiveDuoshijiaoBean;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaLiveTalkListBean;
 import jiyun.com.ipandatv.fragment.pandadirect.contract.LiveContract;
@@ -114,6 +115,11 @@ public class PandaLiveTalkListFragment extends BaseFragment implements LiveContr
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @Override
+    public void showlivevedioFragment(PandaLiveBean pandaLiveBean) {
+
     }
 
     @Override

@@ -17,5 +17,6 @@ public interface ILivemodel {
     <T> void getXMNXS(String url, Map<String, String> params, INetWorkCallback<T> callback);
     <T> void getTBJM(String url, Map<String, String> params, INetWorkCallback<T> callback);
     <T> void getYCXW(String url, Map<String, String> params, INetWorkCallback<T> callback);
+    <T> void getVDJCYK(Map<String,String> params,INetWorkCallback<T> callback);
 
 }
