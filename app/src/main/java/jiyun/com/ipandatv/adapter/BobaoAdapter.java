@@ -23,19 +23,23 @@ import jiyun.com.ipandatv.utils.MyLog;
  */
 public class BobaoAdapter extends BaseAdapter<PandaBroadBean.ListBean> {
     public BobaoAdapter(Context context,List<PandaBroadBean.ListBean> datas) {
-        super(context, R.layout.bobao_item, datas);
+        super(context, R.layout.fragment_panda_observe_item, datas);
     }
 
     @Override
     public void convert(ViewHolder holder, final PandaBroadBean.ListBean pandaBroadBean) {
 
-        holder.setText(R.id.Bobao_item_title,pandaBroadBean.getTitle());
-        holder.setText(R.id.Bobao_item_data,pandaBroadBean.getVideolength());
-        ImageView imageView = (ImageView) holder.itemView.findViewById(R.id.Bobao_item_Image);
+        holder.setText(R.id.panda_observe_item_title,pandaBroadBean.getTitle());
+        holder.setText(R.id.panda_observe_item_sp_time,pandaBroadBean.getVideolength());
+        holder.setText(R.id.panda_observe_item_time,String.valueOf(pandaBroadBean.getFocus_date()));
+
+//        String data1 =  DataUtils.getFormatedDateTime(,pandaBroadBean.getFocus_date());
+//        holder.setText(R.id.panda_observe_item_time,data1);
+        ImageView imageView = (ImageView) holder.itemView.findViewById(R.id.panda_observe_item_image);
         Glide.with(context).load(pandaBroadBean.getPicurl()).into(imageView);
 
 
-        holder.setOnclickListener(R.id.Bobao_item, new View.OnClickListener() {
+        holder.setOnclickListener(R.id.panda_observe_relativeLayout, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context,VideoActivity.class);
@@ -45,6 +49,5 @@ public class BobaoAdapter extends BaseAdapter<PandaBroadBean.ListBean> {
                 App.activity.startActivity(intent);
             }
         });
-
     }
 }

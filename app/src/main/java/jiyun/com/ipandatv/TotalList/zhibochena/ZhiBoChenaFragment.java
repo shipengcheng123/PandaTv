@@ -28,6 +28,7 @@ import jiyun.com.ipandatv.activity.LiveChinaAdd;
 import jiyun.com.ipandatv.adapter.DragAdapter;
 import jiyun.com.ipandatv.adapter.zhibochena.ZHPagerAdapter;
 import jiyun.com.ipandatv.base.BaseFragment;
+import jiyun.com.ipandatv.fragment.Home.tile_right.Title_RightActivity;
 import jiyun.com.ipandatv.fragment.pandadirect.adapter.PandaDirectAdapter;
 import jiyun.com.ipandatv.fragment.zhibochena.BadaLingFragment;
 import jiyun.com.ipandatv.fragment.zhibochena.EmeishanFragment;
@@ -210,5 +211,11 @@ public class ZhiBoChenaFragment extends BaseFragment {
     }
 
 
+    @OnClick(R.id.Personal_Cente)
+    public void onClicked() {
 
+        Intent in = new Intent(getContext(), Title_RightActivity.class);
+        startActivity(in);
+
+    }
 }
