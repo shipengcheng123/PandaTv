@@ -19,7 +19,7 @@ import butterknife.OnClick;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.base.BaseFragment;
-import jiyun.com.ipandatv.fragment.Home.tile_right.Title_Right;
+import jiyun.com.ipandatv.fragment.Home.tile_right.Title_RightActivity;
 import jiyun.com.ipandatv.fragment.pandadirect.adapter.PandaDirectAdapter;
 
 
@@ -100,7 +100,7 @@ public class PandadirectFragment extends BaseFragment {
 
     @OnClick(R.id.direct_login_iv)
     public void onViewClicked() {
-        Intent intent=new Intent(App.activity.getApplication(), Title_Right.class);
+        Intent intent=new Intent(App.activity.getApplication(), Title_RightActivity.class);
         startActivity(intent);
     }
 }

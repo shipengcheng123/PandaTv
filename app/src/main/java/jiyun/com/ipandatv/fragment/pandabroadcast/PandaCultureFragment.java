@@ -26,7 +26,7 @@ import butterknife.Unbinder;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.base.BaseFragment;
-import jiyun.com.ipandatv.fragment.Home.tile_right.Title_Right;
+import jiyun.com.ipandatv.fragment.Home.tile_right.Title_RightActivity;
 import jiyun.com.ipandatv.fragment.pandabroadcast.adapter.PandaCultureBannerAdapter;
 import jiyun.com.ipandatv.fragment.pandabroadcast.adapter.PandaCultureItemAdapter;
 import jiyun.com.ipandatv.fragment.pandabroadcast.culturecontract.CultureContract;
@@ -213,7 +213,7 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
     @OnClick(R.id.culture_right_iv)
     public void onViewClicked() {
 
-        Intent intent=new Intent(App.activity.getApplication(), Title_Right.class);
+        Intent intent=new Intent(App.activity.getApplication(), Title_RightActivity.class);
         startActivity(intent);
 
     }
