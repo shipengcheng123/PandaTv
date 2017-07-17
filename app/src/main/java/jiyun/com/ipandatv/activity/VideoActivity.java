@@ -30,8 +30,8 @@ public class VideoActivity extends BaseActivity {
 
 
         Intent intent = getIntent();
-//        String url = intent.getStringExtra("url");
-        String url="http://vdn.apps.cntv.cn/api/getVideoInfoForCBox.do"+"1dbdf1c05d904bf494077b399dc08bf1";
+        String url = intent.getStringExtra("url");
+//        String url="http://vdn.apps.cntv.cn/api/getVideoInfoForCBox.do"+"1dbdf1c05d904bf494077b399dc08bf1";
         String title = intent.getStringExtra("title");
         MyLog.e("url",url+title);
 
