@@ -14,20 +14,21 @@ import java.util.List;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.activity.VideoActivity;
-import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaTOPBean;
+import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaDangxiongburangBean;
 import jiyun.com.ipandatv.utils.MyLog;
 
 /**
- * Created by INS7566 on 2017/7/14.
+ * Created by INS7566 on 2017/7/15.
  */
 
-public class PandaTOPAdapter extends BaseAdapter<PandaTOPBean.VideoBean> {
-    public PandaTOPAdapter(Context context, List<PandaTOPBean.VideoBean> datas) {
+public class PabdaDXBRAdapter extends BaseAdapter<PandaDangxiongburangBean.VideoBean> {
+
+    public PabdaDXBRAdapter(Context context, List<PandaDangxiongburangBean.VideoBean> datas) {
         super(context, R.layout.adapter_jcyk, datas);
     }
 
     @Override
-    public void convert(ViewHolder holder, final PandaTOPBean.VideoBean bean) {
+    public void convert(final ViewHolder holder, final PandaDangxiongburangBean.VideoBean bean) {
         holder.setText(R.id.panda_oculture_item_sp_time, bean.getLen())
                 .setText(R.id.panda_culture_item_title, bean.getT())
                 .setText(R.id.panda_culture_item_time, bean.getPtime());

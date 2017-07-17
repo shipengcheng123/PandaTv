@@ -42,5 +42,5 @@ public interface IPandaLivemodel extends BaseModel {
     <T> void getTalkList(String url, Map<String, String> params, INetWorkCallback<T> callback);
 
     //视频播放
-    <T> void vadioPlay(String url, Map<String, String> params, INetWorkCallback<T> callback);
+    <T> void vedioPlay(String url, Map<String, String> params, INetWorkCallback<T> callback);
 }

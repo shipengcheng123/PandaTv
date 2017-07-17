@@ -52,8 +52,21 @@ public class PandaCultureItemAdapter extends BaseAdapter<PandaCultureEntity.List
         holder.setOnclickListener(R.id.culture_relat, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                if(listBean.getType().toString().equals("2")){
+//                    Intent it=new Intent(context, RollDtialActivity.class);
+//                    context.startActivity(it);
+//
+//                }else{
+//                    Intent it=new Intent(context, RollvideoStartAcyivity.class);
+//                    context.startActivity(it);
+//                }
+//            }
+//        });
+
                 Intent intent = new Intent(context,VideoActivity.class);
+//                intent.putExtra("")
                 intent.putExtra("url",listBean.getUrl());
+//                intent.putExtra("pid",listBean.get)
                 intent.putExtra("title",listBean.getTitle());
                 MyLog.e("Url",listBean.getUrl()+listBean.getTitle());
                 App.activity.startActivity(intent);

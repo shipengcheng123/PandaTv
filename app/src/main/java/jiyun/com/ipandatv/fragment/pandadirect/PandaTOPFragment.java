@@ -22,6 +22,7 @@ import jiyun.com.ipandatv.base.BaseFragment;
 import jiyun.com.ipandatv.fragment.pandadirect.adapter.PandaTOPAdapter;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaChaomenggunxiuBean;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaDanganBean;
+import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaDangxiongburangBean;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaLiveJcyiBean;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaNaxieshiBean;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaTOPBean;
@@ -40,9 +41,11 @@ public class PandaTOPFragment extends BaseFragment implements LiveTwoContract.Vi
     Unbinder unbinder;
     private PandaTOPAdapter adapter;
     private List<PandaTOPBean.VideoBean> mList=new ArrayList<>();
+
     private LiveTwoContract.Presenter presenter;
     private int Index=1;
     private PandaTopPresenter presente;
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_jcyk;
@@ -97,6 +100,7 @@ public class PandaTOPFragment extends BaseFragment implements LiveTwoContract.Vi
     @Override
     protected void loadData() {
         presente=new PandaTopPresenter(this);
+
         presenter.start();
     }
 
@@ -107,6 +111,11 @@ public class PandaTOPFragment extends BaseFragment implements LiveTwoContract.Vi
 
     @Override
     public void showjcyiFragment(PandaLiveJcyiBean pandaLiveJcyiBean) {
+
+    }
+
+    @Override
+    public void showDXBRFragment(PandaDangxiongburangBean pandaDangxiongburangBean) {
 
     }
 

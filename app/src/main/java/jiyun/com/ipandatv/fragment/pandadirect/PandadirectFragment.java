@@ -1,20 +1,25 @@
 package jiyun.com.ipandatv.fragment.pandadirect;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.base.BaseFragment;
+import jiyun.com.ipandatv.fragment.Home.tile_right.Title_RightActivity;
 import jiyun.com.ipandatv.fragment.pandadirect.adapter.PandaDirectAdapter;
 
 
@@ -29,6 +34,8 @@ public class PandadirectFragment extends BaseFragment {
     TabLayout directTablayout;
     @BindView(R.id.direct_viewpager)
     ViewPager directViewpager;
+    @BindView(R.id.direct_login_iv)
+    ImageView directLoginIv;
     private PandaDirectAdapter adapter;
     private List<String> mListName;
     private List<BaseFragment> mList;
@@ -49,7 +56,7 @@ public class PandadirectFragment extends BaseFragment {
         mList = new ArrayList<>();
         mList.add(new LiveFragment());
         mList.add(new PandaJCYKFragment());
-        mList.add(new PandaJCYKFragment());
+        mList.add(new PandaDXBRFragment());
         mList.add(new PandaChaomenggunxiuFragment());
         mList.add(new PandaDanganFragment());
         mList.add(new PandaTOPFragment());
@@ -89,5 +96,11 @@ public class PandadirectFragment extends BaseFragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @OnClick(R.id.direct_login_iv)
+    public void onViewClicked() {
+        Intent intent=new Intent(App.activity.getApplication(), Title_RightActivity.class);
+        startActivity(intent);
     }
 }

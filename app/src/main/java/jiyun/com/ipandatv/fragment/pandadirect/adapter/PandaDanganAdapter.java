@@ -37,8 +37,9 @@ public class PandaDanganAdapter extends BaseAdapter<PandaDanganBean.VideoBean> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context,VideoActivity.class);
-                intent.putExtra("url",bean.getUrl());
+                intent.putExtra("url","http://vod.cntv.lxdns.com/flash/mp4video60/TMS/2017/07/06/24a1ae38737c44a2a211babb3c6dee3d_h264418000nero_aac32-1.mp4");
                 intent.putExtra("title",bean.getT());
+                intent.putExtra("pid",bean.getVid());
                 MyLog.e("Url",bean.getUrl()+bean.getT());
                 App.activity.startActivity(intent);
             }

@@ -50,4 +50,9 @@ public class LiveIpl implements ILivemodel{
     public <T> void getYCXW(String url, Map<String, String> params, INetWorkCallback<T> callback) {
         HttpFactory.create().get(Urls.YCXW,params,callback);
     }
+
+    @Override
+    public <T> void getVDJCYK( Map<String, String> params, INetWorkCallback<T> callback) {
+        HttpFactory.create().get(Urls.VEDIOJCYK,params,callback);
+    }
 }

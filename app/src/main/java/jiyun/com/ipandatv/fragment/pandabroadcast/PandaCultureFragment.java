@@ -1,5 +1,6 @@
 package jiyun.com.ipandatv.fragment.pandabroadcast;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -20,9 +21,12 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
+import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.base.BaseFragment;
+import jiyun.com.ipandatv.fragment.Home.tile_right.Title_RightActivity;
 import jiyun.com.ipandatv.fragment.pandabroadcast.adapter.PandaCultureBannerAdapter;
 import jiyun.com.ipandatv.fragment.pandabroadcast.adapter.PandaCultureItemAdapter;
 import jiyun.com.ipandatv.fragment.pandabroadcast.culturecontract.CultureContract;
@@ -37,6 +41,8 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
     @BindView(R.id.culture_pullrecycler)
     PullToRefreshRecyclerView culturePullrecycler;
     Unbinder unbinder;
+    @BindView(R.id.culture_right_iv)
+    ImageView cultureRightIv;
     private PandaCulturePresenter pandaCulturePersenter;
 
     private List<PandaCultureEntity.BigImgBean> dataBeanList;
@@ -49,6 +55,7 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
     private List<CircleImageView> points;
     private int currentPosition = 10000;
     private ViewGroup pointsLinearLayout;
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_culture;
@@ -73,8 +80,21 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         culturePullrecycler.setLayoutManager(linearLayoutManager);
         culturePullrecycler.addHeaderView(pandaCultureView);
-        culturePullrecycler.setPullRefreshEnabled(false);
+        culturePullrecycler.setPullRefreshEnabled(true);
         culturePullrecycler.setLoadingMoreEnabled(false);
+//        culturePullrecycler.setPullToRefreshListener(new PullToRefreshListener() {
+//                @Override
+//                public void onRefresh() {
+//                    culturePullrecycler.postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            culturePullrecycler.setRefreshComplete();
+//                            mList.clear();
+//                            loadData();
+//
+//                        }
+//                    }, 2000);
+//                }
     }
 
     @Override
@@ -171,9 +191,11 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
         handler.sendEmptyMessageDelayed(1, 3000);
 
     }
+
     public int dp2Px(int dpValue) {
         return (int) (getActivity().getResources().getDisplayMetrics().density * dpValue + 0.5f);
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO: inflate a fragment view
@@ -186,5 +208,13 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @OnClick(R.id.culture_right_iv)
+    public void onViewClicked() {
+
+        Intent intent=new Intent(App.activity.getApplication(), Title_RightActivity.class);
+        startActivity(intent);
+
     }
 }
