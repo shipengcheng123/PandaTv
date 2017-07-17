@@ -25,10 +25,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
+import jiyun.com.ipandatv.activity.YuanChuangActivity;
 import jiyun.com.ipandatv.adapter.homepage.HomeViewPagerAdapter;
 import jiyun.com.ipandatv.adapter.homepage.Home_Adapter;
 import jiyun.com.ipandatv.base.BaseFragment;
-import jiyun.com.ipandatv.fragment.Home.tile_right.Title_Right;
+import jiyun.com.ipandatv.fragment.Home.tile_right.Title_RightActivity;
 import jiyun.com.ipandatv.model.entity.HomePageBean;
 
 /**
@@ -38,6 +39,7 @@ import jiyun.com.ipandatv.model.entity.HomePageBean;
  */
 
 public class HomeFragment extends BaseFragment implements HomeContract.View, View.OnClickListener, ViewPager.OnPageChangeListener {
+
     @BindView(R.id.title_center)
     TextView titleCenter;
     @BindView(R.id.title_inter)
@@ -71,6 +73,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
         mViewPager = (ViewPager) v.findViewById(R.id.home_viewpager);
         App.mRadiogroup.setVisibility(View.VISIBLE);
         titleRight.setOnClickListener(this);
+        titleInter.setOnClickListener(this);
         mViewPager.setOnPageChangeListener(this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -142,10 +145,12 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.title_inter:
+                Intent intent = new Intent(getContext(),YuanChuangActivity.class);
+                startActivity(intent);
 
                 break;
             case R.id.title_right:
-                Intent in = new Intent(getContext(), Title_Right.class);
+                Intent in = new Intent(getContext(), Title_RightActivity.class);
                 startActivity(in);
                 break;
         }

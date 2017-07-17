@@ -1,5 +1,6 @@
 package jiyun.com.ipandatv.fragment.Home.tile_right;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,7 +16,7 @@ import jiyun.com.ipandatv.base.BaseActivity;
  * Created by lx on 2017/7/14.
  */
 
-public class Title_Right extends BaseActivity {
+public class Title_RightActivity extends BaseActivity {
     @BindView(R.id.panda_person_userimg)
     ImageView pandaPersonUserimg;
     @BindView(R.id.panda_person_username)
@@ -64,7 +65,8 @@ public class Title_Right extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.panda_person_username:
-
+                Intent in=new Intent(Title_RightActivity.this,Title_LoginActivity.class);
+                startActivity(in);
                 break;
             case R.id.panda_person_guankanlishi:
 
@@ -73,7 +75,8 @@ public class Title_Right extends BaseActivity {
 
                 break;
             case R.id.panda_person_setting:
-
+                Intent ini=new Intent(Title_RightActivity.this,Title_SettingActivity.class);
+                startActivity(ini);
                 break;
         }
     }

@@ -27,6 +27,7 @@ import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.activity.WebActivity;
 import jiyun.com.ipandatv.adapter.BobaoAdapter;
 import jiyun.com.ipandatv.base.BaseFragment;
+import jiyun.com.ipandatv.fragment.Home.tile_right.Title_RightActivity;
 import jiyun.com.ipandatv.model.entity.BobaoHeaderBean;
 import jiyun.com.ipandatv.model.entity.PandaBroadBean;
 import jiyun.com.ipandatv.utils.MyLog;
@@ -156,6 +157,8 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View{
     @OnClick(R.id.Personal_Cente)
     public void onViewClicked() {
 
+        Intent in = new Intent(getContext(), Title_RightActivity.class);
+        startActivity(in);
     }
 
     @Override

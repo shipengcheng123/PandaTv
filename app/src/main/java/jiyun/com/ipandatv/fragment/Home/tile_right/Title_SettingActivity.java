@@ -7,10 +7,10 @@ import jiyun.com.ipandatv.base.BaseActivity;
  * Created by lx on 2017/7/14.
  */
 
-public class Title_Login extends BaseActivity {
+public class Title_SettingActivity extends BaseActivity {
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_login;
+        return R.layout.panda_person_setting;
     }
 
     @Override
