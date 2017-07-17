@@ -38,6 +38,7 @@ import jiyun.com.ipandatv.model.entity.HomePageBean;
  */
 
 public class HomeFragment extends BaseFragment implements HomeContract.View, View.OnClickListener, ViewPager.OnPageChangeListener {
+
     @BindView(R.id.title_center)
     TextView titleCenter;
     @BindView(R.id.title_inter)
