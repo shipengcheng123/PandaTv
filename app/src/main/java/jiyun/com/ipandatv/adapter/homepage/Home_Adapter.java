@@ -20,7 +20,6 @@ import java.util.List;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.activity.VideoActivity;
-import jiyun.com.ipandatv.fragment.Home.tile_right.BobaoActivity;
 import jiyun.com.ipandatv.model.entity.HomePageBean;
 
 /**
@@ -139,7 +138,8 @@ public class Home_Adapter extends RecyclerView.Adapter {
                 @Override
                 public void onClick(View v) {
                     Intent in = new Intent(App.activity, VideoActivity.class);
-                    in.putExtra("url", "http://vod.cntv.lxdns.com/flash/mp4video60/TMS/2017/06/14/c1777f2df24441f8aa475df6554c232e_h264818000nero_aac32.mp4");
+                    in.putExtra("url", "");
+                    in.putExtra("pid", pandaeyeBean.getItems().get(0).getPid());
                     in.putExtra("title", pandaeyeBean.getItems().get(0).getTitle());
                     context.startActivity(in);
                 }
@@ -147,8 +147,8 @@ public class Home_Adapter extends RecyclerView.Adapter {
             t2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent in = new Intent(App.activity, BobaoActivity.class);
-                    in.putExtra("url", pandaeyeBean.getItems().get(1).getUrl());
+                    Intent in = new Intent(App.activity, VideoActivity.class);
+                    in.putExtra("pid", pandaeyeBean.getItems().get(1).getPid());
                     in.putExtra("title", pandaeyeBean.getItems().get(1).getTitle());
                     context.startActivity(in);
                 }
@@ -172,7 +172,7 @@ public class Home_Adapter extends RecyclerView.Adapter {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent in = new Intent(App.activity, VideoActivity.class);
-                    in.putExtra("url", listBean.getList().get(position).getUrl());
+                    in.putExtra("pid", listBean.getList().get(position).getVid());
                     in.putExtra("title", listBean.getList().get(position).getTitle());
                     context.startActivity(in);
                 }
@@ -196,7 +196,7 @@ public class Home_Adapter extends RecyclerView.Adapter {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent in = new Intent(App.activity, VideoActivity.class);
-                    in.putExtra("url", areaBean.getListscroll().get(position).getUrl());
+                    in.putExtra("pid", areaBean.getListscroll().get(position).getPid());
                     in.putExtra("title", areaBean.getListscroll().get(position).getTitle());
                     context.startActivity(in);
                 }
@@ -220,7 +220,7 @@ public class Home_Adapter extends RecyclerView.Adapter {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent in = new Intent(App.activity, VideoActivity.class);
-                    in.putExtra("url", wallliveBean.getList().get(position).getUrl());
+                    in.putExtra("pid", wallliveBean.getList().get(position).getVid());
                     in.putExtra("title", wallliveBean.getList().get(position).getTitle());
                     context.startActivity(in);
                 }
@@ -244,7 +244,7 @@ public class Home_Adapter extends RecyclerView.Adapter {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent in = new Intent(App.activity, VideoActivity.class);
-                    in.putExtra("url", chinaliveBean.getList().get(position).getUrl());
+                    in.putExtra("pid", chinaliveBean.getList().get(position).getVid());
                     in.putExtra("title", chinaliveBean.getList().get(position).getTitle());
                     context.startActivity(in);
                 }
