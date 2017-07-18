@@ -183,6 +183,7 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View{
         Glide.with(App.activity).load(bobaoHeaderBean.getData().getBigImg().get(0).getImage()).into(mImage);
         title.setText(bobaoHeaderBean.getData().getBigImg().get(0).getTitle());
         url = bobaoHeaderBean.getData().getBigImg().get(0).getUrl();
+
     }
 
     @Override

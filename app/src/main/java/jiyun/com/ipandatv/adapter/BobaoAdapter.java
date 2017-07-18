@@ -10,6 +10,8 @@ import com.androidkun.adapter.BaseAdapter;
 import com.androidkun.adapter.ViewHolder;
 import com.bumptech.glide.Glide;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import jiyun.com.ipandatv.App;
@@ -31,10 +33,13 @@ public class BobaoAdapter extends BaseAdapter<PandaBroadBean.ListBean> {
 
         holder.setText(R.id.panda_observe_item_title,pandaBroadBean.getTitle());
         holder.setText(R.id.panda_observe_item_sp_time,pandaBroadBean.getVideolength());
-        holder.setText(R.id.panda_observe_item_time,String.valueOf(pandaBroadBean.getFocus_date()));
+//        holder.setText(R.id.panda_observe_item_time,String.valueOf(pandaBroadBean.getFocus_date()));
 
 //        String data1 =  DataUtils.getFormatedDateTime(,pandaBroadBean.getFocus_date());
 //        holder.setText(R.id.panda_observe_item_time,data1);
+        holder.setText(R.id.panda_observe_item_time, convert((pandaBroadBean.getFocus_date())));
+
+
         ImageView imageView = (ImageView) holder.itemView.findViewById(R.id.panda_observe_item_image);
         Glide.with(context).load(pandaBroadBean.getPicurl()).into(imageView);
 
@@ -45,9 +50,24 @@ public class BobaoAdapter extends BaseAdapter<PandaBroadBean.ListBean> {
                 Intent intent = new Intent(context,VideoActivity.class);
                 intent.putExtra("url",pandaBroadBean.getUrl());
                 intent.putExtra("title",pandaBroadBean.getTitle());
+                intent.putExtra("pid",pandaBroadBean.getGuid());
                 MyLog.e("Url",pandaBroadBean.getUrl()+pandaBroadBean.getTitle());
                 App.activity.startActivity(intent);
             }
         });
     }
+
+
+    public String convert(long mill){
+        Date date=new Date(mill);
+        String strs="";
+        try {
+            SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
+            strs=sdf.format(date);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return strs;
+    }
+
 }

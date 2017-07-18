@@ -3,6 +3,11 @@
     package="jiyun.com.ipandatv">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-sdk android:minSdkVersion="8"></uses-sdk>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -17,10 +22,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data android:value="596d751e717c1926ba001b06" android:name="UMENG_APPKEY"/>
+        <meta-data android:value="ipandatv" android:name="UMENG_CHANNEL"/>
+
+
+
         <activity android:name=".activity.YindaoActivity"/>
         <activity android:name=".activity.MainActivity"/>
         <activity android:name=".activity.WebActivity"></activity>
-        <activity android:name=".activity.VideoActivity"></activity>
+        <activity android:name=".activity.VideoActivity" android:screenOrientation="landscape"></activity>
         <activity android:name=".fragment.Home.tile_right.Title_RightActivity"/>
         <activity android:name=".activity.LiveChinaAdd"></activity>
         <activity android:name=".fragment.Home.tile_right.Title_LoginActivity"/>
