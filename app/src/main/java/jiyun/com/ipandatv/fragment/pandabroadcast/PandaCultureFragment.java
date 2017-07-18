@@ -25,6 +25,8 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
+import jiyun.com.ipandatv.activity.WebActivity;
+import jiyun.com.ipandatv.adapter.homepage.setViewPagerListener;
 import jiyun.com.ipandatv.base.BaseFragment;
 import jiyun.com.ipandatv.fragment.Home.tile_right.Title_RightActivity;
 import jiyun.com.ipandatv.fragment.pandabroadcast.adapter.PandaCultureBannerAdapter;
@@ -84,32 +86,16 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
         culturePullrecycler.addHeaderView(pandaCultureView);
         culturePullrecycler.setPullRefreshEnabled(true);
         culturePullrecycler.setLoadingMoreEnabled(false);
-//        culturePullrecycler.setPullToRefreshListener(new PullToRefreshListener() {
-//                @Override
-//                public void onRefresh() {
-//                    culturePullrecycler.postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            culturePullrecycler.setRefreshComplete();
-//                            mList.clear();
-//                            loadData();
-//
-//                        }
-//                    }, 2000);
-//                }
     }
 
     @Override
     protected void loadData() {
         pandaCulturePersenter.start();
-
-
-        pandaCultureViewPagerView.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        pandaCultureViewPagerView.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
             }
-
             @Override
             public void onPageSelected(int position) {
                 for (CircleImageView circleImageView : points) {
@@ -125,6 +111,7 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
 
             }
         });
+
     }
 
     @Override
@@ -166,7 +153,7 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
         }
     };
 
-    private void createImg(PandaCultureEntity entity) {
+    private void createImg(final PandaCultureEntity entity) {
         List<PandaCultureEntity.BigImgBean> tab = entity.getBigImg();
         int pointPosition = 0;
         for (int i = 0; i < tab.size(); i++) {
@@ -197,7 +184,17 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
         pandaCultureBannerAdapter.notifyDataSetChanged();
         pandaCultureViewPagerView.setCurrentItem(currentPosition);
         handler.sendEmptyMessageDelayed(1, 3000);
+        pandaCultureBannerAdapter.setViewPagerListner(new setViewPagerListener() {
+            @Override
+            public void setViewPager(int position) {
+                PandaCultureEntity.BigImgBean bigImgBean = entity.getBigImg().get(position);
+                String url = bigImgBean.getUrl();
+                Intent intent=new Intent(App.activity,WebActivity.class);
+                intent.putExtra("url",url);
+                startActivity(intent);
 
+            }
+        });
     }
 
     public int dp2Px(int dpValue) {

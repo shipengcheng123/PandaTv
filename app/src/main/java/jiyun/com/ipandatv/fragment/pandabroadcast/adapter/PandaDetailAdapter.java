@@ -4,13 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
-
 import com.androidkun.adapter.BaseAdapter;
 import com.androidkun.adapter.ViewHolder;
 import com.bumptech.glide.Glide;
-
 import java.util.List;
-
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.fragment.pandabroadcast.RollDtialActivity;
