@@ -1,12 +1,11 @@
 package jiyun.com.ipandatv.base;
 
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+
+import com.umeng.analytics.MobclickAgent;
 
 import butterknife.ButterKnife;
 import jiyun.com.ipandatv.App;
@@ -27,9 +26,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         initView();
         initData();
         loadData();
-        if (ContextCompat.checkSelfPermission(BaseActivity.this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(BaseActivity.this, new String[]{android.Manifest.permission.CAMERA, android.Manifest.permission.VIBRATE}, 1);
-        }
+//        if (ContextCompat.checkSelfPermission(BaseActivity.this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+//            ActivityCompat.requestPermissions(BaseActivity.this, new String[]{android.Manifest.permission.CAMERA, android.Manifest.permission.VIBRATE}, 1);
+//        }
     }
 
     @Override
@@ -38,6 +37,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         //记住当前的BaseActivity
         App.activity = this;
         //当页面可见时加载数据
+        MobclickAgent.onResume(this);
+    }
+
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 
     @Override
@@ -56,4 +61,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     //加载数据
     public abstract void loadData();
+
+
+
 }

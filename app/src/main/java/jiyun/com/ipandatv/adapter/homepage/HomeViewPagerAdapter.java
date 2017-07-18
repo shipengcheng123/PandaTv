@@ -29,6 +29,9 @@ public class HomeViewPagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
+        if (container != null) {
+            container.removeView(list.get(position % list.size()));
+        }
         if (list.size()>0)
             container.addView(list.get(position%list.size()));
         return list.get(position%list.size());
