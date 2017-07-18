@@ -69,14 +69,14 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
 
     @Override
     protected void init(View view) {
-        v = LayoutInflater.from(getContext()).inflate(R.layout.home_viewpager_main, null);
+        v = LayoutInflater.from(App.activity).inflate(R.layout.home_viewpager_main, null);
         linearLayout = (LinearLayout) v.findViewById(R.id.home_viewpager_linearLayout);
         mViewPager = (ViewPager) v.findViewById(R.id.home_viewpager);
         App.mRadiogroup.setVisibility(View.VISIBLE);
         titleRight.setOnClickListener(this);
         titleInter.setOnClickListener(this);
         mViewPager.setOnPageChangeListener(this);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(App.activity);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         PulltoRefresh.setLayoutManager(linearLayoutManager);
         PulltoRefresh.addHeaderView(v);
@@ -111,7 +111,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
         mList.add(data.getChinalive());
         mList.add(data.getWalllive());
         mList.add(data.getPandalive());
-        home_adapter = new Home_Adapter(getContext(), mList);
+        home_adapter = new Home_Adapter(App.activity, mList);
         PulltoRefresh.setAdapter(home_adapter);
         home_adapter.notifyDataSetChanged();
     }
@@ -145,11 +145,11 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.title_inter:
-                Intent intent = new Intent(getContext(), YuanChuangActivity.class);
+                Intent intent = new Intent(App.activity, YuanChuangActivity.class);
                 startActivity(intent);
                 break;
             case R.id.title_right:
-                Intent in = new Intent(getContext(), Title_RightActivity.class);
+                Intent in = new Intent(App.activity, Title_RightActivity.class);
                 startActivity(in);
                 break;
         }
@@ -194,20 +194,21 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
         CheckBox checkBox;
         v1 = null;
         for (HomePageBean.DataBean.BigImgBean bigImgBean : bigImgBeen) {
-            v1 = LayoutInflater.from(getContext()).inflate(R.layout.checkbox_item, null);
+            v1 = LayoutInflater.from(App.activity).inflate(R.layout.checkbox_item, null);
             checkBox = (CheckBox) v1.findViewById(R.id.viewpager_checkbox_btn);
             linearLayout.addView(v1);
             checkBoxes.add(checkBox);
-            v = LayoutInflater.from(getContext()).inflate(R.layout.image_header_fragment, null);
+            v = LayoutInflater.from(App.activity).inflate(R.layout.image_header_fragment, null);
             ImageView imageView = (ImageView) v.findViewById(R.id.Header_image);
             TextView title = (TextView) v.findViewById(R.id.Header_title);
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             String image = bigImgBean.getImage();
             String titlestr = bigImgBean.getTitle();
-            Glide.with(getContext()).load(image).into(imageView);
+            Glide.with(App.activity).load(image).into(imageView);
             title.setText(titlestr);
             Pagerview.add(v);
         }
+
         HomeViewPagerAdapter adapter = new HomeViewPagerAdapter(Pagerview);
         mViewPager.setAdapter(adapter);
         checkBoxes.get(currmentNum % checkBoxes.size()).setChecked(true);
@@ -220,14 +221,14 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
                 if (position == 0) {
                     String pid = bigImgBean.getPid();
                     String title = bigImgBean.getTitle();
-                    Intent in = new Intent(getContext(), BobaoActivity.class);
+                    Intent in = new Intent(App.activity, BobaoActivity.class);
                     in.putExtra("pid", pid);
                     in.putExtra("title", title);
                     startActivity(in);
                 } else {
                     String pid = bigImgBean.getPid();
                     String title = bigImgBean.getTitle();
-                    Intent in = new Intent(getContext(), VideoActivity.class);
+                    Intent in = new Intent(App.activity, VideoActivity.class);
                     in.putExtra("pid", pid);
                     in.putExtra("title", title);
                     startActivity(in);
