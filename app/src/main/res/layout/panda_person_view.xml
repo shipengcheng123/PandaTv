@@ -11,6 +11,7 @@
         android:background="#303F9F">
 
         <ImageView
+            android:id="@+id/Personal_Finish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"

@@ -17,6 +17,7 @@
         android:background="#FFDCDADA"
         android:layout_marginTop="10dp"/>
     <ListView
+        android:fastScrollEnabled="false"
         android:id="@+id/home_ListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -8,8 +8,6 @@ import java.util.Date;
  */
 
 public class DataUtils {
-
-
     /**
      * android中将毫秒数转化为日期格式
      *

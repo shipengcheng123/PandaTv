@@ -33,6 +33,8 @@ public class Title_RightActivity extends BaseActivity {
     ImageView pandaPersonSet;
     @BindView(R.id.panda_person_setting)
     RelativeLayout pandaPersonSetting;
+    @BindView(R.id.Personal_Finish)
+    ImageView PersonalFinish;
 
     @Override
     protected int getLayoutId() {
@@ -65,7 +67,7 @@ public class Title_RightActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.panda_person_username:
-                Intent in=new Intent(Title_RightActivity.this,Title_LoginActivity.class);
+                Intent in = new Intent(Title_RightActivity.this, Title_LoginActivity.class);
                 startActivity(in);
                 break;
             case R.id.panda_person_guankanlishi:
@@ -75,9 +77,14 @@ public class Title_RightActivity extends BaseActivity {
 
                 break;
             case R.id.panda_person_setting:
-                Intent ini=new Intent(Title_RightActivity.this,Title_SettingActivity.class);
+                Intent ini = new Intent(Title_RightActivity.this, Title_SettingActivity.class);
                 startActivity(ini);
                 break;
         }
+    }
+
+    @OnClick(R.id.Personal_Finish)
+    public void onViewClicked() {
+        finish();
     }
 }

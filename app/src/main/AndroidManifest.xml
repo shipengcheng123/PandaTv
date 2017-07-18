@@ -35,6 +35,7 @@
         <activity android:name=".activity.LiveChinaAdd"></activity>
         <activity android:name=".fragment.Home.tile_right.Title_LoginActivity"/>
         <activity android:name=".fragment.Home.tile_right.Title_SettingActivity"/>
+        <activity android:name=".fragment.Home.tile_right.BobaoActivity"/>
         <activity android:name=".activity.YuanChuangActivity"></activity>
     </application>
 
