@@ -8,7 +8,6 @@ import jiyun.com.ipandatv.model.biz.BaseModel;
  */
 
 public interface BobaoModel extends BaseModel {
-
     void getPandaObserveHead(INetWorkCallback callback);
     void getPandaObserveItem(INetWorkCallback callback);
 

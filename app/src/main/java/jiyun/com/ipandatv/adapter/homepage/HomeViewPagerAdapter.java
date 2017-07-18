@@ -13,9 +13,14 @@ import java.util.List;
 
 public class HomeViewPagerAdapter extends PagerAdapter {
     private List<View> list;
+    setViewPagerListener listner;
 
     public HomeViewPagerAdapter(List<View> list) {
         this.list = list;
+    }
+
+    public void setViewPagerListner(setViewPagerListener listner) {
+        this.listner = listner;
     }
 
     @Override
@@ -30,18 +35,28 @@ public class HomeViewPagerAdapter extends PagerAdapter {
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
+    public Object instantiateItem(ViewGroup container, final int position) {
+        View view = list.get(position % list.size());
         if (container != null) {
             container.removeView(list.get(position % list.size()));
         }
         if (list.size() > 0)
             container.addView(list.get(position % list.size()));
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (list.size() > 0)
+                    listner.setViewPager(position % list.size());
+            }
+        });
         return list.get(position % list.size());
     }
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
         return view == object;
+
     }
+
 
 }

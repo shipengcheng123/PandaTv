@@ -25,10 +25,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
+import jiyun.com.ipandatv.activity.VideoActivity;
 import jiyun.com.ipandatv.activity.YuanChuangActivity;
 import jiyun.com.ipandatv.adapter.homepage.HomeViewPagerAdapter;
 import jiyun.com.ipandatv.adapter.homepage.Home_Adapter;
+import jiyun.com.ipandatv.adapter.homepage.setViewPagerListener;
 import jiyun.com.ipandatv.base.BaseFragment;
+import jiyun.com.ipandatv.fragment.Home.tile_right.BobaoActivity;
 import jiyun.com.ipandatv.fragment.Home.tile_right.Title_RightActivity;
 import jiyun.com.ipandatv.model.entity.HomePageBean;
 
@@ -39,7 +42,6 @@ import jiyun.com.ipandatv.model.entity.HomePageBean;
  */
 
 public class HomeFragment extends BaseFragment implements HomeContract.View, View.OnClickListener, ViewPager.OnPageChangeListener {
-
     @BindView(R.id.title_center)
     TextView titleCenter;
     @BindView(R.id.title_inter)
@@ -67,7 +69,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
 
     @Override
     protected void init(View view) {
-
         v = LayoutInflater.from(getContext()).inflate(R.layout.home_viewpager_main, null);
         linearLayout = (LinearLayout) v.findViewById(R.id.home_viewpager_linearLayout);
         mViewPager = (ViewPager) v.findViewById(R.id.home_viewpager);
@@ -113,7 +114,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
         home_adapter = new Home_Adapter(getContext(), mList);
         PulltoRefresh.setAdapter(home_adapter);
         home_adapter.notifyDataSetChanged();
-
     }
 
     @Override
@@ -145,9 +145,8 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.title_inter:
-                Intent intent = new Intent(getContext(),YuanChuangActivity.class);
+                Intent intent = new Intent(getContext(), YuanChuangActivity.class);
                 startActivity(intent);
-
                 break;
             case R.id.title_right:
                 Intent in = new Intent(getContext(), Title_RightActivity.class);
@@ -190,7 +189,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
     }
 
     //轮播图
-    private void showLunBo(List<HomePageBean.DataBean.BigImgBean> bigImgBeen) {
+    private void showLunBo(final List<HomePageBean.DataBean.BigImgBean> bigImgBeen) {
         v = null;
         CheckBox checkBox;
         v1 = null;
@@ -214,6 +213,27 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
         checkBoxes.get(currmentNum % checkBoxes.size()).setChecked(true);
         mViewPager.setCurrentItem(currmentNum);
         handler.sendEmptyMessageDelayed(222, 2000);
+        adapter.setViewPagerListner(new setViewPagerListener() {
+            @Override
+            public void setViewPager(int position) {
+                HomePageBean.DataBean.BigImgBean bigImgBean = bigImgBeen.get(position);
+                if (position == 0) {
+                    String pid = bigImgBean.getPid();
+                    String title = bigImgBean.getTitle();
+                    Intent in = new Intent(getContext(), BobaoActivity.class);
+                    in.putExtra("pid", pid);
+                    in.putExtra("title", title);
+                    startActivity(in);
+                } else {
+                    String pid = bigImgBean.getPid();
+                    String title = bigImgBean.getTitle();
+                    Intent in = new Intent(getContext(), VideoActivity.class);
+                    in.putExtra("pid", pid);
+                    in.putExtra("title", title);
+                    startActivity(in);
+                }
+            }
+        });
     }
 
     Handler handler = new Handler() {
@@ -236,4 +256,5 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
             }
         }
     };
+
 }

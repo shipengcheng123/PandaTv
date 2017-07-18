@@ -7,7 +7,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.base.BaseActivity;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.VedioJCYKBean;
@@ -50,11 +49,11 @@ public class VideoActivity extends BaseActivity implements VideoContract.View{
     }
 
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        JCVideoPlayer.releaseAllVideos();
-    }
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        JCVideoPlayer.releaseAllVideos();
+//    }
 
     @Override
     public void initData() {

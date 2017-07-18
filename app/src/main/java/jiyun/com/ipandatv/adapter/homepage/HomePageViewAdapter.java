@@ -43,4 +43,5 @@ public class HomePageViewAdapter extends PagerAdapter {
             container.addView(list.get(position % list.size()));
         return list.get(position % list.size());
     }
+
 }
