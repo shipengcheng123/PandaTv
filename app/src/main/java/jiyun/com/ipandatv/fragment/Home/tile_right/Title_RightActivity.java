@@ -31,6 +31,7 @@ public class Title_RightActivity extends BaseActivity {
     RelativeLayout pandaPersonWodeshoucang;
     @BindView(R.id.panda_person_set)
     ImageView pandaPersonSet;
+
     @BindView(R.id.panda_person_setting)
     RelativeLayout pandaPersonSetting;
     @BindView(R.id.Personal_Finish)
