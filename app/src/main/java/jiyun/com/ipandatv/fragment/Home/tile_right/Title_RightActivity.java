@@ -72,6 +72,7 @@ public class Title_RightActivity extends BaseActivity {
                 break;
             case R.id.panda_person_guankanlishi:
 
+
                 break;
             case R.id.panda_person_wodeshoucang:
 
