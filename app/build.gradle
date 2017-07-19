@@ -7,7 +7,7 @@ android {
         applicationId "jiyun.com.ipandatv"
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 1
+        versionCode
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
