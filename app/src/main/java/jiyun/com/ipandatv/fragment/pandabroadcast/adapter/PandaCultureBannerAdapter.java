@@ -7,17 +7,21 @@ import android.widget.ImageView;
 
 import java.util.List;
 
+import jiyun.com.ipandatv.adapter.homepage.setViewPagerListener;
+
 /**
  * Created by INS7566 on 2017/7/14.
  */
 
 public class PandaCultureBannerAdapter extends PagerAdapter {
     List<ImageView> list;
-
+    setViewPagerListener listner;
     public PandaCultureBannerAdapter(List<ImageView> list) {
         this.list = list;
     }
-
+    public void setViewPagerListner(setViewPagerListener listner) {
+        this.listner = listner;
+    }
     @Override
     public int getCount() {
         return Integer.MAX_VALUE;
@@ -29,12 +33,19 @@ public class PandaCultureBannerAdapter extends PagerAdapter {
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
+    public Object instantiateItem(ViewGroup container, final int position) {
         ImageView imageView = list.get(position % list.size());
         if (imageView.getParent() != null) {
             ((ViewGroup) imageView.getParent()).removeView(imageView);
         }
         container.addView(imageView);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (list.size() > 0)
+                    listner.setViewPager(position % list.size());
+            }
+        });
         return imageView;
     }
 

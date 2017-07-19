@@ -15,6 +15,7 @@ import java.util.List;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.activity.VideoActivity;
+import jiyun.com.ipandatv.fragment.pandabroadcast.RollDtialActivity;
 import jiyun.com.ipandatv.fragment.pandabroadcast.panda_culture.PandaCultureEntity;
 import jiyun.com.ipandatv.utils.MyLog;
 
@@ -52,24 +53,25 @@ public class PandaCultureItemAdapter extends BaseAdapter<PandaCultureEntity.List
         holder.setOnclickListener(R.id.culture_relat, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if(listBean.getType().toString().equals("2")){
-//                    Intent it=new Intent(context, RollDtialActivity.class);
-//                    context.startActivity(it);
-//
-//                }else{
-//                    Intent it=new Intent(context, RollvideoStartAcyivity.class);
-//                    context.startActivity(it);
-//                }
-//            }
-//        });
+                if (listBean.getType().toString().equals("2")) {
+                    Intent intent2 = new Intent(App.activity, RollDtialActivity.class);
+                    intent2.putExtra("url", listBean.getUrl());
+                    intent2.putExtra("pid", "84f27011346547c595d78b47a48eb6de");
+                    intent2.putExtra("title", listBean.getTitle());
+                    MyLog.e("Url", listBean.getUrl() + listBean.getTitle());
+                        App.activity.startActivity(intent2);
 
-                Intent intent = new Intent(context,VideoActivity.class);
-//                intent.putExtra("")
-                intent.putExtra("url",listBean.getUrl());
-//                intent.putExtra("pid",listBean.get)
-                intent.putExtra("title",listBean.getTitle());
-                MyLog.e("Url",listBean.getUrl()+listBean.getTitle());
-                App.activity.startActivity(intent);
+
+                } else {
+                    Intent intent = new Intent(App.activity, VideoActivity.class);
+
+                    intent.putExtra("url", listBean.getUrl());
+                    intent.putExtra("pid", listBean.getId());
+                    intent.putExtra("title", listBean.getTitle());
+                    MyLog.e("Url", listBean.getUrl() + listBean.getTitle());
+                    App.activity.startActivity(intent);
+
+                }
             }
         });
     }

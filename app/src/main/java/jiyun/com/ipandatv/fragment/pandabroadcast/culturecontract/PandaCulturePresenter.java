@@ -11,14 +11,11 @@ import jiyun.com.ipandatv.internet.urls.Urls;
  */
 
 public class PandaCulturePresenter implements CultureContract.Presenter {
-//    private LiveContract.View liveFragment;
-//    private IPandaLivemodel pandaLivemodel;
+
 private CultureContract.View pandaculture;
     private IPandaCulture pandaCulture;
 
     public PandaCulturePresenter(CultureContract.View view) {
-//        this.view = view;
-//        retrofitUtils = RetrofitUtils.getInstance();
         this.pandaculture=view;
         this.pandaculture.setBasePresenter(this);
         pandaCulture = new PandaCultureImp();
@@ -39,5 +36,10 @@ private CultureContract.View pandaculture;
 
             }
         });
+    }
+
+    @Override
+    public void setVideoURl(String pid) {
+
     }
 }
