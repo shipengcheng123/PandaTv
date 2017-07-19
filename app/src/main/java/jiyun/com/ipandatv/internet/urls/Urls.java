@@ -22,8 +22,6 @@ public class Urls {
 
     //精彩一刻视频
     public static final String VEDIOJCYK="http://vdn.apps.cntv.cn/api/getVideoInfoForCBox.do";
-    //熊猫文化第一个item里面的高清视频
-    public static final String VEDIOCULTURE="http://api.cntv.cn/video/videolistById?p=1&serviceId=panda&n=150&vsid=VSET100311356635 ";
 
     //熊猫直播
     public static final String PANDALIVE = PANDAURL + "PAGE14501769230331752/index.json";

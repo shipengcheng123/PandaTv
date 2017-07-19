@@ -29,8 +29,6 @@ import jiyun.com.ipandatv.base.BaseFragment;
 import jiyun.com.ipandatv.fragment.Home.tile_right.Title_RightActivity;
 import jiyun.com.ipandatv.fragment.pandabroadcast.adapter.PandaCultureBannerAdapter;
 import jiyun.com.ipandatv.fragment.pandabroadcast.adapter.PandaCultureItemAdapter;
-import jiyun.com.ipandatv.fragment.pandabroadcast.bean.PandaCultureVedioBean;
-import jiyun.com.ipandatv.fragment.pandabroadcast.bean.PandaTebieBean;
 import jiyun.com.ipandatv.fragment.pandabroadcast.culturecontract.CultureContract;
 import jiyun.com.ipandatv.fragment.pandabroadcast.culturecontract.PandaCulturePresenter;
 import jiyun.com.ipandatv.fragment.pandabroadcast.panda_culture.PandaCultureEntity;
@@ -141,15 +139,9 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
     }
 
     @Override
-    public void showVideo(PandaCultureVedioBean pandaCultureVedioBean) {
+    public void setBasePresenter(Object o) {
 
     }
-
-    @Override
-    public void ShowTebie(PandaTebieBean tebieBean) {
-
-    }
-
 
     Handler handler = new Handler() {
 
@@ -223,11 +215,6 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
 
         Intent intent=new Intent(App.activity.getApplication(), Title_RightActivity.class);
         startActivity(intent);
-
-    }
-
-    @Override
-    public void setBasePresenter(CultureContract.Presenter presenter) {
 
     }
 }

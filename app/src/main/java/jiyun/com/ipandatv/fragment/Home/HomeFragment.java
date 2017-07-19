@@ -219,10 +219,10 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
             public void setViewPager(int position) {
                 HomePageBean.DataBean.BigImgBean bigImgBean = bigImgBeen.get(position);
                 if (position == 0) {
-                    String pid = bigImgBean.getPid();
+                    String url = bigImgBean.getUrl();
                     String title = bigImgBean.getTitle();
                     Intent in = new Intent(App.activity, BobaoActivity.class);
-                    in.putExtra("pid", pid);
+                    in.putExtra("url", url);
                     in.putExtra("title", title);
                     startActivity(in);
                 } else {

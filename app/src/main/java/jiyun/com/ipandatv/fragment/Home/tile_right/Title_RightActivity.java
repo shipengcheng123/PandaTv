@@ -72,6 +72,7 @@ public class Title_RightActivity extends BaseActivity {
                 break;
             case R.id.panda_person_guankanlishi:
 
+
                 break;
             case R.id.panda_person_wodeshoucang:
 
@@ -86,5 +87,10 @@ public class Title_RightActivity extends BaseActivity {
     @OnClick(R.id.Personal_Finish)
     public void onViewClicked() {
         finish();
+    }
+
+    @Override
+    public void startActivityForResult(Intent intent, int requestCode, Bundle options) {
+        super.startActivityForResult(intent, requestCode, options);
     }
 }
