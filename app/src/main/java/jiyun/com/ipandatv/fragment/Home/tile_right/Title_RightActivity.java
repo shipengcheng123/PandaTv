@@ -87,4 +87,9 @@ public class Title_RightActivity extends BaseActivity {
     public void onViewClicked() {
         finish();
     }
+
+    @Override
+    public void startActivityForResult(Intent intent, int requestCode, Bundle options) {
+        super.startActivityForResult(intent, requestCode, options);
+    }
 }
