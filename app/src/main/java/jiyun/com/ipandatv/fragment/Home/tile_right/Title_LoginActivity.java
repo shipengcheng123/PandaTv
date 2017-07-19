@@ -103,6 +103,7 @@ public class Title_LoginActivity extends BaseActivity {
             case R.id.Login_WeiBo:
                 UMShareAPI.get(this).doOauthVerify(this, SHARE_MEDIA.SINA, authListener);
                 break;
+
         }
     }
 
