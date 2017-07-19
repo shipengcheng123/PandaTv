@@ -3,7 +3,11 @@ package jiyun.com.ipandatv.activity;
 import android.os.Bundle;
 import android.os.Process;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AlertDialog;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -42,7 +46,8 @@ public class MainActivity extends BaseActivity {
     LinearLayout activityMain;
     private FragmentManager fragmentmanager;
     private HomeFragment homeFragment;
-
+    private View view;
+    private AlertDialog isExit;
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
@@ -97,6 +102,41 @@ public class MainActivity extends BaseActivity {
                 break;
         }
     }
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            view = LayoutInflater.from(MainActivity.this).inflate(R.layout.dialog,null);
+            Button btnquxiao = (Button) view.findViewById(R.id.dialog_quxiao);
+            Button btntuichu = (Button) view.findViewById(R.id.dialog_tuichu);
+            btnquxiao.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    isExit.dismiss();
+                }
+            });
+            btntuichu.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Process.killProcess(Process.myPid());
+                    System.exit(0);
+                }
+            });
+
+
+            // 创建退出对话框
+            isExit = new AlertDialog.Builder(this).create();
+            // 设置对话框标题
+            isExit.setView(view);
+            isExit.show();
+
+        }
+
+        return false;
+
+    }
+
 
 
     @Override

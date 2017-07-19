@@ -1,6 +1,7 @@
 package jiyun.com.ipandatv.TotalList.zhibochena;
 
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -181,7 +182,8 @@ public class ZhiBoChenaFragment extends BaseFragment implements ZhiBoChenaContra
         View v = LayoutInflater.from(App.activity).inflate(R.layout.activity_popup_columns, null);
         popupView(v);
         popupWindow = new PopupWindow(v, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-
+        popupWindow.setFocusable(true);
+        popupWindow.setBackgroundDrawable(new BitmapDrawable()); // 响应返回键必须的语句
         popupWindow.showAsDropDown(view, 0, 0);
     }
 
@@ -239,8 +241,12 @@ public class ZhiBoChenaFragment extends BaseFragment implements ZhiBoChenaContra
             public void onClick(View v) {
 
                 popupWindow.dismiss();
+
             }
         });
+
+
+
 
     }
 
@@ -302,4 +308,5 @@ public class ZhiBoChenaFragment extends BaseFragment implements ZhiBoChenaContra
     public void setBasePresenter(ZhiBoChenaContract.Presenter presenter) {
         this.presenter = (ZhiBoChenaPresenter) presenter;
     }
+
 }
