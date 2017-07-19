@@ -14,10 +14,6 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
-import com.umeng.analytics.MobclickAgent;
-import com.umeng.socialize.Config;
-import com.umeng.socialize.PlatformConfig;
-import com.umeng.socialize.UMShareAPI;
 
 import jiyun.com.ipandatv.base.BaseActivity;
 import jiyun.com.ipandatv.base.BaseFragment;
@@ -32,20 +28,11 @@ public class App extends Application {
     public static BaseFragment lastFragment;
     public static RadioGroup mRadiogroup;
     public static Context context;
-
-    {
-        PlatformConfig.setWeixin("wx967daebe835fbeac", "5bb696d9ccd75a38c8a0bfe0675559b3");
-        PlatformConfig.setQQZone("100424468", "c7394704798a158208a74ab60104f0ba");
-        PlatformConfig.setSinaWeibo("4262189567", "932deb5c8d275bf7f12632d90cc58f22", "http://sns.whalecloud.com");
-    }
-
     @Override
     public void onCreate() {
         super.onCreate();
         initUniversalImageLoader();
-        MobclickAgent.openActivityDurationTrack(false);
-        Config.DEBUG = true;
-        UMShareAPI.get(this);
+
     }
 
     private void initUniversalImageLoader() {

@@ -7,9 +7,11 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.base.BaseActivity;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.VedioJCYKBean;
+import jiyun.com.ipandatv.utils.MyLog;
 import jiyun.com.ipandatv.view.JCVideoPlayerStandardShowShareButtonAfterFullscreen;
 
 /**
@@ -35,10 +37,10 @@ public class VideoActivity extends BaseActivity implements VideoContract.View{
         Intent intent = getIntent();
 
         pid = intent.getStringExtra("pid");
-//        String url = intent.getStringExtra("url");
-//        String url="hd;
+
 
         title = intent.getStringExtra("title");
+        MyLog.e("aaa",title);
 //        MyLog.e("url",url+title);
 
         //标准基础上改进的视频播放(添加了分享按钮)
@@ -49,11 +51,11 @@ public class VideoActivity extends BaseActivity implements VideoContract.View{
     }
 
 
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//        JCVideoPlayer.releaseAllVideos();
-//    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        JCVideoPlayer.releaseAllVideos();
+    }
 
     @Override
     public void initData() {
