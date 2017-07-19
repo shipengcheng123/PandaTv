@@ -93,6 +93,7 @@ public class LiveFragment extends BaseFragment implements LiveContract.View{
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+
     }
 
     @OnClick(R.id.live_isshow)
