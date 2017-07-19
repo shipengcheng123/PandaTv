@@ -55,6 +55,7 @@ public class Title_LoginActivity extends BaseActivity {
     private ProgressDialog dialog;
     UMShareAPI mShareAPI;
 
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_login;
