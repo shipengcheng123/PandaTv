@@ -65,7 +65,7 @@ public class LiveFragment extends BaseFragment implements LiveContract.View{
     @Override
     protected void loadData() {
 
-//        customVideoplayerStandardWithShareButton.setUrlAndObject(url, null,title);
+        customVideoplayerStandardWithShareButton.setUrlAndObject("http://2449.vod.myqcloud.com/2449_22ca37a6ea9011e5acaaf51d105342e3.f20.mp4", null,"你长得很爱国");
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
             manager = App.activity.getSupportFragmentManager();
