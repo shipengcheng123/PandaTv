@@ -115,6 +115,7 @@ public class DragGridView extends GridView {
                 return false;
             }
         });
+
     }
 
     @Override
