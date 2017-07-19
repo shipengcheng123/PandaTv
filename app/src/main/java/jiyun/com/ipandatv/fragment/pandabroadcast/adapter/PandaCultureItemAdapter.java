@@ -71,6 +71,7 @@ public class PandaCultureItemAdapter extends BaseAdapter<PandaCultureEntity.List
                     MyLog.e("Url", listBean.getUrl() + listBean.getTitle());
                     App.activity.startActivity(intent);
 
+
                 }
             }
         });
