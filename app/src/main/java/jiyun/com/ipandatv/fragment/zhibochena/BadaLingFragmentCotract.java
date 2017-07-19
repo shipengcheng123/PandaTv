@@ -13,6 +13,7 @@ public interface BadaLingFragmentCotract {
         void getManager(ChangchengBean changchengBean);
 
 
+
     }
     interface Presenter extends BasePresenter{
         void setUrl(String url);
