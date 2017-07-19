@@ -3,6 +3,7 @@ package jiyun.com.ipandatv.model.biz.Zhibochena;
 import jiyun.com.ipandatv.internet.callback.INetWorkCallback;
 import jiyun.com.ipandatv.internet.urls.Urls;
 import jiyun.com.ipandatv.model.entity.zhibochena.ChangchengBean;
+import jiyun.com.ipandatv.model.entity.zhibochena.PopupBean;
 
 import static jiyun.com.ipandatv.model.biz.BaseModel.iHttp;
 
@@ -36,6 +37,16 @@ public class zhiboChenaModelImpl implements ZhiboChenaModel{
     @Override
     public void getzhangjiajie(INetWorkCallback<ChangchengBean> callback) {
         iHttp.get(Urls.PANDA_LIVE_CHINA_Taishan, null, callback);
+    }
+
+    @Override
+    public void getLiveChinaUrl(String url, INetWorkCallback<ChangchengBean> callback) {
+        iHttp.get(url,null,callback);
+    }
+
+    @Override
+    public void getLiveChinaTab(INetWorkCallback<PopupBean> callback) {
+        iHttp.get(Urls.PANDA_LIVE_CHINA_TAB,null,callback);
     }
 
     @Override

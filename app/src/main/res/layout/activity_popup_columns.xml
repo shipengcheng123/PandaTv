@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="#e3303f9f"
     android:orientation="vertical">
 
     <LinearLayout
@@ -13,8 +13,8 @@
 
         <ImageView
             android:id="@+id/Fanhui"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_gravity="right"
             android:paddingBottom="5dp"
             android:src="@drawable/com_facebook_tooltip_black_xout" />

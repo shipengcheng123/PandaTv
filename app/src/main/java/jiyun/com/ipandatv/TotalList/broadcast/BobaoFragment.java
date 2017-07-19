@@ -32,6 +32,8 @@ import jiyun.com.ipandatv.model.entity.BobaoHeaderBean;
 import jiyun.com.ipandatv.model.entity.PandaBroadBean;
 import jiyun.com.ipandatv.utils.MyLog;
 
+import static com.umeng.socialize.utils.ContextUtil.getContext;
+
 /**
  * Created by Lenovo on 2017/7/12.
  */
@@ -66,7 +68,7 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View{
     protected void init(View view) {
 
 
-        view1 = LayoutInflater.from(getContext()).inflate(R.layout.image_header_fragment, null);
+        view1 = LayoutInflater.from(getActivity()).inflate(R.layout.image_header_fragment, null);
         mImage = (ImageView) view1.findViewById(R.id.Header_image);
         title = (TextView) view1.findViewById(R.id.Header_title);
         mImage.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +76,7 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View{
             public void onClick(View v) {
 
 
-                Intent intent = new Intent(getContext(),WebActivity.class);
+                Intent intent = new Intent(getActivity(),WebActivity.class);
                 intent.putExtra("url",url);
                 MyLog.e("URL",url);
                 startActivity(intent);
@@ -124,7 +126,7 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View{
 
 
 
-        bobaoAdapter = new BobaoAdapter(getContext(),mList);
+        bobaoAdapter = new BobaoAdapter(getActivity(),mList);
         mRecyclerView.setAdapter(bobaoAdapter);
 
     }

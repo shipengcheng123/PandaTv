@@ -16,6 +16,8 @@ import butterknife.OnClick;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.adapter.DragAdapter;
 import jiyun.com.ipandatv.base.BaseActivity;
+import jiyun.com.ipandatv.base.BaseFragment;
+import jiyun.com.ipandatv.model.entity.zhibochena.PopupBean;
 import jiyun.com.ipandatv.view.DragGridView;
 
 /**
@@ -30,12 +32,16 @@ public class LiveChinaAdd extends BaseActivity {
 
     private ArrayList<String> channels = new ArrayList<>();
     private ArrayList<String> channels_other = new ArrayList<>();
+    private ArrayList<BaseFragment> list = new ArrayList<>();
+    private ArrayList<PopupBean.AlllistBean> list1 = new ArrayList<>();
+    private ArrayList<String> strings1 = new ArrayList<>();
+    private ArrayList<String> urls = new ArrayList<>();
     private DragGridView gridView;
     private DragGridView gridView_other;
     private DragAdapter dragAdapter;
     private DragAdapter other_adapter;
     private CheckBox button;
-
+//    private PopupContract.Presenter presenter;
     @Override
     protected int getLayoutId() {
         return R.layout.activity_popup_columns;
@@ -142,4 +148,46 @@ public class LiveChinaAdd extends BaseActivity {
         finish();
 
     }
+
+//    @Override
+//    public void showProgressDialog() {
+//
+//    }
+
+//    @Override
+//    public void dismissDialog() {
+//
+//    }
+
+//    @Override
+//    public void setChangcheng(PopupBean popupBean) {
+//        List<PopupBean.AlllistBean> alllist = popupBean.getAlllist();
+//        list1.addAll(alllist);
+//        other_adapter.notifyDataSetChanged();
+////        setGridViewHeightBasedOnChildren(gridview);
+//
+//        List<PopupBean.TablistBean> tablist = popupBean.getTablist();
+//        for (int i = 0; i < tablist.size(); i++) {
+//            String title = tablist.get(i).getTitle();
+//            urls.add(tablist.get(i).getUrl());
+//            strings1.add(title);
+//            dragAdapter.notifyDataSetChanged();
+//        }
+//        for (int i = 0; i < list1.size(); i++) {
+//            for (int i1 = 0; i1 < strings1.size(); i1++) {
+//                if (list1.get(i).getTitle().equals(strings1.get(i1))) {
+//                    list1.remove(list1.get(i));
+//                    other_adapter.notifyDataSetChanged();
+//                }
+//            }
+//        }
+//
+//
+////        settablayout();
+//    }
+
+//    @Override
+//    public void setBasePresenter(PopupContract.Presenter presenter) {
+//        this.presenter = presenter;
+//    }
 }
