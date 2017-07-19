@@ -114,6 +114,7 @@ public class MainActivity extends BaseActivity {
                 @Override
                 public void onClick(View v) {
                     isExit.dismiss();
+
                 }
             });
             btntuichu.setOnClickListener(new View.OnClickListener() {
