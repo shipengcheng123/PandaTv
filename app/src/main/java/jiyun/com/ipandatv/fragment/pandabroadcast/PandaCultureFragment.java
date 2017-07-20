@@ -1,5 +1,6 @@
 package jiyun.com.ipandatv.fragment.pandabroadcast;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,7 +15,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.androidkun.PullToRefreshRecyclerView;
-import com.androidkun.callback.PullToRefreshListener;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -60,7 +60,9 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
     private List<CircleImageView> points;
     private int currentPosition = 10000;
     private ViewGroup pointsLinearLayout;
-    private int Index=1;
+    private Handler handleProgress = new Handler();
+    private ProgressDialog progressDialog = null;
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_culture;
@@ -71,11 +73,11 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
         imgs = new ArrayList<>();
         points = new ArrayList<>();
         listBeanList = new ArrayList<>();
-        pandaCulturePersenter = new PandaCulturePresenter(this);
+
         dataBeanList = new ArrayList<>();
 
         itemAdapter = new PandaCultureItemAdapter(getActivity(), listBeanList);
-        culturePullrecycler.setAdapter(itemAdapter);
+
 
 
         View pandaCultureView = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_panda_culture_banner, null);
@@ -87,35 +89,11 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
         culturePullrecycler.addHeaderView(pandaCultureView);
         culturePullrecycler.setPullRefreshEnabled(false);
         culturePullrecycler.setLoadingMoreEnabled(false);
-        culturePullrecycler.setPullToRefreshListener(new PullToRefreshListener() {
-            @Override
-            public void onRefresh() {
-                culturePullrecycler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        culturePullrecycler.setRefreshComplete();
-                        dataBeanList.clear();
-                        points.clear();
+    }
 
-                        loadData();
+    @Override
+    protected void loadData() {
 
-                    }
-                }, 2000);
-            }
-
-            @Override
-            public void onLoadMore() {
-                culturePullrecycler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        culturePullrecycler.setLoadMoreComplete();
-                        Index++;
-                        loadData();
-
-                    }
-                }, 2000);
-            }
-        });
         pandaCultureViewPagerView.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -136,12 +114,15 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
 
             }
         });
-    }
-
-    @Override
-    protected void loadData() {
+        progressDialog = ProgressDialog.show(App.activity,"请稍等...","获取数据中...",true);
+        pandaCulturePersenter = new PandaCulturePresenter(this);
         pandaCulturePersenter.start();
-
+        handleProgress.post(new Runnable() {
+            @Override
+            public void run() {
+                culturePullrecycler.setAdapter(itemAdapter);
+            }
+        });
 
     }
 
@@ -156,6 +137,7 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
         listBeanList.addAll(entity.getList());
         createImg(entity);
         itemAdapter.notifyDataSetChanged();
+        progressDialog.dismiss();
     }
 
     @Override

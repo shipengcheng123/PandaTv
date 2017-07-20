@@ -1,7 +1,9 @@
 package jiyun.com.ipandatv.TotalList.broadcast;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
@@ -32,8 +34,6 @@ import jiyun.com.ipandatv.model.entity.BobaoHeaderBean;
 import jiyun.com.ipandatv.model.entity.PandaBroadBean;
 import jiyun.com.ipandatv.utils.MyLog;
 
-import static com.umeng.socialize.utils.ContextUtil.getContext;
-
 /**
  * Created by Lenovo on 2017/7/12.
  */
@@ -59,6 +59,8 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View{
     private int Index = 1;
     private BobaoPresenter bobaoPresenter;
     private String url;
+    private Handler handleProgress = new Handler();
+    private ProgressDialog progressDialog = null;
     @Override
     protected int getLayoutId() {
         return R.layout.bobao_fragment;
@@ -68,7 +70,7 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View{
     protected void init(View view) {
 
 
-        view1 = LayoutInflater.from(getActivity()).inflate(R.layout.image_header_fragment, null);
+        view1 = LayoutInflater.from(getContext()).inflate(R.layout.image_header_fragment, null);
         mImage = (ImageView) view1.findViewById(R.id.Header_image);
         title = (TextView) view1.findViewById(R.id.Header_title);
         mImage.setOnClickListener(new View.OnClickListener() {
@@ -76,7 +78,7 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View{
             public void onClick(View v) {
 
 
-                Intent intent = new Intent(getActivity(),WebActivity.class);
+                Intent intent = new Intent(getContext(),WebActivity.class);
                 intent.putExtra("url",url);
                 MyLog.e("URL",url);
                 startActivity(intent);
@@ -126,15 +128,23 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View{
 
 
 
-        bobaoAdapter = new BobaoAdapter(getActivity(),mList);
-        mRecyclerView.setAdapter(bobaoAdapter);
+        bobaoAdapter = new BobaoAdapter(getContext(),mList);
+
 
     }
 
     @Override
     protected void loadData() {
+        progressDialog = ProgressDialog.show(App.activity,"请稍等...","获取数据中...",true);
         bobaoPresenter = new BobaoPresenter(this);
         presenter.start();
+        handleProgress.post(new Runnable() {
+            @Override
+            public void run() {
+                mRecyclerView.setAdapter(bobaoAdapter);
+            }
+        });
+
     }
 
     @Override
@@ -178,6 +188,7 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View{
 
         mList.addAll(pandaLiveBean.getList());
         bobaoAdapter.notifyDataSetChanged();
+        progressDialog.dismiss();
     }
 
     @Override

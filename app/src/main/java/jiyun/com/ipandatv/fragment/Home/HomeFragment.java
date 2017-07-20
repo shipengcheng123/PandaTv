@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,8 +87,11 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
     @Override
     protected void loadData() {
         App.mRadiogroup.setVisibility(View.VISIBLE);
+
+//        progressDialog = ProgressDialog.show(App.activity,"请稍等...","获取数据中...",true);
         new HomePresenter(this);
         presenter.start();
+
     }
 
     @Override
@@ -123,7 +125,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
 
     @Override
     public void setBasePresenter(HomeContract.Presenter presenter) {
-        Log.i("setBasePresenter", "执行了setBasePresenter方法");
+//        Log.i("setBasePresenter", "执行了setBasePresenter方法");
         this.presenter = presenter;
     }
 
@@ -159,6 +161,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
     protected void onShow() {
         super.onShow();
         App.mRadiogroup.setVisibility(View.VISIBLE);
+
     }
 
     @Override

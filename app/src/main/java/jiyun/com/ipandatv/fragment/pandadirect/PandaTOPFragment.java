@@ -1,6 +1,8 @@
 package jiyun.com.ipandatv.fragment.pandadirect;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
@@ -45,6 +47,8 @@ public class PandaTOPFragment extends BaseFragment implements LiveTwoContract.Vi
     private LiveTwoContract.Presenter presenter;
     private int Index=1;
     private PandaTopPresenter presente;
+    private Handler handleProgress = new Handler();
+    private ProgressDialog progressDialog = null;
 
     @Override
     protected int getLayoutId() {
@@ -94,14 +98,22 @@ public class PandaTOPFragment extends BaseFragment implements LiveTwoContract.Vi
         });
 
         adapter = new PandaTOPAdapter(getContext(),mList);
-        jcykPullrecycler.setAdapter(adapter);
+
     }
 
     @Override
     protected void loadData() {
+
+        progressDialog = ProgressDialog.show(App.activity,"请稍等...","获取数据中...",true);
         presente=new PandaTopPresenter(this);
 
         presenter.start();
+        handleProgress.post(new Runnable() {
+            @Override
+            public void run() {
+                jcykPullrecycler.setAdapter(adapter);
+            }
+        });
     }
 
     @Override
@@ -133,6 +145,7 @@ public class PandaTOPFragment extends BaseFragment implements LiveTwoContract.Vi
     public void showpandaTOP(PandaTOPBean pandaTOPBean) {
         mList.addAll(pandaTOPBean.getVideo());
         adapter.notifyDataSetChanged();
+        progressDialog.dismiss();
     }
 
     @Override

@@ -1,6 +1,8 @@
 package jiyun.com.ipandatv.fragment.pandadirect;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
@@ -44,6 +46,8 @@ public class PandaNaxieshiFragment extends BaseFragment implements LiveTwoContra
     private LiveTwoContract.Presenter presenter;
     private int Index=1;
     private PandaNaxieshiPresenter presente;
+    private Handler handleProgress = new Handler();
+    private ProgressDialog progressDialog = null;
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_jcyk;
@@ -92,13 +96,21 @@ public class PandaNaxieshiFragment extends BaseFragment implements LiveTwoContra
         });
 
         adapter = new PandaNaxieshiAdapetr(getContext(),mList);
-        jcykPullrecycler.setAdapter(adapter);
+
     }
 
     @Override
     protected void loadData() {
+        progressDialog = ProgressDialog.show(App.activity,"请稍等...","获取数据中...",true);
         presente=new PandaNaxieshiPresenter(this);
         presenter.start();
+        handleProgress.post(new Runnable() {
+            @Override
+            public void run() {
+                jcykPullrecycler.setAdapter(adapter);
+            }
+        });
+
     }
 
     @Override
@@ -135,6 +147,7 @@ public class PandaNaxieshiFragment extends BaseFragment implements LiveTwoContra
     public void showpandanaxieshiFragment(PandaNaxieshiBean pandaNaxieshiBean) {
         mList.addAll(pandaNaxieshiBean.getVideo());
         adapter.notifyDataSetChanged();
+        progressDialog.dismiss();
     }
 
     @Override

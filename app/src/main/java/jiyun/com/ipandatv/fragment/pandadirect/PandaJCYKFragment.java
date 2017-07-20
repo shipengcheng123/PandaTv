@@ -1,6 +1,8 @@
 package jiyun.com.ipandatv.fragment.pandadirect;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
@@ -44,6 +46,8 @@ public class PandaJCYKFragment extends BaseFragment implements LiveTwoContract.V
     private LiveTwoContract.Presenter presenter;
     private int Index=1;
     private PandaJCYKPresenter presente;
+    private Handler handleProgress = new Handler();
+    private ProgressDialog progressDialog = null;
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_jcyk;
@@ -92,14 +96,20 @@ public class PandaJCYKFragment extends BaseFragment implements LiveTwoContract.V
         });
 
         adapter = new PandaJCYKAdapter(getContext(),mList);
-        jcykPullrecycler.setAdapter(adapter);
+
     }
 
     @Override
     protected void loadData() {
+        progressDialog = ProgressDialog.show(App.activity,"请稍等...","获取数据中...",true);
         presente=new PandaJCYKPresenter(this);
         presenter.start();
-
+        handleProgress.post(new Runnable() {
+            @Override
+            public void run() {
+                jcykPullrecycler.setAdapter(adapter);
+            }
+        });
     }
 
     @Override
@@ -108,9 +118,12 @@ public class PandaJCYKFragment extends BaseFragment implements LiveTwoContract.V
     }
 
     @Override
-    public void showjcyiFragment(PandaLiveJcyiBean pandaLiveJcyiBean) {
+    public void showjcyiFragment(final PandaLiveJcyiBean pandaLiveJcyiBean) {
+
         mList.addAll(pandaLiveJcyiBean.getVideo());
+        progressDialog.dismiss();
         adapter.notifyDataSetChanged();
+
     }
 
     @Override

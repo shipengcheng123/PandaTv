@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
-import jiyun.com.ipandatv.fragment.pandabroadcast.RollDtialActivity;
+import jiyun.com.ipandatv.activity.VideoActivity;
 import jiyun.com.ipandatv.fragment.pandabroadcast.bean.PandaTebieBean;
 
 /**
@@ -35,8 +35,7 @@ public class PandaDetailAdapter extends BaseAdapter<PandaTebieBean.VideoBean> {
         holder.setOnclickListener(R.id.culture_relat, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, RollDtialActivity.class);
-
+                Intent intent = new Intent(context, VideoActivity.class);
 
                 intent.putExtra("pid", pandaCultureVedioBean.getVid());
                 intent.putExtra("title", pandaCultureVedioBean.getT());
