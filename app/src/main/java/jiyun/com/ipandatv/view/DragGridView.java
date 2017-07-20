@@ -81,7 +81,7 @@ public class DragGridView extends GridView {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 getParent().requestDisallowInterceptTouchEvent(true);
-                mVibrator.vibrate(50);//设置震动时间
+//                mVibrator.vibrate(50);//设置震动时间
                 stopDrag();
                 longClickPos = position;
                 prePos = longClickPos;
@@ -115,6 +115,7 @@ public class DragGridView extends GridView {
                 return false;
             }
         });
+
     }
 
     @Override

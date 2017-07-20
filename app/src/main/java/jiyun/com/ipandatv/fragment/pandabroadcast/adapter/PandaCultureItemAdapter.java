@@ -54,7 +54,7 @@ public class PandaCultureItemAdapter extends BaseAdapter<PandaCultureEntity.List
             @Override
             public void onClick(View v) {
                 if (listBean.getType().toString().equals("2")) {
-                    Intent intent2 = new Intent(context, RollDtialActivity.class);
+                    Intent intent2 = new Intent(App.activity, RollDtialActivity.class);
                     intent2.putExtra("url", listBean.getUrl());
                     intent2.putExtra("pid", "84f27011346547c595d78b47a48eb6de");
                     intent2.putExtra("title", listBean.getTitle());
@@ -63,13 +63,14 @@ public class PandaCultureItemAdapter extends BaseAdapter<PandaCultureEntity.List
 
 
                 } else {
-                    Intent intent = new Intent(context, VideoActivity.class);
+                    Intent intent = new Intent(App.activity, VideoActivity.class);
 
                     intent.putExtra("url", listBean.getUrl());
                     intent.putExtra("pid", listBean.getId());
                     intent.putExtra("title", listBean.getTitle());
                     MyLog.e("Url", listBean.getUrl() + listBean.getTitle());
                     App.activity.startActivity(intent);
+
 
                 }
             }

@@ -1,16 +1,29 @@
 package jiyun.com.ipandatv.fragment.Home.tile_right;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.umeng.socialize.UMAuthListener;
+import com.umeng.socialize.UMShareAPI;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.utils.SocializeUtils;
+
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.base.BaseActivity;
+
 
 /**
  * Created by lx on 2017/7/14.
@@ -39,6 +52,9 @@ public class Title_LoginActivity extends BaseActivity {
     TextView forgetPassword;
     @BindView(R.id.loginBtn)
     Button loginBtn;
+    private ProgressDialog dialog;
+    UMShareAPI mShareAPI;
+
 
     @Override
     protected int getLayoutId() {
@@ -47,7 +63,7 @@ public class Title_LoginActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-
+        dialog = new ProgressDialog(this);
     }
 
     @Override
@@ -71,4 +87,74 @@ public class Title_LoginActivity extends BaseActivity {
     public void onViewClicked() {
         finish();
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
+    }
+
+    @OnClick({R.id.Login_QQ, R.id.Login_WeiBo})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.Login_QQ:
+                //TODO QQ授权登陆
+                UMShareAPI.get(this).doOauthVerify(this, SHARE_MEDIA.QQ, authListener);
+                break;
+            case R.id.Login_WeiBo:
+                UMShareAPI.get(this).doOauthVerify(this, SHARE_MEDIA.SINA, authListener);
+                break;
+
+        }
+    }
+
+    UMAuthListener authListener = new UMAuthListener() {
+
+        @Override
+        public void onStart(SHARE_MEDIA platform) {
+            SocializeUtils.safeShowDialog(dialog);
+        }
+
+        @Override
+        public void onComplete(SHARE_MEDIA platform, int action, Map<String, String> data) {
+            SocializeUtils.safeCloseDialog(dialog);
+            Toast.makeText(Title_LoginActivity.this, "成功了" + data, Toast.LENGTH_LONG).show();
+            finish();
+        }
+
+        @Override
+        public void onError(SHARE_MEDIA platform, int action, Throwable t) {
+            SocializeUtils.safeCloseDialog(dialog);
+            Toast.makeText(Title_LoginActivity.this, "失败：" + t.getMessage(), Toast.LENGTH_LONG).show();
+        }
+
+        @Override
+        public void onCancel(SHARE_MEDIA platform, int action) {
+            SocializeUtils.safeCloseDialog(dialog);
+            Toast.makeText(Title_LoginActivity.this, "取消授权", Toast.LENGTH_LONG).show();
+        }
+    };
+
+    private UMAuthListener umAuthListener = new UMAuthListener() {
+        @Override
+        public void onStart(SHARE_MEDIA platform) {
+            //授权开始的回调
+        }
+
+        @Override
+        public void onComplete(SHARE_MEDIA platform, int action, Map<String, String> data) {
+            Toast.makeText(getApplicationContext(), "Authorize succeed", Toast.LENGTH_SHORT).show();
+            Log.i("==========", data + "");
+        }
+
+        @Override
+        public void onError(SHARE_MEDIA platform, int action, Throwable t) {
+            Toast.makeText(getApplicationContext(), "Authorize fail", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onCancel(SHARE_MEDIA platform, int action) {
+            Toast.makeText(getApplicationContext(), "Authorize cancel", Toast.LENGTH_SHORT).show();
+        }
+    };
 }
