@@ -21,7 +21,7 @@
             android:layout_height="25dp" />
 
         <EditText
-            android:id="@+id/editUserPhone"
+            android:id="@+id/editUserPhone_"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="@drawable/login_edit_shape"
@@ -31,8 +31,10 @@
             android:textSize="15sp" />
 
         <TextView
+            android:id="@+id/Phone_Cancle"
             android:layout_width="match_parent"
-            android:layout_height="25dp" />
+            android:layout_height="25dp"
+            android:textColor="#FFF4174A" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,7 +42,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/checkCodeEdit"
+                android:id="@+id/checkCodeEdit_"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
@@ -51,14 +53,16 @@
                 android:textSize="15sp" />
 
             <ImageView
-                android:id="@+id/checkCodeImage"
+                android:id="@+id/checkCodeImage_"
                 android:layout_width="110dp"
                 android:layout_height="match_parent" />
         </LinearLayout>
 
         <TextView
+            android:id="@+id/Photo_Cancle"
             android:layout_width="match_parent"
-            android:layout_height="25dp" />
+            android:layout_height="25dp"
+            android:textColor="#FFF4174A" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -66,7 +70,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/phoneCheckCode"
+                android:id="@+id/phoneCheckCode_"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
@@ -81,7 +85,7 @@
                 android:layout_height="match_parent" />
 
             <Button
-                android:id="@+id/phoneCheckCodeBtn"
+                android:id="@+id/phoneCheckCodeBtn_"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimaryDark"
@@ -90,11 +94,13 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/Yzm_Cancle"
             android:layout_width="match_parent"
-            android:layout_height="25dp" />
+            android:layout_height="25dp"
+            android:textColor="#FFF4174A" />
 
         <EditText
-            android:id="@+id/newPasswordEdit"
+            android:id="@+id/newPasswordEdit_"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="@drawable/login_edit_shape"
@@ -104,13 +110,16 @@
             android:textSize="15sp" />
 
         <TextView
+            android:id="@+id/Pwd_Cancle"
             android:layout_width="match_parent"
-            android:layout_height="40dp" />
+            android:layout_height="25dp"
+            android:textColor="#FFF4174A" />
 
         <CheckBox
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
             android:button="@null"
             android:checked="true"
             android:drawableLeft="@drawable/gou_check_selector"
@@ -118,7 +127,7 @@
             android:textColor="@color/colorPrimaryDark" />
 
         <Button
-            android:id="@+id/findPwdBtn"
+            android:id="@+id/findPwdBtn_"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/login_btn_shape"

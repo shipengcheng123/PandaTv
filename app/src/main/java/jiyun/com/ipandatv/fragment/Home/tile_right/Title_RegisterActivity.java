@@ -81,4 +81,9 @@ public class Title_RegisterActivity extends BaseActivity {
                 break;
         }
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 }
