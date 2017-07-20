@@ -47,7 +47,6 @@ public class BadaLingFragment extends BaseFragment implements BadaLingFragmentCo
 
         mAdapter = new ZhiBochenaAdapter(getContext(),mList);
         mListView.setAdapter(mAdapter);
-
     }
 
     @Override
