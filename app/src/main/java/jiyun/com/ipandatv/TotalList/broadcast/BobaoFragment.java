@@ -1,7 +1,9 @@
 package jiyun.com.ipandatv.TotalList.broadcast;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
@@ -57,6 +59,8 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View{
     private int Index = 1;
     private BobaoPresenter bobaoPresenter;
     private String url;
+    private Handler handleProgress = new Handler();
+    private ProgressDialog progressDialog = null;
     @Override
     protected int getLayoutId() {
         return R.layout.bobao_fragment;
@@ -125,14 +129,22 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View{
 
 
         bobaoAdapter = new BobaoAdapter(getContext(),mList);
-        mRecyclerView.setAdapter(bobaoAdapter);
+
 
     }
 
     @Override
     protected void loadData() {
+        progressDialog = ProgressDialog.show(App.activity,"请稍等...","获取数据中...",true);
         bobaoPresenter = new BobaoPresenter(this);
         presenter.start();
+        handleProgress.post(new Runnable() {
+            @Override
+            public void run() {
+                mRecyclerView.setAdapter(bobaoAdapter);
+            }
+        });
+
     }
 
     @Override
@@ -176,6 +188,7 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View{
 
         mList.addAll(pandaLiveBean.getList());
         bobaoAdapter.notifyDataSetChanged();
+        progressDialog.dismiss();
     }
 
     @Override

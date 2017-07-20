@@ -115,7 +115,7 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
         detilsPullto.setAdapter(adapter);
     }
     @Override
-    protected void onPause() {
+    public  void onPause() {
         super.onPause();
         JCVideoPlayer.releaseAllVideos();
     }

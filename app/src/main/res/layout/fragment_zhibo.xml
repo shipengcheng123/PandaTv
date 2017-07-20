@@ -12,6 +12,7 @@
         <jiyun.com.ipandatv.view.JCVideoPlayerStandardShowShareButtonAfterFullscreen
             android:id="@+id/custom_videoplayer_standard_with_share_button"
             android:layout_width="match_parent"
+            android:background="@mipmap/xiongmao"
             android:layout_height="180dp" />
 
     </LinearLayout>
