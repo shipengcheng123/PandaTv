@@ -44,6 +44,7 @@
             android:src="@drawable/personal_login_head" />
 
         <TextView
+            android:id="@+id/Text_Person"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"

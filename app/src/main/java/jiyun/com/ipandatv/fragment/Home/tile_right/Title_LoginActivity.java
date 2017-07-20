@@ -17,6 +17,7 @@ import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.utils.SocializeUtils;
 
 import java.util.Map;
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -53,7 +54,6 @@ public class Title_LoginActivity extends BaseActivity {
     @BindView(R.id.loginBtn)
     Button loginBtn;
     private ProgressDialog dialog;
-    UMShareAPI mShareAPI;
 
     @Override
     protected int getLayoutId() {
@@ -82,10 +82,6 @@ public class Title_LoginActivity extends BaseActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick(R.id.Login_Finish)
-    public void onViewClicked() {
-        finish();
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -93,7 +89,7 @@ public class Title_LoginActivity extends BaseActivity {
         UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
     }
 
-    @OnClick({R.id.Login_QQ, R.id.Login_WeiBo})
+    @OnClick({R.id.Login_QQ, R.id.Login_WeiBo, R.id.Login_Finish, R.id.Login_Register})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.Login_QQ:
@@ -103,7 +99,13 @@ public class Title_LoginActivity extends BaseActivity {
             case R.id.Login_WeiBo:
                 UMShareAPI.get(this).doOauthVerify(this, SHARE_MEDIA.SINA, authListener);
                 break;
-
+            case R.id.Login_Finish:
+                finish();
+                break;
+            case R.id.Login_Register:
+                Intent in = new Intent(this, Title_RegisterActivity.class);
+                startActivity(in);
+                break;
         }
     }
 
@@ -118,7 +120,20 @@ public class Title_LoginActivity extends BaseActivity {
         public void onComplete(SHARE_MEDIA platform, int action, Map<String, String> data) {
             SocializeUtils.safeCloseDialog(dialog);
             Toast.makeText(Title_LoginActivity.this, "成功了" + data, Toast.LENGTH_LONG).show();
-            finish();
+            Set<String> keySet = data.keySet();
+            String s;
+            for (String key : keySet) {
+                s = data.get(key);
+                Log.i("===========", data + "");
+            }
+//            String name = data.get("name");
+//            String iconurl = data.get("iconurl");
+//            Log.i("==", name + iconurl);
+//            Intent in = getIntent();
+//            in.putExtra("name", name);
+//            in.putExtra("iconurl", iconurl);
+//            setResult(0, in);
+//            finish();
         }
 
         @Override
@@ -156,4 +171,5 @@ public class Title_LoginActivity extends BaseActivity {
             Toast.makeText(getApplicationContext(), "Authorize cancel", Toast.LENGTH_SHORT).show();
         }
     };
+
 }

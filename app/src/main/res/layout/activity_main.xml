@@ -25,11 +25,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@drawable/activity_main_color_selector"
             android:button="@null"
             android:checked="true"
             android:drawableTop="@drawable/homepage_selector"
             android:gravity="center"
-            android:background="@drawable/activity_main_color_selector"
             android:text="首页" />
 
         <RadioButton
@@ -37,10 +37,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@drawable/activity_main_color_selector"
             android:button="@null"
             android:drawableTop="@drawable/pandalive_selector"
             android:gravity="center"
-            android:background="@drawable/activity_main_color_selector"
             android:text="熊猫直播" />
 
         <RadioButton
@@ -48,8 +48,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:button="@null"
             android:background="@drawable/activity_main_color_selector"
+            android:button="@null"
             android:drawableTop="@drawable/rollvideo_selector"
             android:gravity="center"
             android:text="熊猫文化" />
@@ -59,8 +59,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:button="@null"
             android:background="@drawable/activity_main_color_selector"
+            android:button="@null"
             android:drawableTop="@drawable/pandareport_selector"
             android:gravity="center"
             android:text="熊猫观察" />
@@ -70,8 +70,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:button="@null"
             android:background="@drawable/activity_main_color_selector"
+            android:button="@null"
             android:drawableTop="@drawable/livechina_selector"
             android:gravity="center"
             android:text="直播中国" />
