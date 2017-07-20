@@ -98,7 +98,6 @@ public class PhoneRegisterFragment extends BaseFragment {
     }
 
     //图形验证码
-
     public void getPersonalRegImgCheck() {
         new Thread(new Runnable() {
             @Override
@@ -143,11 +142,10 @@ public class PhoneRegisterFragment extends BaseFragment {
     public void getPhoneCode() {
         String url = "http://reg.cntv.cn/regist/getVerifiCode.action";
         String from = "http://cbox_mobile.regclientuser.cntv.cn";
-//                    手机号
+        //手机号
         String tPhoneNumber = editUserPhone.getText().toString().trim();
-//                    验证码
+        //验证码
         String imgyanzhengma = checkCodeEdit.getText().toString().trim();
-
         RequestBody body = new FormBody.Builder()
                 .add("method", "getRequestVerifiCodeM")
                 .add("mobile", tPhoneNumber)
@@ -217,11 +215,8 @@ public class PhoneRegisterFragment extends BaseFragment {
                     Log.i("TAG", "注册状态：：" + loginSate);
                 }
             });
-
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-
-
     }
 }
