@@ -14,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.androidkun.PullToRefreshRecyclerView;
+import com.androidkun.callback.PullToRefreshListener;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -59,7 +60,7 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
     private List<CircleImageView> points;
     private int currentPosition = 10000;
     private ViewGroup pointsLinearLayout;
-
+    private int Index=1;
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_culture;
@@ -84,13 +85,37 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         culturePullrecycler.setLayoutManager(linearLayoutManager);
         culturePullrecycler.addHeaderView(pandaCultureView);
-        culturePullrecycler.setPullRefreshEnabled(true);
+        culturePullrecycler.setPullRefreshEnabled(false);
         culturePullrecycler.setLoadingMoreEnabled(false);
-    }
+        culturePullrecycler.setPullToRefreshListener(new PullToRefreshListener() {
+            @Override
+            public void onRefresh() {
+                culturePullrecycler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        culturePullrecycler.setRefreshComplete();
+                        dataBeanList.clear();
+                        points.clear();
 
-    @Override
-    protected void loadData() {
-        pandaCulturePersenter.start();
+                        loadData();
+
+                    }
+                }, 2000);
+            }
+
+            @Override
+            public void onLoadMore() {
+                culturePullrecycler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        culturePullrecycler.setLoadMoreComplete();
+                        Index++;
+                        loadData();
+
+                    }
+                }, 2000);
+            }
+        });
         pandaCultureViewPagerView.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -111,6 +136,12 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
 
             }
         });
+    }
+
+    @Override
+    protected void loadData() {
+        pandaCulturePersenter.start();
+
 
     }
 

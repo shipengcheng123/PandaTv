@@ -55,6 +55,7 @@ public class Title_LoginActivity extends BaseActivity {
     Button loginBtn;
     private ProgressDialog dialog;
 
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_login;

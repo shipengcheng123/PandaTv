@@ -13,25 +13,25 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import jiyun.com.ipandatv.R;
-import jiyun.com.ipandatv.TotalList.zhibochena.ZhiBoChenaContract;
-import jiyun.com.ipandatv.TotalList.zhibochena.ZhiBoChenaPresenter;
 import jiyun.com.ipandatv.adapter.ZhiBochenaAdapter;
 import jiyun.com.ipandatv.base.BaseFragment;
 import jiyun.com.ipandatv.model.entity.zhibochena.ChangchengBean;
 
+import static com.umeng.socialize.utils.ContextUtil.getContext;
+
 /**
  * Created by Lenovo on 2017/7/14.
  */
-public class BadaLingFragment extends BaseFragment implements ZhiBoChenaContract.View{
+public class BadaLingFragment extends BaseFragment implements BadaLingFragmentCotract.View{
 
     @BindView(R.id.ZhiboChena_ListView)
     ListView mListView;
     Unbinder unbinder;
     private ZhiBochenaAdapter mAdapter;
+    private BadaLingFragmentPresenter presenter;
 
     private List<ChangchengBean.LiveBean> mList = new ArrayList<>();
-    ZhiBoChenaContract.Presenter presenter;
-    private ZhiBoChenaPresenter zhiBoChenaPresenter;
+    private Bundle bundle;
 
     @Override
     protected int getLayoutId() {
@@ -40,18 +40,26 @@ public class BadaLingFragment extends BaseFragment implements ZhiBoChenaContract
 
     @Override
     protected void init(View view) {
+        new BadaLingFragmentPresenter(this);
+
+        String url = bundle.getString("url");
+        if(url!=null) {
+            presenter.setUrl(url);
+        }
+
         mAdapter = new ZhiBochenaAdapter(getContext(),mList);
         mListView.setAdapter(mAdapter);
+
     }
 
     @Override
     protected void loadData() {
-        zhiBoChenaPresenter = new ZhiBoChenaPresenter(this);
-        presenter.start();
+
     }
 
     @Override
     public void setParams(Bundle bundle) {
+        this.bundle=bundle;
 
     }
 
@@ -70,54 +78,14 @@ public class BadaLingFragment extends BaseFragment implements ZhiBoChenaContract
     }
 
     @Override
-    public void showProgressDialog() {
-
-    }
-
-    @Override
-    public void dismissDialog() {
-
-    }
-
-    @Override
-    public void setChangcheng(ChangchengBean changchengBean) {
-        mList.addAll(changchengBean.getLive());
+    public void getManager(ChangchengBean changchengBean) {
+        List<ChangchengBean.LiveBean> live = changchengBean.getLive();
+        mList.addAll(live);
         mAdapter.notifyDataSetChanged();
-
     }
 
     @Override
-    public void setTaishan(ChangchengBean changchengBean) {
-
-    }
-
-    @Override
-    public void setHuangshan(ChangchengBean changchengBean) {
-
-    }
-
-    @Override
-    public void setfenghuanggucheng(ChangchengBean changchengBean) {
-
-    }
-
-    @Override
-    public void setemeishan(ChangchengBean changchengBean) {
-
-    }
-
-    @Override
-    public void setzhangjiajie(ChangchengBean changchengBean) {
-
-    }
-
-    @Override
-    public void showMessage(String msg) {
-
-    }
-
-    @Override
-    public void setBasePresenter(ZhiBoChenaContract.Presenter presenter) {
-        this.presenter = presenter;
+    public void setBasePresenter(BadaLingFragmentCotract.Presenter presenter) {
+        this.presenter= (BadaLingFragmentPresenter) presenter;
     }
 }

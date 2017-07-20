@@ -86,4 +86,10 @@ public class VideoActivity extends BaseActivity implements VideoContract.View{
     public void setBasePresenter(VideoContract.Presenter presenter) {
         this.presenter=presenter;
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }
