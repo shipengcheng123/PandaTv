@@ -20,6 +20,7 @@ public interface LiveContract {
         //边看边聊
         void showeyeFragment(PandaLiveTalkListBean pandaLiveTalkListBean);
 
+        void showMessage(String msg);
     }
 
     interface Presenter extends BasePresenter {

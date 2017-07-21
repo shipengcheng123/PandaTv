@@ -35,6 +35,7 @@ public interface LiveTwoContract {
         //原创新闻
         void showyuanchuangxinwenFragment(PandaYuanchuangxinwenBean pandaYuanchuangxinwenBean);
 
+        void showMessage(String msg);
     }
 
     interface Presenter extends BasePresenter {

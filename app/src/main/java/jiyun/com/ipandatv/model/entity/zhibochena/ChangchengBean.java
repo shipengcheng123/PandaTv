@@ -1,12 +1,13 @@
 package jiyun.com.ipandatv.model.entity.zhibochena;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Lenovo on 2017/7/14.
  */
 
-public class ChangchengBean {
+public class ChangchengBean implements Serializable{
 
 
     private List<LiveBean> live;
@@ -19,7 +20,7 @@ public class ChangchengBean {
         this.live = live;
     }
 
-    public static class LiveBean {
+    public static class LiveBean implements Serializable {
         /**
          * title : 八达岭南四楼
          * brief : 八达岭长城位于北京市西北六十公里处，被评为中国旅游胜地四十家之首和北京旅游“世界之最”。因其机构严谨科学，虽经历五百多年的历史风烟，至今仍巍然屹立，足以说明古代汉族劳动人民在建筑科学和艺术上的卓越才能。

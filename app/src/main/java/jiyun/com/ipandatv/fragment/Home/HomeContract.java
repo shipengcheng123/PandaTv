@@ -18,6 +18,7 @@ public interface HomeContract {
         void setText(HomePageBean homePageBean);
 
         void setMsg(String msg);
+        void setMessage(String msg);
     }
 
     interface Presenter extends BasePresenter {

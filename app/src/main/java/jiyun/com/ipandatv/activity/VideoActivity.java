@@ -8,11 +8,11 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.base.BaseActivity;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.VedioJCYKBean;
 import jiyun.com.ipandatv.utils.MyLog;
-import jiyun.com.ipandatv.view.JCVideoPlayerStandardShowShareButtonAfterFullscreen;
 
 /**
  * Created by Lenovo on 2017/7/13.
@@ -21,7 +21,7 @@ public class VideoActivity extends BaseActivity implements VideoContract.View{
 
 
     @BindView(R.id.custom_videoplayer_standard_with_share_button)
-    JCVideoPlayerStandardShowShareButtonAfterFullscreen customVideoplayerStandardWithShareButton;
+    JCVideoPlayerStandard customVideoplayerStandardWithShareButton;
 
     private VideoContract.Presenter presenter;
     private String pid, title;;
@@ -44,7 +44,7 @@ public class VideoActivity extends BaseActivity implements VideoContract.View{
 //        MyLog.e("url",url+title);
 
         //标准基础上改进的视频播放(添加了分享按钮)
-        customVideoplayerStandardWithShareButton = (JCVideoPlayerStandardShowShareButtonAfterFullscreen) findViewById(R.id.custom_videoplayer_standard_with_share_button);
+        customVideoplayerStandardWithShareButton = (JCVideoPlayerStandard) findViewById(R.id.custom_videoplayer_standard_with_share_button);
 //        customVideoplayerStandardWithShareButton.setUrlAndObject(url, null,title);
 //        ImageLoader.getInstance().displayImage("http://img4.jiecaojingxuan.com/2016/5/1/3430ec64-e6a7-4d8e-b044-9d408e075b7c.jpg",
 //                customVideoplayerStandardWithShareButton.ivThumb);
@@ -79,7 +79,7 @@ public class VideoActivity extends BaseActivity implements VideoContract.View{
 
         List<VedioJCYKBean.VideoBean.Chapters2Bean> chapters2 = jcykBean.getVideo().getChapters2();
         String url = chapters2.get(0).getUrl();
-        customVideoplayerStandardWithShareButton.setUrlAndObject(url, null,title);
+        customVideoplayerStandardWithShareButton.setUp(url, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,title);
     }
 
     @Override

@@ -20,6 +20,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
+import jiyun.com.ipandatv.activity.ACache;
 import jiyun.com.ipandatv.base.BaseFragment;
 import jiyun.com.ipandatv.fragment.pandadirect.adapter.PandaJCYKAdapter;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaChaomenggunxiuBean;
@@ -95,7 +96,7 @@ public class PandaJCYKFragment extends BaseFragment implements LiveTwoContract.V
             }
         });
 
-        adapter = new PandaJCYKAdapter(getContext(),mList);
+
 
     }
 
@@ -104,12 +105,15 @@ public class PandaJCYKFragment extends BaseFragment implements LiveTwoContract.V
         progressDialog = ProgressDialog.show(App.activity,"请稍等...","获取数据中...",true);
         presente=new PandaJCYKPresenter(this);
         presenter.start();
-        handleProgress.post(new Runnable() {
-            @Override
-            public void run() {
-                jcykPullrecycler.setAdapter(adapter);
-            }
-        });
+        adapter = new PandaJCYKAdapter(getContext(),mList);
+        jcykPullrecycler.setAdapter(adapter);
+
+//        handleProgress.post(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//            }
+//        });
     }
 
     @Override
@@ -121,11 +125,21 @@ public class PandaJCYKFragment extends BaseFragment implements LiveTwoContract.V
     public void showjcyiFragment(final PandaLiveJcyiBean pandaLiveJcyiBean) {
 
         mList.addAll(pandaLiveJcyiBean.getVideo());
-        progressDialog.dismiss();
         adapter.notifyDataSetChanged();
+        progressDialog.dismiss();
+    }
+    @Override
+    public void showMessage(String msg) {
+        ACache aCache = ACache.get(getContext());
+        PandaLiveJcyiBean pandaChaomenggunxiuObject =
+                (PandaLiveJcyiBean) aCache.
+                        getAsObject("PandaLiveJcyiBean");
+        mList.addAll(pandaChaomenggunxiuObject.getVideo());
+        adapter.notifyDataSetChanged();
+        progressDialog.dismiss();
+
 
     }
-
     @Override
     public void showDXBRFragment(PandaDangxiongburangBean pandaDangxiongburangBean) {
 
@@ -160,6 +174,8 @@ public class PandaJCYKFragment extends BaseFragment implements LiveTwoContract.V
     public void showyuanchuangxinwenFragment(PandaYuanchuangxinwenBean pandaYuanchuangxinwenBean) {
 
     }
+
+
 
     @Override
     public void setBasePresenter(LiveTwoContract.Presenter presenter) {

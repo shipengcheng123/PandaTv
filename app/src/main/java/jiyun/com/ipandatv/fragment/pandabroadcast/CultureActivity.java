@@ -5,10 +5,10 @@ import android.os.Bundle;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.base.BaseActivity;
 import jiyun.com.ipandatv.utils.MyLog;
-import jiyun.com.ipandatv.view.JCVideoPlayerStandardShowShareButtonAfterFullscreen;
 
 /**
  * Created by INS7566 on 2017/7/14.
@@ -17,7 +17,7 @@ import jiyun.com.ipandatv.view.JCVideoPlayerStandardShowShareButtonAfterFullscre
 public class CultureActivity extends BaseActivity {
 
     @BindView(R.id.custom_videoplayer_standard_with_share_button)
-    JCVideoPlayerStandardShowShareButtonAfterFullscreen customVideoplayerStandardWithShareButton;
+    JCVideoPlayerStandard customVideoplayerStandardWithShareButton;
 
 
     @Override
@@ -35,8 +35,8 @@ public class CultureActivity extends BaseActivity {
         MyLog.e("url",url+title);
 
         //标准基础上改进的视频播放(添加了分享按钮)
-        customVideoplayerStandardWithShareButton = (JCVideoPlayerStandardShowShareButtonAfterFullscreen) findViewById(R.id.custom_videoplayer_standard_with_share_button);
-        customVideoplayerStandardWithShareButton.setUrlAndObject(url, null,title);
+        customVideoplayerStandardWithShareButton = (JCVideoPlayerStandard) findViewById(R.id.custom_videoplayer_standard_with_share_button);
+        customVideoplayerStandardWithShareButton.setUp(url,JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,title);
     }
 
     @Override

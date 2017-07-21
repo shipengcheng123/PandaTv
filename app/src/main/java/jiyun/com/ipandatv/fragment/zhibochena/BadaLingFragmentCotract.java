@@ -11,6 +11,7 @@ import jiyun.com.ipandatv.model.entity.zhibochena.ChangchengBean;
 public interface BadaLingFragmentCotract {
     interface  View extends BaseView<Presenter>{
         void getManager(ChangchengBean changchengBean);
+        void showMessage(String msg);
 
 
 

@@ -38,7 +38,7 @@ public class PandaCultureVideoPresenter implements CultureContract.Presenter {
 
             @Override
             public void OnError(int ErrorCode, String ErrorMsg) {
-
+                pandaculture.showMessage(ErrorMsg);
             }
         });
 

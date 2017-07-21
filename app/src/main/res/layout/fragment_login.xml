@@ -33,6 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
             android:text="注册"
             android:textColor="#ffffff"
             android:textSize="25dp" />
@@ -136,10 +137,10 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_marginTop="10dp"
                 android:id="@+id/mText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="CCTV通行证"
                 android:textColor="@color/colorPrimaryDark" />
 

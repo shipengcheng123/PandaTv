@@ -32,7 +32,7 @@ public class BadaLingFragmentPresenter implements BadaLingFragmentCotract.Presen
 
             @Override
             public void OnError(int ErrorCode, String ErrorMsg) {
-
+                view.showMessage(ErrorMsg);
             }
         });
     }

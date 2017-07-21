@@ -29,6 +29,7 @@ boolean mFlag;
 //        if (ContextCompat.checkSelfPermission(BaseActivity.this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
 //            ActivityCompat.requestPermissions(BaseActivity.this, new String[]{android.Manifest.permission.CAMERA, android.Manifest.permission.VIBRATE}, 1);
 //        }
+
     }
 
     @Override

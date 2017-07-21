@@ -2,16 +2,19 @@ package jiyun.com.ipandatv.internet;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Map;
 import java.util.Set;
 
 import jiyun.com.ipandatv.App;
+import jiyun.com.ipandatv.activity.ACache;
 import jiyun.com.ipandatv.internet.callback.INetWorkCallback;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -75,10 +78,15 @@ public class OkHttpUtils implements IHttp {
                     @Override
                     public void run() {
                         //执行在主线程
-                        callback.OnError(404, e.getMessage().toString());
+                        if(e.getMessage()!=null) {
+                            callback.OnError(404, e.getMessage().toString());
+                        }else{
+                            Log.e("Error","错误 e.getMessage 为空");
+                        }
+                        
+
                     }
                 });
-
             }
 
             @Override
@@ -154,6 +162,8 @@ public class OkHttpUtils implements IHttp {
         Type[] actualTypeArguments = ((ParameterizedType) types[0]).getActualTypeArguments();
         Type type = actualTypeArguments[0];
         T t = gson.fromJson(jsonData, type);
+        ACache aCache = ACache.get(App.activity);
+        aCache.put(t.getClass().getSimpleName(), (Serializable) t);
         return t;
     }
 

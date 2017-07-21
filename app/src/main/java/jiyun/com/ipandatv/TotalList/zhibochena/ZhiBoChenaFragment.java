@@ -1,5 +1,6 @@
 package jiyun.com.ipandatv.TotalList.zhibochena;
 
+
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
@@ -28,6 +29,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
+import jiyun.com.ipandatv.activity.ACache;
 import jiyun.com.ipandatv.adapter.DragAdapter;
 import jiyun.com.ipandatv.adapter.zhibochena.ZHPagerAdapter;
 import jiyun.com.ipandatv.base.BaseFragment;
@@ -69,6 +71,7 @@ public class ZhiBoChenaFragment extends BaseFragment implements ZhiBoChenaContra
     private Map<String, String> mMapAllUrl;
     private ZhiBoChenaPresenter presenter;
     private CheckBox button;
+    private ACache aCache;
 
     @Override
     protected int getLayoutId() {
@@ -78,7 +81,7 @@ public class ZhiBoChenaFragment extends BaseFragment implements ZhiBoChenaContra
     @Override
     protected void init(View view) {
         new ZhiBoChenaPresenter(this);
-        presenter.start();
+
 
         title_adapter = new ZHPagerAdapter(App.activity.getSupportFragmentManager(), fragmentList, channels);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -88,7 +91,7 @@ public class ZhiBoChenaFragment extends BaseFragment implements ZhiBoChenaContra
 
     @Override
     protected void loadData() {
-
+        presenter.start();
 
     }
 
@@ -225,6 +228,8 @@ public class ZhiBoChenaFragment extends BaseFragment implements ZhiBoChenaContra
                 } else {
                     button.setText("编辑");
                     setRefresh();
+
+
                 }
             }
         });
@@ -262,6 +267,7 @@ public class ZhiBoChenaFragment extends BaseFragment implements ZhiBoChenaContra
         Intent in = new Intent(getActivity(), Title_RightActivity.class);
         startActivity(in);
 
+
     }
 
     @Override
@@ -277,9 +283,12 @@ public class ZhiBoChenaFragment extends BaseFragment implements ZhiBoChenaContra
     @Override
     public void getChinaLiveTab(PopupBean popupBean) {
         add_Fragment(popupBean);
+
+
         List<PopupBean.TablistBean> tablist = popupBean.getTablist();
-        List<PopupBean.AlllistBean> alllist = popupBean.getAlllist();
         initDatatitle(tablist);
+
+        List<PopupBean.AlllistBean> alllist = popupBean.getAlllist();
         initDataOther(alllist);
         liveChenaIBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -292,7 +301,11 @@ public class ZhiBoChenaFragment extends BaseFragment implements ZhiBoChenaContra
 
     @Override
     public void showMessage(String msg) {
+        ACache aCache = ACache.get(getContext());
+        PopupBean asObject = (PopupBean) aCache.getAsObject("PopupBean");
 
+
+        add_Fragment(asObject);
     }
 
     @Override

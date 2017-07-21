@@ -6,4 +6,6 @@ package jiyun.com.ipandatv.adapter.homepage;
 
 public interface setViewPagerListener {
     void setViewPager(int position);
+
+
 }

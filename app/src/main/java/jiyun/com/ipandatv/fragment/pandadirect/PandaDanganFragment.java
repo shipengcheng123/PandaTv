@@ -20,6 +20,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
+import jiyun.com.ipandatv.activity.ACache;
 import jiyun.com.ipandatv.base.BaseFragment;
 import jiyun.com.ipandatv.fragment.pandadirect.adapter.PandaDanganAdapter;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaChaomenggunxiuBean;
@@ -95,7 +96,7 @@ public class PandaDanganFragment extends BaseFragment implements LiveTwoContract
             }
         });
 
-        adapter = new PandaDanganAdapter(getContext(),mList);
+
 
     }
 
@@ -105,12 +106,14 @@ public class PandaDanganFragment extends BaseFragment implements LiveTwoContract
         progressDialog = ProgressDialog.show(App.activity,"请稍等...","获取数据中...",true);
         presente=new PandaDanganPresenter(this);
         presenter.start();
-        handleProgress.post(new Runnable() {
-            @Override
-            public void run() {
-                jcykPullrecycler.setAdapter(adapter);
-            }
-        });
+        adapter = new PandaDanganAdapter(getContext(),mList);
+        jcykPullrecycler.setAdapter(adapter);
+//        handleProgress.post(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//            }
+//        });
     }
 
     @Override
@@ -139,7 +142,16 @@ public class PandaDanganFragment extends BaseFragment implements LiveTwoContract
         adapter.notifyDataSetChanged();
         progressDialog.dismiss();
     }
+    @Override
+    public void showMessage(String msg) {
+        ACache aCache = ACache.get(getContext());
+        PandaDanganBean pandaChaomenggunxiuObject =
+                (PandaDanganBean) aCache.getAsObject("PandaDanganBean");
 
+        mList.addAll(pandaChaomenggunxiuObject.getVideo());
+        adapter.notifyDataSetChanged();
+        progressDialog.dismiss();
+    }
     @Override
     public void showpandaTOP(PandaTOPBean pandaTOPBean) {
 
@@ -159,6 +171,8 @@ public class PandaDanganFragment extends BaseFragment implements LiveTwoContract
     public void showyuanchuangxinwenFragment(PandaYuanchuangxinwenBean pandaYuanchuangxinwenBean) {
 
     }
+
+
 
     @Override
     public void setBasePresenter(LiveTwoContract.Presenter presenter) {

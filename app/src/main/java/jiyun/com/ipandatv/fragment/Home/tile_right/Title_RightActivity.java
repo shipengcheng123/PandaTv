@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,11 +32,12 @@ public class Title_RightActivity extends BaseActivity {
     RelativeLayout pandaPersonWodeshoucang;
     @BindView(R.id.panda_person_set)
     ImageView pandaPersonSet;
-
     @BindView(R.id.panda_person_setting)
     RelativeLayout pandaPersonSetting;
     @BindView(R.id.Personal_Finish)
     ImageView PersonalFinish;
+    @BindView(R.id.Text_Person)
+    TextView TextPerson;
 
     @Override
     protected int getLayoutId() {
@@ -68,8 +70,15 @@ public class Title_RightActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.panda_person_username:
+//                Log.i("00000000", TextPerson.getText().toString());
+//                boolean equals = TextPerson.getText().toString().equals("点击登录");
+//                if (equals = false) {
+//                    Intent in = new Intent(Title_RightActivity.this, BobaoActivity.class);
+//                    startActivity(in);
+//                } else if (equals = true) {
                 Intent in = new Intent(Title_RightActivity.this, Title_LoginActivity.class);
-                startActivity(in);
+                startActivityForResult(in, 0);
+//                }
                 break;
             case R.id.panda_person_guankanlishi:
 
@@ -88,4 +97,15 @@ public class Title_RightActivity extends BaseActivity {
     public void onViewClicked() {
         finish();
     }
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (resultCode == 0) {
+//            String name = data.getStringExtra("name");
+//            String iconurl = data.getStringExtra("iconurl");
+//            TextPerson.setText(name);
+//            Glide.with(getApplicationContext()).load(iconurl).into(pandaPersonUserimg);
+//        }
+//    }
 }
