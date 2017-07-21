@@ -2,6 +2,7 @@ package jiyun.com.ipandatv.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class VideoActivity extends BaseActivity implements VideoContract.View{
 
 
     @BindView(R.id.custom_videoplayer_standard_with_share_button)
-    JCVideoPlayerStandard customVideoplayerStandardWithShareButton;
+    JCVideoPlayerStandard jcVideoPlayerStandard;
 
     private VideoContract.Presenter presenter;
     private String pid, title;;
@@ -44,10 +45,21 @@ public class VideoActivity extends BaseActivity implements VideoContract.View{
 //        MyLog.e("url",url+title);
 
         //标准基础上改进的视频播放(添加了分享按钮)
-        customVideoplayerStandardWithShareButton = (JCVideoPlayerStandard) findViewById(R.id.custom_videoplayer_standard_with_share_button);
+        jcVideoPlayerStandard = (JCVideoPlayerStandard) findViewById(R.id.custom_videoplayer_standard_with_share_button);
 //        customVideoplayerStandardWithShareButton.setUrlAndObject(url, null,title);
 //        ImageLoader.getInstance().displayImage("http://img4.jiecaojingxuan.com/2016/5/1/3430ec64-e6a7-4d8e-b044-9d408e075b7c.jpg",
 //                customVideoplayerStandardWithShareButton.ivThumb);
+        jcVideoPlayerStandard.setMonitor(new JCVideoPlayerStandard.imgClickon() {
+            @Override
+            public void Monitor(View view) {
+
+            }
+
+            @Override
+            public void WatchthelistMonitor(View view) {
+
+            }
+        });
     }
 
 
@@ -79,7 +91,7 @@ public class VideoActivity extends BaseActivity implements VideoContract.View{
 
         List<VedioJCYKBean.VideoBean.Chapters2Bean> chapters2 = jcykBean.getVideo().getChapters2();
         String url = chapters2.get(0).getUrl();
-        customVideoplayerStandardWithShareButton.setUp(url, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,title);
+        jcVideoPlayerStandard.setUp(url, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,title);
     }
 
     @Override

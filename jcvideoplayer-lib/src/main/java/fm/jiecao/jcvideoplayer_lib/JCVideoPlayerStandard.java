@@ -40,6 +40,10 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
 
     protected DismissControlViewTimerTask mDismissControlViewTimerTask;
 
+    private ImageView mShoucahng;
+
+    private ImageView mfenxaing;
+
 
     public JCVideoPlayerStandard(Context context) {
         super(context);
@@ -55,6 +59,7 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
         bottomProgressBar = (ProgressBar) findViewById(R.id.bottom_progress);
         titleTextView = (TextView) findViewById(R.id.title);
         backButton = (ImageView) findViewById(R.id.back);
+
         thumbImageView = (ImageView) findViewById(R.id.thumb);
         loadingProgressBar = (ProgressBar) findViewById(R.id.loading);
         tinyBackImageView = (ImageView) findViewById(R.id.back_tiny);
@@ -63,7 +68,36 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
         backButton.setOnClickListener(this);
         tinyBackImageView.setOnClickListener(this);
 
+        mShoucahng = (ImageView) findViewById(R.id.Shoucahng);
+        mfenxaing = (ImageView) findViewById(R.id.fenxaing);
+
+
+        mShoucahng.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imgClickon.Monitor(v);
+            }
+        });
+        mfenxaing.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imgClickon.WatchthelistMonitor(v);
+            }
+        });
     }
+
+    public interface imgClickon {
+        void Monitor(View view);
+
+        void WatchthelistMonitor(View view);
+    }
+
+    private imgClickon imgClickon;
+
+    public void setMonitor(imgClickon imgClickon) {
+        this.imgClickon = imgClickon;
+    }
+
 
     @Override
     public void setUp(String url, int screen, Object... objects) {
@@ -184,6 +218,9 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
         return super.onTouch(v, event);
     }
 
+
+    
+
     @Override
     public void onClick(View v) {
         super.onClick(v);
@@ -211,6 +248,7 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
         } else if (i == R.id.back_tiny) {
             backPress();
         }
+        
     }
 
 
@@ -738,6 +776,8 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
         }
 
     }
+
+
 
     public class DismissControlViewTimerTask extends TimerTask {
 
