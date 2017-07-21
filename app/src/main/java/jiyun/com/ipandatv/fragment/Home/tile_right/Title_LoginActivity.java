@@ -44,7 +44,6 @@ import okhttp3.Response;
 public class Title_LoginActivity extends BaseActivity {
     @BindView(R.id.Login_Finish)
     ImageView LoginFinish;
-
     @BindView(R.id.Login_Register)
     TextView LoginRegister;
     @BindView(R.id.Text_Login)
