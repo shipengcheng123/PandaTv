@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.androidkun.PullToRefreshRecyclerView;
 import com.androidkun.callback.PullToRefreshListener;
@@ -16,6 +18,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
@@ -50,12 +53,15 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
     ImageView collectNo;
     @BindView(R.id.share)
     ImageView share;
+    @BindView(R.id.linearLayout)
+    LinearLayout linearLayout;
     private CultureContract.Presenter presenter;
     private String pid, title;
     private PandaDetailAdapter adapter;
-    private List<PandaTebieBean.VideoBean> mlist=new ArrayList<>();
-    private int Index=1;
+    private List<PandaTebieBean.VideoBean> mlist = new ArrayList<>();
+    private int Index = 1;
     private String url;
+
     @Override
     protected int getLayoutId() {
         return R.layout.rollvideo_details;
@@ -111,14 +117,16 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
                 }, 2000);
             }
         });
-        adapter=new PandaDetailAdapter(getApplicationContext(),mlist);
+        adapter = new PandaDetailAdapter(getApplicationContext(), mlist);
         detilsPullto.setAdapter(adapter);
     }
+
     @Override
-    public  void onPause() {
+    public void onPause() {
         super.onPause();
         JCVideoPlayer.releaseAllVideos();
     }
+
     @Override
     public void initData() {
 
@@ -141,7 +149,7 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
 
         List<PandaCultureVedioBean.VideoBean.Chapters2Bean> chapters2 = pandaCultureVedioBean.getVideo().getChapters2();
         url = chapters2.get(0).getUrl();
-        customVideoplayerStandardWithShareButton.setUrlAndObject(url, null,title);
+        customVideoplayerStandardWithShareButton.setUrlAndObject(url, null, title);
 
     }
 
@@ -153,7 +161,7 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
 
     @Override
     public void setBasePresenter(CultureContract.Presenter presenter) {
-        this.presenter=presenter;
+        this.presenter = presenter;
     }
 
     @Override
@@ -161,5 +169,19 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
+    }
+
+    @OnClick({R.id.collect_no, R.id.share})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.collect_no:
+
+                    Toast.makeText(RollDtialActivity.this, "", Toast.LENGTH_SHORT).show();
+
+
+                break;
+            case R.id.share:
+                break;
+        }
     }
 }

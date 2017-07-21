@@ -5,8 +5,8 @@
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#1151bf"
+        android:layout_height="120px"
+        android:background="@color/colorPrimaryDark"
         android:id="@+id/toolbar">
 
 
@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:src="@drawable/person_sign"
+            android:layout_marginRight="3dp"
             />
 
     </android.support.v7.widget.Toolbar>
