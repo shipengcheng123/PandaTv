@@ -264,7 +264,7 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
         UMWeb web = new UMWeb(url);
         web.setTitle(title);//标题
         web.setThumb(thumb);  //缩略图
-        web.setDescription("这是描述");//描述
+        web.setDescription("熊猫频道邀请你一同观看");//描述
 
         new ShareAction(RollDtialActivity.this)
                 .setPlatform(SHARE_MEDIA.SINA)//传入平台
