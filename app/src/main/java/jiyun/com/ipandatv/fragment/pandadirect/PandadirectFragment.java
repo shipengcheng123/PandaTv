@@ -64,7 +64,6 @@ public class PandadirectFragment extends BaseFragment {
         mList.add(new PandaTeBiejimuFragment());
         mList.add(new PandaYuanchuangxinwenFragment());
         mListName.add("直播");
-
         mListName.add("精彩一刻");
         mListName.add("当熊不让");
         mListName.add("超萌滚滚秀");

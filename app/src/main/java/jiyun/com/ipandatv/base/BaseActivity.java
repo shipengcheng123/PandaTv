@@ -16,7 +16,7 @@ import jiyun.com.ipandatv.App;
 
 public abstract class BaseActivity extends AppCompatActivity {
     private FragmentManager fragmentManager;
-boolean mFlag;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +31,7 @@ boolean mFlag;
 //        }
 
     }
-
+private boolean mFlag;
     @Override
     protected void onResume() {
         super.onResume();
@@ -39,6 +39,7 @@ boolean mFlag;
         App.activity = this;
         //当页面可见时加载数据
         MobclickAgent.onResume(this);
+
         App.activity = this;
         if(mFlag) {
             loadData();
