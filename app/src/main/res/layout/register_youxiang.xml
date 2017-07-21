@@ -46,7 +46,7 @@
             android:textSize="15sp" />
 
         <ImageView
-            android:id="@+id/checkCodeImage_yx"
+            android:id="@+id/Email_Image_YanZhengma"
             android:layout_width="110dp"
             android:layout_height="match_parent" />
     </LinearLayout>

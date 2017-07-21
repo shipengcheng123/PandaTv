@@ -11,11 +11,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.utils.SocializeUtils;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Map;
 import java.util.Set;
 
@@ -24,6 +28,13 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.base.BaseActivity;
+import jiyun.com.ipandatv.model.entity.LoginBean;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Headers;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 
 /**
@@ -54,7 +65,8 @@ public class Title_LoginActivity extends BaseActivity {
     @BindView(R.id.loginBtn)
     Button loginBtn;
     private ProgressDialog dialog;
-
+    OkHttpClient client = new OkHttpClient.Builder().build();
+    String mUserSeqId, errType;
 
     @Override
     protected int getLayoutId() {
@@ -90,7 +102,7 @@ public class Title_LoginActivity extends BaseActivity {
         UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
     }
 
-    @OnClick({R.id.Login_QQ, R.id.Login_WeiBo, R.id.Login_Finish, R.id.Login_Register})
+    @OnClick({R.id.Login_QQ, R.id.Login_WeiBo, R.id.Login_Finish, R.id.Login_Register, R.id.loginBtn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.Login_QQ:
@@ -103,11 +115,71 @@ public class Title_LoginActivity extends BaseActivity {
             case R.id.Login_Finish:
                 finish();
                 break;
+            case R.id.loginBtn:
+                Login();
+                finish();
+                break;
             case R.id.Login_Register:
                 Intent in = new Intent(this, Title_RegisterActivity.class);
                 startActivity(in);
                 break;
         }
+    }
+
+    private void Login() {
+        String userName = editUserName.getText().toString().trim();
+        String passWard = editUserPassword.getText().toString().trim();
+
+        //http://cbox_mobile.regclientuser.cntv.cn
+        String from = "https://reg.cntv.cn/login/login.action";
+        try {
+            String url = from + "?username="
+                    + URLEncoder.encode(userName, "UTF-8")
+                    + "&password=" + passWard
+                    + "&service=client_transaction" + "&from="
+                    + URLEncoder.encode(from, "UTF-8");
+
+            Request request = new Request.Builder().url(url)
+                    .addHeader("Referer", URLEncoder.encode(from, "UTF-8"))
+                    .addHeader("User-Agent", URLEncoder.encode("CNTV_APP_CLIENT_CYNTV_MOBILE", "UTF-8"))
+                    .build();
+
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    Log.i("TAG", e.getMessage().toString());
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+
+                    String string = response.body().string();
+
+                    Log.i("TAG", "登录成功：：" + string);
+
+                    Gson gson = new Gson();
+
+                    LoginBean loginBean = gson.fromJson(string, LoginBean.class);
+
+                    errType = loginBean.getErrType();
+
+                    mUserSeqId = loginBean.getUser_seq_id();
+
+                    Headers headers = response.headers();
+
+                    for (int i = 0; i < headers.size(); i++) {
+
+                        String name = headers.name(i);
+
+                        Log.i("TAG", "登录打印cookie值：：" + name);
+
+                    }
+                }
+            });
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
     }
 
     UMAuthListener authListener = new UMAuthListener() {
