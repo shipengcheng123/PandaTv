@@ -160,6 +160,7 @@ public class PandaYuanchuangxinwenFragment extends BaseFragment implements LiveT
         mList.addAll(pandaYuanchuangxinwenBean.getVideo());
         adapter.notifyDataSetChanged();
         progressDialog.dismiss();
+        progressDialog.dismiss();
     }
 
     @Override
