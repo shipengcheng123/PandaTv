@@ -24,6 +24,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
+import jiyun.com.ipandatv.activity.ACache;
 import jiyun.com.ipandatv.activity.WebActivity;
 import jiyun.com.ipandatv.adapter.BobaoAdapter;
 import jiyun.com.ipandatv.base.BaseFragment;
@@ -31,8 +32,6 @@ import jiyun.com.ipandatv.fragment.Home.tile_right.Title_RightActivity;
 import jiyun.com.ipandatv.model.entity.BobaoHeaderBean;
 import jiyun.com.ipandatv.model.entity.PandaBroadBean;
 import jiyun.com.ipandatv.utils.MyLog;
-
-import static com.umeng.socialize.utils.ContextUtil.getContext;
 
 /**
  * Created by Lenovo on 2017/7/12.
@@ -190,7 +189,15 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View{
 
     @Override
     public void showMessage(String msg) {
+        ACache aCache = ACache.get(getContext());
+        PandaBroadBean aCacheAsObject = (PandaBroadBean) aCache.getAsObject("PandaBroadBean");
+        mList.addAll(aCacheAsObject.getList());
+        bobaoAdapter.notifyDataSetChanged();
 
+
+        BobaoHeaderBean bobaoHeaderObject = (BobaoHeaderBean) aCache.getAsObject("BobaoHeaderBean");
+          Glide.with(App.activity).load(bobaoHeaderObject.getData().getBigImg().get(0).getImage()).into(mImage);
+          title.setText(bobaoHeaderObject.getData().getBigImg().get(0).getTitle());
     }
 
     @Override

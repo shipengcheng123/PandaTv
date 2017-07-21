@@ -32,7 +32,8 @@ public class HomePresenter implements HomeContract.Presenter {
 
             @Override
             public void OnError(int ErrorCode, String ErrorMsg) {
-
+                homeView.setMsg(ErrorMsg);
+                homeView.setMessage(ErrorMsg);
             }
         });
     }

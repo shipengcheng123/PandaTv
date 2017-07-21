@@ -25,6 +25,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
+import jiyun.com.ipandatv.activity.ACache;
 import jiyun.com.ipandatv.activity.VideoActivity;
 import jiyun.com.ipandatv.activity.YuanChuangActivity;
 import jiyun.com.ipandatv.adapter.homepage.HomeViewPagerAdapter;
@@ -118,6 +119,31 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
 
     @Override
     public void setMsg(String msg) {
+
+        ACache aCache = ACache.get(getContext());
+        HomePageBean asObject = (HomePageBean) aCache.getAsObject("HomePageBean");
+        List<HomePageBean.DataBean.BigImgBean> bigImgBeanList = asObject.getData().getBigImg();
+        showLunBo(bigImgBeanList);
+
+    }
+
+    @Override
+    public void setMessage(String msg) {
+        ACache aCache = ACache.get(getContext());
+        HomePageBean homePageobject = (HomePageBean) aCache.getAsObject("HomePageBean");
+
+
+        mList = new ArrayList<>();
+        HomePageBean.DataBean data = homePageobject.getData();
+        mList.add(data.getPandaeye());
+        mList.add(data.getArea());
+        mList.add(data.getChinalive());
+        mList.add(data.getWalllive());
+        mList.add(data.getPandalive());
+        home_adapter = new Home_Adapter(App.activity, mList);
+        PulltoRefresh.setAdapter(home_adapter);
+        home_adapter.notifyDataSetChanged();
+
 
     }
 

@@ -45,11 +45,14 @@ import java.io.RandomAccessFile;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
+
+import jiyun.com.ipandatv.model.entity.zhibochena.ChangchengBean;
 
 /**
  * @author Michael Yang（www.yangfuhai.com） update at 2013.08.07
@@ -89,12 +92,12 @@ public class ACache {
 		return manager;
 	}
 
-	private static String myPid() {
-		return "_" + android.os.Process.myPid();
-	}
+			private static String myPid() {
+				return "_" + android.os.Process.myPid();
+			}
 
-	private ACache(File cacheDir, long max_size, int max_count) {
-		if (!cacheDir.exists() && !cacheDir.mkdirs()) {
+			private ACache(File cacheDir, long max_size, int max_count) {
+				if (!cacheDir.exists() && !cacheDir.mkdirs()) {
 			throw new RuntimeException("can't make dirs in " + cacheDir.getAbsolutePath());
 		}
 		mCache = new ACacheManager(cacheDir, max_size, max_count);
@@ -216,13 +219,11 @@ public class ACache {
 	// =======================================
 	/**
 	 * 保存 JSONObject数据 到 缓存中
-	 * 
-	 * @param key
+	 *  @param key
 	 *            保存的key
 	 * @param value
-	 *            保存的JSON数据
 	 */
-	public void put(String key, JSONObject value) {
+	public void put(String key, List<String> value) {
 		put(key, value.toString());
 	}
 
@@ -340,11 +341,12 @@ public class ACache {
 	 * 
 	 * @param key
 	 *            the file name.
+	 * @param changchengBean
 	 * @return OutputStream stream for writing data.
 	 * @throws FileNotFoundException
 	 *             if the file can not be created.
 	 */
-	public OutputStream put(String key) throws FileNotFoundException {
+	public OutputStream put(String key, ChangchengBean changchengBean) throws FileNotFoundException {
 		return new xFileOutputStream(mCache.newFile(key));
 	}
 

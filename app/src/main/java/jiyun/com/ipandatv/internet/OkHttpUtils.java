@@ -6,12 +6,14 @@ import android.content.SharedPreferences;
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Map;
 import java.util.Set;
 
 import jiyun.com.ipandatv.App;
+import jiyun.com.ipandatv.activity.ACache;
 import jiyun.com.ipandatv.internet.callback.INetWorkCallback;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -78,7 +80,6 @@ public class OkHttpUtils implements IHttp {
                         callback.OnError(404, e.getMessage().toString());
                     }
                 });
-
             }
 
             @Override
@@ -154,6 +155,8 @@ public class OkHttpUtils implements IHttp {
         Type[] actualTypeArguments = ((ParameterizedType) types[0]).getActualTypeArguments();
         Type type = actualTypeArguments[0];
         T t = gson.fromJson(jsonData, type);
+        ACache aCache = ACache.get(App.activity);
+        aCache.put(t.getClass().getSimpleName(), (Serializable) t);
         return t;
     }
 

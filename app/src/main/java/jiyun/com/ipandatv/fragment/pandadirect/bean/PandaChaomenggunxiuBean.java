@@ -2,13 +2,14 @@ package jiyun.com.ipandatv.fragment.pandadirect.bean;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by INS7566 on 2017/7/14.
  */
 
-public class PandaChaomenggunxiuBean {
+public class PandaChaomenggunxiuBean implements Serializable{
 
 
     /**
@@ -35,7 +36,7 @@ public class PandaChaomenggunxiuBean {
         this.video = video;
     }
 
-    public static class VideosetBean {
+    public static class VideosetBean implements Serializable{
         /**
          * 0 : {"vsid":"VSET100272959126","name":"77滚滚秀","img":"http://p1.img.cctvpic.com/photoAlbum/vms/standard/img/2016/7/4/VSETBr7Ufabb0BvOFDWAzU1Z160704.jpg","enname":"","url":"http://tv.cntv.cn/videoset/VSET100272959126","cd":"","zy":"","bj":"","dy":"","js":"","nf":"","yz":"","fl":"","sbsj":"","sbpd":"","desc":"《77滚滚秀》是一档集合所有滚滚精彩瞬间的娱乐、搞笑类节目，在这里你可以看到滚滚们搞笑、尴尬、萌萌哒，以及前所未见的所有神\u201c技能\u201d，每周五准时更新，还有更多互动和奖品等着你，快来加入我们吧。","playdesc":"","zcr":"","fcl":""}
          * count : 70
@@ -61,7 +62,7 @@ public class PandaChaomenggunxiuBean {
             this.count = count;
         }
 
-        public static class _$0Bean {
+        public static class _$0Bean implements Serializable{
             /**
              * vsid : VSET100272959126
              * name : 77滚滚秀
@@ -258,7 +259,7 @@ public class PandaChaomenggunxiuBean {
         }
     }
 
-    public static class VideoBean {
+    public static class VideoBean implements Serializable{
         /**
          * vsid : VSET100272959126
          * order : 67

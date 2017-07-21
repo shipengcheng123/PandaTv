@@ -1,12 +1,13 @@
 package jiyun.com.ipandatv.fragment.pandabroadcast.panda_culture;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by hp1 on 2017-04-07.
  */
 
-public class PandaCultureEntity {
+public class PandaCultureEntity implements Serializable{
     private List<BigImgBean> bigImg;
     private List<ListBean> list;
 
@@ -26,7 +27,7 @@ public class PandaCultureEntity {
         this.list = list;
     }
 
-    public static class BigImgBean {
+    public static class BigImgBean implements Serializable{
         /**
          * url : http://culture.ipanda.com/2017/05/23/ARTILBLSMq3qlVgygrUMJEG2170523.shtml
          * image : http://p1.img.cctvpic.com/photoAlbum/page/performance/img/2017/5/23/1495533604076_403.jpg
@@ -122,7 +123,7 @@ public class PandaCultureEntity {
         }
     }
 
-    public static class ListBean {
+    public static class ListBean implements Serializable{
         /**
          * url :
          * image : http://p5.img.cctvpic.com/fmspic/2016/10/19/84f27011346547c595d78b47a48eb6de-129.jpg

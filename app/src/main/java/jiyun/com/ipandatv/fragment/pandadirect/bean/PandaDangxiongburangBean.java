@@ -2,13 +2,14 @@ package jiyun.com.ipandatv.fragment.pandadirect.bean;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by INS7566 on 2017/7/14.
  */
 
-public class PandaDangxiongburangBean {
+public class PandaDangxiongburangBean implements Serializable {
 
     /**
      * videoset : {"0":{"vsid":"VSET100332640004","name":"当熊不让","img":"http://p1.img.cctvpic.com/photoAlbum/vms/standard/img/2017/3/15/VSETgpbnd9sJ0BP2qfKq00j2170315.jpg","enname":"其他","url":"http://tv.cntv.cn/videoset/VSET100332640004","cd":"","zy":"","bj":"","dy":"","js":"","nf":"","yz":"","fl":"熊猫直播","sbsj":"","sbpd":"其他","desc":"新节目《当熊不让》上线啦！每周五盘点当周最火视频和图片，让你一次看遍人气熊猫！","playdesc":"","zcr":"","fcl":""},"count":"19"}
@@ -34,7 +35,7 @@ public class PandaDangxiongburangBean {
         this.video = video;
     }
 
-    public static class VideosetBean {
+    public static class VideosetBean implements Serializable{
         /**
          * 0 : {"vsid":"VSET100332640004","name":"当熊不让","img":"http://p1.img.cctvpic.com/photoAlbum/vms/standard/img/2017/3/15/VSETgpbnd9sJ0BP2qfKq00j2170315.jpg","enname":"其他","url":"http://tv.cntv.cn/videoset/VSET100332640004","cd":"","zy":"","bj":"","dy":"","js":"","nf":"","yz":"","fl":"熊猫直播","sbsj":"","sbpd":"其他","desc":"新节目《当熊不让》上线啦！每周五盘点当周最火视频和图片，让你一次看遍人气熊猫！","playdesc":"","zcr":"","fcl":""}
          * count : 19
@@ -60,7 +61,7 @@ public class PandaDangxiongburangBean {
             this.count = count;
         }
 
-        public static class _$0Bean {
+        public static class _$0Bean implements Serializable{
             /**
              * vsid : VSET100332640004
              * name : 当熊不让
@@ -257,7 +258,7 @@ public class PandaDangxiongburangBean {
         }
     }
 
-    public static class VideoBean {
+    public static class VideoBean implements Serializable{
         /**
          * vsid : VSET100332640004
          * order : 19

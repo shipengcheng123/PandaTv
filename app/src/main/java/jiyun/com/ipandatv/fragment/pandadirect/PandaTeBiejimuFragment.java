@@ -18,6 +18,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
+import jiyun.com.ipandatv.activity.ACache;
 import jiyun.com.ipandatv.base.BaseFragment;
 import jiyun.com.ipandatv.fragment.pandadirect.adapter.PandaTeBiejiemuAdapter;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaChaomenggunxiuBean;
@@ -141,11 +142,22 @@ public class PandaTeBiejimuFragment extends BaseFragment implements LiveTwoContr
         mList.addAll(pandaTeBiejimuBean.getVideo());
         adapter.notifyDataSetChanged();
     }
+    @Override
+    public void showMessage(String msg) {
+        ACache aCache = ACache.get(getContext());
+        PandaTeBiejimuBean pandaChaomenggunxiuObject =
+                (PandaTeBiejimuBean) aCache.
+                        getAsObject("PandaTeBiejimuBean");
 
+        mList.addAll(pandaChaomenggunxiuObject.getVideo());
+        adapter.notifyDataSetChanged();
+    }
     @Override
     public void showyuanchuangxinwenFragment(PandaYuanchuangxinwenBean pandaYuanchuangxinwenBean) {
 
     }
+
+
 
     @Override
     public void setBasePresenter(LiveTwoContract.Presenter presenter) {

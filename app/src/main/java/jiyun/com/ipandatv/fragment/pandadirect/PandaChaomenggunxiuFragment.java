@@ -18,6 +18,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
+import jiyun.com.ipandatv.activity.ACache;
 import jiyun.com.ipandatv.base.BaseFragment;
 import jiyun.com.ipandatv.fragment.pandadirect.adapter.PandaChaomengAdapter;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaChaomenggunxiuBean;
@@ -145,6 +146,15 @@ public class PandaChaomenggunxiuFragment extends BaseFragment implements LiveTwo
     @Override
     public void showyuanchuangxinwenFragment(PandaYuanchuangxinwenBean pandaYuanchuangxinwenBean) {
 
+    }
+
+    @Override
+    public void showMessage(String msg) {
+        ACache aCache = ACache.get(getContext());
+        PandaChaomenggunxiuBean pandaChaomenggunxiuObject = (PandaChaomenggunxiuBean) aCache.getAsObject("PandaChaomenggunxiuBean");
+
+        mList.addAll(pandaChaomenggunxiuObject.getVideo());
+        adapter.notifyDataSetChanged();
     }
 
     @Override

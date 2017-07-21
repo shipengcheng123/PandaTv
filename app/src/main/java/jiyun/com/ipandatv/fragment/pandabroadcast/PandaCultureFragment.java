@@ -26,6 +26,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
+import jiyun.com.ipandatv.activity.ACache;
 import jiyun.com.ipandatv.activity.WebActivity;
 import jiyun.com.ipandatv.adapter.homepage.setViewPagerListener;
 import jiyun.com.ipandatv.base.BaseFragment;
@@ -166,6 +167,17 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
     @Override
     public void ShowTebie(PandaTebieBean tebieBean) {
 
+    }
+
+    @Override
+    public void showMessage(String msg) {
+        ACache aCache = ACache.get(getContext());
+        PandaCultureEntity aCacheAsObject = (PandaCultureEntity) aCache.getAsObject("PandaCultureEntity");
+
+        dataBeanList.addAll(aCacheAsObject.getBigImg());
+        listBeanList.addAll(aCacheAsObject.getList());
+        createImg(aCacheAsObject);
+        itemAdapter.notifyDataSetChanged();
     }
 
 
