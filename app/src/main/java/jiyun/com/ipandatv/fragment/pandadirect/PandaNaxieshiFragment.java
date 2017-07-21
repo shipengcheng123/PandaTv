@@ -160,6 +160,7 @@ public class PandaNaxieshiFragment extends BaseFragment implements LiveTwoContra
 
         mList.addAll(pandaChaomenggunxiuObject.getVideo());
         adapter.notifyDataSetChanged();
+        progressDialog.dismiss();
     }
     @Override
     public void showpanTebiejiemuFragment(PandaTeBiejimuBean pandaTeBiejimuBean) {

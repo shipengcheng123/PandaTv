@@ -148,6 +148,7 @@ public class PandaDanganFragment extends BaseFragment implements LiveTwoContract
 
         mList.addAll(pandaChaomenggunxiuObject.getVideo());
         adapter.notifyDataSetChanged();
+        progressDialog.dismiss();
     }
     @Override
     public void showpandaTOP(PandaTOPBean pandaTOPBean) {

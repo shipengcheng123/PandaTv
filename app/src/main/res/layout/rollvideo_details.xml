@@ -44,7 +44,7 @@
         android:layout_height="180dp">
 
 
-            <jiyun.com.ipandatv.view.JCVideoPlayerStandardShowShareButtonAfterFullscreen
+            <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
                 android:id="@+id/custom_videoplayer_standard_with_share_button"
                 android:layout_width="match_parent"
                 android:layout_height="180dp" />

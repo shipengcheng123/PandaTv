@@ -13,11 +13,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import jiyun.com.ipandatv.R;
+import jiyun.com.ipandatv.activity.ACache;
 import jiyun.com.ipandatv.adapter.ZhiBochenaAdapter;
 import jiyun.com.ipandatv.base.BaseFragment;
 import jiyun.com.ipandatv.model.entity.zhibochena.ChangchengBean;
-
-import static com.umeng.socialize.utils.ContextUtil.getContext;
 
 /**
  * Created by Lenovo on 2017/7/14.

@@ -49,6 +49,7 @@ public class PandaYuanchuangxinwenFragment extends BaseFragment implements LiveT
     private PandaYuanchuangxinwemPresenter presente;
     private Handler handleProgress = new Handler();
     private ProgressDialog progressDialog = null;
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_jcyk;
@@ -103,6 +104,7 @@ public class PandaYuanchuangxinwenFragment extends BaseFragment implements LiveT
     @Override
     protected void loadData() {
 
+
         progressDialog = ProgressDialog.show(App.activity,"请稍等...","获取数据中...",true);
         presente=new PandaYuanchuangxinwemPresenter(this);
         presenter.start();
@@ -112,6 +114,7 @@ public class PandaYuanchuangxinwenFragment extends BaseFragment implements LiveT
                 jcykPullrecycler.setAdapter(adapter);
             }
         });
+
 
     }
 
@@ -160,18 +163,15 @@ public class PandaYuanchuangxinwenFragment extends BaseFragment implements LiveT
         mList.addAll(pandaYuanchuangxinwenBean.getVideo());
         adapter.notifyDataSetChanged();
         progressDialog.dismiss();
-        progressDialog.dismiss();
     }
 
     @Override
     public void showMessage(String msg) {
-
-        ACache aCache = ACache.get(getContext());
-        PandaYuanchuangxinwenBean pandaLiveDuoshijiaoObject = (PandaYuanchuangxinwenBean) aCache.getAsObject("PandaYuanchuangxinwenBean");
-        mList.addAll(pandaLiveDuoshijiaoObject.getVideo());
+        ACache aCache = ACache.get(App.activity);
+        PandaYuanchuangxinwenBean pandaYuanchuangxinwenBean = (PandaYuanchuangxinwenBean) aCache.getAsObject("PandaYuanchuangxinwenBean");
+        mList.addAll(pandaYuanchuangxinwenBean.getVideo());
         adapter.notifyDataSetChanged();
         progressDialog.dismiss();
-
     }
 
     @Override
@@ -192,5 +192,4 @@ public class PandaYuanchuangxinwenFragment extends BaseFragment implements LiveT
         super.onDestroyView();
         unbinder.unbind();
     }
-
 }

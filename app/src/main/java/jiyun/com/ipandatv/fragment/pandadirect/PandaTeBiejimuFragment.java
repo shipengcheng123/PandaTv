@@ -163,6 +163,7 @@ public class PandaTeBiejimuFragment extends BaseFragment implements LiveTwoContr
 
         mList.addAll(pandaChaomenggunxiuObject.getVideo());
         adapter.notifyDataSetChanged();
+        progressDialog.dismiss();
     }
     @Override
     public void showyuanchuangxinwenFragment(PandaYuanchuangxinwenBean pandaYuanchuangxinwenBean) {

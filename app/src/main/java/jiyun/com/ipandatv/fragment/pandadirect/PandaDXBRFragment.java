@@ -141,6 +141,7 @@ public class PandaDXBRFragment extends BaseFragment implements LiveTwoContract.V
 
         mList.addAll(pandaChaomenggunxiuObject.getVideo());
         adapter.notifyDataSetChanged();
+        progressDialog.dismiss();
     }
     @Override
     public void showchaomenggunxiuFrangment(PandaChaomenggunxiuBean pandaChaomenggunxiuBean) {

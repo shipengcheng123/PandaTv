@@ -158,6 +158,7 @@ public class PandaTOPFragment extends BaseFragment implements LiveTwoContract.Vi
 
         mList.addAll(pandaChaomenggunxiuObject.getVideo());
         adapter.notifyDataSetChanged();
+        progressDialog.dismiss();
     }
     @Override
     public void showpandanaxieshiFragment(PandaNaxieshiBean pandaNaxieshiBean) {

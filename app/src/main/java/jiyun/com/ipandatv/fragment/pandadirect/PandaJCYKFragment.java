@@ -122,9 +122,8 @@ public class PandaJCYKFragment extends BaseFragment implements LiveTwoContract.V
     public void showjcyiFragment(final PandaLiveJcyiBean pandaLiveJcyiBean) {
 
         mList.addAll(pandaLiveJcyiBean.getVideo());
-        progressDialog.dismiss();
         adapter.notifyDataSetChanged();
-
+        progressDialog.dismiss();
     }
     @Override
     public void showMessage(String msg) {
@@ -134,6 +133,8 @@ public class PandaJCYKFragment extends BaseFragment implements LiveTwoContract.V
                         getAsObject("PandaLiveJcyiBean");
         mList.addAll(pandaChaomenggunxiuObject.getVideo());
         adapter.notifyDataSetChanged();
+        progressDialog.dismiss();
+
 
     }
     @Override

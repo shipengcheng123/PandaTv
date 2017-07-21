@@ -2,6 +2,7 @@ package jiyun.com.ipandatv.internet;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.google.gson.Gson;
 
@@ -77,7 +78,13 @@ public class OkHttpUtils implements IHttp {
                     @Override
                     public void run() {
                         //执行在主线程
-                        callback.OnError(404, e.getMessage().toString());
+                        if(e.getMessage()!=null) {
+                            callback.OnError(404, e.getMessage().toString());
+                        }else{
+                            Log.e("Error",e.getMessage().toString());
+                        }
+                        
+
                     }
                 });
             }

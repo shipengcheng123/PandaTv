@@ -133,7 +133,7 @@ public class PandaChaomenggunxiuFragment extends BaseFragment implements LiveTwo
     public void showchaomenggunxiuFrangment(PandaChaomenggunxiuBean pandaChaomenggunxiuBean) {
         mList.addAll(pandaChaomenggunxiuBean.getVideo());
         adapter.notifyDataSetChanged();
-
+        progressDialog.dismiss();
     }
 
     @Override
@@ -168,6 +168,7 @@ public class PandaChaomenggunxiuFragment extends BaseFragment implements LiveTwo
 
         mList.addAll(pandaChaomenggunxiuObject.getVideo());
         adapter.notifyDataSetChanged();
+        progressDialog.dismiss();
     }
 
     @Override

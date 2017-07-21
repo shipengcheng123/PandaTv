@@ -129,22 +129,25 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View{
 
 
 
-        bobaoAdapter = new BobaoAdapter(getContext(),mList);
+
 
 
     }
 
     @Override
     protected void loadData() {
+
         progressDialog = ProgressDialog.show(App.activity,"请稍等...","获取数据中...",true);
         bobaoPresenter = new BobaoPresenter(this);
         presenter.start();
-        handleProgress.post(new Runnable() {
-            @Override
-            public void run() {
-                mRecyclerView.setAdapter(bobaoAdapter);
-            }
-        });
+        bobaoAdapter = new BobaoAdapter(getContext(),mList);
+        mRecyclerView.setAdapter(bobaoAdapter);
+//        handleProgress.post(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//            }
+//        });
 
     }
 
@@ -211,6 +214,7 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View{
         BobaoHeaderBean bobaoHeaderObject = (BobaoHeaderBean) aCache.getAsObject("BobaoHeaderBean");
           Glide.with(App.activity).load(bobaoHeaderObject.getData().getBigImg().get(0).getImage()).into(mImage);
           title.setText(bobaoHeaderObject.getData().getBigImg().get(0).getTitle());
+        progressDialog.dismiss();
     }
 
     @Override
