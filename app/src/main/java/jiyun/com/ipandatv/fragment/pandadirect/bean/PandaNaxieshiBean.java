@@ -2,13 +2,14 @@ package jiyun.com.ipandatv.fragment.pandadirect.bean;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by INS7566 on 2017/7/14.
  */
 
-public class PandaNaxieshiBean {
+public class PandaNaxieshiBean implements Serializable {
 
 
     /**
@@ -35,7 +36,7 @@ public class PandaNaxieshiBean {
         this.video = video;
     }
 
-    public static class VideosetBean {
+    public static class VideosetBean implements Serializable{
         /**
          * 0 : {"vsid":"VSET100237714751","name":"熊猫那些事儿","img":"http://p5.img.cctvpic.com/fmspic/vms/image/2015/07/03/VSET_1435905506188395.jpg","enname":"CNTV","url":"http://tv.cntv.cn/videoset/VSET100237714751","cd":"","zy":"","bj":"","dy":"","js":"","nf":"","yz":"","fl":"熊猫直播","sbsj":"","sbpd":"CNTV","desc":"熊猫频道栏目。","playdesc":"","zcr":"","fcl":""}
          * count : 118
@@ -61,7 +62,7 @@ public class PandaNaxieshiBean {
             this.count = count;
         }
 
-        public static class _$0Bean {
+        public static class _$0Bean implements Serializable{
             /**
              * vsid : VSET100237714751
              * name : 熊猫那些事儿
@@ -258,7 +259,7 @@ public class PandaNaxieshiBean {
         }
     }
 
-    public static class VideoBean {
+    public static class VideoBean implements Serializable{
         /**
          * vsid : VSET100237714751
          * order : 115

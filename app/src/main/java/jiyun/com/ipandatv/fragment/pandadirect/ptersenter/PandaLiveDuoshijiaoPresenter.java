@@ -34,7 +34,7 @@ public class PandaLiveDuoshijiaoPresenter implements LiveContract.Presenter {
 
             @Override
             public void OnError(int ErrorCode, String ErrorMsg) {
-
+                liveFragment.showMessage(ErrorMsg);
             }
         });
     }

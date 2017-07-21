@@ -33,7 +33,7 @@ private CultureContract.View pandaculture;
 
             @Override
             public void OnError(int ErrorCode, String ErrorMsg) {
-
+                pandaculture.showMessage(ErrorMsg);
             }
         });
     }

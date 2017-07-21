@@ -20,6 +20,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
+import jiyun.com.ipandatv.activity.ACache;
 import jiyun.com.ipandatv.base.BaseFragment;
 import jiyun.com.ipandatv.fragment.pandadirect.adapter.PandaChaomengAdapter;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaChaomenggunxiuBean;
@@ -95,7 +96,7 @@ public class PandaChaomenggunxiuFragment extends BaseFragment implements LiveTwo
             }
         });
 
-        adapter = new PandaChaomengAdapter(getContext(),mList);
+
 
     }
 
@@ -105,12 +106,14 @@ public class PandaChaomenggunxiuFragment extends BaseFragment implements LiveTwo
         progressDialog = ProgressDialog.show(App.activity,"请稍等...","获取数据中...",true);
         presente=new PandaChaomengPresenter(this);
         presenter.start();
-        handleProgress.post(new Runnable() {
-            @Override
-            public void run() {
-                jcykPullrecycler.setAdapter(adapter);
-            }
-        });
+        adapter = new PandaChaomengAdapter(getContext(),mList);
+        jcykPullrecycler.setAdapter(adapter);
+//        handleProgress.post(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//            }
+//        });
     }
 
     @Override
@@ -132,7 +135,7 @@ public class PandaChaomenggunxiuFragment extends BaseFragment implements LiveTwo
     public void showchaomenggunxiuFrangment(PandaChaomenggunxiuBean pandaChaomenggunxiuBean) {
         mList.addAll(pandaChaomenggunxiuBean.getVideo());
         adapter.notifyDataSetChanged();
-
+        progressDialog.dismiss();
     }
 
     @Override
@@ -158,6 +161,16 @@ public class PandaChaomenggunxiuFragment extends BaseFragment implements LiveTwo
     @Override
     public void showyuanchuangxinwenFragment(PandaYuanchuangxinwenBean pandaYuanchuangxinwenBean) {
 
+    }
+
+    @Override
+    public void showMessage(String msg) {
+        ACache aCache = ACache.get(getContext());
+        PandaChaomenggunxiuBean pandaChaomenggunxiuObject = (PandaChaomenggunxiuBean) aCache.getAsObject("PandaChaomenggunxiuBean");
+
+        mList.addAll(pandaChaomenggunxiuObject.getVideo());
+        adapter.notifyDataSetChanged();
+        progressDialog.dismiss();
     }
 
     @Override

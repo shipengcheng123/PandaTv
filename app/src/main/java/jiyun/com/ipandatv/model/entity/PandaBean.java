@@ -1,5 +1,6 @@
 package jiyun.com.ipandatv.model.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -7,7 +8,7 @@ import java.util.List;
  * 总标签页实体Bean
  */
 
-public class PandaBean {
+public class PandaBean  implements Serializable {
     private List<TabBean> tab;
 
     public List<TabBean> getTab() {
@@ -18,7 +19,7 @@ public class PandaBean {
         this.tab = tab;
     }
 
-    public static class TabBean {
+    public static class TabBean  implements Serializable{
         /**
          * title : 首页
          * noimage :

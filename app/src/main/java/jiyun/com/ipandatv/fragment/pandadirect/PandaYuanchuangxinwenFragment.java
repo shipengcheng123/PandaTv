@@ -20,6 +20,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
+import jiyun.com.ipandatv.activity.ACache;
 import jiyun.com.ipandatv.base.BaseFragment;
 import jiyun.com.ipandatv.fragment.pandadirect.adapter.PandaYuanchuangxinwenAdapter;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaChaomenggunxiuBean;
@@ -48,6 +49,7 @@ public class PandaYuanchuangxinwenFragment extends BaseFragment implements LiveT
     private PandaYuanchuangxinwemPresenter presente;
     private Handler handleProgress = new Handler();
     private ProgressDialog progressDialog = null;
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_jcyk;
@@ -95,22 +97,26 @@ public class PandaYuanchuangxinwenFragment extends BaseFragment implements LiveT
             }
         });
 
-        adapter = new PandaYuanchuangxinwenAdapter(getContext(),mList);
+
 
     }
 
     @Override
     protected void loadData() {
 
+
         progressDialog = ProgressDialog.show(App.activity,"请稍等...","获取数据中...",true);
         presente=new PandaYuanchuangxinwemPresenter(this);
         presenter.start();
-        handleProgress.post(new Runnable() {
-            @Override
-            public void run() {
-                jcykPullrecycler.setAdapter(adapter);
-            }
-        });
+        adapter = new PandaYuanchuangxinwenAdapter(getContext(),mList);
+        jcykPullrecycler.setAdapter(adapter);
+//        handleProgress.post(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//            }
+//        });
+
 
     }
 
@@ -156,6 +162,15 @@ public class PandaYuanchuangxinwenFragment extends BaseFragment implements LiveT
 
     @Override
     public void showyuanchuangxinwenFragment(PandaYuanchuangxinwenBean pandaYuanchuangxinwenBean) {
+        mList.addAll(pandaYuanchuangxinwenBean.getVideo());
+        adapter.notifyDataSetChanged();
+        progressDialog.dismiss();
+    }
+
+    @Override
+    public void showMessage(String msg) {
+        ACache aCache = ACache.get(App.activity);
+        PandaYuanchuangxinwenBean pandaYuanchuangxinwenBean = (PandaYuanchuangxinwenBean) aCache.getAsObject("PandaYuanchuangxinwenBean");
         mList.addAll(pandaYuanchuangxinwenBean.getVideo());
         adapter.notifyDataSetChanged();
         progressDialog.dismiss();

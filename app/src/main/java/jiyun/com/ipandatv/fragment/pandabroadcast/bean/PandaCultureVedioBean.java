@@ -2,13 +2,14 @@ package jiyun.com.ipandatv.fragment.pandabroadcast.bean;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by INS7566 on 2017/7/18.
  */
 
-public class PandaCultureVedioBean {
+public class PandaCultureVedioBean implements Serializable{
 
     /**
      * play_channel : CNTV
@@ -275,7 +276,7 @@ public class PandaCultureVedioBean {
         this.produce = produce;
     }
 
-    public static class CdnInfoBean {
+    public static class CdnInfoBean implements Serializable{
         /**
          * cdn_vip : vod.cntv.lxdns.com
          * cdn_code : VOD-MP4-CDN-CNC
@@ -311,7 +312,7 @@ public class PandaCultureVedioBean {
         }
     }
 
-    public static class HlsCdnInfoBean {
+    public static class HlsCdnInfoBean implements Serializable{
         /**
          * cdn_vip : asp.cntv.lxdns.com
          * cdn_code : VOD-HLS-CDN-CNC
@@ -347,7 +348,7 @@ public class PandaCultureVedioBean {
         }
     }
 
-    public static class VideoBean {
+    public static class VideoBean implements Serializable{
         /**
          * totalLength : 213.00
          * chapters : [{"duration":"213","image":"http://p5.img.cctvpic.com/fmspic/2016/10/19/84f27011346547c595d78b47a48eb6de-129.jpg","url":"http://vod.cntv.lxdns.com/flash/mp4video55/TMS/2016/10/19/84f27011346547c595d78b47a48eb6de_h264418000nero_aac32.mp4"}]
@@ -432,7 +433,7 @@ public class PandaCultureVedioBean {
             this.chapters2 = chapters2;
         }
 
-        public static class ChaptersBean {
+        public static class ChaptersBean implements Serializable{
             /**
              * duration : 213
              * image : http://p5.img.cctvpic.com/fmspic/2016/10/19/84f27011346547c595d78b47a48eb6de-129.jpg
@@ -468,7 +469,7 @@ public class PandaCultureVedioBean {
             }
         }
 
-        public static class Chapters4Bean {
+        public static class Chapters4Bean implements Serializable{
             /**
              * duration : 120
              * image : http://p5.img.cctvpic.com/fmspic/2016/10/19/84f27011346547c595d78b47a48eb6de-129.jpg
@@ -504,7 +505,7 @@ public class PandaCultureVedioBean {
             }
         }
 
-        public static class Chapters3Bean {
+        public static class Chapters3Bean implements Serializable{
             /**
              * duration : 120
              * image : http://p5.img.cctvpic.com/fmspic/2016/10/19/84f27011346547c595d78b47a48eb6de-129.jpg
@@ -540,7 +541,7 @@ public class PandaCultureVedioBean {
             }
         }
 
-        public static class LowChaptersBean {
+        public static class LowChaptersBean implements Serializable{
             /**
              * duration : 213
              * image : http://p5.img.cctvpic.com/fmspic/2016/10/19/84f27011346547c595d78b47a48eb6de-129.jpg
@@ -576,7 +577,7 @@ public class PandaCultureVedioBean {
             }
         }
 
-        public static class Chapters2Bean {
+        public static class Chapters2Bean implements Serializable{
             /**
              * duration : 178
              * image : http://p5.img.cctvpic.com/fmspic/2016/10/19/84f27011346547c595d78b47a48eb6de-129.jpg
@@ -613,7 +614,7 @@ public class PandaCultureVedioBean {
         }
     }
 
-    public static class LcBean {
+    public static class LcBean implements Serializable{
         /**
          * isp_code : 1
          * city_code :

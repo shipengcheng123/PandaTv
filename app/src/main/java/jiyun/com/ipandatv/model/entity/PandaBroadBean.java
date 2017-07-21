@@ -1,11 +1,12 @@
 package jiyun.com.ipandatv.model.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Lenovo on 2017/7/13.
  */
-public class PandaBroadBean {
+public class PandaBroadBean implements Serializable{
 
 
     /**
@@ -32,7 +33,7 @@ public class PandaBroadBean {
         this.list = list;
     }
 
-    public static class ListBean {
+    public static class ListBean  implements Serializable{
         /**
          * num : 1
          * datatype : video

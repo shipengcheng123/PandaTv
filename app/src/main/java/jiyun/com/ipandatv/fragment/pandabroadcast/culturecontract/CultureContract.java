@@ -15,9 +15,11 @@ public interface CultureContract {
     interface View extends BaseView <Presenter>{
 
         void showAll(PandaCultureEntity entity);
+
         //第一个条目的详情
         void showVideo(PandaCultureVedioBean pandaCultureVedioBean);
         void ShowTebie(PandaTebieBean tebieBean);
+        void showMessage(String msg);
 
     }
     interface Presenter extends BasePresenter {

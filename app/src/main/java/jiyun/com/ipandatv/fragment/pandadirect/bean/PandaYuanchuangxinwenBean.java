@@ -2,13 +2,14 @@ package jiyun.com.ipandatv.fragment.pandadirect.bean;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by INS7566 on 2017/7/14.
  */
 
-public class PandaYuanchuangxinwenBean {
+public class PandaYuanchuangxinwenBean implements Serializable {
 
     /**
      * videoset : {"0":{"vsid":"VSET100219009515","name":"熊猫频道-原创新闻（高清）","img":"http://p1.img.cctvpic.com/photoAlbum/vms/standard/img/2016/7/4/VSETAjD49Q4i15Vr2gXZdlwh160704.jpg","enname":"其他","url":"http://tv.cntv.cn/videoset/VSET100219009515","cd":"","zy":"","bj":"","dy":"","js":"","nf":"","yz":"","fl":"","sbsj":"","sbpd":"其他","desc":"熊猫频道原创新闻高清内容。","playdesc":"","zcr":"","fcl":""},"count":"543"}
@@ -35,7 +36,7 @@ public class PandaYuanchuangxinwenBean {
         this.video = video;
     }
 
-    public static class VideosetBean {
+    public static class VideosetBean implements Serializable{
         /**
          * 0 : {"vsid":"VSET100219009515","name":"熊猫频道-原创新闻（高清）","img":"http://p1.img.cctvpic.com/photoAlbum/vms/standard/img/2016/7/4/VSETAjD49Q4i15Vr2gXZdlwh160704.jpg","enname":"其他","url":"http://tv.cntv.cn/videoset/VSET100219009515","cd":"","zy":"","bj":"","dy":"","js":"","nf":"","yz":"","fl":"","sbsj":"","sbpd":"其他","desc":"熊猫频道原创新闻高清内容。","playdesc":"","zcr":"","fcl":""}
          * count : 543
@@ -61,7 +62,7 @@ public class PandaYuanchuangxinwenBean {
             this.count = count;
         }
 
-        public static class _$0Bean {
+        public static class _$0Bean implements Serializable{
             /**
              * vsid : VSET100219009515
              * name : 熊猫频道-原创新闻（高清）
@@ -258,7 +259,7 @@ public class PandaYuanchuangxinwenBean {
         }
     }
 
-    public static class VideoBean {
+    public static class VideoBean implements Serializable{
         /**
          * vsid : VSET100219009515
          * order : 544
