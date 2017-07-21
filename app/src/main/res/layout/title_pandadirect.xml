@@ -9,7 +9,7 @@
         android:background="@color/colorPrimaryDark"
         android:orientation="horizontal">
         <TextView
-            android:layout_width="324dp"
+            android:layout_width="330dp"
             android:layout_height="140px"
             android:text="熊猫直播"
             android:textColor="#ffffff"
@@ -23,7 +23,7 @@
             android:layout_weight="0.13"
             android:layout_marginTop="8dp"
             android:id="@+id/direct_login_iv"
-            android:layout_marginRight="6dp"
+            android:layout_marginRight="3dp"
             android:layout_marginBottom="3dp"/>
     </LinearLayout>
 </LinearLayout>
