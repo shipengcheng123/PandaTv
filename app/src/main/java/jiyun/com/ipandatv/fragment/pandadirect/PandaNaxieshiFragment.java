@@ -96,7 +96,7 @@ public class PandaNaxieshiFragment extends BaseFragment implements LiveTwoContra
             }
         });
 
-        adapter = new PandaNaxieshiAdapetr(getContext(),mList);
+
 
     }
 
@@ -105,12 +105,14 @@ public class PandaNaxieshiFragment extends BaseFragment implements LiveTwoContra
         progressDialog = ProgressDialog.show(App.activity,"请稍等...","获取数据中...",true);
         presente=new PandaNaxieshiPresenter(this);
         presenter.start();
-        handleProgress.post(new Runnable() {
-            @Override
-            public void run() {
-                jcykPullrecycler.setAdapter(adapter);
-            }
-        });
+        adapter = new PandaNaxieshiAdapetr(getContext(),mList);
+        jcykPullrecycler.setAdapter(adapter);
+//        handleProgress.post(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//            }
+//        });
 
     }
 

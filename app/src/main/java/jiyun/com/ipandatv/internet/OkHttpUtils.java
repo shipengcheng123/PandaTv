@@ -81,7 +81,7 @@ public class OkHttpUtils implements IHttp {
                         if(e.getMessage()!=null) {
                             callback.OnError(404, e.getMessage().toString());
                         }else{
-                            Log.e("Error",e.getMessage().toString());
+                            Log.e("Error","错误 e.getMessage 为空");
                         }
                         
 

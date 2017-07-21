@@ -97,7 +97,7 @@ public class PandaYuanchuangxinwenFragment extends BaseFragment implements LiveT
             }
         });
 
-        adapter = new PandaYuanchuangxinwenAdapter(getContext(),mList);
+
 
     }
 
@@ -108,12 +108,14 @@ public class PandaYuanchuangxinwenFragment extends BaseFragment implements LiveT
         progressDialog = ProgressDialog.show(App.activity,"请稍等...","获取数据中...",true);
         presente=new PandaYuanchuangxinwemPresenter(this);
         presenter.start();
-        handleProgress.post(new Runnable() {
-            @Override
-            public void run() {
-                jcykPullrecycler.setAdapter(adapter);
-            }
-        });
+        adapter = new PandaYuanchuangxinwenAdapter(getContext(),mList);
+        jcykPullrecycler.setAdapter(adapter);
+//        handleProgress.post(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//            }
+//        });
 
 
     }

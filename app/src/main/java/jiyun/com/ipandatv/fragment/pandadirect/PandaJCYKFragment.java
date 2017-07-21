@@ -96,7 +96,7 @@ public class PandaJCYKFragment extends BaseFragment implements LiveTwoContract.V
             }
         });
 
-        adapter = new PandaJCYKAdapter(getContext(),mList);
+
 
     }
 
@@ -105,12 +105,15 @@ public class PandaJCYKFragment extends BaseFragment implements LiveTwoContract.V
         progressDialog = ProgressDialog.show(App.activity,"请稍等...","获取数据中...",true);
         presente=new PandaJCYKPresenter(this);
         presenter.start();
-        handleProgress.post(new Runnable() {
-            @Override
-            public void run() {
-                jcykPullrecycler.setAdapter(adapter);
-            }
-        });
+        adapter = new PandaJCYKAdapter(getContext(),mList);
+        jcykPullrecycler.setAdapter(adapter);
+
+//        handleProgress.post(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//            }
+//        });
     }
 
     @Override

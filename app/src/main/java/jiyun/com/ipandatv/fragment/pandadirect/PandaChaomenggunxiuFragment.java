@@ -96,7 +96,7 @@ public class PandaChaomenggunxiuFragment extends BaseFragment implements LiveTwo
             }
         });
 
-        adapter = new PandaChaomengAdapter(getContext(),mList);
+
 
     }
 
@@ -106,12 +106,14 @@ public class PandaChaomenggunxiuFragment extends BaseFragment implements LiveTwo
         progressDialog = ProgressDialog.show(App.activity,"请稍等...","获取数据中...",true);
         presente=new PandaChaomengPresenter(this);
         presenter.start();
-        handleProgress.post(new Runnable() {
-            @Override
-            public void run() {
-                jcykPullrecycler.setAdapter(adapter);
-            }
-        });
+        adapter = new PandaChaomengAdapter(getContext(),mList);
+        jcykPullrecycler.setAdapter(adapter);
+//        handleProgress.post(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//            }
+//        });
     }
 
     @Override

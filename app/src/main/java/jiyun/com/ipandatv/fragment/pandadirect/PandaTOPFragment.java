@@ -98,7 +98,7 @@ public class PandaTOPFragment extends BaseFragment implements LiveTwoContract.Vi
             }
         });
 
-        adapter = new PandaTOPAdapter(getContext(),mList);
+
 
     }
 
@@ -109,12 +109,14 @@ public class PandaTOPFragment extends BaseFragment implements LiveTwoContract.Vi
         presente=new PandaTopPresenter(this);
 
         presenter.start();
-        handleProgress.post(new Runnable() {
-            @Override
-            public void run() {
-                jcykPullrecycler.setAdapter(adapter);
-            }
-        });
+        adapter = new PandaTOPAdapter(getContext(),mList);
+        jcykPullrecycler.setAdapter(adapter);
+//        handleProgress.post(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//            }
+//        });
     }
 
     @Override
