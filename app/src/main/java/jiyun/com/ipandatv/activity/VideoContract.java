@@ -16,6 +16,6 @@ public interface VideoContract {
     }
 
     interface Presenter extends BasePresenter {
-       void setVideoURl(String pid);
+        void setVideoURl(String pid);
     }
 }

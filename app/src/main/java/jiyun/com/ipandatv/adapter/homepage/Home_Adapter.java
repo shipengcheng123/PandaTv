@@ -31,11 +31,17 @@ public class Home_Adapter extends RecyclerView.Adapter {
     private LayoutInflater inflater;
     private Context context;
     public static final int TYPE1 = 1, TYPE2 = 2, TYPE3 = 3, TYPE4 = 4, TYPE5 = 5;
+    public View view, view1, view2, view3, view4;
+    setOnClick onClick;
 
     public Home_Adapter(Context context, List<Object> mlist) {
         this.mlist = mlist;
         this.inflater = LayoutInflater.from(context);
         this.context = context;
+    }
+
+    public void setOnClick(setOnClick onClick) {
+        this.onClick = onClick;
     }
 
     @Override
@@ -61,23 +67,23 @@ public class Home_Adapter extends RecyclerView.Adapter {
         RecyclerView.ViewHolder viewHolder = null;
         switch (viewType) {
             case TYPE1:
-                View view = inflater.inflate(R.layout.home_news, parent, false);
+                view = inflater.inflate(R.layout.home_news, parent, false);
                 viewHolder = new ViewHolder(context, view);
                 break;
             case TYPE2:
-                View view1 = inflater.inflate(R.layout.home_elegant, parent, false);
+                view1 = inflater.inflate(R.layout.home_elegant, parent, false);
                 viewHolder = new ViewHolder(context, view1);
                 break;
             case TYPE3:
-                View view2 = inflater.inflate(R.layout.home_amazing, parent, false);
+                view2 = inflater.inflate(R.layout.home_amazing, parent, false);
                 viewHolder = new ViewHolder(context, view2);
                 break;
             case TYPE4:
-                View view3 = inflater.inflate(R.layout.home_vadio, parent, false);
+                view3 = inflater.inflate(R.layout.home_vadio, parent, false);
                 viewHolder = new ViewHolder(context, view3);
                 break;
             case TYPE5:
-                View view4 = inflater.inflate(R.layout.home_china, parent, false);
+                view4 = inflater.inflate(R.layout.home_china, parent, false);
                 viewHolder = new ViewHolder(context, view4);
                 break;
         }
@@ -134,6 +140,18 @@ public class Home_Adapter extends RecyclerView.Adapter {
             Glide.with(context).load(pandaeyeBean.getPandaeyelogo()).into(imageView);
             t1.setText(pandaeyeBean.getItems().get(0).getTitle());
             t2.setText(pandaeyeBean.getItems().get(1).getTitle());
+//            t1.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    onClick.setOnClick(pandaeyeBean, 0, view);
+//                }
+//            });
+//            t2.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    onClick.setOnClick(pandaeyeBean, 1, view);
+//                }
+//            });
             t1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
