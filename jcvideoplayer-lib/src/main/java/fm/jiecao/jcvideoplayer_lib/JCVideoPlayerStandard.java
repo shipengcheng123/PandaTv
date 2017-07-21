@@ -79,6 +79,7 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
         btn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 View inflate = View.inflate(context, R.layout.pupowdbju, null);
                 PopupWindow popupWindow=new PopupWindow(inflate,WindowManager.LayoutParams.WRAP_CONTENT,WindowManager.LayoutParams.WRAP_CONTENT,true);
                 popupWindow.setOutsideTouchable(true);
