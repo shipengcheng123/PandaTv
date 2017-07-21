@@ -56,6 +56,11 @@ public class VideoActivity extends BaseActivity implements VideoContract.View{
             }
 
             @Override
+            public void Back(View view) {
+                finish();
+            }
+
+            @Override
             public void WatchthelistMonitor(View view) {
 
             }
