@@ -31,7 +31,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 //        }
 
     }
-
+private boolean mFlag;
     @Override
     protected void onResume() {
         super.onResume();
@@ -39,6 +39,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         App.activity = this;
         //当页面可见时加载数据
         MobclickAgent.onResume(this);
+
+        App.activity = this;
+        if(mFlag) {
+            loadData();
+            mFlag=false;
+        }
+
     }
 
     public void onPause() {

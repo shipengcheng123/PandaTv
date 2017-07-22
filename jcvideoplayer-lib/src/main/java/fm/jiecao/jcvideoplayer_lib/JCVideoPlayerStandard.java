@@ -5,6 +5,8 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -14,7 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -40,6 +44,10 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
 
     protected DismissControlViewTimerTask mDismissControlViewTimerTask;
 
+    private ImageView mShoucahng;
+
+    private ImageView mfenxaing;
+
 
     public JCVideoPlayerStandard(Context context) {
         super(context);
@@ -50,20 +58,71 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
     }
 
     @Override
-    public void init(Context context) {
+    public void init(final Context context) {
         super.init(context);
         bottomProgressBar = (ProgressBar) findViewById(R.id.bottom_progress);
         titleTextView = (TextView) findViewById(R.id.title);
         backButton = (ImageView) findViewById(R.id.back);
+
         thumbImageView = (ImageView) findViewById(R.id.thumb);
         loadingProgressBar = (ProgressBar) findViewById(R.id.loading);
         tinyBackImageView = (ImageView) findViewById(R.id.back_tiny);
 
         thumbImageView.setOnClickListener(this);
-        backButton.setOnClickListener(this);
+
         tinyBackImageView.setOnClickListener(this);
 
+        mShoucahng = (ImageView) findViewById(R.id.Shoucahng);
+        mfenxaing = (ImageView) findViewById(R.id.fenxaing);
+
+        final Button btn = (Button) findViewById(R.id.lx);
+        btn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                View inflate = View.inflate(context, R.layout.pupowdbju, null);
+                PopupWindow popupWindow=new PopupWindow(inflate,WindowManager.LayoutParams.WRAP_CONTENT,WindowManager.LayoutParams.WRAP_CONTENT,true);
+                popupWindow.setOutsideTouchable(true);
+                popupWindow.setBackgroundDrawable(new ColorDrawable(Color.argb(200,200,200,200)));
+                popupWindow.showAtLocation(btn,Gravity.BOTTOM,750,120);
+            }
+        });
+
+
+        backButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imgClickon.Back(v);
+            }
+        });
+
+        mShoucahng.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imgClickon.Monitor(v);
+            }
+        });
+        mfenxaing.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imgClickon.WatchthelistMonitor(v);
+            }
+        });
     }
+
+    public interface imgClickon {
+        void Monitor(View view);
+        void Back(View view);
+        void WatchthelistMonitor(View view);
+    }
+
+    private imgClickon imgClickon;
+
+    public void setMonitor(imgClickon imgClickon) {
+        this.imgClickon = imgClickon;
+    }
+
 
     @Override
     public void setUp(String url, int screen, Object... objects) {
@@ -78,7 +137,7 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
         } else if (currentScreen == SCREEN_LAYOUT_NORMAL
                 || currentScreen == SCREEN_LAYOUT_LIST) {
             fullscreenButton.setImageResource(R.drawable.jc_enlarge);
-            backButton.setVisibility(View.GONE);
+//            backButton.setVisibility(View.GONE);
             tinyBackImageView.setVisibility(View.INVISIBLE);
             changeStartButtonSize((int) getResources().getDimension(R.dimen.jc_start_button_w_h_normal));
         } else if (currentScreen == SCREEN_WINDOW_TINY) {
@@ -184,6 +243,9 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
         return super.onTouch(v, event);
     }
 
+
+    
+
     @Override
     public void onClick(View v) {
         super.onClick(v);
@@ -208,9 +270,11 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
             startDismissControlViewTimer();
         } else if (i == R.id.back) {
             backPress();
+
         } else if (i == R.id.back_tiny) {
             backPress();
         }
+        
     }
 
 
@@ -738,6 +802,8 @@ public class JCVideoPlayerStandard extends JCVideoPlayer {
         }
 
     }
+
+
 
     public class DismissControlViewTimerTask extends TimerTask {
 
