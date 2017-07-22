@@ -16,19 +16,15 @@ import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaLiveTalkListBean;
 
 public class PandaTalkAdapter extends BaseAdapter<PandaLiveTalkListBean.DataBean.ContentBean> {
 
-    public PandaTalkAdapter(Context context, List<PandaLiveTalkListBean.DataBean.ContentBean> datas) {
+    public PandaTalkAdapter(Context context,  List<PandaLiveTalkListBean.DataBean.ContentBean> datas) {
         super(context, R.layout.adapter_talk, datas);
     }
 
     @Override
     public void convert(ViewHolder holder, PandaLiveTalkListBean.DataBean.ContentBean dataBean) {
-        holder.setText(R.id.talk_title, dataBean.getAuthor());
-        holder.setText(R.id.talk_content, dataBean.getMessage());
-        holder.setText(R.id.talk_lou, dataBean.getPid() + "楼");
-        holder.setText(R.id.talk_date, dataBean.getDateline());
-
-
-
+        holder.setText(R.id.talk_title,dataBean.getAuthor());
+        holder.setText(R.id.talk_content,dataBean.getMessage());
+        holder.setText(R.id.talk_lou,dataBean.getPid());
+        holder.setText(R.id.talk_date,dataBean.getDateline());
     }
-
 }

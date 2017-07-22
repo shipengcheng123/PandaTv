@@ -71,5 +71,6 @@ public class Person_InfoActivity extends BaseActivity {
         Intent in = new Intent(Person_InfoActivity.this, Title_RightActivity.class);
         in.putExtra("edit", "点击登陆");
         setResult(300, in);
+        startActivity(in);
     }
 }
