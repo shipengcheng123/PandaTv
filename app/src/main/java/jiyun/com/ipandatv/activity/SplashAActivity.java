@@ -14,8 +14,6 @@ import jiyun.com.ipandatv.R;
  * Created by Lenovo on 2017/6/14.
  */
 public class SplashAActivity extends Activity{
-
-
     private SharedPreferences mShared;
 
     private String uid;
