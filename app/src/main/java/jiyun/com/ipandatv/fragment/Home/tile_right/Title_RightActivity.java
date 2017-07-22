@@ -51,6 +51,7 @@ public class Title_RightActivity extends BaseActivity {
     @Override
     protected int getLayoutId() {
         return R.layout.panda_person_view;
+
     }
 
     @Override
