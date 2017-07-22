@@ -4,11 +4,35 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
-
-    <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <ImageView
         android:id="@+id/custom_videoplayer_standard_with_share_button"
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        />
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:indeterminateDrawable="@drawable/jc_loading"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/start"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/jc_click_play_selector" />
+
+</RelativeLayout>
     <TextView
         android:id="@+id/ZhiboChena_title"
         android:layout_width="match_parent"

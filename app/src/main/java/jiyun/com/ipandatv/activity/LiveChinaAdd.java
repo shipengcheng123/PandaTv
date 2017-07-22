@@ -53,6 +53,7 @@ public class LiveChinaAdd extends BaseActivity {
         gridView_other = (DragGridView) findViewById(R.id.gridView_channel_other);
         button = (CheckBox) findViewById(R.id.licechina_add_button);
         initDataOther();
+
     }
 
     @Override

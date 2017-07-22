@@ -58,6 +58,9 @@
             android:paddingRight="16dp"
             android:scaleType="center"
             android:src="@drawable/jc_enlarge" />
+
+
+
     </LinearLayout>
 
     <LinearLayout

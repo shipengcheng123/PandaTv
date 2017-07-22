@@ -511,7 +511,7 @@ public abstract class JCVideoPlayer extends FrameLayout implements View.OnClickL
         mAudioManager.abandonAudioFocus(onAudioFocusChangeListener);
         JCUtils.scanForActivity(getContext()).getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         clearFullscreenLayout();
-        JCUtils.getAppCompActivity(getContext()).setRequestedOrientation(NORMAL_ORIENTATION);
+        JCUtils.getAppCompActivity(getContext()).setRequestedOrientation(FULLSCREEN_ORIENTATION);
 
         JCMediaManager.textureView = null;
         JCMediaManager.savedSurfaceTexture = null;
@@ -578,7 +578,7 @@ public abstract class JCVideoPlayer extends FrameLayout implements View.OnClickL
     }
 
     public void clearFloatScreen() {
-        JCUtils.getAppCompActivity(getContext()).setRequestedOrientation(NORMAL_ORIENTATION);
+        JCUtils.getAppCompActivity(getContext()).setRequestedOrientation(FULLSCREEN_ORIENTATION);
         showSupportActionBar(getContext());
         JCVideoPlayer currJcvd = JCVideoPlayerManager.getCurrentJcvd();
         currJcvd.textureViewContainer.removeView(JCMediaManager.textureView);
