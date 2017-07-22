@@ -85,7 +85,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void loadData() {
-//        ConfigFragment.getInstance().init().start(HomeFragment.class).build();
+        ConfigFragment.getInstance().init().start(HomeFragment.class).build();
     }
 
     @Override
