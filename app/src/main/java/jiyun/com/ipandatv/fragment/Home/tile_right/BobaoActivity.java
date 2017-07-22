@@ -26,6 +26,7 @@ public class BobaoActivity extends BaseActivity {
     @BindView(R.id.ShouCang)
     TextView ShouCang;
 
+
     @Override
     protected int getLayoutId() {
         return R.layout.bobaowebview;

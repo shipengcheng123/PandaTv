@@ -95,7 +95,7 @@ public class PandaLiveTalkListFragment extends BaseFragment implements LiveContr
     @Override
     protected void loadData() {
 
-        presente=new PandaTalkpresenter(this);
+        new PandaTalkpresenter(this);
         presenter.start();
     }
 
