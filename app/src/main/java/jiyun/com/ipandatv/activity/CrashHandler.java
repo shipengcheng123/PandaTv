@@ -79,7 +79,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
             mDefaultHandler.uncaughtException(thread,ex);
         }else{//自己处理
             try {//延迟3秒杀进程
-                Thread.sleep(5000);
+                Thread.sleep(3000);
             } catch (InterruptedException e) {
                 Log.e(TAG, "error : ", e);
             }
