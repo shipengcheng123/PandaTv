@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -49,7 +50,7 @@ private Context mContext;
 
     protected DismissControlViewTimerTask mDismissControlViewTimerTask;
 
-    private ImageView mShoucahng;
+    private CheckBox mShoucahng;
 
     private ImageView mfenxaing;
 
@@ -90,7 +91,7 @@ private Context mContext;
 
         tinyBackImageView.setOnClickListener(this);
 
-        mShoucahng = (ImageView) findViewById(R.id.Shoucahng);
+        mShoucahng = (CheckBox) findViewById(R.id.Shoucahng);
         mfenxaing = (ImageView) findViewById(R.id.fenxaing);
         mYingliang = (SeekBar) findViewById(R.id.YingliangTiao);
 
@@ -112,10 +113,6 @@ private Context mContext;
                     am.setStreamVolume(AudioManager.STREAM_MUSIC, progress, 0);
                     int currentVolume = am.getStreamVolume(AudioManager.STREAM_MUSIC);
                     seekBar.setProgress(currentVolume);
-
-
-
-                
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {

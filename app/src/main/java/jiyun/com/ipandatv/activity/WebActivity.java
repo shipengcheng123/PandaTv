@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -41,7 +42,7 @@ public class WebActivity extends BaseActivity implements View.OnClickListener {
     @BindView(R.id.WebView)
     WebView WebView;
     @BindView(R.id.Shoucang)
-    ImageView Shoucang;
+    CheckBox Shoucang;
     @BindView(R.id.Fenxiang)
     ImageView Fenxiang;
     private String rurl;
