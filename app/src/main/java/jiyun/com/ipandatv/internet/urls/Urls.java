@@ -61,7 +61,9 @@ public class Urls {
     public static final String LOGIN_URL="https://reg.cntv.cn/login/login.action";
 
     //获取边看边聊列表
-    public static final String TALKLIST = "http://newcomment.cntv.cn/comment/list";
+    //String app,String itemid,String nature,String page
+    //"ipandaApp", "zhiboye_chat", "nature"
+    public static final String TALKLIST = "http://newcomment.cntv.cn/comment/list?app=ipandaApp&itemid=zhiboye_chat&nature=nature&page=1";
     //验证码
     public static final String IMAGE_CODE = "http://reg.cntv.cn/simple/verificationCode.action";
 
