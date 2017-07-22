@@ -174,6 +174,7 @@ public class VideoActivity extends BaseActivity implements VideoContract.View,Vi
         PopupWindow.setBackgroundDrawable(dw);
         View rootview = LayoutInflater.from(this).inflate(R.layout.video_avtivity, null);
         PopupWindow.showAtLocation(rootview, Gravity.HORIZONTAL_GRAVITY_MASK, 0, 0);
+
     }
 
 
