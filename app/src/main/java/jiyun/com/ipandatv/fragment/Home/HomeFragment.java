@@ -26,12 +26,12 @@ import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.activity.ACache;
 import jiyun.com.ipandatv.activity.VideoActivity;
+import jiyun.com.ipandatv.activity.WebActivity;
 import jiyun.com.ipandatv.activity.YuanChuangActivity;
 import jiyun.com.ipandatv.adapter.homepage.HomeViewPagerAdapter;
 import jiyun.com.ipandatv.adapter.homepage.Home_Adapter;
 import jiyun.com.ipandatv.adapter.homepage.setViewPagerListener;
 import jiyun.com.ipandatv.base.BaseFragment;
-import jiyun.com.ipandatv.fragment.Home.tile_right.BobaoActivity;
 import jiyun.com.ipandatv.fragment.Home.tile_right.Title_RightActivity;
 import jiyun.com.ipandatv.model.entity.HomePageBean;
 
@@ -241,10 +241,10 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
             public void setViewPager(int position) {
                 HomePageBean.DataBean.BigImgBean bigImgBean = bigImgBeen.get(position);
                 if (position == 0) {
-                    String pid = bigImgBean.getPid();
+                    String url = bigImgBean.getUrl();
                     String title = bigImgBean.getTitle();
-                    Intent in = new Intent(App.activity, BobaoActivity.class);
-                    in.putExtra("pid", pid);
+                    Intent in = new Intent(App.activity, WebActivity.class);
+                    in.putExtra("url", url);
                     in.putExtra("title", title);
                     startActivity(in);
                 } else {
