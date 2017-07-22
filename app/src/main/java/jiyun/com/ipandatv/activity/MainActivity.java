@@ -77,7 +77,6 @@ public class MainActivity extends BaseActivity {
                 content = bundle.getString(JPushInterface.EXTRA_ALERT);
             }
             tv.setText("Title : " + title + "  " + "Content : " + content);
-
         }
         addContentView(tv, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
 
