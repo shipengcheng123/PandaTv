@@ -52,7 +52,6 @@ public class MainActivity extends BaseActivity {
     private HomeFragment homeFragment;
     private View view;
     private AlertDialog isExit;
-
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
@@ -86,7 +85,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void loadData() {
-        ConfigFragment.getInstance().init().start(HomeFragment.class).build();
+//        ConfigFragment.getInstance().init().start(HomeFragment.class).build();
     }
 
     @Override
@@ -127,7 +126,7 @@ public class MainActivity extends BaseActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            view = LayoutInflater.from(MainActivity.this).inflate(R.layout.dialog, null);
+            view = LayoutInflater.from(MainActivity.this).inflate(R.layout.dialog,null);
             Button btnquxiao = (Button) view.findViewById(R.id.dialog_quxiao);
             Button btntuichu = (Button) view.findViewById(R.id.dialog_tuichu);
             btnquxiao.setOnClickListener(new View.OnClickListener() {
@@ -159,6 +158,7 @@ public class MainActivity extends BaseActivity {
     }
 
 
+
     @Override
     public void onBackPressed() {
         FragmentManager.BackStackEntry entryAt = fragmentmanager.getBackStackEntryAt(fragmentmanager.getBackStackEntryCount() - 1);
@@ -172,12 +172,13 @@ public class MainActivity extends BaseActivity {
                 ) {
 
 
+
 //           finish();
             Process.killProcess(Process.myPid());
             System.exit(0);
 
 
-        } else {
+        }else{
             if (fragmentmanager.getBackStackEntryCount() > 1) {
                 fragmentmanager.popBackStackImmediate();//执行弹栈，立马执行
                 //否则记录得到位于栈顶的类名字

@@ -79,7 +79,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
             mDefaultHandler.uncaughtException(thread,ex);
         }else{//自己处理
             try {//延迟3秒杀进程
-                Thread.sleep(3000);
+                Thread.sleep(5000);
             } catch (InterruptedException e) {
                 Log.e(TAG, "error : ", e);
             }
@@ -106,7 +106,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
             @Override
             public void run() {
                 Looper.prepare();
-                Toast.makeText(mContext, "程序开小差了呢..", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "不好意思,程序开小差了呢..", Toast.LENGTH_SHORT).show();
                 Looper.loop();
             }
         }.start();

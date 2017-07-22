@@ -45,7 +45,7 @@ public class PandaLivedsjtalkFragment extends BaseFragment {
         mListName = new ArrayList<>();
         mList = new ArrayList<>();
         mList.add(new PandaLiveDuoshijiaoFragment());
-        mList.add(new PandaLiveDuoshijiaoFragment());
+        mList.add(new PandaLiveTalkListFragment());
 
         mListName.add("多视角直播");
         mListName.add("边看边聊");

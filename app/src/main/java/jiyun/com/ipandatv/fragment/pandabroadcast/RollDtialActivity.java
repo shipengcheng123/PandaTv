@@ -210,7 +210,6 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
 
     public void showPopupWindow() {
         View mPopunwindwow = LayoutInflater.from(this).inflate(R.layout.popwindow_bottem, null);
-
         PopupWindow = new PopupWindow(mPopunwindwow, ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT, true);
         PopupWindow.setContentView(mPopunwindwow);
         LinearLayout lineFacebook = (LinearLayout) mPopunwindwow.findViewById(R.id.facebook);
@@ -258,7 +257,7 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
 
     }
 
-    private void weibofenxiang() {
+    public void weibofenxiang() {
         UMImage image = new UMImage(RollDtialActivity.this,R.mipmap.xiongmao);//网络图片
         UMImage thumb =  new UMImage(this, R.drawable.logo_ipnda);
         image.setThumb(thumb);
