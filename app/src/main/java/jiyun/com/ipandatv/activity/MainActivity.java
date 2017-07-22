@@ -1,5 +1,6 @@
 package jiyun.com.ipandatv.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Process;
 import android.support.v4.app.FragmentManager;
@@ -7,15 +8,18 @@ import android.support.v7.app.AlertDialog;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.jpush.android.api.JPushInterface;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.TotalList.broadcast.BobaoFragment;
@@ -61,6 +65,21 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initData() {
+        TextView tv = new TextView(this);
+        tv.setText("MainActivity");
+        Intent intent = getIntent();
+        if (null != intent) {
+            Bundle bundle = getIntent().getExtras();
+            String title = null;
+            String content = null;
+            if(bundle!=null){
+                title = bundle.getString(JPushInterface.EXTRA_NOTIFICATION_TITLE);
+                content = bundle.getString(JPushInterface.EXTRA_ALERT);
+            }
+            tv.setText("Title : " + title + "  " + "Content : " + content);
+
+        }
+        addContentView(tv, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
 
     }
 

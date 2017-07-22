@@ -35,6 +35,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.base.BaseActivity;
@@ -44,14 +45,13 @@ import jiyun.com.ipandatv.fragment.pandabroadcast.bean.PandaTebieBean;
 import jiyun.com.ipandatv.fragment.pandabroadcast.culturecontract.CultureContract;
 import jiyun.com.ipandatv.fragment.pandabroadcast.culturecontract.PandaCultureVideoPresenter;
 import jiyun.com.ipandatv.fragment.pandabroadcast.panda_culture.PandaCultureEntity;
-import jiyun.com.ipandatv.view.JCVideoPlayerStandardShowShareButtonAfterFullscreen;
 
 public class RollDtialActivity extends BaseActivity implements CultureContract.View,View.OnClickListener {
 
     @BindView(R.id.goback_butt)
     ImageView gobackButt;
     @BindView(R.id.custom_videoplayer_standard_with_share_button)
-    JCVideoPlayerStandardShowShareButtonAfterFullscreen customVideoplayerStandardWithShareButton;
+    JCVideoPlayerStandard customVideoplayerStandardWithShareButton;
     @BindView(R.id.rollvideo_time_text)
     TextView rollvideoTimeText;
     @BindView(R.id.rollvideo_jieshao_text)
@@ -95,7 +95,7 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
 
 
         //标准基础上改进的视频播放(添加了分享按钮)
-        customVideoplayerStandardWithShareButton = (JCVideoPlayerStandardShowShareButtonAfterFullscreen) findViewById(R.id.custom_videoplayer_standard_with_share_button);
+        customVideoplayerStandardWithShareButton = (JCVideoPlayerStandard) findViewById(R.id.custom_videoplayer_standard_with_share_button);
         LinearLayoutManager layoutManager = new LinearLayoutManager(App.context);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         detilsPullto.addItemDecoration(new DividerItemDecoration(App.activity, DividerItemDecoration.VERTICAL));
@@ -166,7 +166,7 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
 
         List<PandaCultureVedioBean.VideoBean.Chapters2Bean> chapters2 = pandaCultureVedioBean.getVideo().getChapters2();
         url = chapters2.get(0).getUrl();
-        customVideoplayerStandardWithShareButton.setUrlAndObject(url, null, title);
+        customVideoplayerStandardWithShareButton.setUp(url,JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, title);
 
     }
 
@@ -174,6 +174,11 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
     public void ShowTebie(PandaTebieBean tebieBean) {
         mlist.addAll(tebieBean.getVideo());
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void showMessage(String msg) {
+
     }
 
     @Override

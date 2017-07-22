@@ -19,8 +19,10 @@ import com.umeng.socialize.Config;
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
 
+import cn.jpush.android.api.JPushInterface;
 import jiyun.com.ipandatv.base.BaseActivity;
 import jiyun.com.ipandatv.base.BaseFragment;
+import jiyun.com.ipandatv.jgpush.Logger;
 
 /**
  * Created by lx on 2017/7/11.
@@ -32,6 +34,7 @@ public class App extends Application {
     public static BaseFragment lastFragment;
     public static RadioGroup mRadiogroup;
     public static Context context;
+    private static final String TAG = "JIGUANG-Example";
 
     {
         PlatformConfig.setWeixin("wx967daebe835fbeac", "5bb696d9ccd75a38c8a0bfe0675559b3");
@@ -47,8 +50,9 @@ public class App extends Application {
         MobclickAgent.openActivityDurationTrack(false);
         Config.DEBUG = true;
         UMShareAPI.get(this);
-
-
+        Logger.d(TAG, "[ExampleApplication] onCreate");
+        JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
+        JPushInterface.init(this);     		// 初始化 JPush
     }
 
     private void initUniversalImageLoader() {
