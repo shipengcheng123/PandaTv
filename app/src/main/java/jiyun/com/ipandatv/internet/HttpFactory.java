@@ -9,4 +9,7 @@ public class HttpFactory {
     public static IHttp create() {
         return OkHttpUtils.getInstance();
     }
+    public static IHttp create1() {
+        return HeaderUtils.getInstance();
+    }
 }

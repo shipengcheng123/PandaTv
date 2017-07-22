@@ -88,7 +88,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
     @Override
     protected void loadData() {
         App.mRadiogroup.setVisibility(View.VISIBLE);
-
 //        progressDialog = ProgressDialog.show(App.activity,"请稍等...","获取数据中...",true);
         new HomePresenter(this);
         presenter.start();
@@ -121,20 +120,16 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
 
     @Override
     public void setMsg(String msg) {
-
         ACache aCache = ACache.get(getContext());
         HomePageBean asObject = (HomePageBean) aCache.getAsObject("HomePageBean");
         List<HomePageBean.DataBean.BigImgBean> bigImgBeanList = asObject.getData().getBigImg();
         showLunBo(bigImgBeanList);
-
     }
 
     @Override
     public void setMessage(String msg) {
         ACache aCache = ACache.get(getContext());
         HomePageBean homePageobject = (HomePageBean) aCache.getAsObject("HomePageBean");
-
-
         mList = new ArrayList<>();
         HomePageBean.DataBean data = homePageobject.getData();
         mList.add(data.getPandaeye());
@@ -145,8 +140,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
         home_adapter = new Home_Adapter(App.activity, mList);
         PulltoRefresh.setAdapter(home_adapter);
         home_adapter.notifyDataSetChanged();
-
-
     }
 
     @Override

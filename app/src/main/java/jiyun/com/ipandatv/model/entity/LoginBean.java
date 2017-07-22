@@ -1,12 +1,13 @@
 package jiyun.com.ipandatv.model.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by lx on 2017/7/20.
  */
 
-public class LoginBean {
+public class LoginBean implements Serializable {
 
 
     /**
