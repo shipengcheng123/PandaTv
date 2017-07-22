@@ -142,8 +142,6 @@ public class Title_LoginActivity extends BaseActivity implements LoginContract.V
             for (String key : keySet) {
                 s = data.get(key);
                 Log.i("===========", s);
-                ACache aCache = ACache.get(Title_LoginActivity.this);
-                aCache.put("UmDsf", s);
             }
             String name = data.get("name");
             String iconurl = data.get("iconurl");
@@ -184,8 +182,10 @@ public class Title_LoginActivity extends BaseActivity implements LoginContract.V
             Intent in = getIntent();
             in.putExtra("user", "央视网友" + usrid);
             setResult(50, in);
+            startActivity(in);
+            finish();
         } else {
-            Toast.makeText(Title_LoginActivity.this, "登陆失败", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Title_LoginActivity.this, "失败", Toast.LENGTH_SHORT).show();
         }
 
     }

@@ -14,11 +14,12 @@ import butterknife.OnClick;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.activity.ACache;
 import jiyun.com.ipandatv.base.BaseActivity;
-import jiyun.com.ipandatv.fragment.Home.tile_right.register.Person_InfoActivity;
 import jiyun.com.ipandatv.fragment.Home.tile_right.login.Title_LoginActivity;
+import jiyun.com.ipandatv.fragment.Home.tile_right.register.Person_InfoActivity;
 import jiyun.com.ipandatv.model.entity.LoginBean;
 
 import static jiyun.com.ipandatv.R.id.Text_Person;
+
 
 /**
  * Created by lx on 2017/7/14.
@@ -51,7 +52,6 @@ public class Title_RightActivity extends BaseActivity {
     @Override
     protected int getLayoutId() {
         return R.layout.panda_person_view;
-
     }
 
     @Override
@@ -83,7 +83,7 @@ public class Title_RightActivity extends BaseActivity {
                 ACache acache = ACache.get(this);
                 loginBean = (LoginBean) acache.getAsObject("loginentity");
                 String umDsf = acache.getAsString("UmDsf");
-                if (loginBean == null || umDsf == null) {
+                if (TextPerson.getText().toString().equals("点击登录")) {
                     Intent in = new Intent(Title_RightActivity.this, Title_LoginActivity.class);
                     startActivityForResult(in, 50);
                 } else {
@@ -120,7 +120,6 @@ public class Title_RightActivity extends BaseActivity {
                 break;
             case 50:
                 TextPerson.setText(data.getStringExtra("user"));
-                Log.i("TAB", data.getStringExtra("user"));
                 break;
             case 300:
                 TextPerson.setText(data.getStringExtra("edit"));

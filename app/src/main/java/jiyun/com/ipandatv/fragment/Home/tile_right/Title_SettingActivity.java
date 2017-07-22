@@ -51,7 +51,6 @@ public class Title_SettingActivity extends BaseActivity {
     @BindView(R.id.panda_setting_about)
     RelativeLayout pandaSettingAbout;
 
-
     @Override
     protected int getLayoutId() {
         return R.layout.panda_person_setting;
