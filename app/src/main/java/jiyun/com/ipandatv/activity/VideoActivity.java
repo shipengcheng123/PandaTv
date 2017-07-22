@@ -49,22 +49,7 @@ public class VideoActivity extends BaseActivity implements VideoContract.View{
 //        customVideoplayerStandardWithShareButton.setUrlAndObject(url, null,title);
 //        ImageLoader.getInstance().displayImage("http://img4.jiecaojingxuan.com/2016/5/1/3430ec64-e6a7-4d8e-b044-9d408e075b7c.jpg",
 //                customVideoplayerStandardWithShareButton.ivThumb);
-        jcVideoPlayerStandard.setMonitor(new JCVideoPlayerStandard.imgClickon() {
-            @Override
-            public void Monitor(View view) {
 
-            }
-
-            @Override
-            public void Back(View view) {
-                finish();
-            }
-
-            @Override
-            public void WatchthelistMonitor(View view) {
-
-            }
-        });
     }
 
 
@@ -92,12 +77,50 @@ public class VideoActivity extends BaseActivity implements VideoContract.View{
     }
 
     @Override
-    public void showlivevedioFragment(VedioJCYKBean jcykBean) {
+    public void showlivevedioFragment(final VedioJCYKBean jcykBean) {
 
         List<VedioJCYKBean.VideoBean.Chapters2Bean> chapters2 = jcykBean.getVideo().getChapters2();
         String url = chapters2.get(0).getUrl();
         jcVideoPlayerStandard.setUp(url, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,title);
+
+        jcVideoPlayerStandard.setMonitor(new JCVideoPlayerStandard.imgClickon() {
+            @Override
+            public void Monitor(View view) {
+
+            }
+
+            @Override
+            public void Back(View view) {
+                finish();
+            }
+
+            @Override
+            public void WatchthelistMonitor(View view) {
+
+            }
+
+            @Override
+            public void PopupGao(View view) {
+                List<VedioJCYKBean.VideoBean.Chapters2Bean> chapters2 = jcykBean.getVideo().getChapters2();
+                String url = chapters2.get(0).getUrl();
+                jcVideoPlayerStandard.setUp(url, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,title);
+            }
+
+            @Override
+            public void PopupBiao(View view) {
+                List<VedioJCYKBean.VideoBean.Chapters4Bean> chapters2 = jcykBean.getVideo().getChapters4();
+                String url = chapters2.get(0).getUrl();
+                jcVideoPlayerStandard.setUp(url, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,title);
+            }
+
+
+        });
+
     }
+
+
+
+
 
     @Override
     public void setBasePresenter(VideoContract.Presenter presenter) {

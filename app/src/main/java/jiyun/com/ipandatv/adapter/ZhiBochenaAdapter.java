@@ -12,7 +12,6 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
 
-import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.model.entity.zhibochena.ChangchengBean;
 
@@ -47,7 +46,7 @@ public class ZhiBochenaAdapter extends BaseAdapter{
 
 
     class Holder{
-        private JCVideoPlayerStandard jcVideoPlayer;
+        private ImageView jcVideoPlayer;
         private TextView mtitle,mJianjie;
         private ImageButton chebox;
     }
@@ -59,10 +58,11 @@ public class ZhiBochenaAdapter extends BaseAdapter{
         if(convertView == null) {
             holder = new Holder();
             convertView = View.inflate(mContext, R.layout.zhibochena_item,null);
-            holder.jcVideoPlayer = (JCVideoPlayerStandard) convertView.findViewById(R.id.custom_videoplayer_standard_with_share_button);
+            holder.jcVideoPlayer = (ImageView) convertView.findViewById(R.id.custom_videoplayer_standard_with_share_button);
             holder.mtitle = (TextView) convertView.findViewById(R.id.ZhiboChena_title);
             holder.mJianjie = (TextView) convertView.findViewById(R.id.ZhiboChena_Jianjie);
             holder.chebox = (ImageButton) convertView.findViewById(R.id.ZhiboChena_chebox);
+
             convertView.setTag(holder);
         }else{
             holder = (Holder) convertView.getTag();
@@ -72,12 +72,12 @@ public class ZhiBochenaAdapter extends BaseAdapter{
             holder.mtitle.setText(bean.getTitle());
             holder.mJianjie.setText(bean.getBrief());
 
-        holder.jcVideoPlayer.setUp(
-                "http://2449.vod.myqcloud.com/2449_bfbbfa3cea8f11e5aac3db03cda99974.f20.mp4",
-                JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,bean.getTitle());
-        holder.jcVideoPlayer.thumbImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+//        holder.jcVideoPlayer.setUp(
+//                "http://2449.vod.myqcloud.com/2449_bfbbfa3cea8f11e5aac3db03cda99974.f20.mp4",
+//                JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,bean.getTitle());
+//        holder.jcVideoPlayer.thumbImageView.setScaleType(ImageView.ScaleType.FIT_XY);
         ImageLoader.getInstance().displayImage(bean.getImage(),
-                holder.jcVideoPlayer.thumbImageView);
+                holder.jcVideoPlayer);
 
 
 
