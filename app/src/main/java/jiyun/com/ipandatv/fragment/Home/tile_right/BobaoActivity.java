@@ -18,7 +18,6 @@ public class BobaoActivity extends BaseActivity {
     @BindView(R.id.panda_News_WebView)
     WebView WebViewMain;
 
-
     @Override
     protected int getLayoutId() {
         return R.layout.bobaowebview;

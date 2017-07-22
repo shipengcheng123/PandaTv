@@ -169,6 +169,7 @@
                 android:background="@drawable/login_edit_shape"
                 android:hint="请输入密码"
                 android:padding="4dp"
+                android:password="true"
                 android:textColorHint="#ADADAD"
                 android:textSize="15sp" />
 

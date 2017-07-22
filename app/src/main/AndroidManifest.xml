@@ -83,7 +83,7 @@
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="ipandatv" />
-
+        <activity android:name=".fragment.Home.tile_right.register.Person_InfoActivity"/>
         <activity android:name=".activity.YindaoActivity" />
         <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.WebActivity"></activity>
@@ -92,7 +92,7 @@
             android:screenOrientation="landscape"></activity>
         <activity android:name=".fragment.Home.tile_right.Title_RightActivity" />
         <activity android:name=".activity.LiveChinaAdd"></activity>
-        <activity android:name=".fragment.Home.tile_right.Title_LoginActivity" />
+        <activity android:name=".fragment.Home.tile_right.login.Title_LoginActivity" />
         <activity android:name=".fragment.Home.tile_right.Title_SettingActivity" />
         <activity android:name=".fragment.Home.tile_right.BobaoActivity" />
         <activity android:name=".activity.YuanChuangActivity"></activity>

@@ -422,14 +422,13 @@ public class ACache {
 	// =======================================
 	/**
 	 * 保存 Serializable数据 到 缓存中
-	 * 
-	 * @param key
+	 *  @param key
 	 *            保存的key
 	 * @param value
-	 *            保存的value
 	 */
-	public void put(String key, Serializable value) {
+	public ACache put(String key, Serializable value) {
 		put(key, value, -1);
+		return null;
 	}
 
 	/**
