@@ -114,6 +114,7 @@ private Context mContext;
                     seekBar.setProgress(currentVolume);
 
 
+
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
