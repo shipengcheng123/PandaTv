@@ -87,8 +87,9 @@
             android:id="@+id/Shoucahng"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/shouchang_selector"
+            android:background="@drawable/shouchang_selector"
             android:layout_marginLeft="130dp"
+            android:button="@null"
             />
         <ImageView
             android:id="@+id/fenxaing"
