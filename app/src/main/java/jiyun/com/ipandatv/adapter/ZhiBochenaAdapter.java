@@ -19,7 +19,7 @@ import jiyun.com.ipandatv.model.entity.zhibochena.ChangchengBean;
 /**
  * Created by Lenovo on 2017/7/14.
  */
-public class ZhiBochenaAdapter extends BaseAdapter{
+public class ZhiBochenaAdapter extends BaseAdapter {
 
     private Context mContext;
     private List<ChangchengBean.LiveBean> mList;
@@ -46,9 +46,9 @@ public class ZhiBochenaAdapter extends BaseAdapter{
     }
 
 
-    class Holder{
+    class Holder {
         private JCVideoPlayerStandard jcVideoPlayer;
-        private TextView mtitle,mJianjie;
+        private TextView mtitle, mJianjie;
         private ImageButton chebox;
     }
 
@@ -56,40 +56,39 @@ public class ZhiBochenaAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final Holder holder;
-        if(convertView == null) {
+        if (convertView == null) {
             holder = new Holder();
-            convertView = View.inflate(mContext, R.layout.zhibochena_item,null);
+            convertView = View.inflate(mContext, R.layout.zhibochena_item, null);
             holder.jcVideoPlayer = (JCVideoPlayerStandard) convertView.findViewById(R.id.custom_videoplayer_standard_with_share_button);
             holder.mtitle = (TextView) convertView.findViewById(R.id.ZhiboChena_title);
             holder.mJianjie = (TextView) convertView.findViewById(R.id.ZhiboChena_Jianjie);
             holder.chebox = (ImageButton) convertView.findViewById(R.id.ZhiboChena_chebox);
             convertView.setTag(holder);
-        }else{
+        } else {
             holder = (Holder) convertView.getTag();
         }
 
         ChangchengBean.LiveBean bean = mList.get(position);
-            holder.mtitle.setText(bean.getTitle());
-            holder.mJianjie.setText(bean.getBrief());
+        holder.mtitle.setText(bean.getTitle());
+        holder.mJianjie.setText(bean.getBrief());
 
         holder.jcVideoPlayer.setUp(
                 "http://2449.vod.myqcloud.com/2449_bfbbfa3cea8f11e5aac3db03cda99974.f20.mp4",
-                JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,bean.getTitle());
+                JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, bean.getTitle());
         holder.jcVideoPlayer.thumbImageView.setScaleType(ImageView.ScaleType.FIT_XY);
         ImageLoader.getInstance().displayImage(bean.getImage(),
                 holder.jcVideoPlayer.thumbImageView);
-
 
 
         holder.chebox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if(isBocke == false) {
+                if (isBocke == false) {
                     holder.mJianjie.setVisibility(View.VISIBLE);
-                    isBocke =true;
-                }else{
-                    isBocke=false;
+                    isBocke = true;
+                } else {
+                    isBocke = false;
                     holder.mJianjie.setVisibility(View.GONE);
                 }
             }
@@ -97,7 +96,6 @@ public class ZhiBochenaAdapter extends BaseAdapter{
 
         return convertView;
     }
-
 
 
 }
