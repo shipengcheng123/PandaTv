@@ -14,8 +14,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.base.BaseActivity;
-import jiyun.com.ipandatv.fragment.Home.tile_right.register.email.EmailRegisterFragment;
-import jiyun.com.ipandatv.fragment.Home.tile_right.register.phone.PhoneRegisterFragment;
 
 
 /**

@@ -1,5 +1,6 @@
 package jiyun.com.ipandatv.activity;
 
+import android.app.ActionBar;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -8,7 +9,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.v7.app.ActionBar;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,7 +37,7 @@ import jiyun.com.ipandatv.utils.MyLog;
 /**
  * Created by Lenovo on 2017/7/13.
  */
-public class VideoActivity extends BaseActivity implements VideoContract.View, View.OnClickListener {
+public class VideoActivity extends BaseActivity implements VideoContract.View,View.OnClickListener{
 
 
     @BindView(R.id.custom_videoplayer_standard_with_share_button)
@@ -46,8 +46,7 @@ public class VideoActivity extends BaseActivity implements VideoContract.View, V
     private VideoContract.Presenter presenter;
     private String pid, title;
     private PopupWindow PopupWindow;
-    private String url;
-
+   private String url;
     @Override
     protected int getLayoutId() {
         return R.layout.video_avtivity;
@@ -56,14 +55,14 @@ public class VideoActivity extends BaseActivity implements VideoContract.View, V
     @Override
     protected void initView() {
 
-        VideoPresenter presenter = new VideoPresenter(this);
+        VideoPresenter presenter=new VideoPresenter(this);
         Intent intent = getIntent();
 
         pid = intent.getStringExtra("pid");
 
 
         title = intent.getStringExtra("title");
-        MyLog.e("aaa", title);
+        MyLog.e("aaa",title);
 //        MyLog.e("url",url+title);
 
         //标准基础上改进的视频播放(添加了分享按钮)
@@ -102,8 +101,8 @@ public class VideoActivity extends BaseActivity implements VideoContract.View, V
     public void showlivevedioFragment(final VedioJCYKBean jcykBean) {
 
         List<VedioJCYKBean.VideoBean.Chapters2Bean> chapters2 = jcykBean.getVideo().getChapters2();
-        url = chapters2.get(0).getUrl();
-        jcVideoPlayerStandard.setUp(url, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, title);
+         url = chapters2.get(0).getUrl();
+        jcVideoPlayerStandard.setUp(url, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,title);
 
         jcVideoPlayerStandard.setMonitor(new JCVideoPlayerStandard.imgClickon() {
             @Override
@@ -119,21 +118,21 @@ public class VideoActivity extends BaseActivity implements VideoContract.View, V
 
             @Override
             public void WatchthelistMonitor(View view) {
-                showPopupWindow();
+                    showPopupWindow();
             }
 
             @Override
             public void PopupGao(View view) {
                 List<VedioJCYKBean.VideoBean.Chapters2Bean> chapters2 = jcykBean.getVideo().getChapters2();
                 String url = chapters2.get(0).getUrl();
-                jcVideoPlayerStandard.setUp(url, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, title);
+                jcVideoPlayerStandard.setUp(url, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,title);
             }
 
             @Override
             public void PopupBiao(View view) {
                 List<VedioJCYKBean.VideoBean.Chapters4Bean> chapters2 = jcykBean.getVideo().getChapters4();
                 String url = chapters2.get(0).getUrl();
-                jcVideoPlayerStandard.setUp(url, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, title);
+                jcVideoPlayerStandard.setUp(url, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,title);
             }
 
 
@@ -142,9 +141,12 @@ public class VideoActivity extends BaseActivity implements VideoContract.View, V
     }
 
 
+
+
+
     @Override
     public void setBasePresenter(VideoContract.Presenter presenter) {
-        this.presenter = presenter;
+        this.presenter=presenter;
     }
 
     @Override
@@ -152,7 +154,6 @@ public class VideoActivity extends BaseActivity implements VideoContract.View, V
         super.onBackPressed();
         finish();
     }
-
     public void showPopupWindow() {
         View mPopunwindwow = LayoutInflater.from(this).inflate(R.layout.popwindow_bottem, null);
         PopupWindow = new PopupWindow(mPopunwindwow, ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT, true);
@@ -162,7 +163,7 @@ public class VideoActivity extends BaseActivity implements VideoContract.View, V
         LinearLayout lineweibo = (LinearLayout) mPopunwindwow.findViewById(R.id.weibo);
         LinearLayout lineweixin = (LinearLayout) mPopunwindwow.findViewById(R.id.weixin);
         LinearLayout linepengyouquan = (LinearLayout) mPopunwindwow.findViewById(R.id.pengyouquan);
-        TextView quxiao = (TextView) mPopunwindwow.findViewById(R.id.quxiao);
+        TextView quxiao= (TextView) mPopunwindwow.findViewById(R.id.quxiao);
         lineFacebook.setOnClickListener(this);
         linetwitter.setOnClickListener(this);
         lineweibo.setOnClickListener(this);
@@ -180,7 +181,7 @@ public class VideoActivity extends BaseActivity implements VideoContract.View, V
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
+        switch (v.getId()){
             case R.id.facebook:
                 sharefacebook();
                 break;
@@ -202,8 +203,8 @@ public class VideoActivity extends BaseActivity implements VideoContract.View, V
     }
 
     public void weibofenxiang() {
-        UMImage image = new UMImage(VideoActivity.this, R.mipmap.xiongmao);//网络图片
-        UMImage thumb = new UMImage(this, R.drawable.logo_ipnda);
+        UMImage image = new UMImage(VideoActivity.this,R.mipmap.xiongmao);//网络图片
+        UMImage thumb =  new UMImage(this, R.drawable.logo_ipnda);
         image.setThumb(thumb);
 
         image.compressStyle = UMImage.CompressStyle.SCALE;//大小压缩，默认为大小压缩，适合普通很大的图
@@ -221,7 +222,6 @@ public class VideoActivity extends BaseActivity implements VideoContract.View, V
                 .share();
 
     }
-
     private UMShareListener shareListener = new UMShareListener() {
         /**
          * @descrption 分享开始的回调
@@ -238,7 +238,7 @@ public class VideoActivity extends BaseActivity implements VideoContract.View, V
          */
         @Override
         public void onResult(SHARE_MEDIA platform) {
-            Toast.makeText(VideoActivity.this, "成功了", Toast.LENGTH_LONG).show();
+            Toast.makeText(VideoActivity.this,"成功了",Toast.LENGTH_LONG).show();
         }
 
         /**
@@ -248,7 +248,7 @@ public class VideoActivity extends BaseActivity implements VideoContract.View, V
          */
         @Override
         public void onError(SHARE_MEDIA platform, Throwable t) {
-            Toast.makeText(VideoActivity.this, "失败" + t.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(VideoActivity.this,"失败"+t.getMessage(),Toast.LENGTH_LONG).show();
         }
 
         /**
@@ -257,12 +257,13 @@ public class VideoActivity extends BaseActivity implements VideoContract.View, V
          */
         @Override
         public void onCancel(SHARE_MEDIA platform) {
-            Toast.makeText(VideoActivity.this, "取消了", Toast.LENGTH_LONG).show();
+            Toast.makeText(VideoActivity.this,"取消了",Toast.LENGTH_LONG).show();
         }
     };
 
 
-    public void share() {
+
+    public void share(){
         //构造一个Intent
         Intent intent = new Intent();
         //分享到微信好友
@@ -276,14 +277,14 @@ public class VideoActivity extends BaseActivity implements VideoContract.View, V
         intent.setComponent(comp);//这个方法与Intent进行通讯
         intent.setAction("android.intent.action.SEND");
         //intent.setFlags(0x3000001);
-        intent.putExtra(Intent.EXTRA_STREAM, "熊猫频道");
-        Bitmap bt = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.mipmap.xiongmao);
-        final Uri uri = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(), bt, null, null));
+        intent.putExtra(Intent.EXTRA_STREAM,"熊猫频道");
+        Bitmap bt= BitmapFactory.decodeResource(getApplicationContext().getResources(), R.mipmap.xiongmao);
+        final Uri uri = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(),bt , null,null));
         intent.putExtra(Intent.EXTRA_STREAM, uri);
         startActivity(intent);
     }
 
-    public void sharefacebook() {
+    public void sharefacebook(){
         //构造一个Intent
         Intent intent = new Intent();
         //分享到微信好友
@@ -297,9 +298,9 @@ public class VideoActivity extends BaseActivity implements VideoContract.View, V
         intent.setComponent(comp);//这个方法与Intent进行通讯
         intent.setAction("android.intent.action.SEND");
         //intent.setFlags(0x3000001);
-        intent.putExtra(Intent.EXTRA_SUBJECT, "熊猫频道");
-        Bitmap bt = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.mipmap.xiongmao);
-        final Uri uri = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(), bt, null, null));
+        intent.putExtra(Intent.EXTRA_SUBJECT,"熊猫频道");
+        Bitmap bt= BitmapFactory.decodeResource(getApplicationContext().getResources(), R.mipmap.xiongmao);
+        final Uri uri = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(),bt , null,null));
         intent.putExtra(Intent.EXTRA_SUBJECT, uri);
         startActivity(intent);
     }

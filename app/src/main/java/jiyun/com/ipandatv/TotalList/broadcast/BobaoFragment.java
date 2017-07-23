@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +25,6 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
-import jiyun.com.ipandatv.activity.ACache;
 import jiyun.com.ipandatv.activity.WebActivity;
 import jiyun.com.ipandatv.adapter.BobaoAdapter;
 import jiyun.com.ipandatv.base.BaseFragment;
@@ -39,16 +37,14 @@ import jiyun.com.ipandatv.utils.MyLog;
  * Created by Lenovo on 2017/7/12.
  */
 
-public class BobaoFragment extends BaseFragment implements BobaoContract.View{
+public class BobaoFragment extends BaseFragment implements BobaoContract.View {
 
 
-    @BindView(R.id.Personal_Cente)
-    ImageView PersonalCente;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
     @BindView(R.id.bobao_RecyclerView)
     PullToRefreshRecyclerView mRecyclerView;
     Unbinder unbinder;
+    @BindView(R.id.Personal_Cente)
+    ImageView PersonalCente;
     private ImageView mImage;
     private TextView title;
     private View view1;
@@ -62,6 +58,7 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View{
     private String url;
     private Handler handleProgress = new Handler();
     private ProgressDialog progressDialog = null;
+
     @Override
     protected int getLayoutId() {
         return R.layout.bobao_fragment;
@@ -78,10 +75,9 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View{
             @Override
             public void onClick(View v) {
 
-
-                Intent intent = new Intent(getContext(),WebActivity.class);
-                intent.putExtra("url",url);
-                MyLog.e("URL",url);
+                Intent intent = new Intent(getContext(), WebActivity.class);
+                intent.putExtra("url", url);
+                MyLog.e("URL", url);
                 startActivity(intent);
             }
         });
@@ -90,7 +86,7 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View{
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(App.activity,DividerItemDecoration.VERTICAL));
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(App.activity, DividerItemDecoration.VERTICAL));
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setPullRefreshEnabled(true);//下拉刷新
         //是否开启上拉加载功能
@@ -128,26 +124,22 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View{
         });
 
 
-
-
+        bobaoAdapter = new BobaoAdapter(getContext(), mList);
 
 
     }
 
     @Override
     protected void loadData() {
-
-        progressDialog = ProgressDialog.show(App.activity,"请稍等...","获取数据中...",true);
+        progressDialog = ProgressDialog.show(App.activity, "请稍等...", "获取数据中...", true);
         bobaoPresenter = new BobaoPresenter(this);
         presenter.start();
-        bobaoAdapter = new BobaoAdapter(getContext(),mList);
-        mRecyclerView.setAdapter(bobaoAdapter);
-//        handleProgress.post(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//            }
-//        });
+        handleProgress.post(new Runnable() {
+            @Override
+            public void run() {
+                mRecyclerView.setAdapter(bobaoAdapter);
+            }
+        });
 
     }
 
@@ -205,21 +197,12 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View{
 
     @Override
     public void showMessage(String msg) {
-        ACache aCache = ACache.get(getContext());
-        PandaBroadBean aCacheAsObject = (PandaBroadBean) aCache.getAsObject("PandaBroadBean");
-        mList.addAll(aCacheAsObject.getList());
-        bobaoAdapter.notifyDataSetChanged();
 
-
-        BobaoHeaderBean bobaoHeaderObject = (BobaoHeaderBean) aCache.getAsObject("BobaoHeaderBean");
-          Glide.with(App.activity).load(bobaoHeaderObject.getData().getBigImg().get(0).getImage()).into(mImage);
-          title.setText(bobaoHeaderObject.getData().getBigImg().get(0).getTitle());
-        progressDialog.dismiss();
     }
 
     @Override
     public void setBasePresenter(BobaoContract.Presenter presenter) {
-        this.presenter=presenter;
+        this.presenter = presenter;
     }
 
 }
