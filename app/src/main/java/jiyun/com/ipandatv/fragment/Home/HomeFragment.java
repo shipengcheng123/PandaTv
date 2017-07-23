@@ -62,6 +62,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, Vie
     private int currmentNum = 100000;
     private View v, v1;
 
+
     @Override
     protected int getLayoutId() {
         return R.layout.main_headpage;
