@@ -1,5 +1,6 @@
 package jiyun.com.ipandatv.fragment.pandabroadcast;
 
+import android.app.ActionBar;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -8,7 +9,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.v7.app.ActionBar;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.Gravity;
@@ -166,7 +166,7 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
 
         List<PandaCultureVedioBean.VideoBean.Chapters2Bean> chapters2 = pandaCultureVedioBean.getVideo().getChapters2();
         url = chapters2.get(0).getUrl();
-        customVideoplayerStandardWithShareButton.setUp(url, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, title);
+        customVideoplayerStandardWithShareButton.setUp(url,JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, title);
 
     }
 
@@ -217,7 +217,7 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
         LinearLayout lineweibo = (LinearLayout) mPopunwindwow.findViewById(R.id.weibo);
         LinearLayout lineweixin = (LinearLayout) mPopunwindwow.findViewById(R.id.weixin);
         LinearLayout linepengyouquan = (LinearLayout) mPopunwindwow.findViewById(R.id.pengyouquan);
-        TextView quxiao = (TextView) mPopunwindwow.findViewById(R.id.quxiao);
+        TextView quxiao= (TextView) mPopunwindwow.findViewById(R.id.quxiao);
         lineFacebook.setOnClickListener(this);
         linetwitter.setOnClickListener(this);
         lineweibo.setOnClickListener(this);
@@ -236,7 +236,7 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
+        switch (v.getId()){
             case R.id.facebook:
                 sharefacebook();
                 break;
@@ -258,8 +258,8 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
     }
 
     public void weibofenxiang() {
-        UMImage image = new UMImage(RollDtialActivity.this, R.mipmap.xiongmao);//网络图片
-        UMImage thumb = new UMImage(this, R.drawable.logo_ipnda);
+        UMImage image = new UMImage(RollDtialActivity.this,R.mipmap.xiongmao);//网络图片
+        UMImage thumb =  new UMImage(this, R.drawable.logo_ipnda);
         image.setThumb(thumb);
 
         image.compressStyle = UMImage.CompressStyle.SCALE;//大小压缩，默认为大小压缩，适合普通很大的图
@@ -277,7 +277,6 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
                 .share();
 
     }
-
     private UMShareListener shareListener = new UMShareListener() {
         /**
          * @descrption 分享开始的回调
@@ -294,7 +293,7 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
          */
         @Override
         public void onResult(SHARE_MEDIA platform) {
-            Toast.makeText(RollDtialActivity.this, "成功了", Toast.LENGTH_LONG).show();
+            Toast.makeText(RollDtialActivity.this,"成功了",Toast.LENGTH_LONG).show();
         }
 
         /**
@@ -304,7 +303,7 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
          */
         @Override
         public void onError(SHARE_MEDIA platform, Throwable t) {
-            Toast.makeText(RollDtialActivity.this, "失败" + t.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(RollDtialActivity.this,"失败"+t.getMessage(),Toast.LENGTH_LONG).show();
         }
 
         /**
@@ -313,12 +312,13 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
          */
         @Override
         public void onCancel(SHARE_MEDIA platform) {
-            Toast.makeText(RollDtialActivity.this, "取消了", Toast.LENGTH_LONG).show();
+            Toast.makeText(RollDtialActivity.this,"取消了",Toast.LENGTH_LONG).show();
         }
     };
 
 
-    public void share() {
+
+    public void share(){
         //构造一个Intent
         Intent intent = new Intent();
         //分享到微信好友
@@ -332,14 +332,14 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
         intent.setComponent(comp);//这个方法与Intent进行通讯
         intent.setAction("android.intent.action.SEND");
         //intent.setFlags(0x3000001);
-        intent.putExtra(Intent.EXTRA_STREAM, "熊猫频道");
-        Bitmap bt = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.mipmap.xiongmao);
-        final Uri uri = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(), bt, null, null));
+        intent.putExtra(Intent.EXTRA_STREAM,"熊猫频道");
+        Bitmap bt= BitmapFactory.decodeResource(getApplicationContext().getResources(), R.mipmap.xiongmao);
+        final Uri uri = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(),bt , null,null));
         intent.putExtra(Intent.EXTRA_STREAM, uri);
         startActivity(intent);
     }
 
-    public void sharefacebook() {
+    public void sharefacebook(){
         //构造一个Intent
         Intent intent = new Intent();
         //分享到微信好友
@@ -353,10 +353,11 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
         intent.setComponent(comp);//这个方法与Intent进行通讯
         intent.setAction("android.intent.action.SEND");
         //intent.setFlags(0x3000001);
-        intent.putExtra(Intent.EXTRA_SUBJECT, "熊猫频道");
-        Bitmap bt = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.mipmap.xiongmao);
-        final Uri uri = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(), bt, null, null));
+        intent.putExtra(Intent.EXTRA_SUBJECT,"熊猫频道");
+        Bitmap bt= BitmapFactory.decodeResource(getApplicationContext().getResources(), R.mipmap.xiongmao);
+        final Uri uri = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(),bt , null,null));
         intent.putExtra(Intent.EXTRA_SUBJECT, uri);
         startActivity(intent);
     }
+
 }

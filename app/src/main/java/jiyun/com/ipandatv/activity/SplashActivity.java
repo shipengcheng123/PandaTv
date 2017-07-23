@@ -14,9 +14,8 @@ import jiyun.com.ipandatv.R;
  * Created by INS7566 on 2017/7/11.
  */
 
-public class SplashActivity extends Activity {
+public class SplashActivity extends Activity{
     private LinearLayout imageView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +33,7 @@ public class SplashActivity extends Activity {
             public void onAnimationEnd(Animation animation) {
                 isFirstShow();
                 finish();
-                Intent intent = new Intent(SplashActivity.this, FirstPagerActivity.class);
+                Intent intent = new Intent(SplashActivity.this,FirstPagerActivity.class);
                 startActivity(intent);
             }
 
@@ -45,22 +44,21 @@ public class SplashActivity extends Activity {
         });
 
     }
-
     /**
      * 记录是否首次登录，是，跳到引导页，否则跳到首页
      */
-    public void isFirstShow() {
-        SharedPreferences preferences = getSharedPreferences("goods", MODE_PRIVATE);
+    public void isFirstShow(){
+        SharedPreferences preferences = getSharedPreferences("goods",MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         boolean isFirst = preferences.getBoolean("isFirst", true);
-        if (isFirst) {
-            Intent intent = new Intent(SplashActivity.this, FirstPagerActivity.class);
+        if(isFirst){
+            Intent intent = new Intent(SplashActivity.this,FirstPagerActivity.class);
             startActivity(intent);
-            editor.putBoolean("isFirst", false);
+            editor.putBoolean("isFirst",false);
             editor.commit();
 
-        } else {
-            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+        }else{
+            Intent intent = new Intent(SplashActivity.this,MainActivity.class);
             startActivity(intent);
 
 
