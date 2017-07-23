@@ -78,7 +78,7 @@
             android:layout_toLeftOf="@id/entry1"
             android:paddingRight="5dp"
             android:src="@drawable/personal_history_img"
-            android:text="狗比"
+            android:text="168169"
             android:textSize="16sp" />
 
     </RelativeLayout>
