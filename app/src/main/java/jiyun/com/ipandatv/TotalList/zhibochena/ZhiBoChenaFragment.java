@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ import java.util.Set;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.activity.ACache;
@@ -39,6 +41,8 @@ import jiyun.com.ipandatv.fragment.zhibochena.BadaLingFragment;
 import jiyun.com.ipandatv.model.entity.zhibochena.PopupBean;
 import jiyun.com.ipandatv.view.DragGridView;
 
+import static jiyun.com.ipandatv.R.id.live_chena_IBtn;
+
 /**
  * Created by Lenovo on 2017/7/12.
  */
@@ -48,12 +52,15 @@ public class ZhiBoChenaFragment extends BaseFragment implements ZhiBoChenaContra
 
     @BindView(R.id.Personal_Cente)
     ImageView PersonalCente;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     @BindView(R.id.live_chena_TabLayout)
     TabLayout liveChenaTabLayout;
-    @BindView(R.id.live_chena_IBtn)
+    @BindView(live_chena_IBtn)
     ImageButton liveChenaIBtn;
     @BindView(R.id.live_chena_viewPager)
     ViewPager liveChenaViewPager;
+    Unbinder unbinder;
     private DragGridView gridView;
     private DragGridView gridView_other;
     private DragAdapter dragAdapter;
@@ -68,7 +75,7 @@ public class ZhiBoChenaFragment extends BaseFragment implements ZhiBoChenaContra
     private List<String> mListName;
     private List<BaseFragment> mList;
     private List<String> mListNameUrl;
-    private Map<String, String> mMapAllUrl;
+    private Map<String,String> mMapAllUrl;
     private ZhiBoChenaPresenter presenter;
     private CheckBox button;
     private ACache aCache;
@@ -153,12 +160,12 @@ public class ZhiBoChenaFragment extends BaseFragment implements ZhiBoChenaContra
     public void setRefresh() {
         mListName.clear();
         mList.clear();
-        mListName.addAll(channels);
+        mListName.addAll(channels) ;
         Set<String> strings = mMapAllUrl.keySet();
 
         BadaLingFragment badaLingFragment = null;
         Bundle bundle = null;
-        String url = null;
+        String url=null;
         for (String nameTab : mListName) {
             url = mMapAllUrl.get(nameTab);
             badaLingFragment = new BadaLingFragment();
@@ -206,7 +213,7 @@ public class ZhiBoChenaFragment extends BaseFragment implements ZhiBoChenaContra
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             String channel = channels.get(position);
-                            if (channels.size() > 4) {
+                            if(channels.size()>4) {
                                 channels.remove(position);
                                 channels_other.add(channel);
                                 dragAdapter.notifyDataSetChanged();
@@ -242,6 +249,8 @@ public class ZhiBoChenaFragment extends BaseFragment implements ZhiBoChenaContra
 
             }
         });
+
+
 
 
     }
