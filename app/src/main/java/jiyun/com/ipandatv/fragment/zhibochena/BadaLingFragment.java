@@ -12,11 +12,13 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.activity.ACache;
 import jiyun.com.ipandatv.adapter.ZhiBochenaAdapter;
 import jiyun.com.ipandatv.base.BaseFragment;
 import jiyun.com.ipandatv.model.entity.zhibochena.ChangchengBean;
+import jiyun.com.ipandatv.utils.ShowPopuUtils;
 
 /**
  * Created by Lenovo on 2017/7/14.
@@ -39,6 +41,7 @@ public class BadaLingFragment extends BaseFragment implements BadaLingFragmentCo
 
     @Override
     protected void init(View view) {
+
 
         new BadaLingFragmentPresenter(this);
 
@@ -82,8 +85,8 @@ public class BadaLingFragment extends BaseFragment implements BadaLingFragmentCo
 
 
         mList.addAll(changchengBean.getLive());
-        mAdapter.notifyDataSetChanged();
 
+        mAdapter.notifyDataSetChanged();
 
     }
 
@@ -93,6 +96,7 @@ public class BadaLingFragment extends BaseFragment implements BadaLingFragmentCo
         ChangchengBean list = (ChangchengBean)cache.getAsObject("ChangchengBean");
         mList.addAll(list.getLive());
         mAdapter.notifyDataSetChanged();
+
     }
 
     @Override

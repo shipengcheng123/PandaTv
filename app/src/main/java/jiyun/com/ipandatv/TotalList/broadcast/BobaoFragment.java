@@ -28,6 +28,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
+import jiyun.com.ipandatv.activity.ACache;
 import jiyun.com.ipandatv.activity.WebActivity;
 import jiyun.com.ipandatv.adapter.BobaoAdapter;
 import jiyun.com.ipandatv.base.BaseFragment;
@@ -37,6 +38,7 @@ import jiyun.com.ipandatv.model.db.MyOpenHelper;
 import jiyun.com.ipandatv.model.entity.BobaoHeaderBean;
 import jiyun.com.ipandatv.model.entity.PandaBroadBean;
 import jiyun.com.ipandatv.utils.MyLog;
+import jiyun.com.ipandatv.utils.ShowPopuUtils;
 
 /**
  * Created by Lenovo on 2017/7/12.
@@ -73,6 +75,7 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View {
 
     @Override
     protected void init(View view) {
+        ShowPopuUtils.getInsent().create(App.activity);
         MyOpenHelper helper = new MyOpenHelper(getContext(), "guankanjilu.db", null, 1);
 
         try {
@@ -180,7 +183,6 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View {
 
     @Override
     protected void loadData() {
-        progressDialog = ProgressDialog.show(App.activity, "请稍等...", "获取数据中...", true);
         bobaoPresenter = new BobaoPresenter(this);
         presenter.start();
         bobaoAdapter = new BobaoAdapter(getContext(), mList);
@@ -230,8 +232,17 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View {
 
         mList.addAll(pandaLiveBean.getList());
         bobaoAdapter.notifyDataSetChanged();
-        progressDialog.dismiss();
+        ShowPopuUtils.getInsent().popuUtilsDismiss();
     }
+    @Override
+    public void showMessage(String msg) {
+        ACache aCache = ACache.get(getContext());
+        PandaBroadBean pandaBroadBean = (PandaBroadBean) aCache.getAsObject("PandaBroadBean");
+        mList.addAll(pandaBroadBean.getList());
+        bobaoAdapter.notifyDataSetChanged();
+        ShowPopuUtils.getInsent().popuUtilsDismiss();
+    }
+
 
     @Override
     public void setResultHeadler(BobaoHeaderBean bobaoHeaderBean) {
@@ -242,11 +253,19 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View {
         url = bobaoHeaderBean.getData().getBigImg().get(0).getUrl();
 
     }
-
     @Override
-    public void showMessage(String msg) {
+    public void ShowMessageTwo(String msg) {
+        ACache aCache = ACache.get(getContext());
+        BobaoHeaderBean asObject = (BobaoHeaderBean) aCache.getAsObject("BobaoHeaderBean");
+        Glide.with(App.activity).load(asObject.getData().getBigImg().get(0).getImage()).into(mImage);
+        mTitle = asObject.getData().getBigImg().get(0).getTitle();
+        title.setText(mTitle);
+        ShowPopuUtils.getInsent().popuUtilsDismiss();
 
     }
+
+
+
 
     @Override
     public void setBasePresenter(BobaoContract.Presenter presenter) {

@@ -43,7 +43,7 @@ public class BobaoPresenter implements BobaoContract.Presenter {
 
             @Override
             public void OnError(int ErrorCode, String ErrorMsg) {
-                BobaoView.showMessage(ErrorMsg);
+                BobaoView.ShowMessageTwo(ErrorMsg);
             }
         });
     }

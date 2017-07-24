@@ -20,7 +20,7 @@ public interface BobaoContract {
 //        void loadMore(PandaBroadBean pandaLiveBean,int pagsize,int pagcontent);
 //        void setRefresh(PandaBroadBean pandaLiveBean,int pagsize,int pagcontent);
         void showMessage(String msg);
-
+        void ShowMessageTwo(String msg);
 
     }
 

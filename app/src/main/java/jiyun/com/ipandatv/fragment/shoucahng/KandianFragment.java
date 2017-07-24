@@ -1,9 +1,11 @@
 package jiyun.com.ipandatv.fragment.shoucahng;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -16,11 +18,13 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
-import jiyun.com.ipandatv.adapter.homepage.LishiAdapter;
+import jiyun.com.ipandatv.activity.VideoActivity;
+import jiyun.com.ipandatv.adapter.ShoucangAdapter;
 import jiyun.com.ipandatv.base.BaseFragment;
-import jiyun.com.ipandatv.model.db.JiluDao;
-import jiyun.com.ipandatv.model.db.MyOpenHelper;
+import jiyun.com.ipandatv.model.db.MyTwoOpenHelper;
+import jiyun.com.ipandatv.model.db.ShouchangDao;
 import jiyun.com.ipandatv.utils.MyLog;
 
 /**

@@ -36,8 +36,8 @@ import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.base.BaseActivity;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.VedioJCYKBean;
-import jiyun.com.ipandatv.model.db.JiluDao;
-import jiyun.com.ipandatv.model.db.MyOpenHelper;
+import jiyun.com.ipandatv.model.db.MyTwoOpenHelper;
+import jiyun.com.ipandatv.model.db.ShouchangDao;
 import jiyun.com.ipandatv.utils.MyLog;
 
 import static com.umeng.socialize.utils.ContextUtil.getContext;
@@ -55,7 +55,7 @@ public class VideoActivity extends BaseActivity implements VideoContract.View,Vi
     private String pid, title,image;
     private PopupWindow PopupWindow;
    private String url;
-    private Dao<JiluDao,Integer> dao;
+    private Dao<ShouchangDao,Integer> dao;
     @Override
     protected int getLayoutId() {
         return R.layout.video_avtivity;
@@ -63,10 +63,10 @@ public class VideoActivity extends BaseActivity implements VideoContract.View,Vi
 
     @Override
     protected void initView() {
-        MyOpenHelper helper = new MyOpenHelper(getContext(), "shouchang.db", null, 1);
+        MyTwoOpenHelper helper = new MyTwoOpenHelper(getContext(), "shouchang.db", null, 1);
 
         try {
-            dao = helper.getDao(JiluDao.class);
+            dao = helper.getDao(ShouchangDao.class);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -84,9 +84,6 @@ public class VideoActivity extends BaseActivity implements VideoContract.View,Vi
 
         //标准基础上改进的视频播放(添加了分享按钮)
         jcVideoPlayerStandard = (JCVideoPlayerStandard) findViewById(R.id.custom_videoplayer_standard_with_share_button);
-//        customVideoplayerStandardWithShareButton.setUrlAndObject(url, null,title);
-//        ImageLoader.getInstance().displayImage("http://img4.jiecaojingxuan.com/2016/5/1/3430ec64-e6a7-4d8e-b044-9d408e075b7c.jpg",
-//                customVideoplayerStandardWithShareButton.ivThumb);
 
     }
 
@@ -120,15 +117,16 @@ private Boolean flag = true;
         List<VedioJCYKBean.VideoBean.Chapters2Bean> chapters2 = jcykBean.getVideo().getChapters2();
          url = chapters2.get(0).getUrl();
         jcVideoPlayerStandard.setUp(url, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,title);
-
+        jcVideoPlayerStandard.startVideo();
         jcVideoPlayerStandard.setMonitor(new JCVideoPlayerStandard.imgClickon() {
             @Override
             public void Monitor(View view) {
 
                             if(flag) {
-                    JiluDao jiluDao = new JiluDao();
+                     ShouchangDao jiluDao = new ShouchangDao();
                     jiluDao.setTitle(title);
                     jiluDao.setImageurl(image);
+                    jiluDao.setPid(pid);
                     try {
                         int i = dao.create(jiluDao);
                         Log.e("AAA", "插入了" + i + "条数据");
@@ -168,6 +166,7 @@ private Boolean flag = true;
                 List<VedioJCYKBean.VideoBean.Chapters2Bean> chapters2 = jcykBean.getVideo().getChapters2();
                 String url = chapters2.get(0).getUrl();
                 jcVideoPlayerStandard.setUp(url, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,title);
+                jcVideoPlayerStandard.startVideo();
             }
 
             @Override
@@ -175,6 +174,7 @@ private Boolean flag = true;
                 List<VedioJCYKBean.VideoBean.Chapters4Bean> chapters2 = jcykBean.getVideo().getChapters4();
                 String url = chapters2.get(0).getUrl();
                 jcVideoPlayerStandard.setUp(url, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,title);
+                jcVideoPlayerStandard.startVideo();
             }
 
 

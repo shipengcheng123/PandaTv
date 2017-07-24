@@ -15,6 +15,7 @@ import butterknife.OnClick;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.base.BaseActivity;
 import jiyun.com.ipandatv.fragment.shoucahng.KandianFragment;
+import jiyun.com.ipandatv.fragment.shoucahng.ShouchangzhiboFragment;
 
 /**
  * Created by Lenovo on 2017/7/24.
@@ -50,7 +51,7 @@ public class ShouchangActivity extends BaseActivity {
     public void loadData() {
         manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.Shouchang_Framelayout, new KandianFragment());
+        transaction.replace(R.id.Shouchang_Framelayout, new ShouchangzhiboFragment());
         transaction.commit();
     }
 
@@ -74,7 +75,7 @@ public class ShouchangActivity extends BaseActivity {
             case R.id.Shouchang_zhibo:
                 manager = getSupportFragmentManager();
                 FragmentTransaction transaction1 = manager.beginTransaction();
-                transaction1.replace(R.id.Shouchang_Framelayout, new KandianFragment());
+                transaction1.replace(R.id.Shouchang_Framelayout, new ShouchangzhiboFragment());
                 transaction1.commit();
                 Bianji.setVisibility(View.GONE);
                 break;

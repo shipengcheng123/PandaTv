@@ -37,6 +37,7 @@ import jiyun.com.ipandatv.fragment.Home.tile_right.Title_RightActivity;
 import jiyun.com.ipandatv.fragment.pandadirect.adapter.PandaDirectAdapter;
 import jiyun.com.ipandatv.fragment.zhibochena.BadaLingFragment;
 import jiyun.com.ipandatv.model.entity.zhibochena.PopupBean;
+import jiyun.com.ipandatv.utils.ShowPopuUtils;
 import jiyun.com.ipandatv.view.DragGridView;
 
 /**
@@ -80,6 +81,7 @@ public class ZhiBoChenaFragment extends BaseFragment implements ZhiBoChenaContra
 
     @Override
     protected void init(View view) {
+        ShowPopuUtils.getInsent().create(App.activity);
         new ZhiBoChenaPresenter(this);
 
 
@@ -249,6 +251,7 @@ public class ZhiBoChenaFragment extends BaseFragment implements ZhiBoChenaContra
     private void initDataOther(List<PopupBean.AlllistBean> alllistBeanList) {
         for (PopupBean.AlllistBean alllistBean : alllistBeanList) {
             channels_other.add(alllistBean.getTitle());
+            ShowPopuUtils.getInsent().popuUtilsDismiss();
         }
 
     }
@@ -290,6 +293,7 @@ public class ZhiBoChenaFragment extends BaseFragment implements ZhiBoChenaContra
 
         List<PopupBean.AlllistBean> alllist = popupBean.getAlllist();
         initDataOther(alllist);
+        ShowPopuUtils.getInsent().popuUtilsDismiss();
         liveChenaIBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
