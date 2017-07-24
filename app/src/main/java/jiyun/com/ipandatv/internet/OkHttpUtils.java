@@ -16,6 +16,8 @@ import java.util.Set;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.activity.ACache;
 import jiyun.com.ipandatv.internet.callback.INetWorkCallback;
+import jiyun.com.ipandatv.internet.callback.NNetWorkCallback;
+import jiyun.com.ipandatv.internet.callback.NetWorkCallback;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
@@ -144,6 +146,26 @@ public class OkHttpUtils implements IHttp {
 
             }
         });
+    }
+
+    @Override
+    public <T> void doget(String url, Map<String, String> params, NetWorkCallback callback) {
+
+    }
+
+    @Override
+    public <T> void getSjYam(String url, Map<String, String> params, NNetWorkCallback callback) {
+
+    }
+
+    @Override
+    public <T> void Register(String url, Map<String, String> params, NNetWorkCallback callback) {
+
+    }
+
+    @Override
+    public <T> void EmailRegister(String url, Map<String, String> params, NNetWorkCallback callback) {
+
     }
 
 

@@ -1,11 +1,9 @@
 package jiyun.com.ipandatv.fragment.shoucahng;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.j256.ormlite.dao.Dao;
@@ -17,13 +15,11 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
-import jiyun.com.ipandatv.activity.VideoActivity;
-import jiyun.com.ipandatv.adapter.ShoucangAdapter;
+import jiyun.com.ipandatv.adapter.homepage.LishiAdapter;
 import jiyun.com.ipandatv.base.BaseFragment;
-import jiyun.com.ipandatv.model.db.MyTwoOpenHelper;
-import jiyun.com.ipandatv.model.db.ShouchangDao;
+import jiyun.com.ipandatv.model.db.JiluDao;
+import jiyun.com.ipandatv.model.db.MyOpenHelper;
 import jiyun.com.ipandatv.utils.MyLog;
 
 /**
@@ -34,9 +30,9 @@ public class KandianFragment extends BaseFragment {
     ListView mListView;
     Unbinder unbinder;
 
-    private ShoucangAdapter mAdapter;
-    private List<ShouchangDao> mList = new ArrayList<>();
-    private Dao<ShouchangDao, Integer> dao;
+    private LishiAdapter mAdapter;
+    private List<JiluDao> mList = new ArrayList<>();
+    private Dao<JiluDao, Integer> dao;
 
     @Override
     protected int getLayoutId() {
@@ -46,20 +42,20 @@ public class KandianFragment extends BaseFragment {
     @Override
     protected void init(View view) {
 
-        MyTwoOpenHelper helper = new MyTwoOpenHelper(getContext(), "shouchang.db", null, 1);
+        MyOpenHelper helper = new MyOpenHelper(getContext(), "shouchang.db", null, 1);
 
         try {
-            dao = helper.getDao(ShouchangDao.class);
+            dao = helper.getDao(JiluDao.class);
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         try {
-            List<ShouchangDao> items = dao.queryForAll();
+            List<JiluDao> items = dao.queryForAll();
             MyLog.e("items", items + "");
             mList.addAll(items);
-            mAdapter = new ShoucangAdapter(getContext(), mList);
+            mAdapter = new LishiAdapter(getContext(), mList);
             mListView.setAdapter(mAdapter);
             mAdapter.notifyDataSetChanged();
         } catch (SQLException e) {
@@ -67,24 +63,11 @@ public class KandianFragment extends BaseFragment {
         }
 
 
-
-
-
     }
 
     @Override
     protected void loadData() {
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String pid = mList.get(position).getPid();
-                String title = mList.get(position).getTitle();
-                Intent intent = new Intent(getContext(), VideoActivity.class);
-                intent.putExtra("pid",pid);
-                intent.putExtra("title",title);
-                App.activity.startActivity(intent);
-            }
-        });
+
     }
 
     @Override

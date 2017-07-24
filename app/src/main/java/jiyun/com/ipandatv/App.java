@@ -22,7 +22,6 @@ import com.umeng.socialize.UMShareAPI;
 import cn.jpush.android.api.JPushInterface;
 import jiyun.com.ipandatv.base.BaseActivity;
 import jiyun.com.ipandatv.base.BaseFragment;
-import jiyun.com.ipandatv.jgpush.Logger;
 
 /**
  * Created by lx on 2017/7/11.
@@ -50,7 +49,7 @@ public class App extends Application {
         MobclickAgent.openActivityDurationTrack(false);
         Config.DEBUG = true;
         UMShareAPI.get(this);
-        Logger.d(TAG, "[ExampleApplication] onCreate");
+//        Logger.d(TAG, "[ExampleApplication] onCreate");
         JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
         JPushInterface.init(this);     		// 初始化 JPush
 //        CrashHandler.getInstance().init(this);//初始化全局异常管理

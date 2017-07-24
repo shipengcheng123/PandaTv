@@ -159,7 +159,6 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
         url = chapters2.get(0).getUrl();
         if (urllisst.size() > 0) {
             customVideoplayerStandardWithShareButton.setUp(urllisst.get(0).getUrl(), JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,title);
-            customVideoplayerStandardWithShareButton.startVideo();
         }
 
 
