@@ -7,7 +7,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.widget.RadioGroup;
 
-import com.j256.ormlite.dao.Dao;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -50,7 +49,7 @@ public class App extends Application {
         MobclickAgent.openActivityDurationTrack(false);
         Config.DEBUG = true;
         UMShareAPI.get(this);
-        Logger.d(TAG, "[ExampleApplication] onCreate");
+//        Logger.d(TAG, "[ExampleApplication] onCreate");
         JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
         JPushInterface.init(this);     		// 初始化 JPush
 //        CrashHandler.getInstance().init(this);//初始化全局异常管理
