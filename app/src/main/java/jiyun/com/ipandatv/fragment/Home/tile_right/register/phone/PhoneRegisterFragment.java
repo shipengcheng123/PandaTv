@@ -1,4 +1,4 @@
-package jiyun.com.ipandatv.fragment.Home.tile_right;
+package jiyun.com.ipandatv.fragment.Home.tile_right.register.phone;
 
 
 import android.graphics.drawable.Drawable;
@@ -11,8 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -21,13 +21,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.base.BaseFragment;
+import jiyun.com.ipandatv.utils.MyLog;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
-import okhttp3.Headers;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -38,7 +37,7 @@ import okhttp3.Response;
  * Created by lx on 2017/7/20.
  */
 
-public class PhoneRegisterFragment extends BaseFragment {
+public class PhoneRegisterFragment extends BaseFragment implements RegisterContract.View {
     @BindView(R.id.editUserPhone_)
     EditText editUserPhone;
     @BindView(R.id.checkCodeEdit_)
@@ -64,8 +63,8 @@ public class PhoneRegisterFragment extends BaseFragment {
     Unbinder unbinder;
     private byte[] bytes;
     private OkHttpClient Client = new OkHttpClient.Builder().build();
-
     private String jsonId;
+    private RegisterContract.Presenter presenter;
 
     @Override
     protected int getLayoutId() {
@@ -79,7 +78,8 @@ public class PhoneRegisterFragment extends BaseFragment {
 
     @Override
     protected void loadData() {
-        getPersonalRegImgCheck();
+        new RegisterPresenter(this);
+        presenter.start();
     }
 
     @Override
@@ -91,64 +91,35 @@ public class PhoneRegisterFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.phoneCheckCodeBtn_:
+                //手机号
+                String tPhoneNumber = editUserPhone.getText().toString().trim();
+                //图片验证码
+                String imgyanzhengma = checkCodeEdit.getText().toString().trim();
                 //手机验证码
-                getPhoneCode();
+                presenter.getSjYam(tPhoneNumber, imgyanzhengma);
                 break;
             case R.id.findPwdBtn_:
+                //手机号输入
+                String number = editUserPhone.getText().toString().trim();
+                //手机验证码
+                String tCheckPhone = phoneCheckCode.getText().toString().trim();
+                //密码输入
+                String tPassWord = newPasswordEdit.getText().toString();
                 //注册
-                getRegister();
+                presenter.Register(number, tCheckPhone, tPassWord);
                 break;
         }
     }
 
-    //图形验证码
-    public void getPersonalRegImgCheck() {
-        String from = "http://reg.cntv.cn/simple/verificationCode.action";
-        final Request request = new Request.Builder()
-                .url(from)
-                .build();
-        Client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                bytes = response.body().bytes();
-                Headers headers = response.headers();
-                jsonId = headers.get("Set-Cookie");
-                App.activity.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        TPYanZhengma.setImageDrawable(byteToDrawable(bytes));
-                    }
-                });
-            }
-        });
-
-    }
-
-    public Drawable byteToDrawable(byte[] buteArray) {
-        try {
-            String string = new String(buteArray, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        ByteArrayInputStream ins = new ByteArrayInputStream(buteArray);
-        return Drawable.createFromStream(ins, null);
-    }
 
     //获取手机验证码
     public void getPhoneCode() {
         String url = "http://reg.cntv.cn/regist/getVerifiCode.action";
         String from = "http://cbox_mobile.regclientuser.cntv.cn";
-//                    手机号
+        //手机号
         String tPhoneNumber = editUserPhone.getText().toString().trim();
-//                    验证码
+        //图片验证码
         String imgyanzhengma = checkCodeEdit.getText().toString().trim();
-
         RequestBody body = new FormBody.Builder()
                 .add("method", "getRequestVerifiCodeM")
                 .add("mobile", tPhoneNumber)
@@ -209,13 +180,13 @@ public class PhoneRegisterFragment extends BaseFragment {
             Client.newCall(request).enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
-                    Log.i("TAG", e.getMessage().toString());
+                    MyLog.e("TAG", e.getMessage().toString());
                 }
 
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
                     String loginSate = response.body().string();
-                    Log.i("TAG", "注册状态：：" + loginSate);
+                    MyLog.e("TAG", "注册状态：：" + loginSate);
                 }
             });
 
@@ -242,6 +213,22 @@ public class PhoneRegisterFragment extends BaseFragment {
 
     @OnClick(R.id.TPYanZhengma)
     public void onViewClicked() {
-        getPersonalRegImgCheck();
+        presenter.start();
+    }
+
+
+    @Override
+    public void setBasePresenter(RegisterContract.Presenter presenter) {
+        this.presenter = presenter;
+    }
+
+    @Override
+    public void setDrawable(Drawable drawable) {
+        TPYanZhengma.setImageDrawable(drawable);
+    }
+
+    @Override
+    public void sendYam(String s) {
+        Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
     }
 }

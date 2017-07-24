@@ -2,11 +2,15 @@ package jiyun.com.ipandatv.fragment.Home.tile_right;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.base.BaseActivity;
 
@@ -17,7 +21,10 @@ import jiyun.com.ipandatv.base.BaseActivity;
 public class BobaoActivity extends BaseActivity {
     @BindView(R.id.panda_News_WebView)
     WebView WebViewMain;
-
+    @BindView(R.id.original_Back_Image)
+    ImageView originalBackImage;
+    @BindView(R.id.ShouCang)
+    TextView ShouCang;
 
     @Override
     protected int getLayoutId() {
@@ -55,5 +62,15 @@ public class BobaoActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
+    }
+
+    @OnClick({R.id.original_Back_Image, R.id.ShouCang})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.original_Back_Image:
+                break;
+            case R.id.ShouCang:
+                break;
+        }
     }
 }

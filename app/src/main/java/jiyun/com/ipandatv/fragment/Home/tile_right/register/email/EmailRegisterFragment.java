@@ -1,4 +1,4 @@
-package jiyun.com.ipandatv.fragment.Home.tile_right;
+package jiyun.com.ipandatv.fragment.Home.tile_right.register.email;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -28,10 +28,10 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 /**
- * Created by lx on 2017/7/20.
+ * Created by lx on 2017/7/21.
  */
 
-public class EmailRegisterFragment extends BaseFragment {
+public class EmailRegisterFragment extends BaseFragment implements EmailRegisterContract.View {
     @BindView(R.id.editUserPhone_yx)
     EditText editUserPhoneYx;
     @BindView(R.id.checkCodeEdit_yx)
@@ -47,12 +47,12 @@ public class EmailRegisterFragment extends BaseFragment {
     Unbinder unbinder;
     private byte[] bytes;
     private String jsonId;
+    private EmailRegisterContract.Presenter presenter;
 
     @Override
     protected int getLayoutId() {
         return R.layout.register_youxiang;
     }
-
 
     @Override
     protected void init(View view) {
@@ -61,7 +61,8 @@ public class EmailRegisterFragment extends BaseFragment {
 
     @Override
     protected void loadData() {
-        getPersonalRegImgCheck();
+        new EmailRegisterPresenter(this);
+        presenter.start();
     }
 
     @Override
@@ -113,6 +114,10 @@ public class EmailRegisterFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.findPwdBtn_yx:
+                String trim = editUserPhoneYx.getText().toString().trim();
+                String trim1 = checkCodeEditYx.getText().toString().trim();
+                String trim2 = newCheckPasswordEditYx.getText().toString().trim();
+                presenter.Register(trim, trim1, trim2);
                 break;
         }
     }
@@ -133,6 +138,22 @@ public class EmailRegisterFragment extends BaseFragment {
 
     @OnClick(R.id.Email_Image_YanZhengma)
     public void onViewClicked() {
-        getPersonalRegImgCheck();
+//        getPersonalRegImgCheck();
+        presenter.start();
+    }
+
+    @Override
+    public void setDrawable(Drawable drawable) {
+        EmailImageYanZhengma.setImageDrawable(drawable);
+    }
+
+    @Override
+    public void set(String s) {
+
+    }
+
+    @Override
+    public void setBasePresenter(EmailRegisterContract.Presenter presenter) {
+        this.presenter = presenter;
     }
 }
