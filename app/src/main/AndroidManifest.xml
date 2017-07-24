@@ -100,6 +100,7 @@
         <activity android:name=".wxapi.WXEntryActivity" />
         <activity android:name=".fragment.pandabroadcast.RollDtialActivity" />
         <activity android:name=".fragment.Home.tile_right.Title_RegisterActivity" />
+        <activity android:name=".fragment.Home.tile_right.register.PersonAmendActivity"/>
         <activity
             android:name="com.umeng.socialize.media.WBShareCallBackActivity"
             android:configChanges="keyboardHidden|orientation"
