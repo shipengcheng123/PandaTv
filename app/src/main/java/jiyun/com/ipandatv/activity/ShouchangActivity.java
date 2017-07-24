@@ -69,6 +69,8 @@ public class ShouchangActivity extends BaseActivity {
                 onBackPressed();
                 break;
             case R.id.Bianji:
+
+
                 break;
             case R.id.Shouchang_zhibo:
                 manager = getSupportFragmentManager();
@@ -81,7 +83,7 @@ public class ShouchangActivity extends BaseActivity {
                 Bianji.setVisibility(View.VISIBLE);
                 manager = getSupportFragmentManager();
                 FragmentTransaction transaction2 = manager.beginTransaction();
-                transaction2.replace(R.id.Shouchang_Framelayout, new KandianFragment());
+                transaction2.replace(R.id.Shouchang_Framelayout, new KandianFragment(Bianji));
                 transaction2.commit();
                 break;
         }

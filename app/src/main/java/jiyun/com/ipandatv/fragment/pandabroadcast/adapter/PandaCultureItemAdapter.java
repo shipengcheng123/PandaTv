@@ -116,6 +116,7 @@ public class PandaCultureItemAdapter extends BaseAdapter<PandaCultureEntity.List
                     intent.putExtra("url", listBean.getUrl());
                     intent.putExtra("pid", listBean.getId());
                     intent.putExtra("title", listBean.getTitle());
+                    intent.putExtra("image",listBean.getImage());
                     MyLog.e("Url", listBean.getUrl() + listBean.getTitle());
                     App.activity.startActivity(intent);
 

@@ -19,6 +19,8 @@ public class ShouchangDao {
     private String pid;
 
 
+
+
     public ShouchangDao() {
     }
 

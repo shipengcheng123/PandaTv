@@ -26,7 +26,7 @@
             <TextView
                 android:layout_width="270dp"
                 android:layout_height="140px"
-                android:text="历史记录"
+                android:text="收藏"
                 android:textColor="#ffffff"
                 android:textSize="20sp"
                 android:gravity="center"/>

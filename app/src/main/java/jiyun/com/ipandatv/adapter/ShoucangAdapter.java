@@ -1,10 +1,12 @@
 package jiyun.com.ipandatv.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,10 +27,19 @@ public class ShoucangAdapter extends BaseAdapter {
 
     private Context mContext;
     private List<ShouchangDao> mList;
+    private boolean bb=false;
 
     public ShoucangAdapter(Context mContext, List<ShouchangDao> mList) {
         this.mContext = mContext;
         this.mList = mList;
+    }
+
+    public boolean isBb() {
+        return bb;
+    }
+
+    public void setBb(boolean bb) {
+        this.bb = bb;
     }
 
     @Override
@@ -55,6 +66,7 @@ public class ShoucangAdapter extends BaseAdapter {
             holder.mImage= (ImageView) convertView.findViewById(R.id.panda_culture_item_image);
             holder.mText= (TextView) convertView.findViewById(R.id.panda_culture_item_title);
             holder.mData = (TextView) convertView.findViewById(R.id.panda_culture_item_time);
+            holder.radioButton= (CheckBox) convertView.findViewById(R.id.Bianji_anniu);
             convertView.setTag(holder);
         }else{
             holder= (Holder) convertView.getTag();
@@ -67,10 +79,19 @@ public class ShoucangAdapter extends BaseAdapter {
         String str = formatter.format(curDate);
 
         holder.mData.setText(str);
+        Log.e("TAG",isBb()+"");
+        if(isBb()){
+            holder.radioButton.setVisibility(View.VISIBLE);
+
+        }else{
+            holder.radioButton.setVisibility(View.GONE);
+
+        }
         return convertView;
     }
     class Holder{
         private ImageView mImage;
         private TextView mText,mData;
+        private CheckBox radioButton;
     }
 }

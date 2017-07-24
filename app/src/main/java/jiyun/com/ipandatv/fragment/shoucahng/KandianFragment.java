@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.j256.ormlite.dao.Dao;
 
@@ -37,6 +38,12 @@ public class KandianFragment extends BaseFragment {
     private ShoucangAdapter mAdapter;
     private List<ShouchangDao> mList = new ArrayList<>();
     private Dao<ShouchangDao, Integer> dao;
+    private TextView textView;
+
+    public KandianFragment(TextView textView) {
+        this.textView = textView;
+    }
+
 
     @Override
     protected int getLayoutId() {
@@ -65,6 +72,20 @@ public class KandianFragment extends BaseFragment {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(textView.getText().toString().trim().equals("编辑")){
+                    textView.setText("完成");
+                    mAdapter.setBb(true);
+                    mAdapter.notifyDataSetChanged();
+                }else if(textView.getText().toString().trim().equals("完成")){
+                    textView.setText("编辑");
+                    mAdapter.setBb(false);
+                    mAdapter.notifyDataSetChanged();
+                }
+            }
+        });
 
 
 
