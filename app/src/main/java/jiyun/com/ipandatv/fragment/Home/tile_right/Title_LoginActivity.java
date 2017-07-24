@@ -1,4 +1,4 @@
-package jiyun.com.ipandatv.fragment.Home.tile_right.login;
+package jiyun.com.ipandatv.fragment.Home.tile_right;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -11,11 +11,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.utils.SocializeUtils;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Map;
 import java.util.Set;
 
@@ -23,20 +27,24 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import jiyun.com.ipandatv.R;
-import jiyun.com.ipandatv.activity.ACache;
 import jiyun.com.ipandatv.base.BaseActivity;
-import jiyun.com.ipandatv.fragment.Home.tile_right.Title_RegisterActivity;
-import jiyun.com.ipandatv.fragment.Home.tile_right.forgetpwd.ForgetActivity;
 import jiyun.com.ipandatv.model.entity.LoginBean;
-import jiyun.com.ipandatv.utils.MyLog;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Headers;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 
 /**
  * Created by lx on 2017/7/14.
  */
 
-public class Title_LoginActivity extends BaseActivity implements LoginContract.View {
+public class Title_LoginActivity extends BaseActivity {
     @BindView(R.id.Login_Finish)
     ImageView LoginFinish;
+
     @BindView(R.id.Login_Register)
     TextView LoginRegister;
     @BindView(R.id.Text_Login)
@@ -58,8 +66,8 @@ public class Title_LoginActivity extends BaseActivity implements LoginContract.V
     @BindView(R.id.loginBtn)
     Button loginBtn;
     private ProgressDialog dialog;
-    private LoginContract.Presenter presenter;
-    private String usrid;
+    OkHttpClient client = new OkHttpClient.Builder().build();
+    String mUserSeqId, errType;
 
     @Override
     protected int getLayoutId() {
@@ -78,8 +86,7 @@ public class Title_LoginActivity extends BaseActivity implements LoginContract.V
 
     @Override
     public void loadData() {
-        new LoginPresenter(this);
-        presenter.start();
+
     }
 
     @Override
@@ -96,43 +103,85 @@ public class Title_LoginActivity extends BaseActivity implements LoginContract.V
         UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
     }
 
-    @OnClick({R.id.Login_QQ, R.id.Login_WeiBo, R.id.Login_Finish, R.id.Login_Register, R.id.loginBtn, R.id.forget_password})
+    @OnClick({R.id.Login_QQ, R.id.Login_WeiBo, R.id.Login_Finish, R.id.Login_Register, R.id.loginBtn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.Login_QQ:
                 //TODO QQ授权登陆
                 UMShareAPI.get(this).doOauthVerify(this, SHARE_MEDIA.QQ, authListener);
                 break;
-            //微博授权登陆
             case R.id.Login_WeiBo:
                 UMShareAPI.get(this).doOauthVerify(this, SHARE_MEDIA.SINA, authListener);
                 break;
             case R.id.Login_Finish:
                 finish();
                 break;
-            //手动登录
             case R.id.loginBtn:
-                String userName = editUserName.getText().toString().trim();
-                String passWard = editUserPassword.getText().toString().trim();
-                if (userName.equals("") && passWard.equals("")) {
-                    Toast.makeText(Title_LoginActivity.this, "登陆失败", Toast.LENGTH_SHORT).show();
-                } else {
-                    presenter.Login(userName, passWard);
-                }
-//                finish();
+                Login();
+                finish();
                 break;
-            //跳到注册页面
             case R.id.Login_Register:
                 Intent in = new Intent(this, Title_RegisterActivity.class);
                 startActivity(in);
                 break;
-            case R.id.forget_password:
-                Intent inte = new Intent(this, ForgetActivity.class);
-                startActivity(inte);
-                break;
         }
     }
 
+    private void Login() {
+        String userName = editUserName.getText().toString().trim();
+        String passWard = editUserPassword.getText().toString().trim();
+
+        //http://cbox_mobile.regclientuser.cntv.cn
+        String from = "https://reg.cntv.cn/login/login.action";
+        try {
+            String url = from + "?username="
+                    + URLEncoder.encode(userName, "UTF-8")
+                    + "&password=" + passWard
+                    + "&service=client_transaction" + "&from="
+                    + URLEncoder.encode(from, "UTF-8");
+
+            Request request = new Request.Builder().url(url)
+                    .addHeader("Referer", URLEncoder.encode(from, "UTF-8"))
+                    .addHeader("User-Agent", URLEncoder.encode("CNTV_APP_CLIENT_CYNTV_MOBILE", "UTF-8"))
+                    .build();
+
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    Log.i("TAG", e.getMessage().toString());
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+
+                    String string = response.body().string();
+
+                    Log.i("TAG", "登录成功：：" + string);
+
+                    Gson gson = new Gson();
+
+                    LoginBean loginBean = gson.fromJson(string, LoginBean.class);
+
+                    errType = loginBean.getErrType();
+
+                    mUserSeqId = loginBean.getUser_seq_id();
+
+                    Headers headers = response.headers();
+
+                    for (int i = 0; i < headers.size(); i++) {
+
+                        String name = headers.name(i);
+
+                        Log.i("TAG", "登录打印cookie值：：" + name);
+
+                    }
+                }
+            });
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     UMAuthListener authListener = new UMAuthListener() {
 
@@ -149,16 +198,16 @@ public class Title_LoginActivity extends BaseActivity implements LoginContract.V
             String s;
             for (String key : keySet) {
                 s = data.get(key);
-                Log.i("===========", s);
+                Log.i("===========", data + "");
             }
-            String name = data.get("name");
-            String iconurl = data.get("iconurl");
-            Log.i("==", name + iconurl);
-            Intent in = getIntent();
-            in.putExtra("name", name);
+//            String name = data.get("name");
+//            String iconurl = data.get("iconurl");
+//            Log.i("==", name + iconurl);
+//            Intent in = getIntent();
+//            in.putExtra("name", name);
 //            in.putExtra("iconurl", iconurl);
-            setResult(10, in);
-            finish();
+//            setResult(0, in);
+//            finish();
         }
 
         @Override
@@ -174,25 +223,28 @@ public class Title_LoginActivity extends BaseActivity implements LoginContract.V
         }
     };
 
-    @Override
-    public void setBasePresenter(LoginContract.Presenter presenter) {
-        this.presenter = presenter;
-    }
+    private UMAuthListener umAuthListener = new UMAuthListener() {
+        @Override
+        public void onStart(SHARE_MEDIA platform) {
+            //授权开始的回调
 
-    @Override
-    public void LoginOclick(LoginBean loginBean) {
-        MyLog.e("TAG", loginBean.getErrMsg());
-        ACache aCache = ACache.get(Title_LoginActivity.this);
-        aCache.put("loginentity", loginBean);
-        if (loginBean.getErrMsg().equals("成功")) {
-            usrid = loginBean.getUser_seq_id();
-            Toast.makeText(Title_LoginActivity.this, "成功登陆", Toast.LENGTH_SHORT).show();
-            Intent in = getIntent();
-            in.putExtra("user", "央视网友" + usrid);
-            setResult(50, in);
-            finish();
-        } else {
-            Toast.makeText(Title_LoginActivity.this, "失败", Toast.LENGTH_SHORT).show();
         }
-    }
+
+        @Override
+        public void onComplete(SHARE_MEDIA platform, int action, Map<String, String> data) {
+            Toast.makeText(getApplicationContext(), "Authorize succeed", Toast.LENGTH_SHORT).show();
+            Log.i("==========", data + "");
+        }
+
+        @Override
+        public void onError(SHARE_MEDIA platform, int action, Throwable t) {
+            Toast.makeText(getApplicationContext(), "Authorize fail", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onCancel(SHARE_MEDIA platform, int action) {
+            Toast.makeText(getApplicationContext(), "Authorize cancel", Toast.LENGTH_SHORT).show();
+        }
+    };
+
 }

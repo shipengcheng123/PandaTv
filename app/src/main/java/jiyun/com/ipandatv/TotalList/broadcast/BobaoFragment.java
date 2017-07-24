@@ -28,7 +28,6 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
-import jiyun.com.ipandatv.activity.ACache;
 import jiyun.com.ipandatv.activity.WebActivity;
 import jiyun.com.ipandatv.adapter.BobaoAdapter;
 import jiyun.com.ipandatv.base.BaseFragment;
@@ -94,7 +93,6 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View {
                 intent.putExtra("url", url);
                 MyLog.e("URL", url);
                 startActivity(intent);
-
                 try {
                     List<JiluDao> chaxunItem = dao.queryForAll();
                     if(chaxunItem.size() == 0) {
@@ -246,16 +244,7 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View {
 
     @Override
     public void showMessage(String msg) {
-        ACache aCache = ACache.get(getContext());
-        PandaBroadBean aCacheAsObject = (PandaBroadBean) aCache.getAsObject("PandaBroadBean");
-        mList.addAll(aCacheAsObject.getList());
-        bobaoAdapter.notifyDataSetChanged();
 
-
-        BobaoHeaderBean bobaoHeaderObject = (BobaoHeaderBean) aCache.getAsObject("BobaoHeaderBean");
-        Glide.with(App.activity).load(bobaoHeaderObject.getData().getBigImg().get(0).getImage()).into(mImage);
-        title.setText(bobaoHeaderObject.getData().getBigImg().get(0).getTitle());
-        progressDialog.dismiss();
     }
 
     @Override

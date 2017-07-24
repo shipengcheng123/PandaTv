@@ -29,6 +29,8 @@ import jiyun.com.ipandatv.fragment.pandadirect.contract.LiveContract;
  */
 
 public class LiveFragment extends BaseFragment implements LiveContract.View{
+
+
     @BindView(R.id.direct_jianjie)
     TextView directJianjie;
     @BindView(R.id.live_isshow)
