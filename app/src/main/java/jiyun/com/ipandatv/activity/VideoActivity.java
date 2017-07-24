@@ -9,6 +9,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,12 +18,15 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.stmt.DeleteBuilder;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.media.UMImage;
 import com.umeng.socialize.media.UMWeb;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import butterknife.BindView;
@@ -32,7 +36,11 @@ import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.base.BaseActivity;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.VedioJCYKBean;
+import jiyun.com.ipandatv.model.db.JiluDao;
+import jiyun.com.ipandatv.model.db.MyOpenHelper;
 import jiyun.com.ipandatv.utils.MyLog;
+
+import static com.umeng.socialize.utils.ContextUtil.getContext;
 
 /**
  * Created by Lenovo on 2017/7/13.
@@ -44,9 +52,10 @@ public class VideoActivity extends BaseActivity implements VideoContract.View,Vi
     JCVideoPlayerStandard jcVideoPlayerStandard;
 
     private VideoContract.Presenter presenter;
-    private String pid, title;
+    private String pid, title,image;
     private PopupWindow PopupWindow;
    private String url;
+    private Dao<JiluDao,Integer> dao;
     @Override
     protected int getLayoutId() {
         return R.layout.video_avtivity;
@@ -54,15 +63,23 @@ public class VideoActivity extends BaseActivity implements VideoContract.View,Vi
 
     @Override
     protected void initView() {
+        MyOpenHelper helper = new MyOpenHelper(getContext(), "shouchang.db", null, 1);
+
+        try {
+            dao = helper.getDao(JiluDao.class);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
 
         VideoPresenter presenter=new VideoPresenter(this);
         Intent intent = getIntent();
 
         pid = intent.getStringExtra("pid");
-
-
         title = intent.getStringExtra("title");
-        MyLog.e("aaa",title);
+        image = intent.getStringExtra("image");
+        MyLog.e("aaa",title+image);
 //        MyLog.e("url",url+title);
 
         //标准基础上改进的视频播放(添加了分享按钮)
@@ -96,7 +113,7 @@ public class VideoActivity extends BaseActivity implements VideoContract.View,Vi
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
     }
-
+private Boolean flag = true;
     @Override
     public void showlivevedioFragment(final VedioJCYKBean jcykBean) {
 
@@ -108,7 +125,32 @@ public class VideoActivity extends BaseActivity implements VideoContract.View,Vi
             @Override
             public void Monitor(View view) {
 
+              if(flag) {
+                  JiluDao jiluDao = new JiluDao();
+                  jiluDao.setTitle(title);
+                  jiluDao.setImageurl(image);
+                  try {
+                      int i = dao.create(jiluDao);
+                      Log.e("AAA", "插入了" + i + "条数据");
+                  } catch (SQLException e) {
+                      e.printStackTrace();
+                  }
+                  flag = false;
+
+              }else{
+                  DeleteBuilder deleteBuilder = dao.deleteBuilder();
+                  try {
+                      deleteBuilder.where().eq("title",title);
+                      deleteBuilder.delete();
+                  } catch (SQLException e) {
+                      e.printStackTrace();
+                  }
+                flag =true;
+              }
+
+
             Toast.makeText(VideoActivity.this,"收藏成功",Toast.LENGTH_SHORT).show();
+
             }
 
             @Override

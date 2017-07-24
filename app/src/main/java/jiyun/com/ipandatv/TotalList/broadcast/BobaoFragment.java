@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,9 @@ import android.widget.TextView;
 import com.androidkun.PullToRefreshRecyclerView;
 import com.androidkun.callback.PullToRefreshListener;
 import com.bumptech.glide.Glide;
+import com.j256.ormlite.dao.Dao;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +32,8 @@ import jiyun.com.ipandatv.activity.WebActivity;
 import jiyun.com.ipandatv.adapter.BobaoAdapter;
 import jiyun.com.ipandatv.base.BaseFragment;
 import jiyun.com.ipandatv.fragment.Home.tile_right.Title_RightActivity;
+import jiyun.com.ipandatv.model.db.JiluDao;
+import jiyun.com.ipandatv.model.db.MyOpenHelper;
 import jiyun.com.ipandatv.model.entity.BobaoHeaderBean;
 import jiyun.com.ipandatv.model.entity.PandaBroadBean;
 import jiyun.com.ipandatv.utils.MyLog;
@@ -58,7 +63,9 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View {
     private String url;
     private Handler handleProgress = new Handler();
     private ProgressDialog progressDialog = null;
-
+    private Dao<JiluDao,Integer> dao;
+    private String mTitle,tupian;
+    private boolean flag=false;
     @Override
     protected int getLayoutId() {
         return R.layout.bobao_fragment;
@@ -66,7 +73,14 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View {
 
     @Override
     protected void init(View view) {
+        MyOpenHelper helper = new MyOpenHelper(getContext(), "guankanjilu.db", null, 1);
 
+        try {
+            dao = helper.getDao(JiluDao.class);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         view1 = LayoutInflater.from(getContext()).inflate(R.layout.image_header_fragment, null);
         mImage = (ImageView) view1.findViewById(R.id.Header_image);
@@ -79,6 +93,41 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View {
                 intent.putExtra("url", url);
                 MyLog.e("URL", url);
                 startActivity(intent);
+
+                try {
+                    List<JiluDao> chaxunItem = dao.queryForAll();
+                    if(chaxunItem.size() == 0) {
+                        JiluDao jiluDao = new JiluDao();
+                        jiluDao.setTitle(mTitle);
+                        jiluDao.setImageurl(tupian);
+                        int i = dao.create(jiluDao);
+                        Log.e("AAA", "插入了" + i + "条数据");
+                    }
+                    else {
+                        for (int i=0;i<chaxunItem.size();i++){
+                            if(mTitle.equals(chaxunItem.get(i).getTitle())) {
+                                flag=true;
+                                return;
+                            }
+                        }
+                        if(flag) {
+                            Log.e("tag","相同");
+                        }
+                        else {
+                            JiluDao jiluDao = new JiluDao();
+                            jiluDao.setTitle(mTitle);
+                            jiluDao.setImageurl(tupian);
+                            int i = dao.create(jiluDao);
+                            Log.e("AAA", "插入了" + i + "条数据");
+                            Log.e("tag","添加");
+                        }
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+
+
             }
         });
 
@@ -124,7 +173,7 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View {
         });
 
 
-        bobaoAdapter = new BobaoAdapter(getContext(), mList);
+
 
 
     }
@@ -134,12 +183,9 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View {
         progressDialog = ProgressDialog.show(App.activity, "请稍等...", "获取数据中...", true);
         bobaoPresenter = new BobaoPresenter(this);
         presenter.start();
-        handleProgress.post(new Runnable() {
-            @Override
-            public void run() {
-                mRecyclerView.setAdapter(bobaoAdapter);
-            }
-        });
+        bobaoAdapter = new BobaoAdapter(getContext(), mList);
+        mRecyclerView.setAdapter(bobaoAdapter);
+
 
     }
 
@@ -189,8 +235,10 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View {
 
     @Override
     public void setResultHeadler(BobaoHeaderBean bobaoHeaderBean) {
-        Glide.with(App.activity).load(bobaoHeaderBean.getData().getBigImg().get(0).getImage()).into(mImage);
-        title.setText(bobaoHeaderBean.getData().getBigImg().get(0).getTitle());
+         tupian = bobaoHeaderBean.getData().getBigImg().get(0).getImage();
+        Glide.with(App.activity).load(tupian).into(mImage);
+        mTitle = bobaoHeaderBean.getData().getBigImg().get(0).getTitle();
+        this.title.setText(mTitle);
         url = bobaoHeaderBean.getData().getBigImg().get(0).getUrl();
 
     }
