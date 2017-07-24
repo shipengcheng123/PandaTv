@@ -1,4 +1,4 @@
-package jiyun.com.ipandatv.fragment.pandadirect;
+package jiyun.com.ipandatv.fragment.pandadirect.fragment;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -20,35 +20,31 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
-import jiyun.com.ipandatv.activity.ACache;
 import jiyun.com.ipandatv.base.BaseFragment;
-import jiyun.com.ipandatv.fragment.pandadirect.adapter.PandaJCYKAdapter;
-import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaChaomenggunxiuBean;
-import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaDanganBean;
+import jiyun.com.ipandatv.fragment.pandadirect.adapter.PabdaDXBRAdapter;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaDangxiongburangBean;
-import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaLiveJcyiBean;
-import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaNaxieshiBean;
-import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaTOPBean;
-import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaTeBiejimuBean;
-import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaYuanchuangxinwenBean;
-import jiyun.com.ipandatv.fragment.pandadirect.contract.LiveTwoContract;
-import jiyun.com.ipandatv.fragment.pandadirect.ptersenter.PandaJCYKPresenter;
+import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaLiveBean;
+import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaLiveDuoshijiaoBean;
+import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaLiveTalkListBean;
+import jiyun.com.ipandatv.fragment.pandadirect.contract.LiveContract;
+import jiyun.com.ipandatv.fragment.pandadirect.ptersenter.PandaLiveJCYKPresenter;
 
 /**
- * Created by INS7566 on 2017/7/14.
+ * Created by INS7566 on 2017/7/24.
  */
 
-public class PandaJCYKFragment extends BaseFragment implements LiveTwoContract.View {
+public class PandaJCYKFragment extends BaseFragment implements LiveContract.View{
     @BindView(R.id.jcyk_pullrecycler)
     PullToRefreshRecyclerView jcykPullrecycler;
     Unbinder unbinder;
-    private PandaJCYKAdapter adapter;
-    private List<PandaLiveJcyiBean.VideoBean> mList=new ArrayList<>();
-    private LiveTwoContract.Presenter presenter;
+    private PabdaDXBRAdapter adapter;
+    private List<PandaDangxiongburangBean.VideoBean> mList=new ArrayList<>();
+    private LiveContract.Presenter presenter;
     private int Index=1;
-    private PandaJCYKPresenter presente;
+
     private Handler handleProgress = new Handler();
     private ProgressDialog progressDialog = null;
+    private Bundle bundle=null;
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_jcyk;
@@ -56,6 +52,8 @@ public class PandaJCYKFragment extends BaseFragment implements LiveTwoContract.V
 
     @Override
     protected void init(View view) {
+
+        PandaLiveJCYKPresenter pandaLiveJCYKPresenter=new PandaLiveJCYKPresenter(this);
 //        GridLayoutManager gridLayoutManager=new GridLayoutManager(getActivity(),3);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -103,10 +101,17 @@ public class PandaJCYKFragment extends BaseFragment implements LiveTwoContract.V
     @Override
     protected void loadData() {
         progressDialog = ProgressDialog.show(App.activity,"请稍等...","获取数据中...",true);
-        presente=new PandaJCYKPresenter(this);
+
         presenter.start();
-        adapter = new PandaJCYKAdapter(getContext(),mList);
+
+        adapter = new PabdaDXBRAdapter(getContext(),mList);
         jcykPullrecycler.setAdapter(adapter);
+
+        if(bundle!=null) {
+            String vid = bundle.getString("vid");
+            presenter.setVidManager(vid);
+        }
+
 
 //        handleProgress.post(new Runnable() {
 //            @Override
@@ -118,68 +123,43 @@ public class PandaJCYKFragment extends BaseFragment implements LiveTwoContract.V
 
     @Override
     public void setParams(Bundle bundle) {
+        this.bundle=bundle;
+    }
+
+
+    @Override
+    public void showlivevedioFragment(PandaLiveBean pandaLiveBean) {
 
     }
 
     @Override
-    public void showjcyiFragment(final PandaLiveJcyiBean pandaLiveJcyiBean) {
+    public void showLiveFragment(PandaLiveDuoshijiaoBean pandaLiveDuoshijiaoBean) {
 
-        mList.addAll(pandaLiveJcyiBean.getVideo());
-        adapter.notifyDataSetChanged();
-        progressDialog.dismiss();
     }
+
+    @Override
+    public void showeyeFragment(PandaLiveTalkListBean pandaLiveTalkListBean) {
+
+    }
+
     @Override
     public void showMessage(String msg) {
-        ACache aCache = ACache.get(getContext());
-        PandaLiveJcyiBean pandaChaomenggunxiuObject =
-                (PandaLiveJcyiBean) aCache.
-                        getAsObject("PandaLiveJcyiBean");
-        mList.addAll(pandaChaomenggunxiuObject.getVideo());
+//        ACache aCache = ACache.get(getContext());
+//        PandaLiveJcyiBean pandaChaomenggunxiuObject =
+//                (PandaLiveJcyiBean) aCache.
+//                        getAsObject("PandaLiveJcyiBean");
+//        mList.addAll(pandaChaomenggunxiuObject.getVideo());
+//        adapter.notifyDataSetChanged();
+//        progressDialog.dismiss();
+
+
+    }
+
+    @Override
+    public void showJcykFragment(PandaDangxiongburangBean pandaDangxiongburangBean) {
+        mList.addAll(pandaDangxiongburangBean.getVideo());
         adapter.notifyDataSetChanged();
         progressDialog.dismiss();
-
-
-    }
-    @Override
-    public void showDXBRFragment(PandaDangxiongburangBean pandaDangxiongburangBean) {
-
-    }
-
-    @Override
-    public void showchaomenggunxiuFrangment(PandaChaomenggunxiuBean pandaChaomenggunxiuBean) {
-
-    }
-
-    @Override
-    public void showxiongmaoDanganFragment(PandaDanganBean pandaDanganBean) {
-
-    }
-
-    @Override
-    public void showpandaTOP(PandaTOPBean pandaTOPBean) {
-
-    }
-
-    @Override
-    public void showpandanaxieshiFragment(PandaNaxieshiBean pandaNaxieshiBean) {
-
-    }
-
-    @Override
-    public void showpanTebiejiemuFragment(PandaTeBiejimuBean pandaTeBiejimuBean) {
-
-    }
-
-    @Override
-    public void showyuanchuangxinwenFragment(PandaYuanchuangxinwenBean pandaYuanchuangxinwenBean) {
-
-    }
-
-
-
-    @Override
-    public void setBasePresenter(LiveTwoContract.Presenter presenter) {
-        this.presenter=presenter;
     }
 
     @Override
@@ -194,5 +174,10 @@ public class PandaJCYKFragment extends BaseFragment implements LiveTwoContract.V
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @Override
+    public void setBasePresenter(LiveContract.Presenter presenter) {
+        this.presenter=presenter;
     }
 }

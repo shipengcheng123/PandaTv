@@ -125,28 +125,28 @@ private Boolean flag = true;
             @Override
             public void Monitor(View view) {
 
-              if(flag) {
-                  JiluDao jiluDao = new JiluDao();
-                  jiluDao.setTitle(title);
-                  jiluDao.setImageurl(image);
-                  try {
-                      int i = dao.create(jiluDao);
-                      Log.e("AAA", "插入了" + i + "条数据");
-                  } catch (SQLException e) {
-                      e.printStackTrace();
-                  }
-                  flag = false;
+                            if(flag) {
+                    JiluDao jiluDao = new JiluDao();
+                    jiluDao.setTitle(title);
+                    jiluDao.setImageurl(image);
+                    try {
+                        int i = dao.create(jiluDao);
+                        Log.e("AAA", "插入了" + i + "条数据");
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                    flag = false;
 
-              }else{
-                  DeleteBuilder deleteBuilder = dao.deleteBuilder();
-                  try {
-                      deleteBuilder.where().eq("title",title);
-                      deleteBuilder.delete();
-                  } catch (SQLException e) {
-                      e.printStackTrace();
-                  }
-                flag =true;
-              }
+                }else{
+                    DeleteBuilder deleteBuilder = dao.deleteBuilder();
+                    try {
+                        deleteBuilder.where().eq("title",title);
+                        deleteBuilder.delete();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                    flag =true;
+                }
 
 
             Toast.makeText(VideoActivity.this,"收藏成功",Toast.LENGTH_SHORT).show();

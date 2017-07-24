@@ -38,4 +38,8 @@ public class PandaTalkpresenter implements LiveContract.Presenter {
         });
     }
 
+    @Override
+    public void setVidManager(String vsid) {
+
+    }
 }

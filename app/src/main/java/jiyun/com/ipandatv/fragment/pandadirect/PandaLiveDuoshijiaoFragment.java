@@ -23,6 +23,7 @@ import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.activity.ACache;
 import jiyun.com.ipandatv.base.BaseFragment;
 import jiyun.com.ipandatv.fragment.pandadirect.adapter.PandaLiveDuoshijiaoAdapter;
+import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaDangxiongburangBean;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaLiveBean;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaLiveDuoshijiaoBean;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaLiveTalkListBean;
@@ -145,6 +146,11 @@ public class PandaLiveDuoshijiaoFragment extends BaseFragment implements LiveCon
 
         mList.addAll(pandaLiveDuoshijiaoObject.getList());
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void showJcykFragment(PandaDangxiongburangBean pandaDangxiongburangBean) {
+
     }
 
     @Override

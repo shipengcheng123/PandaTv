@@ -117,7 +117,7 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
 
                 presenter.setVideoURl(mlist.get(postion).getVid());
 
-                Toast.makeText(RollDtialActivity.this, "dsfsdfs", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(RollDtialActivity.this, "dsfsdfs", Toast.LENGTH_SHORT).show();
                 pos = postion;
 
             }

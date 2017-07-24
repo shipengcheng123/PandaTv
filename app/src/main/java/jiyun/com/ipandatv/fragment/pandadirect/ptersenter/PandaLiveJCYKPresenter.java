@@ -1,21 +1,20 @@
 package jiyun.com.ipandatv.fragment.pandadirect.ptersenter;
 
-import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaLiveBean;
+import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaDangxiongburangBean;
 import jiyun.com.ipandatv.fragment.pandadirect.contract.LiveContract;
 import jiyun.com.ipandatv.fragment.pandadirect.model.IPandaLivemodel;
 import jiyun.com.ipandatv.fragment.pandadirect.model.PandaLiveImpl;
 import jiyun.com.ipandatv.internet.callback.INetWorkCallback;
-import jiyun.com.ipandatv.internet.urls.Urls;
 
 /**
- * Created by INS7566 on 2017/7/17.
+ * Created by INS7566 on 2017/7/24.
  */
 
-public class PandaLiveVedioPresenter implements LiveContract.Presenter {
+public class PandaLiveJCYKPresenter implements LiveContract.Presenter {
     private LiveContract.View liveFragment;
     private IPandaLivemodel pandaLivemodel;
 
-    public PandaLiveVedioPresenter(LiveContract.View view) {
+    public PandaLiveJCYKPresenter(LiveContract.View view) {
         this.liveFragment=view;
         this.liveFragment.setBasePresenter(this);
         pandaLivemodel = new PandaLiveImpl();
@@ -23,11 +22,16 @@ public class PandaLiveVedioPresenter implements LiveContract.Presenter {
     }
     @Override
     public void start() {
-        pandaLivemodel.vedioPlay(Urls.PANDALIVE, null, new INetWorkCallback<PandaLiveBean>() {
+
+    }
+
+    @Override
+    public void setVidManager(String vsid) {
+        pandaLivemodel.livejcyk(vsid, new INetWorkCallback<PandaDangxiongburangBean>() {
 
             @Override
-            public void OnSucess(PandaLiveBean pandaLiveBean) {
-                liveFragment.showlivevedioFragment(pandaLiveBean);
+            public void OnSucess(PandaDangxiongburangBean pandaDangxiongburangBean) {
+                liveFragment.showJcykFragment(pandaDangxiongburangBean);
             }
 
             @Override
@@ -35,10 +39,5 @@ public class PandaLiveVedioPresenter implements LiveContract.Presenter {
                 liveFragment.showMessage(ErrorMsg);
             }
         });
-    }
-
-    @Override
-    public void setVidManager(String vsid) {
-
     }
 }

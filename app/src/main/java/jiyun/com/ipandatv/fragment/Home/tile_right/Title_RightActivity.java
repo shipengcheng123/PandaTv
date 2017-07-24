@@ -11,16 +11,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import jiyun.com.ipandatv.R;
-import jiyun.com.ipandatv.activity.ACache;
 import jiyun.com.ipandatv.activity.ShouchangActivity;
 import jiyun.com.ipandatv.base.BaseActivity;
-import jiyun.com.ipandatv.fragment.Home.tile_right.login.Title_LoginActivity;
-import jiyun.com.ipandatv.fragment.Home.tile_right.register.Person_InfoActivity;
-import jiyun.com.ipandatv.model.entity.LoginBean;
-import jiyun.com.ipandatv.utils.MyLog;
-
-import static jiyun.com.ipandatv.R.id.Text_Person;
-
 
 /**
  * Created by lx on 2017/7/14.
@@ -45,10 +37,8 @@ public class Title_RightActivity extends BaseActivity {
     RelativeLayout pandaPersonSetting;
     @BindView(R.id.Personal_Finish)
     ImageView PersonalFinish;
-    @BindView(Text_Person)
+    @BindView(R.id.Text_Person)
     TextView TextPerson;
-    private String name;
-    private LoginBean loginBean;
 
     @Override
     protected int getLayoutId() {
@@ -81,16 +71,15 @@ public class Title_RightActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.panda_person_username:
-                ACache acache = ACache.get(this);
-                loginBean = (LoginBean) acache.getAsObject("loginentity");
-                if (loginBean == null && TextPerson.getText().toString().equals("点击登录")) {
-                    Intent in = new Intent(Title_RightActivity.this, Title_LoginActivity.class);
-                    startActivityForResult(in, 50);
-                } else {
-                    Intent in = new Intent(Title_RightActivity.this, Person_InfoActivity.class);
-                    in.putExtra("userName", TextPerson.getText().toString());
-                    startActivityForResult(in,300);
-                }
+//                Log.i("00000000", TextPerson.getText().toString());
+//                boolean equals = TextPerson.getText().toString().equals("点击登录");
+//                if (equals = false) {
+//                    Intent in = new Intent(Title_RightActivity.this, BobaoActivity.class);
+//                    startActivity(in);
+//                } else if (equals = true) {
+                Intent in = new Intent(Title_RightActivity.this, Title_LoginActivity.class);
+                startActivityForResult(in, 0);
+//                }
                 break;
             case R.id.panda_person_guankanlishi:
                 Intent intent = new Intent(Title_RightActivity.this,LishiJiLuActivity.class);
@@ -112,23 +101,14 @@ public class Title_RightActivity extends BaseActivity {
         finish();
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (resultCode) {
-            case 10:
-                name = data.getStringExtra("name");
-                MyLog.e("TAB", name);
-                TextPerson.setText(name);
-                break;
-            case 50:
-                TextPerson.setText(data.getStringExtra("user"));
-                MyLog.e("TAG", data.getStringExtra("user"));
-                break;
-            case 300:
-                TextPerson.setText(data.getStringExtra("edit"));
-                MyLog.e("TAG", data.getStringExtra("edit"));
-                break;
-        }
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (resultCode == 0) {
+//            String name = data.getStringExtra("name");
+//            String iconurl = data.getStringExtra("iconurl");
+//            TextPerson.setText(name);
+//            Glide.with(getApplicationContext()).load(iconurl).into(pandaPersonUserimg);
+//        }
+//    }
 }
