@@ -161,7 +161,6 @@ public class PandaJCYKFragment extends BaseFragment implements LiveContract.View
         mList.addAll(pandaChaomenggunxiuObject.getVideo());
         adapter.notifyDataSetChanged();
 
-
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
