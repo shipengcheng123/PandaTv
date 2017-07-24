@@ -229,7 +229,7 @@ public class HeaderUtils implements IHttp {
             }
         });
     }
-
+    //注册
     @Override
     public <T> void Register(String url, Map<String, String> params, final NNetWorkCallback callback) {
         Request request = null;

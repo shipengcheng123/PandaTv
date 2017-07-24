@@ -26,6 +26,7 @@ import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.activity.ACache;
 import jiyun.com.ipandatv.base.BaseActivity;
 import jiyun.com.ipandatv.fragment.Home.tile_right.Title_RegisterActivity;
+import jiyun.com.ipandatv.fragment.Home.tile_right.forgetpwd.ForgetActivity;
 import jiyun.com.ipandatv.model.entity.LoginBean;
 import jiyun.com.ipandatv.utils.MyLog;
 
@@ -95,7 +96,7 @@ public class Title_LoginActivity extends BaseActivity implements LoginContract.V
         UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
     }
 
-    @OnClick({R.id.Login_QQ, R.id.Login_WeiBo, R.id.Login_Finish, R.id.Login_Register, R.id.loginBtn})
+    @OnClick({R.id.Login_QQ, R.id.Login_WeiBo, R.id.Login_Finish, R.id.Login_Register, R.id.loginBtn, R.id.forget_password})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.Login_QQ:
@@ -124,6 +125,10 @@ public class Title_LoginActivity extends BaseActivity implements LoginContract.V
             case R.id.Login_Register:
                 Intent in = new Intent(this, Title_RegisterActivity.class);
                 startActivity(in);
+                break;
+            case R.id.forget_password:
+                Intent inte = new Intent(this, ForgetActivity.class);
+                startActivity(inte);
                 break;
         }
     }

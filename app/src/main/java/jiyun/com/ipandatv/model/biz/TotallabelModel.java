@@ -25,7 +25,7 @@ public interface TotallabelModel extends BaseModel {
     //获取手机验证码
     void getYzm(String name, String imgYzm, NNetWorkCallback callback);
 
-    //注册
+    //注册  找回密码
     void getRegister(String name, String Yzm, String Pwd, NNetWorkCallback callback);
 
     //获取图片验证码
