@@ -4,34 +4,36 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="140px"
-        android:background="@color/colorPrimaryDark"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="320dp"
-            android:layout_height="140px"
-            android:text="熊猫文化"
-            android:textColor="#ffffff"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:layout_weight="9.94"/>
 
-        <ImageView
-            android:id="@+id/culture_right_iv"
-            android:layout_width="61dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/person_sign"
-            android:layout_marginTop="8dp"
-            android:layout_centerInParent="true"
-            android:layout_centerVertical="true"
-            android:textColor="#ffffff"
-            android:textSize="18sp"
-            android:layout_marginRight="3dp"
-            android:layout_marginBottom="3dp"/>
-    </LinearLayout>
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="140px"
+    android:background="@color/colorPrimaryDark">
 
+
+    <TextView
+        android:id="@+id/title_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:text="熊猫文化"/>
+
+
+
+    <ImageView
+        android:id="@+id/direct_login_iv"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/person_sign"
+        android:textColor="#ffffff"
+        android:textSize="20sp" />
+</RelativeLayout>
 <com.androidkun.PullToRefreshRecyclerView
     android:id="@+id/culture_pullrecycler"
     android:layout_width="wrap_content"

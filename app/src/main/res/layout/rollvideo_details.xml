@@ -2,11 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#efebeb"
-    >
-
-
-
+    android:background="#efebeb">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -76,7 +72,7 @@
             android:layout_below="@id/rollvideo_time_text"
             android:id="@+id/rollvideo_jieshao_text"
             />
-<ImageView
+<!--<ImageView
     android:id="@+id/rollvideo_details_show_image"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -85,12 +81,21 @@
     android:layout_below="@id/rollvideo_time_text"
     android:layout_marginTop="20dp"
 
-    />
+    />-->
+        <CheckBox
+            android:id="@+id/live_isshow"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/lives"
+            android:button="@null"
+            android:hint="@null"
+            />
     </RelativeLayout>
     <LinearLayout
         android:id="@+id/visibility_linear"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
         android:background="#ffffff"
         android:visibility="gone"
         android:orientation="vertical"
@@ -98,10 +103,10 @@
 <TextView
     android:id="@+id/detiles_text"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
+    android:layout_height="wrap_content"
     android:text="戏曲，是中国重要的艺术门类，有着悠久的历史，
-    因为一代代戏曲演员的传承得以保存至今。而随着时代和科技的发展，我们拥有了更加丰富的文化转播载体和手段"
-    android:textSize="20sp"
+    因为一代代戏曲演员的传承得以保存至今。而随着时代和科技的发展，我们拥有了更加丰富的文化转播载体和手段。"
+
     />
     </LinearLayout>
 <LinearLayout
@@ -123,7 +128,7 @@
         />
 
 </LinearLayout>
-            <com.androidkun.PullToRefreshRecyclerView
+           <!-- <com.androidkun.PullToRefreshRecyclerView
                 android:id="@+id/detils_pullto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -131,9 +136,17 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="20dp"
                 >
-            </com.androidkun.PullToRefreshRecyclerView>
+            </com.androidkun.PullToRefreshRecyclerView>-->
 
+<com.jcodecraeer.xrecyclerview.XRecyclerView
+    android:id="@+id/detils_pullto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="3dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp">
 
+</com.jcodecraeer.xrecyclerview.XRecyclerView>
     </LinearLayout>
 
     <LinearLayout

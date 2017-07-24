@@ -1,1 +1,1 @@
-include ':app', ':jcvideoplayer-lib', ':jgtsDemo'
+include ':app', ':jcvideoplayer-lib', ':JGtuiDemo'

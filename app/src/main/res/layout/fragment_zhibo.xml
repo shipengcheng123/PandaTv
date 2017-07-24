@@ -4,18 +4,31 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <LinearLayout
+    <RelativeLayout
         android:orientation="vertical"
         android:id="@+id/direct_shipin_linear"
         android:layout_width="match_parent"
         android:layout_height="180dp">
-        <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
+        <!--<fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
             android:id="@+id/custom_videoplayer_standard_with_share_button"
             android:layout_width="match_parent"
             android:background="@mipmap/xiongmao"
-            android:layout_height="180dp" />
+            android:layout_height="180dp" />-->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:src="@mipmap/xiongmao"
+            android:scaleType="centerCrop"/>
+        <ImageView
+            android:id="@+id/start"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/jc_click_play_selector" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
     <TextView
