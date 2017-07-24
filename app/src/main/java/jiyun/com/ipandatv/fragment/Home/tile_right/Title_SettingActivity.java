@@ -1,22 +1,23 @@
 package jiyun.com.ipandatv.fragment.Home.tile_right;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.base.BaseActivity;
-import jiyun.com.ipandatv.config.ConfigFragment;
-
-
-
+import jiyun.com.ipandatv.utils.CleanMessageUtil;
 
 /**
  * Created by lx on 2017/7/14.
@@ -49,8 +50,6 @@ public class Title_SettingActivity extends BaseActivity {
     ImageView isAbout;
     @BindView(R.id.panda_setting_about)
     RelativeLayout pandaSettingAbout;
-    @BindView(R.id.person_fankui)
-    TextView personFankui;
 
     @Override
     protected int getLayoutId() {
@@ -69,7 +68,11 @@ public class Title_SettingActivity extends BaseActivity {
 
     @Override
     public void loadData() {
-
+        try {
+            number.setText(CleanMessageUtil.getTotalCacheSize(this));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -79,24 +82,40 @@ public class Title_SettingActivity extends BaseActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick(R.id.Setting_Finish)
-    public void onViewClicked() {
-        finish();
-    }
 
-    @OnClick({R.id.panda_setting_help, R.id.panda_setting_shengji, R.id.panda_setting_haoping, R.id.panda_setting_about})
+    @OnClick({R.id.Setting_Finish, R.id.clean})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.panda_setting_help:
-                ConfigFragment.getInstance().init().start(PersonActivity.class).build();
+            case R.id.Setting_Finish:
+                finish();
                 break;
-            case R.id.panda_setting_shengji:
-                Toast.makeText(Title_SettingActivity.this, "已经是最新版本了", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.panda_setting_haoping:
-                break;
-            case R.id.panda_setting_about:
+            case R.id.clean:
+                onClickCleanCache();
                 break;
         }
+    }
+
+    private void onClickCleanCache() {
+        getConfirmDialog(this, "是否清空缓存?", new DialogInterface.OnClickListener
+                () {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                CleanMessageUtil.clearAllCache(App.activity);
+                number.setText("0 k");
+            }
+        }).show();
+    }
+
+    public static AlertDialog.Builder getConfirmDialog(Context context, String message, DialogInterface.OnClickListener onClickListener) {
+        AlertDialog.Builder builder = getDialog(context);
+        builder.setMessage(Html.fromHtml(message));
+        builder.setPositiveButton("确定", onClickListener);
+        builder.setNegativeButton("取消", null);
+        return builder;
+    }
+
+    public static AlertDialog.Builder getDialog(Context context) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        return builder;
     }
 }

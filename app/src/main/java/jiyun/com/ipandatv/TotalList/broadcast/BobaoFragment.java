@@ -93,8 +93,8 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View {
                 intent.putExtra("url", url);
                 MyLog.e("URL", url);
                 startActivity(intent);
-
                 try {
+
                     List<JiluDao> chaxunItem = dao.queryForAll();
                     if(chaxunItem.size() == 0) {
                         JiluDao jiluDao = new JiluDao();
