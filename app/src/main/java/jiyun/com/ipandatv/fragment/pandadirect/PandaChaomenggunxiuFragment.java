@@ -103,7 +103,7 @@ public class PandaChaomenggunxiuFragment extends BaseFragment implements LiveTwo
     @Override
     protected void loadData() {
 
-        progressDialog = ProgressDialog.show(App.activity,"请稍等...","获取数据中...",true);
+        progressDialog = ProgressDialog.show(App.activity,"","",true);
         presente=new PandaChaomengPresenter(this);
         presenter.start();
         adapter = new PandaChaomengAdapter(getContext(),mList);
