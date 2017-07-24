@@ -78,16 +78,39 @@ public class PandaCultureItemAdapter extends BaseAdapter<PandaCultureEntity.List
                     MyLog.e("Url", listBean.getUrl() + listBean.getTitle());
                         App.activity.startActivity(intent2);
 
-                    JiluDao jiluDao = new JiluDao();
-
-                    jiluDao.setTitle( listBean.getTitle());
-                    jiluDao.setImageurl(listBean.getImage());
                     try {
-                        int i = dao.create(jiluDao);
-                        Log.e("AAA", "插入了" + i + "条数据");
+                        List<JiluDao> chaxunItem = dao.queryForAll();
+                        if(chaxunItem.size() == 0) {
+                            JiluDao jiluDao = new JiluDao();
+                            jiluDao.setTitle( listBean.getTitle());
+                            jiluDao.setImageurl(listBean.getImage());
+                            int i = dao.create(jiluDao);
+                            Log.e("AAA", "插入了" + i + "条数据");
+                        }
+                        else {
+                            for (int i=0;i<chaxunItem.size();i++){
+                                if( listBean.getTitle().equals(chaxunItem.get(i).getTitle())) {
+                                    quchong=true;
+                                    return;
+                                }
+                            }
+                            if(quchong) {
+                                Log.e("tag","相同");
+                            }
+                            else {
+                                JiluDao jiluDao = new JiluDao();
+                                jiluDao.setTitle( listBean.getTitle());
+                                jiluDao.setImageurl(listBean.getImage());
+                                int i = dao.create(jiluDao);
+                                Log.e("AAA", "插入了" + i + "条数据");
+                                Log.e("tag","添加");
+                            }
+                        }
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
+
+
                 } else {
                     Intent intent = new Intent(App.activity, VideoActivity.class);
                     intent.putExtra("url", listBean.getUrl());

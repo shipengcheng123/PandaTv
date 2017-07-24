@@ -3,6 +3,7 @@ package jiyun.com.ipandatv.adapter.homepage;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +15,19 @@ import android.widget.TextView;
 
 import com.androidkun.adapter.ViewHolder;
 import com.bumptech.glide.Glide;
+import com.j256.ormlite.dao.Dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.activity.VideoActivity;
+import jiyun.com.ipandatv.model.db.JiluDao;
+import jiyun.com.ipandatv.model.db.MyOpenHelper;
 import jiyun.com.ipandatv.model.entity.HomePageBean;
+
+import static com.umeng.socialize.utils.ContextUtil.getContext;
 
 /**
  * Created by lx on 2017/7/14.
@@ -30,6 +37,8 @@ public class Home_Adapter extends RecyclerView.Adapter {
     private List<Object> mlist;
     private LayoutInflater inflater;
     private Context context;
+    private Dao<JiluDao, Integer> dao;
+    private boolean quchong=false;
     public static final int TYPE1 = 1, TYPE2 = 2, TYPE3 = 3, TYPE4 = 4, TYPE5 = 5;
     public View view, view1, view2, view3, view4;
     setOnClick onClick;
@@ -95,7 +104,13 @@ public class Home_Adapter extends RecyclerView.Adapter {
 
         Object o = mlist.get(position);
         int viewType = holder.getItemViewType();
+        MyOpenHelper helper = new MyOpenHelper(getContext(), "guankanjilu.db", null, 1);
+        try {
+            dao = helper.getDao(JiluDao.class);
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         switch (viewType) {
             case TYPE1:
                 FirstViewHolder firstViewHolder = new FirstViewHolder(holder.itemView);
@@ -152,6 +167,7 @@ public class Home_Adapter extends RecyclerView.Adapter {
 //                    onClick.setOnClick(pandaeyeBean, 1, view);
 //                }
 //            });
+
             t1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -160,6 +176,40 @@ public class Home_Adapter extends RecyclerView.Adapter {
                     in.putExtra("pid", pandaeyeBean.getItems().get(0).getPid());
                     in.putExtra("title", pandaeyeBean.getItems().get(0).getTitle());
                     context.startActivity(in);
+
+                    try {
+                        List<JiluDao> chaxunItem = dao.queryForAll();
+                        if(chaxunItem.size() == 0) {
+                            JiluDao jiluDao = new JiluDao();
+                            jiluDao.setTitle(pandaeyeBean.getItems().get(0).getTitle());
+                            jiluDao.setImageurl(pandaeyeBean.getPandaeyelogo());
+                            int i = dao.create(jiluDao);
+                            Log.e("AAA", "插入了" + i + "条数据");
+                        }
+                        else {
+                            for (int i=0;i<chaxunItem.size();i++){
+                                if(pandaeyeBean.getItems().get(0).getTitle().equals(chaxunItem.get(i).getTitle())) {
+                                    quchong=true;
+                                    return;
+                                }
+                            }
+                            if(quchong) {
+                                Log.e("tag","相同");
+                            }
+                            else {
+                                JiluDao jiluDao = new JiluDao();
+                                jiluDao.setTitle(pandaeyeBean.getItems().get(0).getTitle());
+                                jiluDao.setImageurl(pandaeyeBean.getPandaeyelogo());
+                                int i = dao.create(jiluDao);
+                                Log.e("AAA", "插入了" + i + "条数据");
+                                Log.e("tag","添加");
+                            }
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+
+
                 }
             });
             t2.setOnClickListener(new View.OnClickListener() {
@@ -169,6 +219,38 @@ public class Home_Adapter extends RecyclerView.Adapter {
                     in.putExtra("pid", pandaeyeBean.getItems().get(1).getPid());
                     in.putExtra("title", pandaeyeBean.getItems().get(1).getTitle());
                     context.startActivity(in);
+
+                    try {
+                        List<JiluDao> chaxunItem = dao.queryForAll();
+                        if(chaxunItem.size() == 0) {
+                            JiluDao jiluDao = new JiluDao();
+                            jiluDao.setTitle(pandaeyeBean.getItems().get(1).getTitle());
+                            jiluDao.setImageurl(pandaeyeBean.getPandaeyelogo());
+                            int i = dao.create(jiluDao);
+                            Log.e("AAA", "插入了" + i + "条数据");
+                        }
+                        else {
+                            for (int i=0;i<chaxunItem.size();i++){
+                                if(pandaeyeBean.getItems().get(1).getTitle().equals(chaxunItem.get(i).getTitle())) {
+                                    quchong=true;
+                                    return;
+                                }
+                            }
+                            if(quchong) {
+                                Log.e("tag","相同");
+                            }
+                            else {
+                                JiluDao jiluDao = new JiluDao();
+                                jiluDao.setTitle(pandaeyeBean.getItems().get(1).getTitle());
+                                jiluDao.setImageurl(pandaeyeBean.getPandaeyelogo());
+                                int i = dao.create(jiluDao);
+                                Log.e("AAA", "插入了" + i + "条数据");
+                                Log.e("tag","添加");
+                            }
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
         }
@@ -192,7 +274,40 @@ public class Home_Adapter extends RecyclerView.Adapter {
                     Intent in = new Intent(App.activity, VideoActivity.class);
                     in.putExtra("pid", listBean.getList().get(position).getVid());
                     in.putExtra("title", listBean.getList().get(position).getTitle());
+                    in.putExtra("image",listBean.getList().get(position).getImage());
                     context.startActivity(in);
+
+                    try {
+                        List<JiluDao> chaxunItem = dao.queryForAll();
+                        if(chaxunItem.size() == 0) {
+                            JiluDao jiluDao = new JiluDao();
+                            jiluDao.setTitle( listBean.getList().get(position).getTitle());
+                            jiluDao.setImageurl(listBean.getList().get(position).getImage());
+                            int i = dao.create(jiluDao);
+                            Log.e("AAA", "插入了" + i + "条数据");
+                        }
+                        else {
+                            for (int i=0;i<chaxunItem.size();i++){
+                                if(listBean.getList().get(position).getTitle().equals(chaxunItem.get(i).getTitle())) {
+                                    quchong=true;
+                                    return;
+                                }
+                            }
+                            if(quchong) {
+                                Log.e("tag","相同");
+                            }
+                            else {
+                                JiluDao jiluDao = new JiluDao();
+                                jiluDao.setTitle(listBean.getList().get(position).getTitle());
+                                jiluDao.setImageurl(listBean.getList().get(position).getImage());
+                                int i = dao.create(jiluDao);
+                                Log.e("AAA", "插入了" + i + "条数据");
+                                Log.e("tag","添加");
+                            }
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
         }

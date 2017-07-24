@@ -37,6 +37,7 @@ public class CultureActivity extends BaseActivity {
         //标准基础上改进的视频播放(添加了分享按钮)
         customVideoplayerStandardWithShareButton = (JCVideoPlayerStandard) findViewById(R.id.custom_videoplayer_standard_with_share_button);
         customVideoplayerStandardWithShareButton.setUp(url,JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,title);
+        customVideoplayerStandardWithShareButton.startVideo();
     }
 
     @Override
