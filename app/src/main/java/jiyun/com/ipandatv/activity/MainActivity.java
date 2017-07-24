@@ -8,10 +8,12 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,7 +29,7 @@ import jiyun.com.ipandatv.fragment.Home.HomeFragment;
 import jiyun.com.ipandatv.fragment.pandabroadcast.PandaCultureFragment;
 import jiyun.com.ipandatv.fragment.pandadirect.PandadirectFragment;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements View.OnClickListener{
     @BindView(R.id.FrameLayout)
     android.widget.FrameLayout FrameLayout;
     @BindView(R.id.btn_explore_comprehensive)
@@ -48,38 +50,36 @@ public class MainActivity extends BaseActivity {
     private HomeFragment homeFragment;
     private View view;
     private AlertDialog isExit;
+    private Button mInit;
+    private Button mSetting;
+    private Button mStopPush;
+    private Button mResumePush;
+    private Button mGetRid;
+    private TextView mRegId;
+    private EditText msgText;
+
+
+    public static boolean isForeground = false;
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
     }
 
     @Override
-    protected void initView() {
+    public void initView() {
         fragmentmanager = getSupportFragmentManager();
         App.mRadiogroup = (RadioGroup) findViewById(R.id.FrameLayout_contentGroup);
     }
 
     @Override
     public void initData() {
-//        TextView tv = new TextView(this);
-//        tv.setText("MainActivity");
-//        Intent intent = getIntent();
-//        if (null != intent) {
-//            Bundle bundle = getIntent().getExtras();
-//            String title = null;
-//            String content = null;
-//            if(bundle!=null){
-//                title = bundle.getString(JPushInterface.EXTRA_NOTIFICATION_TITLE);
-//                content = bundle.getString(JPushInterface.EXTRA_ALERT);
-//            }
-//            tv.setText("Title : " + title + "  " + "Content : " + content);
-//        }
-//        addContentView(tv, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
+
 
     }
 
     @Override
     public void loadData() {
+//        registerMessageReceiver();
         ConfigFragment.getInstance().init().start(HomeFragment.class).build();
     }
 
@@ -191,6 +191,8 @@ public class MainActivity extends BaseActivity {
         super.onDestroy();
         Process.killProcess(Process.myPid());//获取pid
         System.exit(0);
+//        LocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReceiver);
+        super.onDestroy();
     }
 
     //隐藏下面的RadioGroup
@@ -207,4 +209,8 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    @Override
+    public void onClick(View v) {
+
+    }
 }
