@@ -6,6 +6,30 @@
     android:orientation="vertical">
 
     <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#303F9F">
+
+        <ImageView
+            android:id="@+id/Login_Finish_Person"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/personal_back_img" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:text="个人信息"
+            android:textColor="#ffffff"
+            android:textSize="25dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/panda_person_img"
         android:layout_width="match_parent"
         android:layout_height="70dp"
@@ -30,7 +54,7 @@
             android:layout_height="30dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/personal_enter_img" />
+            android:src="@drawable/personal_enter_img1" />
 
 
         <ImageView
@@ -67,7 +91,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
-            android:src="@drawable/personal_enter_img" />
+            android:src="@drawable/personal_enter_img1" />
 
 
         <TextView
@@ -78,7 +102,7 @@
             android:layout_toLeftOf="@id/entry1"
             android:paddingRight="5dp"
             android:src="@drawable/personal_history_img"
-            android:text="狗比"
+            android:text="168169"
             android:textSize="16sp" />
 
     </RelativeLayout>

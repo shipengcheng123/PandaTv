@@ -9,4 +9,5 @@ import jiyun.com.ipandatv.internet.IHttp;
 
 public interface BaseModel {
     public static IHttp iHttp = HttpFactory.create();
+    public static IHttp getiHttp=HttpFactory.create1();
 }
