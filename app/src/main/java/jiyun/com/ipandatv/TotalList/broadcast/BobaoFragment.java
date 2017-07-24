@@ -261,7 +261,6 @@ public class BobaoFragment extends BaseFragment implements BobaoContract.View {
         mTitle = asObject.getData().getBigImg().get(0).getTitle();
         title.setText(mTitle);
         ShowPopuUtils.getInsent().popuUtilsDismiss();
-
     }
 
 
