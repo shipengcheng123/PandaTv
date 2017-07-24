@@ -47,7 +47,7 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
     @BindView(R.id.culture_pullrecycler)
     PullToRefreshRecyclerView culturePullrecycler;
     Unbinder unbinder;
-    @BindView(R.id.culture_right_iv)
+    @BindView(R.id.direct_login_iv)
     ImageView cultureRightIv;
     private PandaCulturePresenter pandaCulturePersenter;
 
@@ -240,7 +240,7 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
         unbinder.unbind();
     }
 
-    @OnClick(R.id.culture_right_iv)
+    @OnClick(R.id.direct_login_iv)
     public void onViewClicked() {
 
         Intent intent=new Intent(App.activity.getApplication(), Title_RightActivity.class);

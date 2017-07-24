@@ -14,14 +14,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.androidkun.PullToRefreshRecyclerView;
-import com.androidkun.callback.PullToRefreshListener;
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
@@ -46,7 +46,7 @@ import jiyun.com.ipandatv.fragment.pandabroadcast.culturecontract.CultureContrac
 import jiyun.com.ipandatv.fragment.pandabroadcast.culturecontract.PandaCultureVideoPresenter;
 import jiyun.com.ipandatv.fragment.pandabroadcast.panda_culture.PandaCultureEntity;
 
-public class RollDtialActivity extends BaseActivity implements CultureContract.View,View.OnClickListener {
+public class RollDtialActivity extends BaseActivity implements CultureContract.View, View.OnClickListener {
 
     @BindView(R.id.goback_butt)
     ImageView gobackButt;
@@ -56,21 +56,27 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
     TextView rollvideoTimeText;
     @BindView(R.id.rollvideo_jieshao_text)
     TextView rollvideoJieshaoText;
-    @BindView(R.id.rollvideo_details_show_image)
-    ImageView rollvideoDetailsShowImage;
+
     @BindView(R.id.detiles_text)
     TextView detilesText;
     @BindView(R.id.visibility_linear)
     LinearLayout visibilityLinear;
-    @BindView(R.id.detils_pullto)
-    PullToRefreshRecyclerView detilsPullto;
+//    @BindView(R.id.detils_pullto)
+//    PullToRefreshRecyclerView detilsPullto;
+
     @BindView(R.id.collect_no)
     ImageView collectNo;
     @BindView(R.id.shares)
     ImageView shares;
     @BindView(R.id.linearLayout)
     LinearLayout linearLayout;
-
+    @BindView(R.id.detils_pullto)
+    XRecyclerView detilsPullto;
+    List<PandaCultureVedioBean.VideoBean.Chapters2Bean> urllisst;
+    @BindView(R.id.live_isshow)
+    CheckBox liveIsshow;
+    @BindView(R.id.linearLayout2)
+    LinearLayout linearLayout2;
     private CultureContract.Presenter presenter;
     private String pid, title;
     private PandaDetailAdapter adapter;
@@ -78,6 +84,8 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
     private int Index = 1;
     private String url;
     private PopupWindow PopupWindow;
+    int pos = 0;
+    boolean ischeck = false;
 
     @Override
     protected int getLayoutId() {
@@ -92,7 +100,7 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
         pid = intent.getStringExtra("pid");
 
         title = intent.getStringExtra("title");
-
+        urllisst = new ArrayList<>();
 
         //标准基础上改进的视频播放(添加了分享按钮)
         customVideoplayerStandardWithShareButton = (JCVideoPlayerStandard) findViewById(R.id.custom_videoplayer_standard_with_share_button);
@@ -100,42 +108,54 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         detilsPullto.addItemDecoration(new DividerItemDecoration(App.activity, DividerItemDecoration.VERTICAL));
         detilsPullto.setLayoutManager(layoutManager);
-        detilsPullto.setPullRefreshEnabled(true);//下拉刷新
-        //是否开启上拉加载功能
-        detilsPullto.setLoadingMoreEnabled(true);
-        //开启刷新回调
-        detilsPullto.displayLastRefreshTime(true);
-        //停止刷新
-        //停止刷新
-        detilsPullto.setPullToRefreshListener(new PullToRefreshListener() {
+
+//        detilsPullto.setPullRefreshEnabled(true);//下拉刷新
+//        //是否开启上拉加载功能
+//        detilsPullto.setLoadingMoreEnabled(true);
+//        //开启刷新回调
+//        detilsPullto.displayLastRefreshTime(true);
+//        //停止刷新
+//        //停止刷新
+//        detilsPullto.setPullToRefreshListener(new PullToRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                detilsPullto.postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        detilsPullto.setRefreshComplete();
+//                        mlist.clear();
+//                        loadData();
+//
+//                    }
+//                }, 2000);
+//            }
+//
+//            @Override
+//            public void onLoadMore() {
+//                detilsPullto.postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        detilsPullto.setLoadMoreComplete();
+//                        Index++;
+//                        loadData();
+//
+//                    }
+//                }, 2000);
+//            }
+//        });
+        adapter = new PandaDetailAdapter(mlist, this);
+        detilsPullto.setAdapter(adapter);
+        adapter.setOnClick(new PandaDetailAdapter.setOnClick() {
             @Override
-            public void onRefresh() {
-                detilsPullto.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        detilsPullto.setRefreshComplete();
-                        mlist.clear();
-                        loadData();
+            public void mSetOnClick(View v, int postion) {
 
-                    }
-                }, 2000);
-            }
+                presenter.setVideoURl(mlist.get(postion).getVid());
 
-            @Override
-            public void onLoadMore() {
-                detilsPullto.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        detilsPullto.setLoadMoreComplete();
-                        Index++;
-                        loadData();
+                Toast.makeText(RollDtialActivity.this, "dsfsdfs", Toast.LENGTH_SHORT).show();
+                pos = postion;
 
-                    }
-                }, 2000);
             }
         });
-        adapter = new PandaDetailAdapter(getApplicationContext(), mlist);
-        detilsPullto.setAdapter(adapter);
     }
 
     @Override
@@ -165,8 +185,16 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
     public void showVideo(PandaCultureVedioBean pandaCultureVedioBean) {
 
         List<PandaCultureVedioBean.VideoBean.Chapters2Bean> chapters2 = pandaCultureVedioBean.getVideo().getChapters2();
+        if (urllisst.size() > 0) {
+
+            urllisst.clear();
+        }
+        urllisst.addAll(chapters2);
         url = chapters2.get(0).getUrl();
-        customVideoplayerStandardWithShareButton.setUp(url,JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, title);
+        if (urllisst.size() > 0) {
+            customVideoplayerStandardWithShareButton.setUp(urllisst.get(0).getUrl(), JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,title);
+        }
+
 
     }
 
@@ -193,7 +221,7 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.collect_no, R.id.shares})
+    @OnClick({R.id.collect_no, R.id.shares, R.id.live_isshow})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.collect_no:
@@ -204,6 +232,20 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
             case R.id.shares:
                 showPopupWindow();
                 break;
+            case R.id.live_isshow:
+
+
+            if (ischeck == false) {
+                visibilityLinear.setVisibility(View.VISIBLE);
+                ischeck = true;
+                return;
+            } else {
+                visibilityLinear.setVisibility(View.GONE);
+                ischeck = false;
+                return;
+
+            }
+
 
         }
     }
@@ -217,7 +259,7 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
         LinearLayout lineweibo = (LinearLayout) mPopunwindwow.findViewById(R.id.weibo);
         LinearLayout lineweixin = (LinearLayout) mPopunwindwow.findViewById(R.id.weixin);
         LinearLayout linepengyouquan = (LinearLayout) mPopunwindwow.findViewById(R.id.pengyouquan);
-        TextView quxiao= (TextView) mPopunwindwow.findViewById(R.id.quxiao);
+        TextView quxiao = (TextView) mPopunwindwow.findViewById(R.id.quxiao);
         lineFacebook.setOnClickListener(this);
         linetwitter.setOnClickListener(this);
         lineweibo.setOnClickListener(this);
@@ -236,7 +278,7 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.facebook:
                 sharefacebook();
                 break;
@@ -258,8 +300,8 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
     }
 
     public void weibofenxiang() {
-        UMImage image = new UMImage(RollDtialActivity.this,R.mipmap.xiongmao);//网络图片
-        UMImage thumb =  new UMImage(this, R.drawable.logo_ipnda);
+        UMImage image = new UMImage(RollDtialActivity.this, R.mipmap.xiongmao);//网络图片
+        UMImage thumb = new UMImage(this, R.drawable.logo_ipnda);
         image.setThumb(thumb);
 
         image.compressStyle = UMImage.CompressStyle.SCALE;//大小压缩，默认为大小压缩，适合普通很大的图
@@ -277,6 +319,7 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
                 .share();
 
     }
+
     private UMShareListener shareListener = new UMShareListener() {
         /**
          * @descrption 分享开始的回调
@@ -293,7 +336,7 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
          */
         @Override
         public void onResult(SHARE_MEDIA platform) {
-            Toast.makeText(RollDtialActivity.this,"成功了",Toast.LENGTH_LONG).show();
+            Toast.makeText(RollDtialActivity.this, "成功了", Toast.LENGTH_LONG).show();
         }
 
         /**
@@ -303,7 +346,7 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
          */
         @Override
         public void onError(SHARE_MEDIA platform, Throwable t) {
-            Toast.makeText(RollDtialActivity.this,"失败"+t.getMessage(),Toast.LENGTH_LONG).show();
+            Toast.makeText(RollDtialActivity.this, "失败" + t.getMessage(), Toast.LENGTH_LONG).show();
         }
 
         /**
@@ -312,13 +355,12 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
          */
         @Override
         public void onCancel(SHARE_MEDIA platform) {
-            Toast.makeText(RollDtialActivity.this,"取消了",Toast.LENGTH_LONG).show();
+            Toast.makeText(RollDtialActivity.this, "取消了", Toast.LENGTH_LONG).show();
         }
     };
 
 
-
-    public void share(){
+    public void share() {
         //构造一个Intent
         Intent intent = new Intent();
         //分享到微信好友
@@ -332,14 +374,14 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
         intent.setComponent(comp);//这个方法与Intent进行通讯
         intent.setAction("android.intent.action.SEND");
         //intent.setFlags(0x3000001);
-        intent.putExtra(Intent.EXTRA_STREAM,"熊猫频道");
-        Bitmap bt= BitmapFactory.decodeResource(getApplicationContext().getResources(), R.mipmap.xiongmao);
-        final Uri uri = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(),bt , null,null));
+        intent.putExtra(Intent.EXTRA_STREAM, "熊猫频道");
+        Bitmap bt = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.mipmap.xiongmao);
+        final Uri uri = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(), bt, null, null));
         intent.putExtra(Intent.EXTRA_STREAM, uri);
         startActivity(intent);
     }
 
-    public void sharefacebook(){
+    public void sharefacebook() {
         //构造一个Intent
         Intent intent = new Intent();
         //分享到微信好友
@@ -353,9 +395,9 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
         intent.setComponent(comp);//这个方法与Intent进行通讯
         intent.setAction("android.intent.action.SEND");
         //intent.setFlags(0x3000001);
-        intent.putExtra(Intent.EXTRA_SUBJECT,"熊猫频道");
-        Bitmap bt= BitmapFactory.decodeResource(getApplicationContext().getResources(), R.mipmap.xiongmao);
-        final Uri uri = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(),bt , null,null));
+        intent.putExtra(Intent.EXTRA_SUBJECT, "熊猫频道");
+        Bitmap bt = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.mipmap.xiongmao);
+        final Uri uri = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(), bt, null, null));
         intent.putExtra(Intent.EXTRA_SUBJECT, uri);
         startActivity(intent);
     }
