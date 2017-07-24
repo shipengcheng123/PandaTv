@@ -57,6 +57,7 @@ public class PabdaDXBRAdapter extends BaseAdapter<PandaDangxiongburangBean.Video
                 intent.putExtra("url",bean.getUrl());
                 intent.putExtra("title",bean.getT());
                 intent.putExtra("pid",bean.getVid());
+                intent.putExtra("image",bean.getImg());
                 MyLog.e("Url",bean.getUrl()+bean.getT());
                 App.activity.startActivity(intent);
 

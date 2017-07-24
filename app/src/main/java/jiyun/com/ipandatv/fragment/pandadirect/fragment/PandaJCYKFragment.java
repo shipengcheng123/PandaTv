@@ -1,6 +1,5 @@
 package jiyun.com.ipandatv.fragment.pandadirect.fragment;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.widget.DividerItemDecoration;
@@ -20,6 +19,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
+import jiyun.com.ipandatv.activity.ACache;
 import jiyun.com.ipandatv.base.BaseFragment;
 import jiyun.com.ipandatv.fragment.pandadirect.adapter.PabdaDXBRAdapter;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaDangxiongburangBean;
@@ -28,6 +28,7 @@ import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaLiveDuoshijiaoBean;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaLiveTalkListBean;
 import jiyun.com.ipandatv.fragment.pandadirect.contract.LiveContract;
 import jiyun.com.ipandatv.fragment.pandadirect.ptersenter.PandaLiveJCYKPresenter;
+import jiyun.com.ipandatv.utils.ShowPopuUtils;
 
 /**
  * Created by INS7566 on 2017/7/24.
@@ -43,7 +44,7 @@ public class PandaJCYKFragment extends BaseFragment implements LiveContract.View
     private int Index=1;
 
     private Handler handleProgress = new Handler();
-    private ProgressDialog progressDialog = null;
+//    private ProgressDialog progressDialog = null;
     private Bundle bundle=null;
     @Override
     protected int getLayoutId() {
@@ -52,6 +53,7 @@ public class PandaJCYKFragment extends BaseFragment implements LiveContract.View
 
     @Override
     protected void init(View view) {
+        ShowPopuUtils.getInsent().create(App.activity);
 
         PandaLiveJCYKPresenter pandaLiveJCYKPresenter=new PandaLiveJCYKPresenter(this);
 //        GridLayoutManager gridLayoutManager=new GridLayoutManager(getActivity(),3);
@@ -77,7 +79,7 @@ public class PandaJCYKFragment extends BaseFragment implements LiveContract.View
                         loadData();
 
                     }
-                }, 2000);
+                }, 200);
             }
 
             @Override
@@ -90,7 +92,7 @@ public class PandaJCYKFragment extends BaseFragment implements LiveContract.View
                         loadData();
 
                     }
-                }, 2000);
+                }, 200);
             }
         });
 
@@ -100,7 +102,6 @@ public class PandaJCYKFragment extends BaseFragment implements LiveContract.View
 
     @Override
     protected void loadData() {
-        progressDialog = ProgressDialog.show(App.activity,"请稍等...","获取数据中...",true);
 
         presenter.start();
 
@@ -142,26 +143,26 @@ public class PandaJCYKFragment extends BaseFragment implements LiveContract.View
 
     }
 
-    @Override
-    public void showMessage(String msg) {
-//        ACache aCache = ACache.get(getContext());
-//        PandaLiveJcyiBean pandaChaomenggunxiuObject =
-//                (PandaLiveJcyiBean) aCache.
-//                        getAsObject("PandaLiveJcyiBean");
-//        mList.addAll(pandaChaomenggunxiuObject.getVideo());
-//        adapter.notifyDataSetChanged();
-//        progressDialog.dismiss();
 
-
-    }
 
     @Override
     public void showJcykFragment(PandaDangxiongburangBean pandaDangxiongburangBean) {
         mList.addAll(pandaDangxiongburangBean.getVideo());
         adapter.notifyDataSetChanged();
-        progressDialog.dismiss();
+        ShowPopuUtils.getInsent().popuUtilsDismiss();
+//        progressDialog.dismiss();
     }
+    @Override
+    public void showMessage(String msg) {
+        ACache aCache = ACache.get(getContext());
+        PandaDangxiongburangBean pandaChaomenggunxiuObject =
+                (PandaDangxiongburangBean) aCache.
+                        getAsObject("PandaDangxiongburangBean");
+        mList.addAll(pandaChaomenggunxiuObject.getVideo());
+        adapter.notifyDataSetChanged();
 
+
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO: inflate a fragment view
