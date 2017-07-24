@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.widget.RadioGroup;
 
+import com.j256.ormlite.dao.Dao;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -19,10 +20,16 @@ import com.umeng.socialize.Config;
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
 
+import java.sql.SQLException;
+
 import cn.jpush.android.api.JPushInterface;
 import jiyun.com.ipandatv.base.BaseActivity;
 import jiyun.com.ipandatv.base.BaseFragment;
 import jiyun.com.ipandatv.jgpush.Logger;
+import jiyun.com.ipandatv.model.db.JiluDao;
+import jiyun.com.ipandatv.model.db.MyOpenHelper;
+
+import static com.umeng.socialize.utils.ContextUtil.getContext;
 
 /**
  * Created by lx on 2017/7/11.
@@ -36,6 +43,7 @@ public class App extends Application {
     public static Context context;
     private static final String TAG = "JIGUANG-Example";
 
+
     {
         PlatformConfig.setWeixin("wx967daebe835fbeac", "5bb696d9ccd75a38c8a0bfe0675559b3");
         PlatformConfig.setQQZone("100424468", "c7394704798a158208a74ab60104f0ba");
@@ -46,6 +54,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
         initUniversalImageLoader();
         MobclickAgent.openActivityDurationTrack(false);
         Config.DEBUG = true;
@@ -54,7 +63,18 @@ public class App extends Application {
         JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
         JPushInterface.init(this);     		// 初始化 JPush
 //        CrashHandler.getInstance().init(this);//初始化全局异常管理
+
     }
+
+    public static void Manager(Dao<JiluDao, Integer> dao){
+        MyOpenHelper helper = new MyOpenHelper(getContext(), "guankanjilu.db", null, 1);
+        try {
+            dao = helper.getDao(JiluDao.class);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private void initUniversalImageLoader() {
         ImageLoaderConfiguration.Builder config = new ImageLoaderConfiguration.Builder(getApplicationContext());

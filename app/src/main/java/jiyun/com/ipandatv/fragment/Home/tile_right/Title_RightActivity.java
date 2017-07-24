@@ -11,6 +11,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import jiyun.com.ipandatv.R;
+import jiyun.com.ipandatv.activity.ShouchangActivity;
 import jiyun.com.ipandatv.base.BaseActivity;
 
 /**
@@ -81,10 +82,12 @@ public class Title_RightActivity extends BaseActivity {
 //                }
                 break;
             case R.id.panda_person_guankanlishi:
-
+                Intent intent = new Intent(Title_RightActivity.this,LishiJiLuActivity.class);
+                startActivity(intent);
                 break;
             case R.id.panda_person_wodeshoucang:
-
+                Intent intent1 = new Intent(Title_RightActivity.this,ShouchangActivity.class);
+                startActivity(intent1);
                 break;
             case R.id.panda_person_setting:
                 Intent ini = new Intent(Title_RightActivity.this, Title_SettingActivity.class);
