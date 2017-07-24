@@ -108,6 +108,7 @@ public class VideoActivity extends BaseActivity implements VideoContract.View,Vi
             @Override
             public void Monitor(View view) {
 
+            Toast.makeText(VideoActivity.this,"收藏成功",Toast.LENGTH_SHORT).show();
             }
 
             @Override

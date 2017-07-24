@@ -53,6 +53,7 @@ public class EmailRegisterFragment extends BaseFragment {
         return R.layout.register_youxiang;
     }
 
+
     @Override
     protected void init(View view) {
 
