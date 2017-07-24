@@ -20,6 +20,7 @@ import jiyun.com.ipandatv.base.BaseActivity;
  */
 
 public class ForgetActivity extends BaseActivity implements ForgetContract.View {
+
     @BindView(R.id.Login_Finish)
     ImageView LoginFinish;
     @BindView(R.id.forget_editUserPhone)
