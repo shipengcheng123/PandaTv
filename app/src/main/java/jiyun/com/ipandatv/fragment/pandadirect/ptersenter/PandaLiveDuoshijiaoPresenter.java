@@ -38,4 +38,9 @@ public class PandaLiveDuoshijiaoPresenter implements LiveContract.Presenter {
             }
         });
     }
+
+    @Override
+    public void setVidManager(String vsid) {
+
+    }
 }

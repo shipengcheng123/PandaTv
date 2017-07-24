@@ -2,6 +2,7 @@ package jiyun.com.ipandatv.fragment.pandadirect.contract;
 
 import jiyun.com.ipandatv.base.BasePresenter;
 import jiyun.com.ipandatv.base.BaseView;
+import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaDangxiongburangBean;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaLiveBean;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaLiveDuoshijiaoBean;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaLiveTalkListBean;
@@ -21,9 +22,11 @@ public interface LiveContract {
         void showeyeFragment(PandaLiveTalkListBean pandaLiveTalkListBean);
 
         void showMessage(String msg);
+
+        void showJcykFragment(PandaDangxiongburangBean pandaDangxiongburangBean);
     }
 
     interface Presenter extends BasePresenter {
-
+        void setVidManager(String vsid);
     }
 }

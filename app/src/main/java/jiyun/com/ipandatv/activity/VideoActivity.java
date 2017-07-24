@@ -36,8 +36,9 @@ import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.base.BaseActivity;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.VedioJCYKBean;
-import jiyun.com.ipandatv.model.db.MyTwoOpenHelper;
-import jiyun.com.ipandatv.model.db.ShouchangDao;
+import jiyun.com.ipandatv.model.db.JiluDao;
+import jiyun.com.ipandatv.model.db.MyOpenHelper;
+import jiyun.com.ipandatv.utils.MyLog;
 
 import static com.umeng.socialize.utils.ContextUtil.getContext;
 
@@ -54,7 +55,7 @@ public class VideoActivity extends BaseActivity implements VideoContract.View,Vi
     private String pid, title,image;
     private PopupWindow PopupWindow;
    private String url;
-    private Dao<ShouchangDao,Integer> dao;
+    private Dao<JiluDao,Integer> dao;
     @Override
     protected int getLayoutId() {
         return R.layout.video_avtivity;
@@ -62,10 +63,10 @@ public class VideoActivity extends BaseActivity implements VideoContract.View,Vi
 
     @Override
     protected void initView() {
-        MyTwoOpenHelper helper = new MyTwoOpenHelper(getContext(), "shouchang.db", null, 1);
+        MyOpenHelper helper = new MyOpenHelper(getContext(), "shouchang.db", null, 1);
 
         try {
-            dao = helper.getDao(ShouchangDao.class);
+            dao = helper.getDao(JiluDao.class);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -78,7 +79,7 @@ public class VideoActivity extends BaseActivity implements VideoContract.View,Vi
         pid = intent.getStringExtra("pid");
         title = intent.getStringExtra("title");
         image = intent.getStringExtra("image");
-//        MyLog.e("aaa",image);
+        MyLog.e("aaa",title+image);
 //        MyLog.e("url",url+title);
 
         //标准基础上改进的视频播放(添加了分享按钮)
@@ -119,37 +120,36 @@ private Boolean flag = true;
         List<VedioJCYKBean.VideoBean.Chapters2Bean> chapters2 = jcykBean.getVideo().getChapters2();
          url = chapters2.get(0).getUrl();
         jcVideoPlayerStandard.setUp(url, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,title);
-        jcVideoPlayerStandard.startVideo();
+
         jcVideoPlayerStandard.setMonitor(new JCVideoPlayerStandard.imgClickon() {
             @Override
             public void Monitor(View view) {
 
-              if(flag) {
-                  ShouchangDao jiluDao = new ShouchangDao();
-                  jiluDao.setTitle(title);
-                  jiluDao.setImageurl(image);
-                  jiluDao.setPid(pid);
-                  try {
-                      int i = dao.create(jiluDao);
-                      Log.e("BBB", "插入了" + i + "条数据");
-//                      MyLog.e("BBB","image为"+image);
-                  } catch (SQLException e) {
-                      e.printStackTrace();
-                  }
-                  flag = false;
-                  Toast.makeText(VideoActivity.this,"收藏成功",Toast.LENGTH_SHORT).show();
+                            if(flag) {
+                    JiluDao jiluDao = new JiluDao();
+                    jiluDao.setTitle(title);
+                    jiluDao.setImageurl(image);
+                    try {
+                        int i = dao.create(jiluDao);
+                        Log.e("AAA", "插入了" + i + "条数据");
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                    flag = false;
 
-              }else{
-                  DeleteBuilder deleteBuilder = dao.deleteBuilder();
-                  try {
-                      deleteBuilder.where().eq("title",title);
-                      deleteBuilder.delete();
-                  } catch (SQLException e) {
-                      e.printStackTrace();
-                  }
-                flag =true;
-                  Toast.makeText(VideoActivity.this,"取消收藏",Toast.LENGTH_SHORT).show();
-              }
+                }else{
+                    DeleteBuilder deleteBuilder = dao.deleteBuilder();
+                    try {
+                        deleteBuilder.where().eq("title",title);
+                        deleteBuilder.delete();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                    flag =true;
+                }
+
+
+            Toast.makeText(VideoActivity.this,"收藏成功",Toast.LENGTH_SHORT).show();
 
             }
 
@@ -168,7 +168,6 @@ private Boolean flag = true;
                 List<VedioJCYKBean.VideoBean.Chapters2Bean> chapters2 = jcykBean.getVideo().getChapters2();
                 String url = chapters2.get(0).getUrl();
                 jcVideoPlayerStandard.setUp(url, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,title);
-                jcVideoPlayerStandard.startVideo();
             }
 
             @Override
@@ -176,7 +175,6 @@ private Boolean flag = true;
                 List<VedioJCYKBean.VideoBean.Chapters4Bean> chapters2 = jcykBean.getVideo().getChapters4();
                 String url = chapters2.get(0).getUrl();
                 jcVideoPlayerStandard.setUp(url, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,title);
-                jcVideoPlayerStandard.startVideo();
             }
 
 

@@ -27,6 +27,7 @@ public class Urls {
 
     //熊猫直播
     public static final String PANDALIVE = PANDAURL + "PAGE14501769230331752/index.json";
+    public static final String PANDAJCYK="  http://www.ipanda.com/kehuduan/PAGE14501772263221982/index.json";
     //熊猫直播多视角
     public static  final String DUOSHIJIAO="http://www.ipanda.com/kehuduan/PAGE14501769230331752/PAGE14501787896813312/index.json";
     //熊猫直播标签
@@ -75,7 +76,7 @@ public class Urls {
 
 
    // 精彩一刻
-    public static final String JCYI=" http://api.cntv.cn/video/videolistById?vsid=VSET100167216881&n=7&serviceId=panda&o=desc&of=time&p=1";
+    public static final String JCYI=" http://api.cntv.cn/video/videolistById";
    // 超萌滚滚秀
     public static final String CMGGX="http://api.cntv.cn/video/videolistById?vsid=VSET100272959126&n=7&serviceId=panda&o=desc&of=time&p=1";
 //    http://api.cntv.cn/video/videolistById?vsid=VSET100272959126&n=7&serviceId=panda&o=desc&of=time&p=1
@@ -103,5 +104,19 @@ public class Urls {
     //熊猫档案
     public static final String XMDA=" http://api.cntv.cn/video/videolistById?vsid=VSET100340574858&n=7&serviceId=panda&o=desc&of=time&p=1";
 //    http://api.cntv.cn/video/videolistById?vsid=VSET100340574858&n=7&serviceId=panda&o=desc&of=time&p=1
+//登陆
+public static final String LoginUrl = "https://reg.cntv.cn/login/login.action";
+
+    //获取手机验证码
+    public static final String url = "http://reg.cntv.cn/regist/getVerifiCode.action";
+
+    //获取图片验证码
+    public static final String from = "http://reg.cntv.cn/simple/verificationCode.action";
+
+    //注册url
+    public static final String Zcurl = "https://reg.cntv.cn/regist/mobileRegist.do";
+
+    //邮箱注册url
+    public static final String EMILEREGIS = "https://reg.cntv.cn/api/register.action";
 
 }

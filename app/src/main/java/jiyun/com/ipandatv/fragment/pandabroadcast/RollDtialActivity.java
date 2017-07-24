@@ -109,40 +109,6 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
         detilsPullto.addItemDecoration(new DividerItemDecoration(App.activity, DividerItemDecoration.VERTICAL));
         detilsPullto.setLayoutManager(layoutManager);
 
-//        detilsPullto.setPullRefreshEnabled(true);//下拉刷新
-//        //是否开启上拉加载功能
-//        detilsPullto.setLoadingMoreEnabled(true);
-//        //开启刷新回调
-//        detilsPullto.displayLastRefreshTime(true);
-//        //停止刷新
-//        //停止刷新
-//        detilsPullto.setPullToRefreshListener(new PullToRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//                detilsPullto.postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        detilsPullto.setRefreshComplete();
-//                        mlist.clear();
-//                        loadData();
-//
-//                    }
-//                }, 2000);
-//            }
-//
-//            @Override
-//            public void onLoadMore() {
-//                detilsPullto.postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        detilsPullto.setLoadMoreComplete();
-//                        Index++;
-//                        loadData();
-//
-//                    }
-//                }, 2000);
-//            }
-//        });
         adapter = new PandaDetailAdapter(mlist, this);
         detilsPullto.setAdapter(adapter);
         adapter.setOnClick(new PandaDetailAdapter.setOnClick() {
@@ -151,7 +117,7 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
 
                 presenter.setVideoURl(mlist.get(postion).getVid());
 
-                Toast.makeText(RollDtialActivity.this, "dsfsdfs", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(RollDtialActivity.this, "dsfsdfs", Toast.LENGTH_SHORT).show();
                 pos = postion;
 
             }
@@ -193,7 +159,6 @@ public class RollDtialActivity extends BaseActivity implements CultureContract.V
         url = chapters2.get(0).getUrl();
         if (urllisst.size() > 0) {
             customVideoplayerStandardWithShareButton.setUp(urllisst.get(0).getUrl(), JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,title);
-            customVideoplayerStandardWithShareButton.startVideo();
         }
 
 

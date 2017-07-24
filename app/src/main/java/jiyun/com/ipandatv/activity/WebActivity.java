@@ -9,6 +9,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,17 +22,22 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.stmt.DeleteBuilder;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.media.UMImage;
 import com.umeng.socialize.media.UMWeb;
 
+import java.sql.SQLException;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.base.BaseActivity;
+import jiyun.com.ipandatv.model.db.JiluDao;
 import jiyun.com.ipandatv.utils.MyLog;
 
 /**
@@ -47,6 +53,9 @@ public class WebActivity extends BaseActivity implements View.OnClickListener {
     ImageView Fenxiang;
     private String rurl;
     private PopupWindow PopupWindow;
+    private Dao<JiluDao,Integer> dao;
+    private Boolean flag = true;
+    private String pid, title,image;
     @Override
     protected int getLayoutId() {
         return R.layout.webview_activity;
@@ -65,6 +74,7 @@ public class WebActivity extends BaseActivity implements View.OnClickListener {
     @Override
     public void loadData() {
         Intent intent = getIntent();
+        title =intent.getStringExtra("title");
         rurl = intent.getStringExtra("url");
         MyLog.e("URL",rurl);
 
@@ -94,6 +104,29 @@ public class WebActivity extends BaseActivity implements View.OnClickListener {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.Shoucang:
+                if(flag) {
+                    JiluDao jiluDao = new JiluDao();
+                    jiluDao.setTitle(title);
+                    jiluDao.setImageurl(image);
+                    try {
+                        int i = dao.create(jiluDao);
+                        Log.e("AAA", "插入了" + i + "条数据");
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                    flag = false;
+
+                }else{
+                    DeleteBuilder deleteBuilder = dao.deleteBuilder();
+                    try {
+                        deleteBuilder.where().eq("title",title);
+                        deleteBuilder.delete();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                    flag =true;
+                }
+
                 Toast.makeText(WebActivity.this, "你已添加到我的收藏", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.Fenxiang:

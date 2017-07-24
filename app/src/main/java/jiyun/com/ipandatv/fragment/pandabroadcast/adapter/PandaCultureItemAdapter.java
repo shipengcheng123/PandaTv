@@ -2,7 +2,6 @@ package jiyun.com.ipandatv.fragment.pandabroadcast.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -41,17 +40,6 @@ public class PandaCultureItemAdapter extends BaseAdapter<PandaCultureEntity.List
     public void convert(ViewHolder holder, final PandaCultureEntity.ListBean listBean) {
 
         RelativeLayout relativeLayout = holder.getView(R.id.panda_observe_relativeLayout);
-/*
-        relativeLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                String id = listBean.;
-                Intent intent = new Intent(context, VideoActivity.class);
-                intent.putExtra("id", id);
-                context.startActivity(intent);
-            }
-        });*/
 
         holder.setText(R.id.panda_oculture_item_sp_time, listBean.getVideoLength())
                 .setText(R.id.panda_culture_item_title, listBean.getTitle())
@@ -78,39 +66,16 @@ public class PandaCultureItemAdapter extends BaseAdapter<PandaCultureEntity.List
                     MyLog.e("Url", listBean.getUrl() + listBean.getTitle());
                         App.activity.startActivity(intent2);
 
+                    JiluDao jiluDao = new JiluDao();
+
+                    jiluDao.setTitle( listBean.getTitle());
+                    jiluDao.setImageurl(listBean.getImage());
                     try {
-                        List<JiluDao> chaxunItem = dao.queryForAll();
-                        if(chaxunItem.size() == 0) {
-                            JiluDao jiluDao = new JiluDao();
-                            jiluDao.setTitle( listBean.getTitle());
-                            jiluDao.setImageurl(listBean.getImage());
-                            int i = dao.create(jiluDao);
-                            Log.e("AAA", "插入了" + i + "条数据");
-                        }
-                        else {
-                            for (int i=0;i<chaxunItem.size();i++){
-                                if( listBean.getTitle().equals(chaxunItem.get(i).getTitle())) {
-                                    quchong=true;
-                                    return;
-                                }
-                            }
-                            if(quchong) {
-                                Log.e("tag","相同");
-                            }
-                            else {
-                                JiluDao jiluDao = new JiluDao();
-                                jiluDao.setTitle( listBean.getTitle());
-                                jiluDao.setImageurl(listBean.getImage());
-                                int i = dao.create(jiluDao);
-                                Log.e("AAA", "插入了" + i + "条数据");
-                                Log.e("tag","添加");
-                            }
-                        }
+                        int i = dao.create(jiluDao);
+                        MyLog.e("AAA", "插入了" + i + "条数据");
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
-
-
                 } else {
                     Intent intent = new Intent(App.activity, VideoActivity.class);
                     intent.putExtra("url", listBean.getUrl());
@@ -127,7 +92,7 @@ public class PandaCultureItemAdapter extends BaseAdapter<PandaCultureEntity.List
                             jiluDao.setTitle( listBean.getTitle());
                             jiluDao.setImageurl(listBean.getImage());
                             int i = dao.create(jiluDao);
-                            Log.e("AAA", "插入了" + i + "条数据");
+                            MyLog.e("AAA", "插入了" + i + "条数据");
                         }
                         else {
                             for (int i=0;i<chaxunItem.size();i++){
@@ -137,15 +102,15 @@ public class PandaCultureItemAdapter extends BaseAdapter<PandaCultureEntity.List
                                 }
                             }
                             if(quchong) {
-                                Log.e("tag","相同");
+                                MyLog.e("tag","相同");
                             }
                             else {
                                 JiluDao jiluDao = new JiluDao();
                                 jiluDao.setTitle( listBean.getTitle());
                                 jiluDao.setImageurl(listBean.getImage());
                                 int i = dao.create(jiluDao);
-                                Log.e("AAA", "插入了" + i + "条数据");
-                                Log.e("tag","添加");
+                                MyLog.e("AAA", "插入了" + i + "条数据");
+                                MyLog.e("tag","添加");
                             }
                         }
                     } catch (SQLException e) {

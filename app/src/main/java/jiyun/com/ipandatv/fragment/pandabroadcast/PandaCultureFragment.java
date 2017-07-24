@@ -115,7 +115,7 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
 
             }
         });
-        progressDialog = ProgressDialog.show(App.activity,"请稍等...","获取数据中...",true);
+        progressDialog = ProgressDialog.show(App.activity,"","",true);
         pandaCulturePersenter = new PandaCulturePresenter(this);
         pandaCulturePersenter.start();
         handleProgress.post(new Runnable() {
@@ -214,8 +214,10 @@ public class PandaCultureFragment extends BaseFragment implements CultureContrac
             public void setViewPager(int position) {
                 PandaCultureEntity.BigImgBean bigImgBean = entity.getBigImg().get(position);
                 String url = bigImgBean.getUrl();
+                String title=bigImgBean.getTitle();
                 Intent intent=new Intent(App.activity,WebActivity.class);
                 intent.putExtra("url",url);
+                intent.putExtra("title",title);
                 startActivity(intent);
 
             }

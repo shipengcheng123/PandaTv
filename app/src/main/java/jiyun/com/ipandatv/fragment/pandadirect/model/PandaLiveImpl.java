@@ -1,5 +1,6 @@
 package jiyun.com.ipandatv.fragment.pandadirect.model;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import jiyun.com.ipandatv.internet.HttpFactory;
@@ -80,6 +81,25 @@ public class PandaLiveImpl implements IPandaLivemodel {
     @Override
     public <T> void vedioPlay(String url, Map<String, String> params, INetWorkCallback<T> callback) {
         HttpFactory.create().get(Urls.PANDALIVE,params,callback);
+    }
+
+    //vsid=VSET100272959126    &n=7        &serviceId=panda      &o=desc     &of=time      &p=1
+    @Override
+    public <T> void livejcyk(String vsid, INetWorkCallback<T> callback) {
+        Map<String,String> map=new HashMap<>();
+        map.put("vsid",vsid);
+        map.put("n","7");
+        map.put("serviceId","panda");
+        map.put("o","desc");
+        map.put("of","time");
+        map.put("p","1");
+        HttpFactory.create().get(Urls.JCYI,map,callback);
+
+    }
+
+    @Override
+    public <T> void liveFragment(INetWorkCallback<T> callback) {
+        HttpFactory.create().get(Urls.PANDAJCYK,null,callback);
     }
 
 }

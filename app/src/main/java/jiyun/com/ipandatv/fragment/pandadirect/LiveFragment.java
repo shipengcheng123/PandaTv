@@ -19,6 +19,7 @@ import butterknife.OnClick;
 import jiyun.com.ipandatv.App;
 import jiyun.com.ipandatv.R;
 import jiyun.com.ipandatv.base.BaseFragment;
+import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaDangxiongburangBean;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaLiveBean;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaLiveDuoshijiaoBean;
 import jiyun.com.ipandatv.fragment.pandadirect.bean.PandaLiveTalkListBean;
@@ -123,6 +124,11 @@ public class LiveFragment extends BaseFragment implements LiveContract.View{
 
     @Override
     public void showMessage(String msg) {
+
+    }
+
+    @Override
+    public void showJcykFragment(PandaDangxiongburangBean pandaDangxiongburangBean) {
 
     }
 

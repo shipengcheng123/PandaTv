@@ -43,4 +43,11 @@ public interface IPandaLivemodel extends BaseModel {
 
     //视频播放
     <T> void vedioPlay(String url, Map<String, String> params, INetWorkCallback<T> callback);
+
+    //jingcaiyike
+    //vsid=VSET100272959126    &n=7        &serviceId=panda      &o=desc     &of=time      &p=1
+    <T> void livejcyk(String vsid,INetWorkCallback<T> callback);
+
+    //复用fragment
+    <T> void liveFragment(INetWorkCallback<T> callback);
 }

@@ -16,6 +16,8 @@ public class LiveIpl implements ILivemodel{
         HttpFactory.create().get(Urls.JCYI,params,callback);
     }
 
+
+
     @Override
     public <T> void getDXBR(String url, Map<String, String> params, INetWorkCallback<T> callback) {
         HttpFactory.create().get(Urls.DXBR,params,callback);
@@ -55,4 +57,10 @@ public class LiveIpl implements ILivemodel{
     public <T> void getVDJCYK( Map<String, String> params, INetWorkCallback<T> callback) {
         HttpFactory.create().get(Urls.VEDIOJCYK,params,callback);
     }
+
+    @Override
+    public <T> void getTitle(Map<String, String> params, INetWorkCallback<T> callback) {
+        HttpFactory.create().get(Urls.PANDAJCYK,params,callback);
+    }
+
 }

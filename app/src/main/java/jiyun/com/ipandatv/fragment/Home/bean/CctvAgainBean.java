@@ -1,12 +1,13 @@
 package jiyun.com.ipandatv.fragment.Home.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by INS7566 on 2017/7/22.
  */
 
-public class CctvAgainBean {
+public class CctvAgainBean implements Serializable{
     private List<ListBean> list;
 
     public List<ListBean> getList() {

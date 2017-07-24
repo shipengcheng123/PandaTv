@@ -36,4 +36,9 @@ public class PandaLiveVedioPresenter implements LiveContract.Presenter {
             }
         });
     }
+
+    @Override
+    public void setVidManager(String vsid) {
+
+    }
 }
